@@ -1,0 +1,327 @@
+1
+00:00:01,360 --> 00:00:06,559
+la emisión está comenzando todos los asistentes están en modo de sólo
+
+2
+00:00:06,559 --> 00:00:27,460
+escucha qué tal muy buenas tardes cómo estáis os saluda ser y sánchez una
+
+3
+00:00:27,460 --> 00:00:37,009
+clase más del curso de trading algorímico así que vamos a comenzar con
+
+4
+00:00:37,009 --> 00:00:45,630
+ello como siempre voy a escribirlo
+
+5
+00:00:46,270 --> 00:00:54,369
+los que me oís ya veo que me oís porque me estáis contestando pero si alguien no
+
+6
+00:00:54,369 --> 00:01:00,329
+me oye pues ya lo ya lo he escrito ya lo he escrito por ahí vale venga como
+
+7
+00:01:00,329 --> 00:01:07,730
+siempre empezamos atendiendo un poquito las las preguntas que hay en él sobre
+
+8
+00:01:07,730 --> 00:01:13,730
+todo en el disc or también voy a hacer algún comentario algún algún email y
+
+9
+00:01:13,730 --> 00:01:20,900
+luego vamos a trabajar bueno enseñaros cositas ideas que hemos trabajado
+
+10
+00:01:20,900 --> 00:01:29,340
+bastante en profundidad durante esta durante esa semana vale a ver el disco
+
+11
+00:01:29,340 --> 00:01:42,989
+el disco que está bueno ya ha visto ya lo que habíamos dejado comentado bueno
+
+12
+00:01:42,989 --> 00:01:48,750
+aquí antes voy la verdad que comentabas aquí en el disco que no conseguías que
+
+13
+00:01:48,750 --> 00:01:57,349
+te genera ningún trade y pues no no te sé no te sé decir con los datos que
+
+14
+00:01:57,349 --> 00:02:04,480
+pones ahí la verdad tienes la de arriba están estatus son la de abajo están
+
+15
+00:02:04,480 --> 00:02:13,819
+estatus no sé no sé si alberto se le ocurre algo que pueda provocar que la
+
+16
+00:02:13,819 --> 00:02:20,300
+estrategia no opere bueno quizás la sesión que lo tenga en el horario local a
+
+17
+00:02:20,300 --> 00:02:26,800
+lo mejor cargado el símbolo pudiera ser pudiera ser fíjate que lo tengas
+
+18
+00:02:26,800 --> 00:02:34,169
+cargado en echange el símbolo vale te enseño lo que lo que quiero decir
+
+19
+00:02:34,169 --> 00:02:43,599
+espera que vamos a sacar ya esto enseño lo que quiero decir vale es decir tú
+
+20
+00:02:43,599 --> 00:02:47,460
+cuando cargas un símbolo en el gráfico
+
+21
+00:02:47,460 --> 00:02:57,300
+puedes elegir aquí local o echange vale dependiendo del tipo de sistema si tú
+
+22
+00:02:57,300 --> 00:03:06,560
+usas horas y tú te refieres a time por ejemplo pues es time ese es la hora del
+
+23
+00:03:06,560 --> 00:03:12,759
+gráfico entonces tú le has puesto 9 30 y el gráfico va de 15 30 a 10 de la
+
+24
+00:03:12,759 --> 00:03:16,400
+noche que es lo que te pasa en este caso como yo lo tenía ahora en el local lo
+
+25
+00:03:16,400 --> 00:03:20,699
+que pasa que este este sistema en concreto lo veremos más adelante es un
+
+26
+00:03:20,699 --> 00:03:25,639
+volatility breakout no es un rv por lo tanto no usa horas y no importa pero si
+
+27
+00:03:25,639 --> 00:03:31,199
+tú usas horas pues puede ser puede provocarte eso que no opere vale que no
+
+28
+00:03:31,199 --> 00:03:35,719
+opere porque pues la hora no existe si tú le dices a partir de las 9 30 hace
+
+29
+00:03:35,719 --> 00:03:43,750
+x cosa y esa hora no está en el gráfico pues ese puede ser un motivo vale se me
+
+30
+00:03:43,750 --> 00:03:47,990
+ocurre que se puede ser eso es probable que sea eso es probable que sea eso
+
+31
+00:03:47,990 --> 00:03:55,030
+porque ya te digo es algo usual ahora ha caído vale bien qué más comentaba
+
+32
+00:03:55,030 --> 00:04:02,979
+Juan Manuel ya las de Raúl quedó la semana pasada voy voy leyendo respecto a
+
+33
+00:04:02,979 --> 00:04:07,340
+la configuración del money management para el sistema durante la evaluación
+
+34
+00:04:07,340 --> 00:04:10,819
+para saber qué exposición neta del sistema en porcentaje se recomienda por
+
+35
+00:04:10,819 --> 00:04:14,979
+consenso hay que apalancamiento y cómo establecerlo en código bueno no hay una
+
+36
+00:04:14,979 --> 00:04:20,259
+recomendación de apalancamiento no apalancamiento eso es algo que depende
+
+37
+00:04:20,259 --> 00:04:24,899
+de muchísimos factores desde uno personal vale desde el riesgo o sea en
+
+38
+00:04:24,899 --> 00:04:30,439
+evaluación preliminar lo que os comenté es que nosotros aunque también os lo
+
+39
+00:04:30,439 --> 00:04:34,040
+dije y os digo levantó que sigue habiendo cierto debate sobre el tema es
+
+40
+00:04:34,040 --> 00:04:39,199
+decir nosotros ya ya os explicó siempre os he intentado explicar las cosas que
+
+41
+00:04:39,199 --> 00:04:43,639
+que digamos la industria pues tiene ya establecidas cosas que al final hacemos
+
+42
+00:04:43,639 --> 00:04:46,680
+nosotros porque nosotros las queremos así entonces por haber distintas
+
+43
+00:04:46,680 --> 00:04:52,959
+opiniones nosotros creemos que es mejor usar
+
+44
+00:04:52,959 --> 00:04:58,519
+un money management pero es verdad que si tú tienes el gráfico ajustado si tú
+
+45
+00:04:58,519 --> 00:05:04,959
+tus esto se ajustan a la volatilidad puedes no es grave de acuerdo no es
+
+46
+00:05:04,959 --> 00:05:09,199
+grave que vaya todo el rato con un con un cotado pero es importante que se
+
+47
+00:05:09,199 --> 00:05:13,639
+ajuste y aún así habrán el ejemplo del nasda que es el que pusimos en el curso
+
+48
+00:05:13,639 --> 00:05:18,519
+es muy paradigmático no porque la variación de precios y miras en muy
+
+49
+00:05:18,519 --> 00:05:25,459
+largo plazo es es bestial claro un contrato del 2000 no es un contrato del
+
+50
+00:05:25,459 --> 00:05:31,860
+2009 y mucho menos el 2024 entonces si tú todo el rato vas con un contrato pues
+
+51
+00:05:31,860 --> 00:05:35,620
+ese es el problema entonces realmente usamos un money management que
+
+52
+00:05:35,620 --> 00:05:40,300
+simplemente permita que esos contratos varíen el que estáis viendo hasta ahora
+
+53
+00:05:40,300 --> 00:05:45,060
+en estos ejercicios que hemos hecho en la práctica es anominal vale que es
+
+54
+00:05:45,060 --> 00:05:52,120
+este tengo aquí un sistema que os enseñaré luego bueno igual de hecho da
+
+55
+00:05:52,120 --> 00:06:00,000
+igual porque todos iguales vale aquí simplemente usamos el importe que le
+
+56
+00:06:00,000 --> 00:06:03,040
+ponemos nosotros en la cuenta se multiplica por un multiplicador que es
+
+57
+00:06:04,040 --> 00:06:11,079
+vale que por cien vale lo único que está separado el dinero inicial la
+
+58
+00:06:11,079 --> 00:06:14,759
+cuenta inicial y el que vas ganando pero al final le ponemos cien iguales y la
+
+59
+00:06:14,759 --> 00:06:19,399
+realidad no está separado es lo mismo porque en ambos casos multiplicamos por
+
+60
+00:06:19,399 --> 00:06:26,579
+cien y lo sumamos por lo tanto queda que da igual y eso se divide por un valor
+
+61
+00:06:26,660 --> 00:06:33,300
+que al final es el cierre multiplicado por big point value vale que es el cierre
+
+62
+00:06:33,300 --> 00:06:38,579
+multiplicado por big point value el valor nominal de un activo vale es decir
+
+63
+00:06:38,579 --> 00:06:42,730
+en este caso yo estoy invirtiendo este este money management que ves tú
+
+64
+00:06:42,730 --> 00:06:48,009
+equivale a ir a cien por cien de exposición es eso pero simplemente es
+
+65
+00:06:48,009 --> 00:06:53,730
+porque para para mirar un poco cómo va el sistema pues pues usamos uno sencillo
+
+66
+00:06:53,730 --> 00:06:59,050
+que no tiene mucha mucha historia en las prácticas
+
+67
+00:06:59,050 --> 00:07:03,689
+probablemente a partir de la de cuando acabemos ya este este volatilidad
+
+68
+00:07:03,689 --> 00:07:08,129
+breakout o revés y demás que confío que va a ser hoy
+
+69
+00:07:08,410 --> 00:07:15,610
+entonces seguramente abordaremos algunas clases como llamarlas temáticas de
+
+70
+00:07:15,610 --> 00:07:20,329
+acuerdo es decir no sólo de hacer un sistema aunque en los ejemplos pues por
+
+71
+00:07:20,329 --> 00:07:25,250
+supuesto se pueden hacer sistemas pero pues ya ya lo comenté durante la teoría
+
+72
+00:07:25,250 --> 00:07:29,009
+y también lo he dicho en las prácticas pues por ejemplo pues queda de ideas por
+
+73
+00:07:29,009 --> 00:07:37,660
+ejemplo el aprovechando en la revisión que hemos hecho de apolo que lo comenté
+
+74
+00:07:37,660 --> 00:07:41,420
+y ha habido un comentario en el disco estoy de acuerdo que es interesante pues
+
+75
+00:07:41,420 --> 00:07:46,699
+bueno pues haremos una práctica de eso mirar un sistema real se sale de su zona
+
+76
+00:07:47,259 --> 00:07:52,060
+si pondremos un poco de esta práctica de un caso real de la revisión de un
+
+77
+00:07:52,060 --> 00:07:56,199
+sistema que está operando entiendes entonces creo realmente que es algo que
+
+78
+00:07:56,199 --> 00:08:01,100
+puede aportar mucho mucho valor
+
+79
+00:08:01,100 --> 00:08:06,000
+claro y por supuesto que es algo que iba ahora gestión monetaria ah ah ah
+
+80
+00:08:06,000 --> 00:08:10,199
+ah ah undaremos en la gestión monetaria de manera específica la
+
+81
+00:08:12,819 --> 00:08:16,079
+que la clase estará más enfocada en la gestión monetaria que en el hecho de
+
+82
+00:08:16,079 --> 00:08:24,920
+hacer un sistema como por ejemplo hoy estamos más enfocados en hacer en hacer un sistema que más

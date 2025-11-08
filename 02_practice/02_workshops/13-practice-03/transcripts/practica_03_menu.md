@@ -1,27 +1,46 @@
 ## Índice
 
 - [Bases diarias vs Bases intradiarias (1440 minutos) - Recordatorio del tema anterior](#bases-diarias-vs-bases-intradiarias-1440-minutos---recordatorio-del-tema-anterior)
-- [Introducción al trabajo con `canales de Donchian`](#introducción-al-trabajo-con---canales-de-donchian)
+- [Introducción al trabajo con canales de Donchian](#introducción-al-trabajo-con---canales-de-donchian)
 	- [El sistema original de Donchian y las reglas de las cuatro semanas](#el-sistema-original-de-donchian-y-las-reglas-de-las-cuatro-semanas)
 	- [La importancia de acudir a las fuentes originales](#la-importancia-de-acudir-a-las-fuentes-originales)
 	- [Uso intradiario y dificultad en tendencia pura](#uso-intradiario-y-dificultad-en-tendencia-pura)
 	- [Psicología del trader y tipos de sistemas](#psicología-del-trader-y-tipos-de-sistemas)
 	- [Control del riesgo: intradía vs swing trading](#control-del-riesgo-intradía-vs-swing-trading)
 	- [Diversificación y la importancia del sistema tendencial](#diversificación-y-la-importancia-del-sistema-tendencial)
-- [Aplicación práctica: Donchian en Apple `AAPL`](#-aplicación-práctica-donchian-en-apple-aapl)
-  - [Inputs del sistema y objetivo de evaluación](#inputs-del-sistema-y-objetivo-de-evaluación)
-  - [Cómo trabajamos una idea: búsqueda dirigida y concepto primero](#cómo-trabajamos-una-idea-búsqueda-dirigida-y-concepto-primero)
-  - [Setup de entrada y variantes de ruptura](#setup-de-entrada-y-variantes-de-ruptura)
-  - [Evaluación del setup básico y simetría riesgo/beneficio](#evaluación-del-setup-básico-y-simetría-riesgobeneficio)
-  - [Segunda prueba: ajuste del rango de riesgo/beneficio](#segunda-prueba-ajuste-del-rango-de-riesgobeneficio)
-  - [Configuración monetaria y control de tamaño](#configuración-monetaria-y-control-de-tamaño)
-- [Aplicación práctica: Donchian en `XLK`](#-aplicación-práctica-donchian-en-xlk)
-  - [Gestión monetaria dinámica](#gestión-monetaria-dinámica)
-  - [Regla de entrada](#regla-de-entrada)
-  - [Reglas de salida](#reglas-de-salida)
-  - [Salida con Stop Loss y Trailing Stop](#salida-con-stop-loss-y-trailing-stop)
-  - [Salida por un número n de barras](#salida-por-un-número-n-de-barras)
-- [Aplicación práctica: Donchian en `XLF`](#-aplicación-práctica-donchian-en-xlf)
+	- [🟦 Aplicación práctica: Donchian en Apple AAPL](#-aplicación-práctica-donchian-en-apple-aapl)
+		- [Inputs del sistema y objetivo de evaluación](#inputs-del-sistema-y-objetivo-de-evaluación)
+		- [Cómo trabajamos una idea: búsqueda dirigida y concepto primero](#cómo-trabajamos-una-idea-búsqueda-dirigida-y-concepto-primero)
+		- [Setup de entrada y variantes de ruptura](#setup-de-entrada-y-variantes-de-ruptura)
+		- [Evaluación del setup básico y simetría riesgo/beneficio](#evaluación-del-setup-básico-y-simetría-riesgobeneficio)
+		- [Segunda prueba: ajuste del rango de riesgo/beneficio](#segunda-prueba-ajuste-del-rango-de-riesgobeneficio)
+		- [Configuración monetaria y control de tamaño](#configuración-monetaria-y-control-de-tamaño)
+	- [🟦 Aplicación práctica: Donchian en XLK](#-aplicación-práctica-donchian-en-xlk)
+		- [Gestión monetaria dinámica](#gestión-monetaria-dinámica)
+		- [Regla de entrada](#regla-de-entrada)
+		- [Reglas de salida](#reglas-de-salida)
+		- [Salida con Stop Loss y Trailing Stop](#salida-con-stop-loss-y-trailing-stop)
+	- [🟦 Aplicación práctica: Donchian en XLF](#-aplicación-práctica-donchian-en-xlf)
+		- [¿Qué salidas hemos visto ya?](#que-salidas-hemos-visto-ya)
+		- [Filtros de entrada](#filtros-de-entrada)
+		- [Volatility breakout en META](#volatility-breakout-en-meta)
+- [¿Preguntas?](#preguntas)
+- [Resumen](#resumen)
+	- [1. Fundamentos de la práctica](#1-fundamentos-de-la-práctica)
+	- [2. Los canales de Donchian](#2-los-canales-de-donchian)
+		- [2.1. Cálculo y variantes](#21-cálculo-y-variantes)
+		- [2.2. Lógica de exclusión de la barra actual](#22-lógica-de-exclusión-de-la-barra-actual)
+	- [3. Tipos de entrada](#3-tipos-de-entrada)
+		- [3.1. Variantes de ruptura](#31-variantes-de-ruptura)
+		- [3.2. Configuración mediante inputs](#32-configuración-mediante-inputs)
+	- [4. Tipos de salida](#4-tipos-de-salida)
+		- [4.1. Salida por media central](#41-salida-por-media-central)
+		- [4.2. Salida por trailing stop](#42-salida-por-trailing-stop)
+		- [4.3. Salida simétrica (TP/SL)](#43-salida-simétrica-tpsl)
+		- [4.4. Salida por canal contrario](#44-salida-por-canal-contrario)
+	- [5. Gestión monetaria](#5-gestión-monetaria)
+	- [6. Evaluación y optimización](#6-evaluación-y-optimización)
+	- [7. Conclusión conceptual](#7-conclusión-conceptual)
 
 ---
 
@@ -964,15 +983,17 @@ vale vamos a ver cómo queda con este mismo setup que tiene run-ups chulos con e
 tiene un coste de comisiones muy elevado pero bueno se va adaptando se va adaptando el tema es que cuando compras muchas acciones que ahora te meten mucha mucha mucha slippage pero si si esta fase es tremendamente volátil que la caída se los traga se los traga todos 
 
 
-
-bien seguimos viendo las otras las otras posibilidades el otro día recordar que ya implementé la salida por tiempo, es una salida que me gusta mucho pero el existo si queremos un set up tendencial al final tenemos que dejar que ver no hay muchas no hay muchas opciones ante esto muchas opciones podemos jugar con estas dos combinaciones pensar que lo bueno lo bueno de tener pocos o casi ninguno parámetro es que entonces puede ser cierto margen de optimizar y elegir si yo por el tema de los grados de libertad que ya veremos cuando lo trabajemos pero si no no no podría 
-
 ### ¿que salidas hemos visto ya?
+
+Bien, continuamos analizando las demás posibilidades. El otro día recordaréis que ya implementé la *salida por tiempo*, una opción que personalmente me gusta mucho. Sin embargo, si lo que buscamos es un *setup tendencial*, debemos asumir que no hay demasiadas alternativas: al final, hay que dejar correr el mercado y ver hasta dónde llega.
+
+Las combinaciones posibles son limitadas, pero eso no es algo negativo. De hecho, *una de las ventajas de tener pocos parámetros —o casi ninguno— es que el sistema conserva un margen real de optimización y de elección*. Más adelante hablaremos en profundidad de los *grados de libertad*, pero por ahora basta con entender que cuantos menos parámetros intervengan, más fiable será la evaluación y más robusto el comportamiento del sistema.
+
 
 **salida por un número n de barras**
 
 ```sh
-//salida por tiempo, n barras
+// salida por tiempo, n barras
 If Bar_Exit > 0 Then
 Begin
 	if MP = 1 and barssinceentry > Bar_Exit then
@@ -983,78 +1004,68 @@ Begin
 End;
 ```
 
-**¿que salidas hemos visto ya?**
+**¿Qué salidas hemos visto ya?**
 
-`Bar_Exit (0),` ya la implemtamos el otro día. Hemos visto en esta sesion   
-`Prc_Stop (0.00)`, - porcentaje de stop  
-`Prc_Profit (0.00)`, - porcentaje de stop  
-`Prc_Trail (0.20)`, - porcentaje de stop  
-`Salgo_Media (false)` - salida por la media central    
+`Bar_Exit (0)` ya la implementamos el otro día.  
+En esta sesión hemos visto:  
+`Prc_Stop (0.00)` – porcentaje de stop  
+`Prc_Profit (0.00)` – porcentaje de profit  
+`Prc_Trail (0.20)` – porcentaje de trailing stop  
+`Salgo_Media (false)` – salida por la media central  
 
+La *salida por la media central* está actualmente activada.
+Esta salida utiliza la *media central del mismo período que el canal de Donchian*, es decir, calcula la media de los últimos *n* cierres (por defecto, 20).
 
-`Salgo_Media (false)` — la salida por la *media central* está actualmente activada. Esta salida utiliza la *media central del mismo período que el canal de Donchian*, es decir, calcula la media de los últimos *n* cierres (por defecto, 20).
+---
 
-También podríamos haber definido una *salida en el canal contrario*, lo cual sería una alternativa más de largo recorrido.
-Esa opción, de hecho, la tenemos implementada, porque *TradeStation* permite hacerlo de forma muy sencilla gracias a su estructura de programación.
+### salida en el canal contrario
 
-Ahora vamos a activar los `cortos`:
+También podríamos haber definido una *salida en el canal contrario*, una alternativa más de largo recorrido.
+Esa opción, de hecho, ya está implementada, porque *TradeStation* permite hacerlo de forma muy sencilla gracias a su estructura de programación.
+
+Ahora vamos a activar los *cortos*:
 
 ![](../img/45.png)
 
-Para ello, contamos con una **variable booleana** (`OperoCortos`) que controla si el sistema puede o no abrir posiciones cortas.
+Para ello, contamos con una variable booleana (`OperoCortos`) que controla si el sistema puede o no abrir posiciones cortas.
 Al establecerla en `true`, el sistema podrá operar también en corto.
 
-Sin embargo, podemos hacer algo interesante: **usar la señal del corto para operar en largo**.  
+Sin embargo, podemos hacer algo interesante: *usar la señal del corto para operar en largo*.
 Es decir, aunque el sistema detecte una señal bajista, podemos reinterpretarla para entrar en el lado opuesto.
-Esto permite estudiar cómo se comporta la estrategia al **invertir las condiciones de entrada**, aprovechando las rupturas en dirección contraria.
-
+Esto permite estudiar cómo se comporta la estrategia al *invertir las condiciones de entrada*, aprovechando las rupturas en dirección contraria.
 
 ![](../img/46.png)
 
-ves, así el corto aún va peor que el largo, lógicamente, pero lo que voy a hacer es que la regla del corto y el sell short lo use para `exit only` 
+Como se ve, el corto aún rinde peor que el largo, lógicamente, pero lo que voy a hacer es que la regla del corto y el `sell short` se usen solo para *exit only*.
 
 ![](../img/47.png)
 
-y ahora la regla del corto la usa para cerrar, además la de que tenga del stop que tenga, de tal manera que en el momento en que se sale por la banda de abajo se sale además del trailing que tiene. 
+De esta manera, la regla del corto se utiliza para cerrar, junto con el stop correspondiente.
+Así, en el momento en que se produce una ruptura por la banda inferior, la posición también se cierra —además del trailing que tenga activo—.
 
-El trailing podría quitarle el trailing y este sería el caso extremo total de decir : entra largo por la banda de arriba y sale por la banda de abajo 
+El trailing podría eliminarse, y ese sería el caso extremo: entrar largo por la banda superior y salir únicamente por la inferior.
+Esa sería *la versión más tendencial de todas*, porque, cuando el sistema entra en una tendencia fuerte, tarda mucho en cerrar por debajo del canal.
 
 ![](../img/48.png)
-
-
 ![](../img/49.png)
 
-sería la opción probablemente más tendencial de todas opción probablemente más tendencial de todas porque ahora cuando coge tendencia pues le cuesta cerrar por debajo del canal. Sigue sin profit, tiene 41 aciertos y aquí no da profit probablemente por un mix de comisiones bastante elevado 
+Aun así, sin *take profit*, obtiene 41 aciertos, pero no genera beneficios, probablemente por un conjunto de comisiones elevadas.
 
 ![](../img/50.png)
 
-en la primera parte se unde muchos al 2009 o en el caso de leman brothers ya hemos visto ahí que tiene muchas entradas en la caída que no consigue evitar el daño esta es la clave de cualquier sistema . No va a ganar dinero cuando tiene un mercado hostil pero tiene que sobrevivir. me acuerdo que se no lo hace bueno no lo hace entonces luego tiene su buen momento pero no compensa su mal momento en esta versión 
+En la primera parte del histórico, se hunde durante 2008–2009 —la crisis de Lehman Brothers—, donde realiza muchas entradas durante la caída que no consigue evitar.
+Esa es la clave de cualquier sistema: *no va a ganar dinero en mercados hostiles, pero tiene que sobrevivir*.
+En esta versión, no lo logra del todo: después tiene buenos momentos, pero no logra compensar las pérdidas anteriores.
 
 ![](../img/51.png)
 
 <div style="border-left: 4px solid #f1c40f; background: #fff9e6; padding: 10px 15px; margin: 10px 0;">
-<strong>Regle fundamental:  </strong>
-<br> 
-Evitar el daño en su mal mercado.   
-
-Esta es la clave, la regla más importante de cualquier sistema.  
-No va a ganar dinero cuando tiene un mercado hostil pero tiene que sobrevivir. 
+<strong>Regla fundamental:</strong><br>
+Evitar el daño en mercados adversos.  
+<br><br>
+Esa es la esencia de cualquier sistema robusto: no tiene por qué ganar dinero en todo tipo de entornos, pero debe ser capaz de resistir y preservar el capital cuando las condiciones del mercado son desfavorables.
 </div>
-
----
-
-Vale volvemos a lo que se explicaba la otra salidas 
-
-
-**¿que salidas hemos visto ya?**
-
-`Bar_Exit (0),` ya la implemtamos el otro día. Hemos visto en esta sesion   
-`Prc_Stop (0.00)`, - porcentaje de stop  
-`Prc_Profit (0.00)`, - porcentaje de stop  
-`Prc_Trail (0.20)`, - porcentaje de stop  
-`Salgo_Media (false)` - salida por la media central    
-
-
+<br>
 <div style="border-left: 4px solid #2980b9; background: #eaf3fb; padding: 10px 15px; margin: 10px 0;">
   <strong>Composición global del portafolio:</strong><br> 
   Podría convertir el sistema en una versión no puramente tendencial, es decir, una variante que no busque capturar toda la tendencia completa. 
@@ -1072,67 +1083,116 @@ Vale volvemos a lo que se explicaba la otra salidas
   aportando así mayor estabilidad al conjunto de la cartera.
 </div>
 
+Volviendo al resto de las salidas vistas hasta ahora:
 
-...entonces vamos a desactivar los cortos lo voy a dejar así para que salga por la media va a salir por el `true`, le pongo que como mucho esté por ejemplo 10 días por ejemplo que salga por la media. 
+`Bar_Exit (0)` – salida por tiempo (ya implementada).  
+`Prc_Stop (0.00)` – salida por stop-loss porcentual.  
+`Prc_Profit (0.00)` – salida por take profit porcentual.  
+`Prc_Trail (0.20)` – salida por trailing stop porcentual.  
+`Salgo_Media (false)` – salida por la media central.  
+
+
+### Combinación práctica de salidas: media, tiempo y stop porcentual
+
+...entonces vamos a desactivar los cortos; lo voy a dejar así para que salga por la media, va a salir por el `true`.
+Le pongo que, como mucho, esté por ejemplo 10 días, y que salga por la media.
 
 ![](../img/52.png)
 
-y entonces pues bien sale o bien por la media o bien 10 días pero en este caso esto no tendría mucho sentido de acuerdo tenía sentido más bien en este caso o bien el true en el esto pero no tendría mucho sentido dejarle salir por por la media y por la banda con lo cual anularía la salida por cortos anularía la salida por cortos que eso me activa la media la salida la banda contraria y aquí le podía meter un esto por lo mejor del 5% para vueltas un poco rápidas 
+Y entonces, pues bien, sale o bien por la media o bien tras 10 días.
+En este caso, esto no tendría mucho sentido; tendría más lógica usar *una u otra* —o bien la salida por la media, o bien la salida por la banda—, pero no ambas simultáneamente.
+Por ello, anularía la salida por cortos (que activa la media y la banda contraria) y podría añadir un *stop* del 5 % para movimientos más rápidos.
 
 ![](../img/53.png)
 
-salgo por tiempo o por perdida de 5% o por la media, no salgo por el contrario. Veis es un setup muy distinto realmente realmente es un sistema que está poco tiempo en el mercado que busca entradas rápidas.
+En resumen: *salgo por tiempo o por pérdida del 5 %, o por la media; no salgo por el canal contrario.*
+Vemos que se trata de un *setup muy distinto*, realmente un sistema que permanece poco tiempo en el mercado y busca *entradas rápidas y de corta duración.*
 
 ![](../img/54.png)
 
-incluso aquí os diría más o sería más aquí sí que tendría más sentido porque ya estoy fijando un tiempo para salir entonces y como pues vamos a poner `profit` también 
+Incluso aquí tendría más sentido, porque ya estoy fijando un tiempo de salida.
+Además, voy a añadir un *profit target*:
 
 ![](../img/57.png)
 
-en este caso lo voy a poner el doble ratio 2:1 profit 0.10 (para el próximo día os explicaré otra cosa sobre esto que solemos hacer que es relacionar uno con otro o sea esto mismo en vez de poner un stop, poner uno de ellos y los otros dos veces el sto`p por ejemplo una vez ir 1:1 ir por rato que solemos hacerlo así) entonces ya aquí tengo 0,10 de profit 0.5 de stop le voy a quitar la salida de la media y salida por tiempo. 
+En este caso, usaré un ratio 2:1 —*profit* de 0.10 y *stop* de 0.05—.
+Más adelante explicaré otra cosa que solemos hacer: relacionar ambos, de forma que uno sea múltiplo del otro (por ejemplo, *1:1 o 2:1*).
+Así, tengo 0.10 de *profit*, 0.05 de *stop*, y desactivo la salida por media y por tiempo.
 
-Esta es una salida bastante habitual es un mix bastante habitual stp, tp pero también tengo tiempo es decir si ninguno de los dos salta en x barras me voy. Y esto es bastante bastante habitual pues aquí con un sto bastante cercano y bueno y esto pues daría como veis un sistema que está mucho menos tiempo en el mercado y que busca al final con éxito con éxito no pero busca pues eso explosiones de entrar y salirse.
+Esta es una configuración bastante habitual: una *combinación de stop, take profit y límite temporal*.
+Es decir, si ninguno de los dos primeros se activa en un número determinado de barras, la operación se cierra igualmente.
+Es una estructura muy común en sistemas *de rotura rápida o momentum*, donde el objetivo es capturar impulsos breves.
 
 ![](../img/64.png)
 
-Asi hemos conseguido que hemos conseguido que de la cara poco ha mejorado un poco ha mejorado un poco sigue siendo esta época muy mala pero que ya se ha aguantado mejor con esto 
+Con este enfoque, el sistema mejora ligeramente: aguanta mejor los periodos adversos, aunque sigue mostrando debilidad estructural, especialmente en el ETF financiero.
 
 ![](../img/65.png)
 
-no es saliendo pero sigue siendo muy flojo en el `etf financiero` 
-
----
-
-De acuerdo estas son todas las salidas que hemos que hemos visto.
 
 ### Filtros de entrada
 
-vale bien en este mismo setup por no marearos os explico posibles filtros de entrada aquí hay uno hay uno que está instrumentalizado en el sentido que no ocurra que no ocurra esto que veis aquí es decir que reentré y salga muy rápido es decir que una vez que sale necesita esperar un determinado número de velas. Esto tiene bastante sentido porque si no caes un poco en entrar y salir todo el rato y esto es eso de`bar_filtro` 
+En este mismo *setup*, para no complicar demasiado la explicación, repasaremos algunos posibles filtros de entrada.
+
+#### Filtro que evita reentradas inmediatas `Bar_Filtro`
+
+El primero es un filtro diseñado para evitar que ocurra lo que se observa en la imagen: una *reentrada inmediata* tras una salida.
+Es decir, una vez que el sistema cierra una operación, debe esperar un número determinado de velas antes de volver a entrar.
+
+Esto tiene bastante sentido, ya que, sin ese control, el sistema podría caer en un bucle de entradas y salidas continuas, generando ruido y sobreoperación.
+Este filtro se gestiona mediante la variable `Bar_Filtro`.
 
 ![](../img/67.png)
-
 ![](../img/68.png)
 
-ahora vez pasa más pasa como mínimo tres barras para entrar, este simplemente estos este tipo de filtros son habituales son habituales para evitar aquellos que programéis o que ya habéis hecho algo de sentido que ya sabéis ahí de los dos tipos de alumnos os habéis encontrado seguramente algún sistema que entra y sale y la misma vela entra eso no es una buena práctica no tiene mucho sentido salir para volver a entrar de acuerdo tiene mucho sentido es decir entonces una manera de evitar eso es esto no poner un filtro a decir cuántas barras estas fuera es buena práctica para para analizar el sistema ya con eso y trabajarlo así porque si no no tiene mi opinión mucho mucho sentido esto lo hace con esto `BarsSinceExit`
+Ahora, como se observa, el sistema espera al menos tres barras antes de permitir una nueva entrada.
+Este tipo de filtros es habitual y recomendable, especialmente para quienes programáis estrategias: evita que un sistema entre y salga en la misma vela, lo cual no tiene sentido operativo.
+Una buena práctica consiste en establecer siempre una condición mínima de espera entre operaciones, utilizando `BarsSinceExit`.
 
 ```sh
-//TIPICO SISTEMA DE RUPTURA: el cierre supera el m?ximo deL CIERRE DE 20 barras
+// TÍPICO SISTEMA DE RUPTURA: el cierre supera el máximo del cierre de 20 barras
 if Close > 0 and Condition1 and MP <> 1 and (BarsSinceExit(1) >= Bar_Filtro or TotalTrades = 0) then
 Begin
 	if Close > Highest(Price_Up, Per_Canal)[1] then
  		Buy Contratos contracts Next Bar at Market;
 End;
 ```
-o `or TotalTrades = 0` que no hayan operaciones porque si no con esto no entraría vale esto es para evitar que no entre total tres igual a cero `TotalTrades` es una variada para reservar tres eso que cuenta el número de trades totales y que sólo se actualiza cuando cierras posición con eso puedes usarlo para este tipo este es muy menor 
+
+El fragmento `or TotalTrades = 0` asegura que la condición también se cumpla si el sistema aún no ha realizado ninguna operación.
+La variable `TotalTrades` cuenta el número total de operaciones cerradas y permite controlar la lógica del sistema desde el inicio.
+Es un filtro menor, pero útil para garantizar la coherencia de la secuencia de operaciones.
+
+#### Filtro de volatilidad
+
+El siguiente filtro es algo más elaborado y, de hecho, uno de los más importantes.
+Ya hemos mencionado en la parte teórica que *la volatilidad es uno de los vectores más potentes* tanto para operar como para gestionar el riesgo y ajustar la exposición monetaria.
+Puede utilizarse como filtro, como medida de gestión o incluso como componente principal de una estrategia.
+
+En este caso, todavía no se ha implementado, pero podría incorporarse fácilmente una condición basada en volatilidad: por ejemplo, exigir que la vela actual sea *más o menos volátil que las anteriores* antes de permitir una entrada.
+Este tipo de filtros ayudan a calibrar las condiciones del mercado y a evitar señales falsas durante fases de compresión o exceso de ruido.
+
+#### Filtro basado en tipo de precio
+
+Además, conviene recordar que el *canal de Donchian* puede construirse de varias formas según el tipo de precio que se utilice para calcularlo. Hasta ahora hemos visto la versión donde la condición de entrada se cumple cuando *el cierre supera el máximo de las últimas n barras*.  
+
+Sin embargo, existe otra variante igual de válida:
+
+```sh
+// Buy Contratos contracts Next Bar at Highest(Price_Up, Per_Canal)[1] stop;
+```
+
+En esta alternativa, la orden de compra se coloca directamente *en el nivel del canal superior* —es decir, en el valor de `Highest(Price_Up, Per_Canal)[1]`— sin esperar a que el cierre lo supere.
+De esta forma, el sistema mantiene una *orden stop activa en el canal* durante todo el tiempo, esperando que el precio la ejecute cuando se produzca la ruptura real.
+
+La diferencia es conceptual:
+
+* En la versión anterior, el sistema necesita *confirmación por cierre*.
+* En esta, el sistema actúa *de forma anticipada*, ejecutando la entrada al tocar el canal.
+
+Ambos enfoques son válidos, y la elección depende del tipo de sistema que se quiera construir: uno *más conservador y reactivo* (por cierre confirmado) o uno *más agresivo y anticipativo* (por ruptura intrabarra).
 
 
-el otro filtro un poco más elaborado y que creo que es importante que ya lo vamos a plantear hoy como como algo interesante que vamos a darle bastantes bastantes vueltas es ya hable la teoría mucho de la volatilidad y os dije que la volatilidad es uno de los mejores vectores para operar tanto como filtro como para medir la gestión monetaria como incluso vector principal de operativa 
-
-aquí está no ha implementado pero otra otra variable que se podría haber incrementado incorporado es decir que en el momento de entrar la vela fuera más volátil o menos que lo anterior esto puede puede hacerse hemos implementado un filtro de volatilidad bueno que de hecho es un poco eso es un poco eso que he dicho ahora lo que quería decir es que es un filtro de precios es decir muchas veces antes he dicho mira me acabo de acordar que he dicho que lo explicaría no ha explicado pero bueno va ligado con esto por eso me he acordado que el clásico donchian se puede plantear de varias maneras aquí fijaros que os he planteado la entrada que volvemos ahora a repasar distintas entradas, por eso me sale, que el cierre tenga que ser por encima del máximo, pero yo podría haber hecho que la regla fuera simplemente esta
-
-`//Buy Contratos contracts Next Bar at Highest(Price_Up, Per_Canal)[1] stop;`
-
-Que todo el rato, cuando está cerrado evaluará esto comprar a x contratos en stop en el canal. Que en vez de necesitar que cerrará por encima que comprara en stop todo el rato en el canal. De esta manera yo todo el rato voy poniendo la orden todo el rato todo el rato la orden es la línea la línea azul hasta que entra luego ya no. 
+Todo el rato la orden es la línea la línea azul hasta que entra luego ya no. 
 
 ![](../img/69.png)
 
@@ -1363,27 +1423,125 @@ iremos desarrollando los conceptos de distintos sistemas usando ejemplos porque 
 
 **ejemplos de mecanismos para la identificación de tendencia el lateral santo bueno no santo grial** 
 
-no realmente esa es la gran la gran una de las grandes pero sí que hay si que hay trabajaremos de hecho tengo pensado tengo pensado hacer una clase sólo de eso sólo de eso vale lo que llevamos los regímenes de mercado en el argot más técnico que es un poco lo que has hecho tú no sólo es tendencias al final tenemos seis tipos de mercados aureli seis tipos de mercado que son la mezcla la mezcla entre **tendencia y volatilidad en los tres estados** alcista, lateral, bajista, volátil no volatil por el volatilidad, es dos estados que podríamos ahí dividir la volatilidad creciente creciente podrías podrías aún dividirlo más de esos seis pero en general esos seis marcan bastante marcan bastante y con esos seis puedes tratar de controlarlo con filtros de este tipo que te he comentado es un camino es un camino que hay varios hay también cosas que tengo pensado ver pero eso sí que lo veremos bastante más adelante porque es complejo y no quiero hasta que ya estéis más rodados de tema empezar a hablar de temas del vix de la estructura del bix de las cosas muy avanzadas vale pero se usa para esto se usa para esto la estructura del bix puede usarse como filtro volatilidad pero en realidad el concepto es este que es lo que me importa ahora mismo los conceptos filtro de volatilidad es decir filtrar operaciones que o bien son con volatilidad muy alta o bien son con volatilidad muy baja o bien son con volatilidad creciente volatilidad de crecientes estas magnitudes dependiendo del sistema me puede ser un muy buen filtro y liga mucho con el régimen de mercados con esto que me preguntas pero me dices mecanismo para indicar tendencia lateral bueno tendencia lateral en la teoría hablamos hicimos una práctica que también haremos también haremos trabajo de este tipo en algún momento de las prácticas pero quería antes plant quería empezar porque sé que os gusta quería más de la clase primera desarrollar un sistema entonces ya la pasada hablamos de las bases de datos por petición popular y introduje este y ahora vamos a acabar ese sistema luego ya seguramente volveremos a hacer cosas de búsqueda de ideas como puede ser puede ser eso que comentas también que liga un poco con la búsqueda de ideas en el entorno tendencial en el entorno tendencial liga con perfil activo y esto que me comentas tú vale pero ya digo la teoría hablamos hicimos una práctica esta vez que estaba la de x estaba que os hablé del coeficiente de huks que esto es el consenso utiliza mucho eso yo os puedo decir que puedes defenderte bastante con con ATR ya de x para medir un poco esto que te digo de volatilidad de tendencia volatilidad para medir un poco que activos más tendencial y demás usé concretamente este normalizado y usé el adx también con el histórico también así 
+**Ejemplos de mecanismos para la identificación de tendencia y del régimen lateral —el falso “santo grial”**
+
+En realidad, ese es uno de los grandes temas, y lo abordaremos más adelante con profundidad. Tengo previsto dedicar una clase completa exclusivamente a los **regímenes de mercado**, que en el lenguaje técnico se refieren justo a lo que mencionas: los distintos **estados o combinaciones entre tendencia y volatilidad**.
+
+Podemos clasificar el mercado, de forma general, en **seis tipos principales**, resultado de la combinación de tres direcciones —alcista, lateral y bajista— con dos regímenes de volatilidad —creciente y decreciente—. Podrían establecerse divisiones aún más finas, pero esos seis estados describen bastante bien la mayoría de comportamientos de mercado.
+
+Con ellos es posible diseñar **filtros** que permitan identificar y controlar en qué entorno nos encontramos, y actuar en consecuencia. Es un camino de estudio profundo, que incluye herramientas avanzadas como el **VIX** o la **estructura del VIX**, las cuales pueden emplearse como filtros de volatilidad. No obstante, ese tipo de análisis lo veremos más adelante, cuando el grupo tenga una base más sólida, porque implica cierta complejidad técnica.
+
+Por ahora, lo importante es comprender el **concepto general de filtro de volatilidad**: se trata de limitar las operaciones cuando la volatilidad es demasiado alta o demasiado baja, o bien cuando está creciendo o decreciendo. Estas magnitudes, en función del sistema, pueden ser filtros muy útiles y están estrechamente relacionadas con la idea de **régimen de mercado**, que conecta directamente con tu pregunta.
+
+En cuanto a los mecanismos para detectar una **tendencia lateral**, ya hemos tratado algo en teoría y realizaremos prácticas específicas más adelante. De momento, he preferido que en estas primeras sesiones os centréis en desarrollar sistemas completos —porque sé que es lo que más os motiva—. En las siguientes fases volveremos a ejercicios de **búsqueda de ideas**, donde encajará también este tema.
+
+El estudio de los regímenes de mercado está ligado al **perfil del activo** y al tipo de estrategia: en entornos tendenciales, buscamos rupturas; en entornos laterales o de reversión, el enfoque es distinto. Para identificar estas condiciones, pueden utilizarse indicadores clásicos como el **ADX** o el **ATR**, que permiten medir la fuerza de la tendencia y la volatilidad relativa de cada activo.
+
+Por ejemplo, en la práctica he mostrado el uso de estos indicadores normalizados junto con su valor histórico como referencia:
 
 ![](../img/998.png)
-
-con estas dos cosas que te pueden servir comparando activos para ver activos más tendenciales porque como tienes la media histórica ese valor esa línea que ves en medio es la su valor histórico 
-
 ![](../img/999.png)
 
-el valor histórico entonces con eso puedes ir viendo un poquito los activos que históricamente tienen un sesgo y cuidados no quiere decir que siempre lo sean al final las medias sabes lo que tienen que centra mucho los datos pero puede puede servirte para eso que tú puedes poner el histórico abajo en 20 te pones a ver el adx en 20 lo pones todo en el mismo 
+Al comparar activos mediante sus medias históricas de ADX o ATR, es posible estimar cuáles presentan **mayor comportamiento tendencial**. Sin embargo, conviene recordar que las medias suavizan los datos y que las diferencias entre activos no suelen ser muy grandes: la mayoría se mueve en rangos de valores entre **17 y 22**.
 
 ![](../img/9991.png)
-
-y a partir de ahí pues puedes ver puedes ver un poquito pues eso lo que tiene una media 19 alrededor de 20 es bastante habitual pero puedes ver cuál es más y menos por aquí ponés un activo antes hemos visto el financiero pues yo te pongo eso vas a ver que es menor que esto seguro ahora es cuando me deja mal no y aquí tiene más pero para que me va a sorprender de manera 
-
 ![](../img/9992.png)
 
-19,24 pues no te creas no te creas me dejaba bastante regular me esperaba bastante porque lo esperaba más bajos pero es verdad que tiene mucho menos histórico que tiene mucho menos histórico tiene muchísimo menos histórico yo sé que tiene momentos bastante buenos de tendencia pero tiene momentos bastante llanos puede servir puede servir para para analizar este tipo de cosas la diferencia es pequeña no vas a encontrar diferencias gigantescas normalmente se van a mover todos en 17 22 y la volatilidad así que vas a ver hay muchas diferencias y liga una cosa con la con la otra sobre todo en renta variable, pero trabajaremos trabajaremos una clase de todo esto trabajaremos una clase de en el guión que tengo lo lo lo tengo apuntado tengo apuntado a hacer una clase de régimen igual que tengo apuntado a hacer una búsqueda de ideas con códigos tengo una serie de cosas que quiero ir haciendo pero que sí que no tengo exactamente sido cuando meterlo porque va a depender un poco de las clases del ritmo de todo como vaya viendo yo mis sensaciones de que se va siguiendo el grupo ir metiendo cosas más complejas antes o después pero lo veremos seguro veremos identificación del régimen del mercado pero supongo que por ahí me vas con el santo grial no es fácil es no es fácil y es verdad que tener el sistema perfecto que se adapta volatilidad es más fácil al final hay que meter indicadores reglas como te he dicho este tipo en un sistema breakout en un sistema de revés en la media digamos lo contrario no lo explico ahora pero es obvio lo contrario ahí lo que nos interesa es momentos de volatilidad porque es cuando el mercado cuando ya hay una explosión de volatilidad es más probable que revierta, no necesariamente quiero lateral quiero reversión, el problema es identificar el punto claro que no es fácil  tras una explosión de volatilidad el mercado de revierte pero claro no 100% de las veces vale 
+En general, la relación entre **tendencia y volatilidad** es clave: los sistemas *breakout* (ruptura) funcionan mejor cuando la volatilidad crece, mientras que los sistemas de **reversión a la media** se benefician de la contracción de la volatilidad. El verdadero reto es identificar correctamente en qué punto del ciclo se encuentra el mercado, y eso —como veremos— no es nada sencillo.
 
+Por ahora, nos centraremos en **evaluar y consolidar el sistema actual**, para posteriormente decidir si formará parte del conjunto de estrategias que compondrán el **portafolio final** del curso. En próximas sesiones lo analizaremos a fondo y valoraremos si cumple con los criterios necesarios para integrarlo.
 
-La siguiente sesion viene desarrollaremos evaluaremos este sistema y así nos da tiempo preparar a una otra a una otra cosa pero en general la idea que tengo es evaluar este sistema bien evaluado y tratar de ya presentarlo y decidir qué hacemos con él si nos lo quedamos para para la lista que vamos a ir haciendo para el final hacer un portfolio porque lógicamente el portfolio lo iremos haciendo con sistemas y bueno este que lo damos por bueno de momento o no ya lo veremos 
+## Resumen
 
+### 1. Fundamentos de la práctica
 
+La práctica 03 se centra en comprender y analizar los **canales de Donchian** como estructura base de un sistema de ruptura tendencial. El objetivo principal no es construir un sistema final, sino **asimilar los conceptos** que definen su comportamiento, sus entradas, salidas y los factores que condicionan su rendimiento.
+
+El enfoque es progresivo: primero se define la lógica básica del canal y las condiciones de entrada, luego se añaden distintos tipos de salida y finalmente se introducen los elementos de gestión monetaria y optimización. Todo el desarrollo está orientado a entender **cómo se comporta un sistema simple en distintas condiciones de mercado** y cómo se puede evaluar su consistencia antes de complejizarlo.
+
+---
+
+### 2. Los canales de Donchian
+
+Los canales de Donchian representan un **envelope de precios** que delimita los extremos del mercado durante un periodo definido (por defecto, 20 barras). Conceptualmente, marcan los puntos donde el precio ha alcanzado un máximo o mínimo relativo dentro de una ventana temporal. Estos límites permiten identificar cuándo el precio se escapa de su rango habitual y, por tanto, puede estar iniciando una nueva tendencia.
+
+#### 2.1. Cálculo y variantes
+
+El canal puede construirse tomando distintos campos del precio:
+
+* **High/Low:** es el cálculo clásico, mide el rango total del movimiento intradía y capta rupturas más agresivas.
+* **Close:** se usa cuando se trabaja con base diaria, ya que el cierre resume la decisión final del mercado del día.
+* **TypicalPrice:** opción intermedia, suaviza el efecto de los extremos intradía.
+
+Cada elección tiene implicaciones conceptuales: el uso de *Close* introduce un enfoque más estable y orientado a la tendencia general; *High/Low* es más sensible y rápido para detectar rupturas, aunque genera más ruido.
+
+#### 2.2. Lógica de exclusión de la barra actual
+
+En el código y en la construcción del canal se excluye la barra actual (`[1]`) para evitar el sesgo de anticipación (*look-ahead bias*). Conceptualmente, esto garantiza que las decisiones se basan solo en información que estaba realmente disponible en el momento de la ejecución. Si el canal incluyera la barra actual, una ruptura nunca sería posible, porque el valor máximo del canal se actualizaría instantáneamente con el nuevo precio.
+
+---
+
+### 3. Tipos de entrada
+
+El sistema implementa una **entrada estándar de ruptura**: cuando el cierre actual supera el máximo de los últimos *N* cierres, se abre una posición larga al inicio de la siguiente barra. Es la expresión más simple de un sistema tendencial.
+
+#### 3.1. Variantes de ruptura
+
+Existen dos variantes en la condición de entrada:
+
+* `>` (mayor estrictamente): exige una ruptura real, evita duplicidad de señales y es más conservadora.
+* `>=` (mayor o igual): más sensible, puede anticiparse una barra antes, pero introduce mayor ruido.
+
+El concepto detrás de esta elección es **definir la naturaleza de la señal**: si se busca una confirmación (ruptura clara) o una anticipación (ruptura tentativa). Ambas aproximaciones son válidas según el activo y la volatilidad del mercado.
+
+#### 3.2. Configuración mediante inputs
+
+Los parámetros de entrada (`Per_Canal`, `Price_Up`, `Bar_Filtro`, etc.) se declaran como *inputs* para permitir un análisis flexible. Conceptualmente, esto no implica que deban optimizarse, sino que se puedan **explorar distintos escenarios de comportamiento** del sistema sin modificar el código. El objetivo es facilitar el aprendizaje empírico mediante la observación de resultados bajo condiciones variadas.
+
+---
+
+### 4. Tipos de salida
+
+El módulo de salidas tiene distintas configuraciones que permiten evaluar cómo se comporta el sistema al modificar su forma de cerrar las operaciones. Las salidas se analizan no como parámetros de beneficio, sino como **métodos de control del riesgo y de lectura del cambio de fase del mercado.**
+
+#### 4.1. Salida por media central
+
+Esta salida utiliza la media móvil de los mismos períodos que el canal para cerrar la posición cuando el precio vuelve hacia el centro del rango. Representa una lógica de **reversión parcial**: el sistema deja correr la tendencia mientras el precio permanece por encima de la media, pero cierra cuando pierde impulso y regresa a su zona media.
+
+#### 4.2. Salida por trailing stop
+
+El trailing stop es un **mecanismo adaptativo de protección**. A medida que el precio avanza a favor de la posición, el stop se actualiza siguiendo al máximo alcanzado, restándole un porcentaje fijo (`Prc_Trail`). Esto permite conservar parte de las ganancias acumuladas y limitar la pérdida en caso de retroceso. Conceptualmente, el trailing combina libertad y control: deja correr las tendencias, pero no permite que se reviertan completamente.
+
+#### 4.3. Salida simétrica (TP/SL)
+
+Las pruebas con riesgo y profit simétrico buscan equilibrar el ratio win/loss. Conceptualmente, este enfoque permite evaluar la **efectividad de la señal de entrada** sin que la salida condicione el resultado. Si la entrada tiene sentido, incluso con TP y SL iguales, el sistema debería mostrar una ligera ventaja estadística.
+
+#### 4.4. Salida por canal contrario
+
+Aunque no se implementa directamente, se menciona como salida “natural” del Donchian clásico: salir cuando el precio rompe el canal opuesto. Es la opción más tendencial, pues mantiene la posición mientras la tendencia persista y solo revierte al detectar un cambio completo de dirección.
+
+---
+
+### 5. Gestión monetaria
+
+El sistema incluye un módulo básico de **gestión monetaria nominal**, donde la exposición se ajusta en función del tamaño de la cuenta y del precio del activo. El número de contratos (`Contratos`) se recalcula para mantener una exposición constante (por ejemplo, el 100% del capital disponible).
+
+Conceptualmente, esto permite **normalizar los resultados históricos**, evitando que las variaciones del precio (de $1 a $300, por ejemplo) distorsionen las métricas de rendimiento. El objetivo no es apalancar, sino **mantener la proporcionalidad del riesgo y del retorno** a lo largo del tiempo. Esta aproximación facilita la comparación entre distintos periodos y activos, y proporciona una visión más coherente de la efectividad del sistema.
+
+---
+
+### 6. Evaluación y optimización
+
+En esta fase, el propósito no es encontrar el mejor conjunto de parámetros, sino **entender cómo responden las variables del sistema** ante los cambios. Este tipo de análisis se denomina *optimización instrumental* o *de observación*. Permite construir mapas de sensibilidad que revelan zonas estables, ineficiencias o comportamientos anómalos.
+
+La **búsqueda dirigida** es un principio fundamental de este enfoque: se parte de una idea concreta, bien delimitada, y se exploran variaciones controladas. A diferencia de la búsqueda por fuerza bruta, que genera sobreajuste, aquí el análisis está guiado por hipótesis previas basadas en el comportamiento esperado del mercado.
+
+---
+
+### 7. Conclusión conceptual
+
+El estudio del sistema Donchian en esta práctica muestra que un modelo simple, basado en rupturas de rango, puede capturar la estructura esencial de las tendencias de mercado. A través de sus variantes de cálculo, tipos de entrada, salidas y gestión monetaria, el alumno comprende que **un sistema no se define por su complejidad técnica, sino por la coherencia entre sus reglas y su propósito**.
+
+La práctica enseña a observar cómo cada decisión —el uso del cierre frente al máximo, la elección del tipo de ruptura, el modo de salida o la forma de dimensionar posiciones— transforma la naturaleza del sistema y su interpretación del mercado. Este análisis sienta las bases para fases posteriores donde se abordarán filtros, optimizaciones más profundas y comparaciones entre activos y temporalidades.
 
 
