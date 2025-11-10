@@ -111,21 +111,21 @@ en esta primera optimización claro cuando tú evaluas recordar la teoría una e
 
 ![](../img/003.png)
 
-Bueno, se le puede incorporar un **CustomFitnessValue**. Es cierto que aquí necesitamos crear uno propio, ya que el que viene implementado por defecto en *MultiCharts* utiliza un *Sharpe ratio*.
-Eso que veis justo en *Fitness Value* realmente es el *Sharpe ratio*, ¿de acuerdo?
+Bueno, se le puede incorporar un **CustomFitnessValue**. Es cierto que aquí necesitamos crear uno propio, ya que el que viene implementado por defecto en *MultiCharts* utiliza un **Sharpe Ratio*e ratio*.
+Eso que veis justo en *Fitness Value* realmente es el **Sharpe Ratio*e ratio*, ¿de acuerdo?
 En su momento habíamos pensado en usar el *Sortino ratio*, pero finalmente no lo hicimos porque este ya está incluido por defecto.
 Así que utilizamos ese valor para el *Sortino*, y ahí fue cuando nos dimos cuenta de que no era un cálculo a nivel de *portfolio*, sino de *sistema individual*.
 Por lo tanto, los datos que devuelve no son correctos.
 
 Aun así, para este ejercicio sigue siendo un dato útil. Creo que la lectura que ofrece probablemente es extrapolable y resultaría bastante similar en caso de aplicarse correctamente al *portfolio*, pero técnicamente no lo es. Cuando trabajas con un portafolio, hay que tener en cuenta que existen reglas de prioridad: el motor de *Portfolio Trader* evalúa barra a barra, pasando todos los sistemas por cada una de ellas, y luego aplica las reglas de gestión monetaria definidas a nivel global.
 
-Por eso, el *Sharpe ratio*, el *Sortino ratio* o cualquier otra métrica de rendimiento no pueden calcularse sistema a sistema. No se suman. Deben calcularse sobre el rendimiento consolidado del *portfolio*.
-Y eso, actualmente, no está implementado en la plataforma, así que habría que programarlo manualmente. No lo habíamos notado antes; pensábamos sinceramente que ya lo hacía. Pero no, y por tanto hay que volver a construir este cálculo del *Sharpe ratio* desde cero.
+Por eso, el **Sharpe Ratio*e ratio*, el *Sortino ratio* o cualquier otra métrica de rendimiento no pueden calcularse sistema a sistema. No se suman. Deben calcularse sobre el rendimiento consolidado del *portfolio*.
+Y eso, actualmente, no está implementado en la plataforma, así que habría que programarlo manualmente. No lo habíamos notado antes; pensábamos sinceramente que ya lo hacía. Pero no, y por tanto hay que volver a construir este cálculo del **Sharpe Ratio*e ratio* desde cero.
 
-De todos modos, para el objetivo actual, nos sirve. No nos da el *Sharpe ratio* real del *portfolio*, es decir, hoy no conocemos ese valor exacto, pero sí es válido como referencia comparativa entre *sets* de parámetros —por ejemplo, para determinar si el canal de 8, 10 o 14 funciona mejor—. En ese contexto, sí consideramos que tiene relevancia.
+De todos modos, para el objetivo actual, nos sirve. No nos da el **Sharpe Ratio*e ratio* real del *portfolio*, es decir, hoy no conocemos ese valor exacto, pero sí es válido como referencia comparativa entre *sets* de parámetros —por ejemplo, para determinar si el canal de 8, 10 o 14 funciona mejor—. En ese contexto, sí consideramos que tiene relevancia.
 
 Lo explico así con total franqueza para que se entienda el motivo de este valor negativo que aparece.
-Tiene sentido porque no es el *Sharpe ratio* real del portafolio, sino la media de los ratios de los sistemas individuales, lo que distorsiona completamente el resultado.
+Tiene sentido porque no es el **Sharpe Ratio*e ratio* real del portafolio, sino la media de los ratios de los sistemas individuales, lo que distorsiona completamente el resultado.
 El cálculo correcto debería hacerse sobre los rendimientos agregados del *portfolio*, aprovechando la diversificación que aportan las distintas acciones entre sí.
 
 Aun siendo el mismo sistema, ya se aprecia que existe cierta descorrelación entre los componentes del conjunto.
@@ -139,7 +139,7 @@ Esta es la misma optimización mostrada en el Excel, pero recogida solo para el 
 ![](../img/004.png)
 ![](../img/005.png)
 
-De acuerdo, aquí lógicamente solo tenemos una variable y, por tanto, no podemos generar un gráfico en 3D, pero sí en 2D. En el eje izquierdo tenemos el `Net Profit` o el `Sharpe` —este *Sharpe falso*, como lo llamaré para que se entienda—, que, aunque su valor absoluto carezca de sentido, creemos que a nivel comparativo entre *sets* sí tiene relevancia. Y también está el *Net Profit*.
+De acuerdo, aquí lógicamente solo tenemos una variable y, por tanto, no podemos generar un gráfico en 3D, pero sí en 2D. En el eje izquierdo tenemos el `Net Profit` o el `*Sharpe Ratio*e` —este **Sharpe Ratio*e falso*, como lo llamaré para que se entienda—, que, aunque su valor absoluto carezca de sentido, creemos que a nivel comparativo entre *sets* sí tiene relevancia. Y también está el *Net Profit*.
 
 En realidad, aquí no existe una *función fitness* como tal, porque se incluyen todas las combinaciones posibles: solo hay 25, y por lo tanto se muestran las 25. 
 
@@ -182,7 +182,7 @@ tenemos el gráfico, prácticamente a medida que la **linea verde** aumenta va d
 Es verdad que el outofsample aquí plantea cierto problema que tampoco lo es tanto al lado del insample porque menos operaciones por lo normal... pero ya vamos viendo que la parte baja del canal aunque en este caso por ejemplo el outofsample con **valor 1** (ultima columna primera instancia) lo hizo bastante bien de hecho el que más dinero gana y a medida que va aumentando el canal va perdiendo va perdiendo rendimiento teniendo insisto el trailing fijo 
 ![](../img/012.png)
 
-aquí vemos el pico claro sobre todo el `sharp` es aquí en 6 vemos un pico que es verdad que hay un salto importante al 7, 5, 6, por ahí podía estar podía estar bien.
+aquí vemos el pico claro sobre todo el `*Sharpe Ratio*` es aquí en 6 vemos un pico que es verdad que hay un salto importante al 7, 5, 6, por ahí podía estar podía estar bien.
 
 ![](../img/013.png)
 
@@ -214,7 +214,7 @@ aquí tenemos los datos in sample
 
 aquí sí que se aprecia claramente que los datos bajos deteriora muchísimo es decir el trailing realmente deteriora mucho a la medida que lo acercas mucho claro estamos hablando de un sistema tendencial opera muchísimo 7000 6300 trades se lo lleva todo en comisiones y sale demasiado rápido realmente no tiene no tiene sentido habría que verlo evaluado desde bastante más arriba como mínimo mínimo 0,10 y 0,15 y hasta más de 0,30 quizá para verlo (hablando la columna **K** refiriendonos de la columna **B** net profit)
 
-porque al final lógicamente estamos en diario lo que quiere es que corran los los beneficios pero nosotros también nos interesa protegernos y protegernos de las caídas de acuerdo que es el problema al final lógicamente si evaluamos solo net profit va a querer mantenerse dentro por eso hay que evaluar alguna cosa más y aquí tenemos este ratio de shark que no nos de una buena lectura nos sirve para este cometido que os digo 
+porque al final lógicamente estamos en diario lo que quiere es que corran los los beneficios pero nosotros también nos interesa protegernos y protegernos de las caídas de acuerdo que es el problema al final lógicamente si evaluamos solo net profit va a querer mantenerse dentro por eso hay que evaluar alguna cosa más y aquí tenemos este ratio de *Sharpe Ratio* que no nos de una buena lectura nos sirve para este cometido que os digo 
 
 y vamos a ver el in sample 
 
@@ -227,7 +227,7 @@ este en este perfil es bastante distinto a la anterior porque en el anterior el 
 ![](../img/024.png)
 
 
-si miramos el *out of sample* y nos fijamos fijaros que ya por este "shark falso" (columna **K**) instancias 0.18 0.27 0.26 esa zona y si nos fijamos en net profit ordenado pues clava el máximo 0.20 0.21 0.26 0.18 es decir más o menos la misma la misma zona . Vamos a ver este este gráfico 
+si miramos el *out of sample* y nos fijamos fijaros que ya por este "*Sharpe Ratio* falso" (columna **K**) instancias 0.18 0.27 0.26 esa zona y si nos fijamos en net profit ordenado pues clava el máximo 0.20 0.21 0.26 0.18 es decir más o menos la misma la misma zona . Vamos a ver este este gráfico 
 
 ![](../img/027.png)
 
@@ -236,7 +236,7 @@ Vamos a ver este este gráfico
 ![](../img/025.png)
 ![](../img/026.png)
 
-vemos aquí el gráfico pues lo que veis, claramente los las partes bajas pues este especie de shark sí que es bastante volátil pero ya veis que no es estable es el clásico ejemplo donde se ve que no es estable que varía mucho que puede tener un valor bueno pero lo siguiente no etcétera y habéis que en la parte final sí que estabiliza y estabiliza en valores en valores altos, veis claramente entre 0.20 0.25 todos son valores buenos todos son valores buenos y donde además recogemos una cantidad importante de trades estamos hablando todavía en este dato fuera de muestra *out of sample* de 900 800 trades de ese orden (mira las columnas K en la instancia 0.2 su columna trade) 
+vemos aquí el gráfico pues lo que veis, claramente los las partes bajas pues este especie de *Sharpe Ratio* sí que es bastante volátil pero ya veis que no es estable es el clásico ejemplo donde se ve que no es estable que varía mucho que puede tener un valor bueno pero lo siguiente no etcétera y habéis que en la parte final sí que estabiliza y estabiliza en valores en valores altos, veis claramente entre 0.20 0.25 todos son valores buenos todos son valores buenos y donde además recogemos una cantidad importante de trades estamos hablando todavía en este dato fuera de muestra *out of sample* de 900 800 trades de ese orden (mira las columnas K en la instancia 0.2 su columna trade) 
 
 y si ya recogemos los dos unidos 
 
@@ -319,7 +319,7 @@ hay alguno que coloca ligeramente mejor —ligeramente, sí, no, incluso bastant
 
 ![](../img/041.png)
 
-aquí el 0.1, pues, queda esta bestial bajada y a partir de ahí, pues a partir de 1, estabiliza mucho por sharp y sí que aquí, entre la zona de 0.9, 1, 1.1, es donde tienes… es decir, en 1, de acuerdo. Ahí está claro que nos quedaríamos con 1, que es lo que os decía. Este realmente nunca lo dejaríamos así. Lo podemos usar en 0, en 1, en 2, si me apuras un 1 y medio, vale. 1 se suele hacer así: el ATR, un ATR y medio, 2 ATRs, 3 ATRs, de acuerdo. No vamos a ir a 1,3 ATRs, os decía del sentido común y la lógica en cuanto a los incrementos, de acuerdo. No vamos a poner 0,33 ATRs, vale, porque eso es una sobre optimización de manual, de acuerdo, manual.
+aquí el 0.1, pues, queda esta bestial bajada y a partir de ahí, pues a partir de 1, estabiliza mucho por *Sharpe Ratio* y sí que aquí, entre la zona de 0.9, 1, 1.1, es donde tienes… es decir, en 1, de acuerdo. Ahí está claro que nos quedaríamos con 1, que es lo que os decía. Este realmente nunca lo dejaríamos así. Lo podemos usar en 0, en 1, en 2, si me apuras un 1 y medio, vale. 1 se suele hacer así: el ATR, un ATR y medio, 2 ATRs, 3 ATRs, de acuerdo. No vamos a ir a 1,3 ATRs, os decía del sentido común y la lógica en cuanto a los incrementos, de acuerdo. No vamos a poner 0,33 ATRs, vale, porque eso es una sobre optimización de manual, de acuerdo, manual.
 
 El recovery —recovery simplemente el nombre, no importa porque no en todas las plataformas se llama recovery— de acuerdo, es net profit partido por drawdown. Vale. Y esto, como el drawdown está negativo, se multiplica por menos 1, se cambia de signo para que no tenga un valor negativo. Pero es net profit partido por drawdown. Vale. Net profit es lo que han ganado los cien —el sistema aplicado a las cien acciones— y el drawdown es el que ha tenido el portfolio. Esto sí que es del portfolio, está bien, de acuerdo, está bien calculado. Por lo tanto, al final, es un buen estimador de retorno-riesgo.
 
@@ -461,12 +461,12 @@ ese es el `drawdown` que fijaros que cambia completamente el el `profit` lo da e
 
 ![](../img/071.png)
 
-por eso viene bien el recovery no lo lo podía haber metido como fitness pero no lo he hecho entonces ahora no lo puedo lo podía hacer pero no lo tendría que hacer lo podía ver con un archivo para que prepararlo y no lo tengo listo lo que sí que podemos meter aquí es el el sharp el **sharp este falso** que tenemos pero bueno pero ya digo que es es es falso pero pero sirve un poco 
+por eso viene bien el recovery no lo lo podía haber metido como fitness pero no lo he hecho entonces ahora no lo puedo lo podía hacer pero no lo tendría que hacer lo podía ver con un archivo para que prepararlo y no lo tengo listo lo que sí que podemos meter aquí es el el *Sharpe Ratio* el ***Sharpe Ratio* este falso** que tenemos pero bueno pero ya digo que es es es falso pero pero sirve un poco 
 
 ![](../img/072.png)
 
 
-veis como al final lo que os digo en esas zonas sigue tirando más para el profit y aquí se ha igualado más ya no es tan dramático la caída porque porque el riesgo en la parte baja también lo considera bajo cuando lo consideraba pero estaría bien bien verlo en el recovery que un poco lo vemos aquí pero pero eso que os digo el recovery cambia un poco pero por net profit ahí el mapa en el profit está bien está bien está bien también teniendo cuenta donde saldrá el drawdown, pero recovery estaría estaría muy bien pero fijaros cómo estabiliza en este este sharp 
+veis como al final lo que os digo en esas zonas sigue tirando más para el profit y aquí se ha igualado más ya no es tan dramático la caída porque porque el riesgo en la parte baja también lo considera bajo cuando lo consideraba pero estaría bien bien verlo en el recovery que un poco lo vemos aquí pero pero eso que os digo el recovery cambia un poco pero por net profit ahí el mapa en el profit está bien está bien está bien también teniendo cuenta donde saldrá el drawdown, pero recovery estaría estaría muy bien pero fijaros cómo estabiliza en este este *Sharpe Ratio* 
 
 ![](../img/073.png)
 
@@ -516,7 +516,7 @@ como cambia, se vuelve absolutamente extraño, donde quiere el canal aquí todo 
 
 lógicamente a nosotros nos interesa el equilibrio porque solo el drawdown por si solo pues no aporta 
 
-vamos a ver este sharp falso que tenemos 
+vamos a ver este *Sharpe Ratio* falso que tenemos 
 
 ![](../img/081.png)
 
@@ -556,7 +556,7 @@ si lo vemos en `drawdown` ser al revés
 es totalmente inverso es totalmente inverso llanura planísima y con con el con el trailing muy muy muy bajo haciendo un montón de operaciones pero con muy poco retorno como habéis visto antes tanto en 0 como en 1 de filtro ,acuerdo tanto en 0 como entonces pues no equilibra 
 
 
-aquí el único dato que tenemos un poco para ver mixto es el `sharp falso` 
+aquí el único dato que tenemos un poco para ver mixto es el `*Sharpe Ratio* falso` 
 
 ![](../img/090.png)
 
@@ -636,7 +636,7 @@ aquí una de las cosas interesantes que podemos ver es esto es esto
 ![](../img/115.png)
 ![](../img/116.png)
 
-que realmente hay muchas acciones que al final es 6 20 , nos quedamos con este vamos a comparar 2, 3 por folios distintos con este setup un momento vamos a hacerlos primero y luego los comparamos
+que realmente hay muchas acciones que al final es 6 20 , nos quedamos con este vamos a comparar 2, 3 portfolios distintos con este setup un momento vamos a hacerlos primero y luego los comparamos
 
 ![](../img/117.png)
 
@@ -649,7 +649,7 @@ aquí si miras por este este char que tenemos si la miramos 6, 20 sería más o 
 
 es más o menos vale más o menos esta tenemos pero si miramos el excel puramente por datos por recovery realmente le gusta mucho más aquí 
 
-pero ahí vemos que tanto por shark como por retorno degrada muy rápido quien gana ahí? y el drawdown, pasa que el drawdown, en la teoría lo hablamos bastante todos los ratios que tienen el drawdown el denominador al final el que dirige el ratio es el drawdown, porque como hace de divisor, tira muchísimo de la tira muchísimo del ratio para él vale y acaba viéndose muy afectado el **tsi** lo trata de corregir añadiendo los winners al numerador vale que eso hace que los sistemas que aciertan más que aciertan más pues suban un poco en el ratio es verdad que aquí vamos para el próximo día me gustaría ver en este en esta cartera que nos da sortino para para todo el rato porque ahí ahí es donde realmente tenemos un buen equilibrio vale un buen equilibrio vamos a ver si sí para para el próximo día casi con total seguridad que lo que lo tendremos porque hemos visto el problema que tiene el que tienen ellos preinstalado y lo vamos a corregir y trataremos de traerlo 
+pero ahí vemos que tanto por *Sharpe Ratio* como por retorno degrada muy rápido quien gana ahí? y el drawdown, pasa que el drawdown, en la teoría lo hablamos bastante todos los ratios que tienen el drawdown el denominador al final el que dirige el ratio es el drawdown, porque como hace de divisor, tira muchísimo de la tira muchísimo del ratio para él vale y acaba viéndose muy afectado el **tsi** lo trata de corregir añadiendo los winners al numerador vale que eso hace que los sistemas que aciertan más que aciertan más pues suban un poco en el ratio es verdad que aquí vamos para el próximo día me gustaría ver en este en esta cartera que nos da sortino para para todo el rato porque ahí ahí es donde realmente tenemos un buen equilibrio vale un buen equilibrio vamos a ver si sí para para el próximo día casi con total seguridad que lo que lo tendremos porque hemos visto el problema que tiene el que tienen ellos preinstalado y lo vamos a corregir y trataremos de traerlo 
 
 pero con esa información realmente en este mapa para eso decía que no siempre vas a poder elegir es complicado elegir porque realmente es casi da igual, bueno casi da igual me refiero en toda esta zona planicia 
 
@@ -677,7 +677,7 @@ si ordenamos recovery busca el término medio pero el drawdown tira mucho
 
 ![](../img/124.png)
 
-por eso al final este `shark` (J) aunque es un poco como os he dicho antes falso, ahí cambia es verdad que también da los saltos por retorno pero hay poca diferencia de esos valores están todo el rato alrededor del 0 
+por eso al final este `*Sharpe Ratio*` (J) aunque es un poco como os he dicho antes falso, ahí cambia es verdad que también da los saltos por retorno pero hay poca diferencia de esos valores están todo el rato alrededor del 0 
 
 ![](../img/125.png)
 
@@ -711,7 +711,7 @@ dejamos toda la gestión monetaria como hemos hecho el otro para poderlos compar
 ![](../img/135.png)
 
 
-**el que mejor shark tiene**  
+**el que mejor *Sharpe Ratio* tiene**  
 que es `4` `1`  `0.24` 
 
 ![](../img/132.png)
@@ -737,7 +737,7 @@ luego los comparamos
 ![](../img/136.png)
 
 
-esta optimización de *porfolio trader* tiene tiene ese problema da pocos datos entonces los tienes que construir tú, el problema es lo que os digo que al ver este problema con `shark`  no hemos podido utilizar el sortino que usamos para las estrategias sueltas entonces hay que hacerlo para Portfolio porque pensamos que valía pero hemos visto que no. entonces hay que hacer el sortino para portfolio y a veces lo que hemos hecho es hacer varias, lo bueno es que modificar es muy rápido y como el coste fitness el costo fitness es una fórmula que tú puedes programar al final le puedes meter varios pasadas recoges varios uno pues le ponen sortino, sharp, y el que quieras los pasas todos al excel y entonces ahí es donde ya tienes tú para hacer distintos cálculos o ratios que puedas calcular directamente en el excel, de momento sólo puedo calcular el recovery utilizar este sharp que insisto que no es el valor correcto pero sí que es extrapolable a para hacerla para hacer la selección 
+esta optimización de *porfolio trader* tiene tiene ese problema da pocos datos entonces los tienes que construir tú, el problema es lo que os digo que al ver este problema con `*Sharpe Ratio*`  no hemos podido utilizar el sortino que usamos para las estrategias sueltas entonces hay que hacerlo para Portfolio porque pensamos que valía pero hemos visto que no. entonces hay que hacer el sortino para portfolio y a veces lo que hemos hecho es hacer varias, lo bueno es que modificar es muy rápido y como el coste fitness el costo fitness es una fórmula que tú puedes programar al final le puedes meter varios pasadas recoges varios uno pues le ponen sortino, *Sharpe Ratio*, y el que quieras los pasas todos al excel y entonces ahí es donde ya tienes tú para hacer distintos cálculos o ratios que puedas calcular directamente en el excel, de momento sólo puedo calcular el recovery utilizar este *Sharpe Ratio* que insisto que no es el valor correcto pero sí que es extrapolable a para hacerla para hacer la selección 
 
 
 para este era el 4 ya sólo me queda uno más raro y ahora podremos comparar datos entre ellos vale 1 0 0 se lee bien el maestro la pantalla ahora ahora ahora no me siguen por cierre pero esto es instrumental y no no merece mucho la pena pararse mucho en explicaros todo esto es al final simplemente estoy haciendo todo el porfolio con unos ex concretos trataré de dejarlo mañana a ver si me acaba porque ese fin de semana he intentado dos veces que maestro me hiciera toda la optimización completa pero esta optimización que hemos hecho multicharts también se puede hacer pero en multicharts he tardado unos en hacer la larga de esto tardado unos 15 minutos y maestro se ha colgado después de llevar cada una de ellas como 20 pico horas y no había acabado esta es la relación y era lo mismo en verdad era lo mismo mismo código todo igual y esa esa es un poco la comparación no entonces que ya os lo había comentado alguna vez es un drama de maestro pues es la sola que es que ya digo es súper potente luego a nivel de informes es brutal  ahora ahora veréis todos los datos que nos saca está fantástico y los hemos revisado bueno hay uno por ejemplo que no está bien ya lo pasamos pero pero esto sí que sí que están bien y bueno pues es la lástima 
@@ -790,6 +790,407 @@ el uno es `6` `1` `0.27` ese era el primero bueno el que era por `net profit` er
 
 ![](../img/151.png)  
 
-2:37
+como está muy expuesto sí sí sí está muy expuesto está muy expuesto fíjate estamos componiendo 25 29 por ciento 
 
-como está muy expuesto sí sí sí está muy expuesto está muy expuesto fíjate estamos componiendo 25 29 por ciento y aquí que he hecho 0 88 que hay un fallo y aquí me he equivocado que he pasado con este 25 1 0 27 0 0 7 y porque ahora tampoco tengo que haber hecho algo mal no ves que no vale nada te va a haber configurado algo mal los clothes falls trailing 0 0 7 no bueno esperate esperate esperate esperate que este era el día de la hora no está bien es que se no no hace nada vez era un poco solo se tiene muy poco straights diría muy poco straights no era de aquí era de aquí sí sí claro grabo muy poco no se ha ganado muy poco el de era el de máximo el de máximo era el de máximo era el de máximo era bueno aquí por mirarlo rápido en el sumario fijaros simplemente profit factor aquí tenemos 39 aquí tenemos 59 73 147 porque tanto por profit factor como por r incluso que por sharp aunque más parecido es el 6 0 el 6 1 0 27 actuando el filtro que se quedaba más más profit que hemos estado impuestos aquí todos 6 6 1 0 27 correcto y este era el de antes 6 0 6 0 0 20 ser 1 43 tan notablemente notablemente alejado notablemente alejado bueno vamos a ver vamos a ver el siguiente día si podemos sacar el sortino vía por folio porque no está no está sacado no está no está sacado y sacar el sharp bien vía via cartera aquí ya os sale ya ya tenemos positivo y es otra cosa porque se está calculado bien se ha calculado bien y tiene mejor mejor ya veis que sé que hay algún dato negativo pero este quedaba cancelar aquí lo que pasa que realmente la exposición es un poco elevada teníamos que haberla regulado más hemos llegado a exponernos al al al 200 pero dos veces nos ha apalancado hasta dos veces claro tenemos niveles de trowdown muy jeves a nivel de por folio tenemos trowdowns de aquí del 60 aquí del 60 aquí del 30 para ver si aquí tiene menos trowdown aquí del 60 y será el 79 bastante bastante elevado bueno este tipo de que recordar que no está no estamos evaluando el por folio para operarlo así es lo que os comentaba estamos evaluando la idea por evaluando la idea y luego ya decidiríamos cómo lo operábamos aquí tenemos muchas acciones en negativo lógicamente luego una vez el sistema está validado yo luego lo operaré a lo mejor no necesariamente las 10 mejores pero así que serán de las mejores de acuerdo es decir al final yo valido la idea en las 100 acciones porque eso me da mayor robustez digamos que la idea la pongo más a prueba en acciones incluso no han ganado vale y esto lo que os decía o sea esto también incluso aquí incluso en el por folio trader que no es tan no me dará tanta información pero este mismo mirar para que veáis la comparación que es interesante de ver pero pongo aquí este que nos ha dado aquí mejor podríamos decir que era 6 1 0 27 lo podemos ver aquí 6 1 0 27 para nosotros a 0 esto va a 0 esto va a 0 27 y ahora se le hacemos backtest y aquí ya veréis que cambia mucho la cosa aquí también tenemos un montón de datos esto cambia mucho hasta hasta más que allí es que lo hemos puesto bien 6 0 filtro 1 por nosotros con el 1 a 0 27 0 0 0 a bueno a 100 por ciento está expuesto que no puede ir así no puede ir así está muy expuesto a tener un drawdown 46 y tengo el money management a mente por folio 2 por ciento está bien está bien está el 2 por ciento es aquí ya hemos controlado mejor porque le hemos expuesto hemos controlado la exposición claro también tiene un factor de 146 y ganar 52 mil poco claro todo lo uno depende del otro no uno depende del otro pero aquí por ejemplo mirar lo que os quería enseñar antes la correlación de los retornos mensuales de acuerdo de todas las 100 acciones fijaros que hay datos en negativo porque hay acciones que pierden que pero que siendo todo en el nasdaq 100 claro es que apel con microsoft tiene 0 66 apel con google 0 48 con amazon 0 55 con envidia 0 32 con facebook 0 29 que son acciones directoras de acuerdo están ordenadas están ordenadas por capitalización vale que es decir que todas las que veis primeras son acciones super top para elegir y fijaros su nivel de correlación bajar aquí no sé si se llega a ver bien esperados que os voy a poner el foco lo que sea mejor con el foco es ahí fijaros ahí veis microsoft mirar la columna para abajo es 0 66 0 67 0 53 0 69 0 56 0 55 0 40 con tesla pero 48 0 36 0 39 0 68 51 es decir es el mismo sistema en el mismo frame vale sus correlaciones mensuales son relativamente moderadas pero no son 0 809 está bien tiene una diversificación moderada que es muy mejora lógicamente muy mejor vale entonces aquí fijaros que ya con una exposición más controlada tenemos datos de retorno poquito más estables es una curva bastante justa bastante muy muy justo bastante virgen pero es un sistema muy justo pero con este nivel de profit factor ese nivel de retorno acepta algo de apalancamiento y tiene algo de mejora por por delante lógicamente tiene mucha mejora por aquí además hemos cargado pocos años espérate que vamos a ver cómo tarda poco está con la serie vamos a meter desde el 2007 al bienes pasado 2% mira vamos a meter un 3 nos vas a poner un poquito más y veis ya tenemos un sharp calculado bien a 29 45 es decir el sharp al uno es un sharp bajito es un sistema justo pero bueno poco a poco lo podemos hacer crecer a uno el sistema de hecho este set simplemente es el de mayor retorno no es el que mejor equilibra aquí ahora podíamos mirar mirar varios pero y hemos mejorado un poquito ha sufrido bastante aquí porque es verdad que con este nivel de de ratio del trailing pues le cuesta le cuesta salirse esto ya os digo habían sets este set tiraba más para el retorno pero teníamos alguno que tiraba un poco más al equilibrio no aquí podíamos encontrar alguno que mejorara esto a cambio de mejor un retorno un poco peor es un poco la que hay que fijaros hemos ganado un poco de histórico como tenemos ratios negativos en varios varias acciones a los ves en facebook perdemos dinero en google en una de las google también porque al final tienen muy pocas acciones con este nivel de exposición con este canal y con este ratio realmente opera muy poco cada una de las acciones de acuerdo pero muy poco por eso al final nos vemos obligados a meter pues un análisis global que al final nos pueda meter más acciones para que al final nos pueda meter 1.100 trades desde el 2007 desde 2007 nos mete 1.100 trades todavía no dejamos un set elegido porque me gustaría me gustaría poder ver una optimización en el sarte para el sortino de porfolio que aquí sí que lo veo pero no lo veo optimizando porque es una cosa bastante extraña por parte de multicharts ahí en los foros de multicharts están con varios mensajes al respecto es decir que tienes sharp metido como función tienes sortino metido como fines y que a mí no lo tienes como fines ya por defecto de optimización es un poco extraño es porque si ya lo tienes metido dentro del programa o sea lo das ese ratio lo das lo puedes perfectamente usar como ratio de iana porque es un dato que estás calculando si tú me lo estás calculando y aquí pero curiosamente lo da para el performance pero no lo da como ratio de iana lo tienes que meter tú por código y el que tienes metido por sistema nos sirve por lo que os decía tienes que hacer específico de porfolio de acuerdo entonces tienes ese problema pues es un tanto curioso pero pero así es vale bien para el próximo día vamos a tomar una decisión una decisión respecto a este sistema tal como está es decir en una configuración de full tendencia vale de full tendencia a aquel que quiera y que lo tenga los recursos que tengan software los conocimientos para hacerlo pues si lo quiere también hacer alguna propuesta que es súper bienvenida como deberes para casa que quiero ir mandando algunos vale la regla de entrada simplemente es esta no tiene más es decir es cierre por encima del canal que es por cierres vale por el número de velas y en la apertura de la siguiente vela compra vale sí que para evitar que comprar acciones negativas hemos hecho porque muchos años puede pasar cierre mayor que cero eso es con el t1 es el filtro pero si vale cero es true si el filtro vale cero no actúa que no esté comprado y que haya par filtro estará una regulación que pasa pero que no actúa que al menos tenga una vela cerrada para que no compren la cierre y la misma vela vuelva a entrar que al menos haya pasado una vela desde que ha cerrado y esto que el total trecha igual hacer esto para que abra al principio vale porque si no no compraría al requerir al requerir que sea distinto de largo no compraría entonces es una conexión que se suele poner para que empiece a operar y ya pero ya estamos a la regla de entrada es esta no tiene no tiene más luego lo otro es la gestión monetaria y la regla de salida por trailing esto me comprometo en lo que queda de semana es decir hoy pues antes del viernes de acuerdo en ya subiros el código el código así como está vale eso subiré en texto y os subiré un pdf con una con un con el seudo código con el seudo código con el seudo código y escrito escrito para que ya la podáis tener y jugar en todas estas condiciones el trailing que actúa es este de aquí si el present el que es mayor que cero vale lo inicializa la variable y hasta si está largo es el valor máximo entre el máximo menos el máximo por el trailing o el teléfon que ya tiene calculado porque sólo puede subir un trailing acordar esta es la condición que lo controla decir máximo menos el máximo por el porcentaje y ese es el precio y hasta ese es el precio que simplemente con esta condición te aseguras que no puede bajar no es por atr se podía hacer por atr pero los querido hacer este caso sólo para hacerlo así por antagé super simple más simple no puede ser super super simple vale y visto aquí por ejemplo en el gráfico de alguno de ellos para acabar viendo alguno el informe el informe si es el informe bueno lo vemos aquí en un momento en cualquiera me creo son mismo venga que valoros tenemos postos aquí bueno ese es el 6 0 20 es el 6 0 20 que estábamos viendo viendo antes creo que ahora estamos viendo 6 con el filtro en 1 y 0 27 todavía menos pero no menos ya veis claro es un sistema que deja correr deja correr se ha comprado deja correr el sistema de muy largo plazo por eso la única manera de evaluarlo es metiéndolo en varias acciones de acuerdo y que cuando el mercado va a entrar lateral pues sufre sufre mucho porque hay que fijaros acaba entrando otra vez el canal no está bien ajustado y vuelve a entrar el canal no está no está bien no está bien porque no están 6 están 20 6 es muy rápido entrar muy rápido esta es la diferencia habéis visto que había varios varias zonas esta esta es la versión súper rápida de entrar habían otras versiones hay que acabar de hay que acabar de elegir aquel que quiera proponer con el código del sistema que le daremos y demás alguna que nos lo envíe nos lo puede enviar lo voy a poner el disco lo puede enviar al email y yo me comprometo a responderle otra cosa que queda pendiente para el día siguiente vamos a hacer esto acabar de tomar una decisión acabar de tomar una decisión con nuestro sortino de porfolio decisión de parámetros de esta versión como está que hacemos con los cortos esto es lo que os quería poner para casa unido con esto aquel que quiera en este set up en este código que haría con el lado corto si alguien quiere proponer o quiere trabajarlo o simplemente puede proponerlo bien trabajándolo o bien o bien filosóficamente podemos hacer las dos cosas me valen las dos cosas aquel que quiera trabajarlo porque puede hacerlo ya que lo haga el que no quiera trabajarlo porque no es capaz simplemente que le que lo que lo conceptualice y que diga pues mira yo creo que en los cortos en esta versión haría esto esto esto y porque en acciones en este mismo set up en acciones que hacemos con los cortos y luego ya lo que vendría es lo mejor tiene que ver con esto vale es que que otras variaciones hacemos este comentamos que el don chan es un mecanismo de entrar en tendencia pero es un mecanismo muy útil para hacer break out entonces esto ahora con lo que tiene ya en el código se puede hacer break out se puede hacer un break out como como haríamos sobre que tratamos de desarrollar este serían un poco las cosas pendientes respecto a esta estrategia que deberíamos de liquidarlo ya para entrar en otra en otra cosa no le metamos más conceptos ya sé que le podríamos meter una tr le podemos meter mil cosas ya lo haremos de acuerdo el sistema este lo vamos a dejar así con un don chan sencillito entre en la versión tendencial que es muy mejorable lo vamos a dejar así y cortos y haremos un break out con esta con este código también vale y a partir de ahí seguiremos en otras en otras cosas vale a ver si me queda alguna pregunta como si puedes subir el código un poco antes sería lo suyo para trabajar con él sí sí sí a ver si mañana me he puesto te he dicho antes el viernes para para dar límite pero pero antonio el segundo código yo te lo voy a pasar pero ya lo tienes ya lo tienes quiero decir que el segundo código es explicado lo he explicado todas las clases que yo te lo voy a pasar e insisto que te lo voy a pasar pero si ahora luego que yo te vuelvo a subir la clase me oyes lo escribes aparte que lo he enseñado lo he enseñado es decir es que la la es que el setup de entrada es este de verdad o sea todo lo demás todo todo lo demás es accesorio esto es esto es el setup de entrada es el setup de entrada si cierra por encima del canal de n cierres hemos visto 6 hemos visto 20 etcétera compra en la apertura de la siguiente vela esto es lo que lo pasaré y el trailing es lo único que tiene un poco más de desarrollo a nivel de programación pero el concepto es súper básico o sea es el mayor el máximo que haya hecho el precio desde que abres el más en ese caso sí que es el máximo de ese máximo siempre le va restando un porcentaje ese es el stop trailing cada vela cambia con cada vela que cambia si hace un máximo porque si no hace un máximo no actualiza de acuerdo es decir sólo el máximo del máximo le restas un porcentaje y eso era lo que era un 027 un 020 de acuerdo es hora que es un 20% entonces es un poco la idea pero insisto que me comprometo a si mañana no llego voy a hacer lo máximo para que el miércoles lo podáis tener lo podáis lo podáis tener el miércoles vale y qué más qué más qué más o sea se puede preguntar si se puede aplicar trailing esto y esto para la vez aseguró una pérdida esto fija sí sí sí es es posible y tiene sentido pero en este caso y el sentido a ver depende del tipo que vos es realmente digo eh depende del tipo que vos o sea en el trailing que hemos puesto nosotros en el trailing que hemos puesto nosotros mucho mucho sentido no tiene vale porque ya hemos puesto porque hay muchos el concepto clásico de trailing hay muchas veces que se activa a partir de cierta cantidad pues en esos casos mucha gente sí que usa un esto un esto de seguridad podemos decir acordaros cuando hablamos un poco del esto de seguridad no y que entra ya nada más abrir pues un poco por si se lía no es que me saque no pues no tener que no me saca pero en nuestro caso el telín se activa desde la entrada en el momento del cálculo se calcula del cierre anterior y en el momento que el precio que acaba la barra en que ha entrado ya entra en juego el valor máximo que haya o el cierre anterior o el máximo que haya hecho ese día el máximo que haya hecho ese día actúa de trailing y entonces ya tienes trailing claro que es un 20 por ciento por eso has visto algunos aquí como este o bueno incluso otros peores que se va se va para abajo y a tomar viento a tomar viento el problema de los tendenciales puros es este que si tú quieres un tendencial puro y quieres tres como esta locura de que te pilla toda la subida no esto pues claro solo ahí dejándolo dejándole tragándote estas cosas también ese problema porque si yo le pongo una salida por tiempo que va muy bien y evitará mucho esto que evitará también que pille la por eso decía que un tendencial es bastante desagradecido es muy desagració te decía el puro luego están los breakout que también son tipo de tendencial que ya se manejan mejor y que este lo haremos también mercado vale entonces conceptualmente si se puede pero en esta configuración tal como está no tiene demasiado sentido porque ya actúa siempre este lo que pasa que le da mucho margen le da mucho margen pero este desde el primer momento que entra ya va calculando aquí le calcula un 27 pero no ha saltado ahora para que veas este aquí le pongo 10 por ciento y seguramente salta salta ahí salta aquí salta aquí es un poco la idea no es claro yo lo tengo siempre siempre calcula este este que hemos hecho nosotros imagínate que le pongo 005 no va a parar de salirse todo el rato es ya cambiado completamente el sistema es otro sistema no para entrar a salir a salir a salir a salir a salir que cuesta mucho porque el precio va haciendo sus oscilaciones y alguna vez oye y ahora un trocho grande pero la mayoría de veces no porque se va a salir todo el rato y ahí está el equilibrio de los tendenciales este es el problema en los sensores que para pillar largos recorridos y no caer en esto hay que dejarlo sufrir claro que hay maneras de utilizarlo más para evitar las otras pero un tendencial puro es uno de los casos de trelling aunque ya os lo comenté en la teoría es verdad que trelling acopla bastante acopla bastante pero el porcentaje acopla menos entonces acopla bastante quiere decir que lo lo vas a lo metes ahí pero 25 y luego empezarás a ver que a veces ha degradado ha degradado a ver un segundo que te leo es que a veces que va directo a pérdidas se hacen más es que el trelling hay veces que se va directo a pérdidas igual por el cierre o algo y hace más de lo configurado a que te pierde más de lo que tienes esperado que es decir depende cómo lo tengas votado si lo pones desde el principio si lo pones en principio que se siempre puesto en mercado al final claro te puede pillar un gapos aquí en este caso vas a tendencia y te vas a tragar claro los resultados el otro día lo hablaba en el directo del jueves había no sé qué acción había caído 15 pues te lo tragas claro esto hay en acciones tienes ese problema aquí muy diversificado y porque te lo tragas en tendencia tenés el problema pero ya veremos otro tipo de estrategias cuidado es decir al final ahora estamos viendo esta pero pero que tiene su lado bueno y su lado malo al final y por eso la idea es tener varias tener una así tener otra que te lo compensa y ésta te queda enganchada pero a lo mejor tienes otra que había iba corto en petróleo y no sé qué hay que ir diversificando los tendenciales ya digo que son de hecho cuando uno no tiene mucha experiencia son sistemas bastante poco llevaderos vale lo hablamos en la teoría normalmente es más tendencial hay más llevadero un sistema antitenencial porque porque el antitencial no deja no tiene colas largas en cambio los tendenciales o sea con dentro lateral no para de fallar no para de fallar no para de fallar y te devuelve mucho el mercado por no sé jose bien bien no sé exactamente esto que dices un 2 y que te hago un 4 no sé no sé por qué que no tengas un problema de cálculo sino lo que te digo los gaps claro los gaps y sí pero vaya el gap está afectado igual de un stop que de está afectado igual o sea no tiene más si está bien calculado no tiene no tiene más tendrás alguno 100% tendrás alguno 100% que te va a hacer más o sea es que eso es así no tiene mayor mayoría tendrás muchos hechos que te hará que te hará más pero pero vaya tanto en uno como en otro tanto en esto como si no bueno explica pasar a nosotros un email y tal y explicando lo mejor y lo miramos lo miramos a ver por qué porque te pasa eso tendencia al puro no es usual por nuestro blog fijado mejor trailing la verdad que era es que se pende en que que vayas depende en que vayas un esto en un tendencial en un tendencial puro el trailing y generando somos súper amigos de los que los digo estamos ahora empezando las prácticas como el que dice vale es la primera estrategia que hemos hecho vale pero si algún tipo de sistema va bien el trailing es en el tendencial en el tendencial puro si alguno vale va bien este tu aquí puede nosotros operando en live pero no usamos vamos a esto pero no es tendencial puro no es tendencial puro en un tendencial puro ya digo el trailing es el caso que más que más sentido tiene sobre todo en acciones sobre todo en acciones buscando el largo recorrido que es un poco la idea este sistema que lo puedes configurar así pero no es la idea ya ese sistema y por eso lo hemos metido en las acciones es que corra vale es un sistema para correr esta es su idea su sentido y claro es un o sea es un sistema que cuando netflix sube un 200 por ciento lo pilla me entiendes ahora eso tiene un precio me entiendes eso tiene un precio cuando meta está en lateral un montón de tiempo pues te lo tragas ahora en cambio está en el que alucinas pero claro tu imagínate ya en sus está básico que no no no no voy ahora a 6020 vale que solo hablamos y le quito el filtro vale esto ya es configuración básica original sin hacer nada el largo que lleva en meta está comprado ahora mismo en 119 20 están 470 400 por ciento claro eso sólo lo pillas así sólo pillas así claro a costa de eso aquí se te ha tragado tres hostias que te han dejado la cuenta bonita pero hay que estar dimensionado para ello y cuando está estado en lateral pues está cosido también claro bueno en estas etapas ha aguantado muy bien porque claro tiene mucho margen pero hay acciones o yo que sé cuando netflix mira netflix es tremendo porque netflix tuvo ahora sí pero a tener una época hace tiempo y ahí a la tragadita perdona venga comprado en 95 98 y te sacan 300 bueno tiene lo bueno y tiene lo malo pero cuando se pasa una época mala pues te hace polvo pero es aquí el tiempo que está que no hace nada si no si no si no al final coge tendencia en el tendencial ya digo es el caso que te va a pensar con esto puro tiene que tener otra salida que me lo decía la verdad de antonio si yo aquí este sistema tiene puesto un esto pero como salgo tengo que necesito otras sí o sí porque si no vuelve yo te desactivo el trailing ahora y te pongo el mismo en stop el mismo 0 20 no sale nunca entiendes porque no cae 0 20 el precio de entrada nunca ya tiene que caer 0 20 de aquí explicó es decir al final no es igual 0 10 necesita otra salida cambio el trailing no el trailing garantiza que no necesita nada más entonces si yo no quiero muchos grados de libertad y demás quiero simple trailing me soluciona que sólo puedo usar esa salida yo aquí sólo tengo un y una salida nada más las las pérdidas se pregunta antonio si se podían compensar con el lado corto bastante bien bueno si se puede claro esa es la idea pero es muy difícil hacer cortos en acciones antonio es muy difícil es posible pero es muy difícil con un tendencial es muy complicado es muy complicado porque vuelve mucho es decir mira esto es un ejemplo muy bueno de hecho mira es que lo podemos hacer rápidamente ya para ir acabando podemos hacer mira el mismo lo vamos a poner corto ahora mismo vale el don chan porque esto no nos vale te pongo el don chan lo que lo cambiaron pero te lo pongo igual 20 0 20 vale 20 0 20 20 0 20 hay perdón pero cortos true 0 20 no activa el corto no lo activa estoy atontado y si se activa lo que pasa igual no ha saltado pero si parece lo que salte alguna vez 20 20 20 no claro ya sé que pasa ya sé que pasa ya sé que pasa que con él sin el filtro lo tengo mal configurado es fallo míos porque como la volatilidad es inverso lo activo la volatilidad y así es un problema de que no es que sea un problema en sí pero que no bueno si es un problema porque no le he previsto activar el corto sin activar el filtro así pierde casi seguro en el lado corto digo es que pierdes que se arruina entonces claro pues lo bajamos pero entonces no era bien el largo tienes que hacer que hay que buscarle un set up para el corto es decir el mismo set up en acciones el largo y corto es muy complicado hay poca algún tipo de sistema pero no no un tendencial en un tendencial no lo vas a conseguir en este tipo no lo vas a conseguir entonces aquí y hay que ir a otra cosa aquí la otra casa aquí en un corto pues no es lo que os decía ya no os digo porque si no ya pero no corto hay que ir a otra cosa este mismo sistema hemos puesto salida por tiempo esto tp aquí la otra cosa en un corto en acciones se puede para que la otra cosa hay que salir rápido de acuerdo hay que salir entonces en este set up es muy complicado porque las tendencias son muy abruptas es decir te entran entran muy bien así este caen y mira te has rebotado y te has sacado antes encima ya te mete aquí y aquí aún mira no salvas pero es súper complicado es súper complicado es súper complicado vuelve muchísimo el precio vuelve y le cuesta muchísimo rebota muy violentamente luego vuelve a caer y la vez aquí cae ya está fuera final largo otra vez corto estás corto ahí estás es muy es muy duro que el mercado vuelve mucho muy escarpado es mucho más escarpado cayendo que subiendo el mercado se resiste mucho caer para que me entiendas existe mucho que hay algún momento que no pero en norma acabas perdiendo mucha pasta en cortos pero nosotros el nasa que lo operamos el lado corto pero este año hemos perdido el largo plazo pero el año pasado hemos perdido con apolo vale ya la última pregunta antonio comenta no que si a mejor bajar el frame más tendencia vaquista más bueno puedes bajar el frame o puedes operar otro tipo de sistema antonio otro tipo de sistema si no no hace falta buscar tendencia es decir puedes buscar tendencia en el lado largo y ir anti tendencia en corto y también puedes buscar una nota y freme no digo que no pero es que el mercado es fractal es decir el lado corto tendrás ganarás unas cosas pero perderás otras es decir no no necesariamente es más sencillo es más difícil es más difícil pero sí sí que hay algunas cosas que te pueden ir bien ese nivel sobre todo te puede ir bien en el control del riesgo el perder menos cuando falle no te puede ir mejor ahí pero también te va a sacar sabes o sea también así que no más tendencia el puro es complicado es complicado ahí hay que buscar más bien break out anti tendencial por la tiri y breakout rotura para salir buscar salir por tiempo o por tp tener un objetivo el total o al menos la mitad hay que jugar un poco con eso vale bien ya os he dicho un poco la agenda del día que viene y para los que queráis trabajar pues lo podéis poner bien en el discord y nos lo envíais por email vale lo que digo máximo bienes pero intentaré por todos los medios que el miércoles ya esté subido el pseudocódigo y la explicación que la idea que tenemos es hacerlo en un pdf donde nos aportamos la ficha un poco una explicación de cada sistema vale y tener así poderla la podéis tener como como documentación del curso de acuerdo pues nada más amigos os veo el viernes os veo os veo el viernes gracias en las otras palabras hay el viernes que digo el viernes pues bien lunes bueno jueves el que quiera ya sabe que estoy en directo para todos los para quien quiera los clientes para para todo el que quiera interactuar con con nosotros públicamente pues ahí estamos y si no la clase el lunes que viene de acuerdo en un par de horitas está el vídeo subido hasta pronto familia os veo chao
+
+**¿Error detectado?**
+
+¿como es posible un `Total Retrun` ($18953) tan bajo con el `25` `1` `0.07`?  
+
+![](../img/152.png)  
+
+En el sumario fijaros simplemente profit factor aquí tenemos 1.39
+
+![](../img/153.png)
+
+aquí tenemos 1.59
+
+![](../img/154.png)
+
+aquí tenemos 1.02
+
+![](../img/155.png)
+
+aquí tenemos 1.73
+
+![](../img/156.png)
+
+aquí tenemos 1.47
+
+![](../img/157.png)  
+
+*(Backtests sobre el sistema Donchian en Nasdaq 100)*
+
+| Backtest      | Profit Factor | Sharpe Ratio | Avg Win / Avg Loss (R) |
+| ------------- | ------------- | ------------ | ---------------------- |
+| **1-0-0.12**  | **1.39**      | 0.0463       | 2.06                   |
+| **4-1-0.24**  | **1.59**      | 0.0577       | 2.07                   |
+| **25-1-0.07** | **1.02**      | –0.0002      | 1.79                   |
+| **6-1-0.27**  | **1.73**      | 0.0598       | 2.04                   |
+| **6-0.20**    | **1.47**      | 0.0539       | 2.03                   |
+
+
+<div style="border-left: 4px solid #f39c12; background: #fff8e5; padding: 10px 15px; margin: 10px 0;">
+
+<strong>⚠️ ¿como es posible un `Total Retrun` ($18953) tan bajo con el `25` `1` `0.07`?</strong><br>
+
+<div style="padding-left: 25px;">
+
+La clave está en cómo interactúan los tres parámetros: `25 – 1 – 0.07`  
+* *Período del canal* = 25 barras  
+* *Filtro de volatilidad ATR* = 1  
+* *Trailing stop* = 7 % (0.07)  
+
+la combinación es por naturaleza muy poco adecuada para un sistema Donchian tendencial aplicado a acciones. Donchian funciona bien cuando detecta rupturas *tempranas*, no rupturas tardías. Con veinticinco días de canal, el sistema entra cuando el movimiento ya está maduro o directamente agotado. Esta estructura resulta especialmente desfavorable para un sistema de ruptura diario en acciones.
+
+*1. **Un canal de 25 barras es demasiado lento en acciones***
+
+* se generan muy pocas señales
+* la entrada llega muy tarde en la tendencia
+* gran parte del impulso ya se ha consumido cuando el sistema activa la operación
+
+*2. **El filtro ATR = 1 elimina muchas entradas buenas***
+Este filtro exige que la volatilidad de hoy sea menor o igual que la volatilidad media del último mes.
+En muchas acciones del Nasdaq, los días de ruptura auténtica suelen ir acompañados de un repunte de volatilidad.
+Como consecuencia, el filtro impide entrar justo en las rupturas más potentes.
+Resultados típicos:
+
+* se descartan las rupturas buenas
+* solo se ejecutan rupturas débiles o irrelevantes
+
+*3. **Un trailing del 7 % es demasiado ajustado para un sistema diario***
+Un trailing tan estrecho salta con facilidad ante cualquier retroceso normal del precio.
+Los retrocesos del 3 % al 6 % son habituales en acciones; con un trailing del 7 %, la salida se produce antes de que la tendencia logre desarrollarse.
+Esto genera una secuencia de operaciones pequeñas, casi ningún trade grande y relaciones riesgo/beneficio muy pobres. El resultado típico es un Profit Factor cercano a 1.  
+
+*4. **La interacción entre los tres elementos es especialmente problemática:***    
+|                | Efecto                                    |
+| -------------- | ----------------------------------------- |
+| *Canal 25*     | Entrada tardía                            |
+| *ATR = 1*      | Filtra las rupturas fuertes (las mejores) |
+| *Trailing 7 %* | Sale demasiado pronto                     |
+
+Con tantas restricciones simultáneas, el sistema:
+
+* reduce drásticamente el número de operaciones
+* pierde diversidad dentro del portfolio
+* limita la exposición útil
+* y reduce la probabilidad de capturar movimientos de gran tamaño
+
+Cuando el número de operaciones es bajo, no hay forma de que unas pocas ganancias compensen la larga secuencia de pequeñas pérdidas o salidas prematuras. Por eso esta configuración muestra beneficios tan reducidos: la estructura matemática del conjunto bloquea precisamente los elementos que hacen eficaz a un sistema Donchian.
+</div>
+</div>
+<br>
+<div style="border-left: 4px solid #f39c12; background: #fff8e5; padding: 10px 15px; margin: 10px 0;">
+  <strong>⚠️ ¿Por qué la configuración `6-1-0.27` ofrece beneficios altos?</strong><br>
+
+<div style="padding-left: 25px;">
+
+La estructura de esta combinación encaja de manera natural con el comportamiento de un sistema Donchian aplicado a acciones en gráfico diario. Cada parámetro se ajusta a las propiedades reales del mercado.
+
+1. **Canal de 6 barras → rupturas tempranas y frecuentes**
+	* detecta rupturas recientes
+	* permite entrar muy pronto en los movimientos
+	* captura microtendencias antes de que se agoten
+	* genera un número elevado de operaciones
+	* incrementa la diversificación entre las cien acciones del portfolio
+
+	En acciones, donde las tendencias suelen ser más cortas e irregulares, los canales Donchian breves resultan más eficaces. Mientras que veinticinco días de canal obligan a entrar cuando el movimiento ya está avanzado, seis días permiten incorporarse justo cuando el impulso comienza. El resultado es claro: más operaciones, rupturas más limpias y captura anticipada del movimiento.
+
+2. **ATR = 1 → filtro suave que no elimina las buenas entradas**  
+A diferencia del mismo filtro aplicado a un canal de veinticinco días (donde eliminaba las rupturas realmente útiles), aquí ATR=1 funciona muy bien porque:  
+	* la volatilidad previa a una ruptura temprana suele ser baja
+	* se descartan rupturas ruidosas que no evolucionan en tendencia
+	* se mantiene un equilibrio adecuado entre calidad y frecuencia operativa
+
+	*Con un canal corto, ATR=1 actúa como un filtro de calidad.*  
+	*Con un canal largo, ATR=1 se convierte en un filtro que destruye señales.*  
+
+3. **Trailing del 27 % → permite dejar correr la tendencia completa**  
+
+	Este parámetro es probablemente el más determinante.
+	Un trailing del 27 %:
+
+	* no salta ante retrocesos normales
+	* deja espacio para que la tendencia se forme y avance
+	* permite capturar movimientos amplios
+	* evita salidas prematuras
+	* concentra la mayor parte del beneficio en unas pocas operaciones grandes
+
+	Con un trailing del 7 %, como en *25-1-0.07*, la estrategia no puede respirar.
+	Con un trailing del 27 %, sí.
+
+	En los sistemas tendenciales, una minoría de operaciones genera la mayoría del beneficio.
+	Un trailing amplio hace posible que esas operaciones “grandes” aparezcan, de ahí el incremento del Profit Factor y del retorno compuesto.
+
+4. **La combinación *6-1-0.27* crea un ciclo óptimo**
+
+	El ciclo completo funciona así:  
+	* *Canal 6* → múltiples oportunidades y entradas rápidas
+	* *ATR = 1* → filtra rupturas de baja calidad pero permite las buenas
+	* *Trailing 27 %*  
+	→ convierte las mejores rupturas en tendencias rentables  
+	→ facilita profit factors altos  
+	→ reduce el drawdown relativo  
+	→ potencia los resultados agregados del portfolio  
+</div>
+</div>
+<br>
+
+
+vamos a ver el siguiente día si podemos sacar el sortino vía portfolio porque no está no está sacado 
+
+Aquí `6-0.20` ya el *Sherpe Ratio* ya lo tenemos positivo y aquí lo que pasa que realmente la exposición es un poco elevada teníamos que haberla regulado más 
+
+![](../img/158.png)  
+
+hemos llegado a exponernos al 200% , dos veces nos ha apalancado hasta dos veces claro tenemos niveles de drowdown muy jeves a nivel de portfolio tenemos drawdowns bastante bastante elevado
+
+
+| Backtest      | Profit Factor | Sharpe Ratio | Avg Win / Avg Loss (R) | Max Drawdown (%) |
+| ------------- | ------------- | ------------ | ---------------------- | ---------------- |
+| **1-0-0.12**  | 1.39          | 0.0463       | 2.06                   | **–79.10 %**     |
+| **4-1-0.24**  | 1.59          | 0.0577       | 2.07                   | **–61.39 %**     |
+| **25-1-0.07** | 1.02          | –0.0002      | 1.79                   | **–29.83 %**     |
+| **6-1-0.27**  | 1.73          | 0.0598       | 2.04                   | **–60.14 %**     |
+| **6-0-0.20**  | 1.47          | 0.0539       | 2.03                   | **–63.58 %**     |
+
+
+
+
+**Recordar que no está no estamos evaluando el portfolio para operarlo así, estamos evaluando la idea por evaluando la idea y luego ya decidiríamos cómo lo operábamos** 
+
+aquí tenemos muchas acciones en negativo lógicamente luego una vez el sistema está validado yo luego lo operaré a lo mejor no necesariamente las 10 mejores pero así que serán de las mejores de acuerdo es decir al final yo valido la idea en las 100 acciones porque eso me da mayor robustez digamos que la idea la pongo más a prueba en acciones incluso no han ganado 
+
+![](../img/159.png)  
+
+incluso aquí incluso en el portfolio trader que no es tan no me dará tanta información pero este mismo mirar para que veáis la comparación que es interesante de ver pero pongo aquí 
+
+
+![](../img/160.png)  
+
+y ahora se le hacemos backtest y aquí ya veréis que cambia mucho la cosa aquí también tengo el money management a mente portfolio 2 por ciento está bien 
+
+![](../img/161.png)  
+
+aquí ya hemos controlado mejor porque le hemos expuesto hemos controlado la exposición claro también tiene un factor de 146 y ganar 52 mil poco claro todo lo uno depende del otro no uno depende del otro pero aquí por ejemplo mirar lo que os quería enseñar antes la correlación de los retornos mensuales de acuerdo de todas las 100 acciones 
+
+![](../img/162.png)  
+
+fijaros que hay datos en negativo porque hay acciones que pierden que pero que siendo todo en el nasdaq 100 claro es que apel con microsoft tiene 0.66 apel con google 0 48 con amazon 0.55 con envidia 0.32 con facebook 0.29 que son acciones directoras de acuerdo están ordenadas están ordenadas por capitalización vale que es decir que todas las que veis primeras son acciones super top para elegir y fijaros su nivel de correlación bajar aquí no sé si se llega a ver bien esperados que os voy a poner el foco lo que sea mejor con el foco es ahí fijaros ahí veis microsoft mirar la columna para abajo es 0 66 0 67 0 53 0 69 0 56 0 55 0 40 con tesla pero 48 0 36 0 39 0 68 51 es decir es el mismo sistema en el mismo frame vale sus correlaciones mensuales son relativamente moderadas pero no son 0.8 0.9 está bien tiene una diversificación moderada que es muy mejora lógicamente 
+
+entonces aquí fijaros que ya con una exposición más controlada tenemos datos de retorno poquito más estables 
+
+![](../img/162.png)  
+
+es una curva muy muy justo bastante virgen pero es un sistema muy justo pero con este nivel de `profit factor` ese nivel de retorno acepta algo de `apalancamiento` y tiene algo de mejora por por delante 
+
+vamos a meter desde el 2007 al 2% mira vamos a meter un 3% de Max capital risk y nos vas a poner un poquito más 
+
+![](../img/165.png) 
+
+
+y veis ya tenemos un *Sharpe Ratio* calculado bien a 0.29 Sortino 0.45 es decir el *Sharpe Ratio Annualized* al uno es un *Sharpe Ratio* bajito es un sistema justo pero bueno poco a poco lo podemos hacer crecer a uno el sistema de hecho este set simplemente es el de mayor retorno no es el que mejor equilibra 
+
+aquí ahora podíamos mirar mirar varios pero y hemos mejorado un poquito 
+
+![](../img/166.png) 
+
+ha sufrido bastante aquí porque es verdad que con este nivel de de ratio del trailing pues le cuesta le cuesta salirse esto ya os digo habían sets este set tiraba más para el retorno pero teníamos alguno que tiraba un poco más al equilibrio no aquí podíamos encontrar alguno que mejorara este caida del 2022 a cambio de mejor un retorno un poco peor es un poco la que hay que fijaros hemos ganado un poco de histórico como tenemos ratios negativos en varios varias acciones 
+
+![](../img/167.png) 
+
+
+a los ves en facebook perdemos dinero en google en una de las google también 
+
+
+![](../img/168.png) 
+
+porque al final tienen muy pocas acciones con este nivel de exposición con este canal y con este ratio realmente opera muy poco cada una de las acciones de acuerdo pero muy poco por eso al final nos vemos obligados a meter pues un análisis global que al final nos pueda meter más acciones para que al final nos pueda meter 1.100 trades desde el 2007 desde 2007 nos mete 1.100 trades 
+
+![](../img/169.png) 
+
+todavía no dejamos un set elegido porque me gustaría me gustaría poder ver una optimización en el sarte para el sortino de porfolio que aquí sí que lo veo pero no lo veo optimizando porque es una cosa bastante extraña por parte de multicharts ahí en los foros de multicharts están con varios mensajes al respecto es decir que tienes *Sharpe Ratio* metido como función tienes sortino metido como fines y que a mí no lo tienes como fines ya por defecto de optimización es un poco extraño es porque si ya lo tienes metido dentro del programa o sea lo das ese ratio lo das lo puedes perfectamente usar como ratio de iana porque es un dato que estás calculando si tú me lo estás calculando y aquí pero curiosamente lo da para el performance pero no lo da como ratio de iana lo tienes que meter tú por código y el que tienes metido por sistema nos sirve por lo que os decía tienes que hacer específico de porfolio de acuerdo entonces tienes ese problema pues es un tanto curioso pero pero así es.
+
+---
+
+Para la próxima sesión vamos a tomar una decisión respecto a este sistema tal como está, es decir, en una configuración de *full tendencia*. Quien quiera —y quien tenga los recursos, el software y los conocimientos necesarios— también puede hacer alguna propuesta adicional. Es *súper bienvenida* como ejercicio para casa, porque quiero empezar a mandar algunos.
+
+La regla de entrada es simplemente esta, no tiene más:
+
+```sh
+//Filtro de volatilidad
+If Filtro_ATR > 0 then
+	Condition1 = TrueRange < AvgTrueRange(22)[1] * Filtro_ATR
+else
+	Condition1 = true;
+
+
+//TIPICO SISTEMA DE RUPTURA: el cierre supera el m?ximo deL CIERRE DE 20 barras
+if Close > 0 and Condition1 and MP <> 1 and (BarsSinceExit(1) >= Bar_Filtro or TotalTrades = 0) then
+Begin
+	if Close > Highest(Price_Up, Per_Canal)[1] then
+ 		Buy Contratos contracts Next Bar at Market;
+End;
+```
+
+Es decir: *cierre por encima del canal*, que está calculado por cierres y por el número de velas. En la apertura de la siguiente vela compra. Para evitar compras en acciones con cierres negativos, hemos añadido este `Close > 0`, porque en muchos años puede pasar. Ese `Close > 0` funciona como filtro: si vale 1, actúa como filtro; si el filtro vale 0, es *true* y no actúa.
+
+También comprobamos que no esté comprado (`MP <> 1`) y que se cumpla el `Bar_Filtro`, que es simplemente una regulación para evitar reentradas inmediatas: que al menos haya pasado una vela desde la última salida para que no compre en la misma vela en la que cerró.
+
+La condición `TotalTrades = 0` está puesta para permitir la primera operación del sistema, porque si no, al requerir que `MP <> 1`, no compraría nunca en la primera barra.
+Es una conexión típica que se suele incluir para que el sistema pueda arrancar correctamente. Pero, en esencia, la regla de entrada es esta y no tiene más.
+
+El *trailing stop* que actúa es este de aquí:
+
+```sh
+// Trailing Stop
+If Prc_Trail > 0 Then
+Begin
+	If MP <> 1 Then
+		Trailing_Long = 0;
+
+	If  MP <> -1 Then
+		Trailing_Shrt = 99999;
+	
+	Begin
+		if MP = 1 then
+		begin // Para posiciones largas
+    		Trailing_Long = maxList(Trailing_Long, High - (High * Prc_Trail));
+    		Sell ("Trai_Lng") next bar at Trailing_Long stop;
+		end;
+
+		if MP = -1 then
+		begin // Para posiciones cortas
+    		Trailing_Shrt = minList(Trailing_Shrt, Low + (Low * Prc_Trail));
+    		BuytoCover ("Trai_Shrt") next bar at Trailing_Shrt stop;
+		end;
+	End;
+End;
+```
+
+Si el `Prc_Trail` es mayor que cero, se inicializa la variable y ya está.
+Cuando el sistema está largo, el *trailing* se actualiza como el valor máximo entre:
+
+* el *trailing* que ya tenía calculado (que solo puede subir), y
+* el máximo de la vela (`High`) menos ese máximo multiplicado por el porcentaje del trailing.
+
+Ese cálculo define el precio del stop dinámico. Con esta condición te aseguras de que el *trailing* **solo pueda subir**; nunca baja. No está basado en ATR —aunque podría hacerse así—, pero en este caso hemos querido hacerlo mediante porcentaje porque es mucho más sencillo. Más simple no puede ser: es un *trailing stop por porcentaje* totalmente directo y funcional.
+
+---
+
+Vale y visto aquí por ejemplo en el gráfico de alguno de ellos para acabar viendo alguno lo vemos aquí en un momento en cualquiera , ahora estamos viendo 6 con el filtro en 1 y 0.27 
+
+![](../img/171.png) 
+
+ya veis claro es un sistema que deja correr 
+
+![](../img/172.png) 
+
+deja correr se ha comprado deja correr el sistema de muy largo plazo por eso la única manera de evaluarlo es metiéndolo en varias acciones de acuerdo y que cuando el mercado va a entrar lateral pues sufre sufre mucho porque hay que fijaros acaba entrando otra vez el canal no está bien ajustado y vuelve a entrar 
+
+![](../img/173.png) 
+
+el canal no está no está bien no está bien porque no están 6 están `Per_Canal 20` 
+
+![](../img/174.png) 
+![](../img/176.png)
+![](../img/175.png)  
+
+6 es muy rápido entrar muy rápido esta es la diferencia habéis visto que había varios varias zonas esta esta es la versión súper rápida de entrar habían otras versiones hay que acabar de hay que acabar de elegir aquel que quiera proponer con el código del sistema que le daremos y demás alguna que nos lo envíe nos lo puede enviar lo voy a poner el disco lo puede enviar al email y yo me comprometo a responderle otra cosa que queda pendiente para el día siguiente vamos a hacer esto acabar de tomar una decisión acabar de tomar una decisión con nuestro sortino de porfolio, decisión de parámetros, de esta versión como está, 
+
+¿que hacemos con los cortos? esto es lo que os quería poner para casa unido con esto aquel que quiera en este set up en este código que haría con el lado corto si alguien quiere proponer o quiere trabajarlo o simplemente puede proponerlo bien trabajándolo o bien o bien filosóficamente podemos hacer las dos cosas me valen las dos cosas aquel que quiera trabajarlo porque puede hacerlo ya que lo haga el que no quiera trabajarlo porque no es capaz simplemente que le que lo que lo conceptualice y que diga pues mira yo creo que en los cortos en esta versión haría esto esto esto y porque en acciones en este mismo set up en acciones que hacemos con los cortos 
+
+y luego ya lo que vendría es lo mejor tiene que ver con esto vale es que que otras variaciones hacemos este comentamos que el donchian es un mecanismo de entrar en tendencia pero es un mecanismo muy útil para hacer break out entonces esto ahora con lo que tiene ya en el código se puede hacer breakout se puede hacer un breakout como como haríamos sobre que tratamos de desarrollar 
+
+este serían un poco las cosas pendientes respecto a esta estrategia que deberíamos de liquidarlo ya para entrar en otra en otra cosa 
+
+no le metamos más conceptos ya sé que le podríamos meter un atr le podemos meter mil cosas ya lo haremos de acuerdo el sistema este lo vamos a dejar así con un don chan sencillito entre en la versión tendencial que es muy mejorable lo vamos a dejar así y cortos y haremos un breakout con esta con este código también vale y a partir de ahí seguiremos en otras en otras cosas 
+
+
+## Preguntas
+
+**¿se puede aplicar trailing stop y stp para la vez asegurando una pérdida esto fija?**   
+sí sí sí es es posible y tiene sentido pero en este caso y el sentido a ver depende del tipo que vos es realmente digo eh depende del tipo que vos o sea en el trailing que hemos puesto nosotros en el trailing que hemos puesto nosotros mucho mucho sentido no tiene vale porque ya hemos puesto porque hay muchos el concepto clásico de trailing hay muchas veces que se activa a partir de cierta cantidad pues en esos casos mucha gente sí que usa un stop un stop de seguridad podemos decir acordaros cuando hablamos un poco del esto de seguridad no y que entra ya nada más abrir pues un poco por si se lía no es que me saque no pues no tener que no me saca pero en nuestro caso el telín se activa desde la entrada en el momento del cálculo se calcula del cierre anterior y en el momento que el precio que acaba la barra en que ha entrado ya entra en juego el valor máximo que haya o el cierre anterior o el máximo que haya hecho ese día el máximo que haya hecho ese día actúa de trailing y entonces ya tienes trailing claro que es un 20 por ciento por eso has visto algunos aquí como este o bueno incluso otros peores que se va se va para abajo y a tomar viento a tomar viento. el problema de los tendenciales puros es este que si tú quieres un tendencial puro y quieres tres como esta locura de que te pilla toda la subida no esto pues claro solo ahí dejándolo dejándole tragándote estas cosas 
+
+![](../img/177.png) 
+
+también ese problema porque si yo le pongo una salida por tiempo que va muy bien y evitará mucho esto que evitará también que pille el recorrido, por eso decía que un tendencial es bastante desagradecido es muy desagració te decía el puro luego están los breakout que también son tipo de tendencial que ya se manejan mejor y que este lo haremos también en mercado vale? entonces conceptualmente si se puede pero en esta configuración tal como está no tiene demasiado sentido porque ya actúa siempre. 
+
+este lo que pasa que le da mucho margen le da mucho margen pero este desde el primer momento que entra ya va calculando aquí le calcula un 27% 
+
+![](../img/181.png) 
+
+pero no ha saltado ahora para que veas este aquí le pongo 10 por ciento y seguramente salta 
+
+![](../img/178.png) 
+![](../img/179.png) 
+![](../img/180.png) 
+
+salta ahí salta aquí salta aquí es un poco la idea no es claro yo lo tengo siempre siempre calcula este este que hemos hecho nosotros imagínate que le pongo 005 no va a parar de salirse todo el rato 
+
+![](../img/182.png) 
+![](../img/183.png) 
+![](../img/184.png) 
+
+
+ves ya cambiado completamente el sistema es otro sistema no para entrar a salir a salir a salir a salir a salir que cuesta mucho porque el precio va haciendo sus oscilaciones y alguna vez oye y ahora un trocho grande pero la mayoría de veces no porque se va a salir todo el rato y ahí está el equilibrio de los tendenciales este es el problema en los tendenciales que para pillar largos recorridos y no caer en esto hay que dejarlo sufrir claro que hay maneras de utilizarlo más para evitar las otras pero un tendencial puro es uno de los casos de trelling aunque ya os lo comenté en la teoría es verdad que trelling acopla bastante acopla bastante pero en porcentaje acopla menos entonces acopla bastante quiere decir que lo lo vas a lo metes ahí pero 25 y luego empezarás a ver que a veces ha degradado ha degradado 
+
+
+
+**es que el trelling hay veces que se va directo a pérdidas igual por el cierre o algo y hace más de lo configurado**   
+que te pierde más de lo que tienes esperado que es decir? depende cómo lo tengas votado si lo pones desde el principio si lo pones en principio que se siempre puesto en mercado al final claro te puede pillar un gapos aquí en este caso vas a tendencia y te vas a tragar claro los resultados el otro día lo hablaba en el directo del jueves había no sé qué acción había caído 15 pues te lo tragas claro esto hay en acciones tienes ese problema aquí muy diversificado y porque te lo tragas en tendencia tenés el problema pero ya veremos otro tipo de estrategias cuidado es decir al final ahora estamos viendo esta pero pero que tiene su lado bueno y su lado malo al final y por eso la idea es tener varias tener una así tener otra que te lo compensa y ésta te queda enganchada pero a lo mejor tienes otra que había iba corto en petróleo y no sé qué hay que ir diversificando los tendenciales ya digo que son de hecho cuando uno no tiene mucha experiencia son sistemas bastante poco llevaderos vale lo hablamos en la teoría normalmente es más tendencial hay más llevadero un sistema antitenencial porque porque el antitencial no deja no tiene colas largas en cambio los tendenciales o sea con dentro lateral no para de fallar no para de fallar no para de fallar y te devuelve mucho el mercado 
+
+
+
+**¿tendencial puro no es usual poner un SL fijado mejor trailing?**  
+depende en que que vayas depende en que vayas un esto en un tendencial en un tendencial puro el trailing y generando somos súper amigos de los que los digo estamos ahora empezando las prácticas como el que dice vale es la primera estrategia que hemos hecho vale pero -si algún tipo de sistema va bien el trailing es en el tendencial-  en el tendencial puro si alguno vale va bien este. nosotros operando en live ahora no usamos traling. vamos a SL. pero no es tendencial puro no es tendencial puro en un tendencial puro ya digo el trailing es el caso que más que más sentido tiene sobre todo en acciones sobre todo en acciones buscando el largo recorrido que es un poco la idea este sistema que lo puedes configurar así pero no es la idea ya ese sistema y por eso lo hemos metido en las 100 acciones es que corra. vale es un sistema para correr esta es su idea su sentido y claro es un o sea es un sistema que cuando netflix sube un 200 por ciento lo pilla me entiendes ahora eso tiene un precio me entiendes eso tiene un precio cuando meta está en lateral un montón de tiempo pues te lo tragas ahora en cambio está en tendencia que alucinas pero claro tu imagínate ya en su setup básico que no no no no voy ahora a 6020 vale que solo hablamos y le quito el filtro vale esto ya es configuración básica original sin hacer nada el largo que lleva en meta 
+
+
+![](../img/185.png) 
+
+está comprado ahora mismo en 119.20 están 470 lleva 400 por ciento claro eso sólo lo pillas así sólo pillas así claro a costa de eso aquí se te ha tragado tres hostias que te han dejado la cuenta bonita pero hay que estar dimensionado para ello y cuando está estado en lateral pues está cosido también claro 
+
+bueno en estas etapas ha aguantado muy bien porque claro tiene mucho margen pero hay acciones o yo que sé cuando netflix mira netflix es tremendo porque netflix tuvo ahora sí pero a tener una época hace tiempo y ahí a la tragadita perdona venga comprado en 95 98 y te sacan 300 
+
+![](../img/186.png) 
+
+bueno tiene lo bueno y tiene lo malo pero cuando se pasa una época mala pues te hace polvo pero es aquí el tiempo que está que no hace nada si no si no si no al final coge tendencia en el tendencial 
+
+con SL puro tiene que tener otra salida, si yo aquí este sistema tiene puesto un esto pero como salgo tengo que necesito otras sí o sí porque si no vuelve yo te desactivo el trailing ahora y te pongo el mismo en stop el mismo 0 20 
+
+![](../img/188.png) 
+
+no sale nunca
+
+![](../img/189.png) 
+
+porque no cae 0 20 el precio de entrada nunca ya tiene que caer 0 20 del punto de entrada, al final no es igual 0 10 necesita otra salida cambio el trailing no el trailing garantiza que no necesita nada más entonces si yo no quiero muchos grados de libertad y demás quiero **simple** trailing me soluciona que sólo puedo usar esa salida yo aquí sólo tengo un donchian y una salida nada más 
+
+**¿pérdidas se podían compensar con el lado corto bastante bien?**   
+Cuando hablamos de si las pérdidas del lado largo se podrían compensar operando también el lado corto, la respuesta es que sí, en teoría es posible. Pero en la práctica es muy difícil operar cortos en acciones con un sistema tendencial como este. Es factible, pero muy complicado.
+
+La estructura del mercado lo explica. Las acciones suelen mostrar caídas muy bruscas y recuperaciones igual de rápidas. Es decir, el precio baja fuerte, pero rebota enseguida. Esto hace que un tendencial corto tenga enormes dificultades para mantenerse en la operación: entra bien, el precio cae, pero el rebote lo expulsa casi de inmediato.
+
+Para ilustrarlo, probamos exactamente el mismo Donchian pero aplicado al corto. En cuanto lo activamos correctamente (con el filtro bien configurado), se ve claro: pierde de forma sistemática. No porque el código esté mal, sino porque las acciones no desarrollan tendencias bajistas limpias con frecuencia suficiente. El precio retrocede constantemente hacia la media y rompe cualquier estructura tendencial bajista antes de que pueda generar beneficio.
+
+En un gráfico se ve muy claro: el sistema entra en una ruptura bajista, el precio cae unos días, pero enseguida rebota con fuerza y te saca. Luego vuelve a caer, pero ya estás fuera; el sistema vuelve a entrar tarde, y vuelve a producirse otro rebote que lo vuelve a expulsar. Este comportamiento es habitual en acciones y explica por qué el lado corto, usando un Donchian tendencial, prácticamente no funciona.
+
+Por esta misma razón, no basta con invertir el setup del lado largo. Para operar cortos en acciones suele hacer falta *otro tipo de lógica*, normalmente más rápida en las salidas y en muchos casos con componentes que se acercan más a *mean reversion* que a tendencia pura. Con un tendencial diario clásico, el lado corto acaba siendo estructuralmente inferior.
+
+Incluso en nuestra operativa con el Nasdaq lo hemos visto: el lado corto se puede operar, pero es más volátil y más ingrato, y en varios años (como el pasado) sistemas sólidos como Apolo han acabado perdiendo en cortos a pesar de funcionar bien en largos.
+
+
+
+**¿a mejor bajar el frame más tendencia bajista más?** 
+
+Aquí tienes una versión **más clara, ordenada y narrativa**, manteniendo **todas tus palabras y el sentido técnico**, solo mejorando el léxico y la cohesión. No he eliminado información.
+
+---
+
+Sobre si **bajar el timeframe** podría ofrecer más tendencia bajista: bueno, puedes hacerlo, sí, pero también puedes optar por operar *otro tipo de sistema*, Antonio. No hace falta limitarse a buscar tendencia. Perfectamente puedes buscar tendencia en el lado largo y trabajar *anti-tendencia* en el lado corto. Ambas cosas son válidas.
+
+Bajar el timeframe también es posible; no digo que no. Pero hay que entender que el mercado es *fractal*: en el lado corto, si bajas el timeframe, ganarás algunas cosas pero perderás otras. No es necesariamente más sencillo; de hecho, suele ser más difícil. Aunque es cierto que en marcos temporales más cortos puede ayudarte en el *control del riesgo*, sobre todo reduciendo pérdidas cuando la operación falla. En ese sentido, sí puede funcionar mejor. Pero también te expulsará antes de las operaciones, así que no todo es ventaja.
+
+Por eso *tendencia pura en cortos es complicado*. Muy complicado. En el lado corto hay que buscar otro enfoque, más basado en *breakout anti-tendencial*, en rupturas rápidas para salir pronto. Trabajar salidas por tiempo, por take profit, marcar un objetivo total o parcial, jugar con esas opciones. Ese es el camino más práctico.
+
