@@ -265,6 +265,12 @@ Voy a subirlo todo en cuanto tenga un momento. Quizá lo haga durante la pausa, 
 
 ### Definición de estrategia ORB clásica
 
+Cargo en TradeStation : [PRACTICA_06.EDL](../PRACTICA%2006.ELD)
+
+1. *Curso-ORB Strategy* → es una **estrategia completa** (probablemente la del curso que estás siguiendo sobre la apertura ORB).
+2. *TSM 1stHour Breakout Strategy* → otra **estrategia**, también basada en la ruptura de la primera hora.
+3. *TSM1stHourBreakout Indicator* → el **indicador** que acompaña a esa estrategia, y que probablemente pinta en el gráfico los niveles de ruptura (líneas de alta y baja de la primera hora).
+
 - [Estrategia ORB clásica](../Estrategia%20ORB%20básica.pdf)
 
 la definición de una estrategia o orb clásica no deja de ser un sistema principio intradiliario vale un sistema de breakout que utiliza el rango principalmente de apertura pero no sólo, se puede hacer con el cierre empezando en el cierre anterior, empezando con empezando con la apertura que es uno típico, o simplemente ignorando el periodo, de acuerdo, ignorando el periodo sino un breakout que tengo uno otro preparado que yo creo que no nos nos dará y seguramente lo haremos el próximo día un breakout que no es open breakout, vale porque uno es revés al final un opening range breakout pues puede ser un volatilidad breakout directo, pero sin centrarse en el opening,  al final un sistema intradiliario es muy parecido a un sistema diario simplemente tiene un par o tres de características que lo hacen especial y dos o tres cositas que suelen ir muy bien en los sistemas interdiarios y que ahora os voy os voy a contar
@@ -272,9 +278,29 @@ la definición de una estrategia o orb clásica no deja de ser un sistema princi
 
 **Características principales**
 
-- lógicamente que tiene especial primero es decidir en qué time frame lo operamos acuerdo esa es la primera característica obligatoria en un en un sistema interdiario porque en un diario pues el diario semanal no hay debate en un en un interdiario lo puedo poner en un minuto en 5 el 10 15 20 30 en 60 y ahí está el debate , puede ir hay gente muy partidaria de usar divisiones exactas con la con las horas decir que todas garantizarse que todas las velas del día sean iguales para lo cual tenemos que hacer un múltiplo de normalmente 30 o por ejemplo 30 o 15 porque ahí con de 30 en 30 normalmente cuadra pero en estados unidos de futuros por ejemplo no porque el usuario acaba a normal es acabar 10 y cuarto  entonces ahí ya tienes que ir si quieres hacer eso tienes que ir 15 minutos o 5 minutos, porque si no no cuadras, y en cambio en europa así que con 30 pues suele ser poder cuadrar, hay gente cambio muy partidaria de que sean divisores de 60 que siempre sean divisores de 60 vale entonces que todos los números se puedan llevar a 60, a mí por ejemplo particularmente me gusta usar time frames raros también nos digo que no no no es la gran decisión que no es la cosa más importante para nada es una casi anecdótica pero como es anecdótica me gusta salirme porque porque al final como normalmente yo en este tipo de sistema no voy a considerar las noticias como tal, que es una es un sistema que está basado en pautas de precio, una manera de esquivar las noticias es no coincidir con las horas en punto, de acuerdo no coincidir porque las noticias se suelen dar hay 30, en punto, vale con alguna excepción las noticias me refiero a las conocidas, luego hay imprevistos vale entonces una manera es esa no es usar 21, minutos 23, 28, nosotros por ejemplo nemesis actualmente lo operamos en 28, de acuerdo nemesis ahora lo operamos en 28, hemos operado en 21, hemos operado en 60 y pico, en 90 y tantas, vale es decir pero bueno tengo reconozco la manía, y otra manía que tengo es para un porque esto ya lo hace bastante gente para no coincidir con esa otra gente es que la mi división no es no es exacta con con las horas del mercado, las horas de mercado las puedes contar por ejemplo el `sp500` ahora hablo de memoria para que son 500 o no son 450 minutos creo abierto no 450 el s p no es regular ahora hablo de memoria 24 horas son 1440 pues 23 son 60 menos no falla y bueno ahí vas vas calculando bueno es igual ahora no importa las que sean entonces tú calculas la división exacta y puedes buscar más o menos algún número que te cuadre que hay muchos que cuadran de cuidado, pero a mí lo que me gusta es que la última sea cercana cercana a ser completa pero sin llegar a serlo, de acuerdo, es una manía es decir ha sido un periodo que seguramente usa poca gente, seguramente usa poca, y nosotros en este caso preferimos usar un periodo un periodo pues más más raro pero insisto que no es algo súper importante no es algo súper importante
 
----
+- ***en qué *time frame* se va a operar***
+
+La primera decisión esencial en un sistema intradiario es definir en qué *time frame* se va a operar. Esa es siempre la característica básica.
+En un sistema diario o semanal no hay debate posible, pero en un sistema intradiario sí: podemos trabajar en 1, 5, 10, 15, 20, 30 o 60 minutos, y ahí es donde comienza la discusión.
+
+Hay operadores que prefieren usar divisiones exactas de hora, para garantizar que todas las velas del día sean iguales. En ese caso, se eligen múltiplos de 30 o de 15 minutos, ya que suelen encajar bien. Sin embargo, en los futuros de Estados Unidos esto no siempre se cumple, porque el mercado no cierra exactamente a una hora redonda (por ejemplo, puede cerrar a las 10:15).
+Por eso, si se busca una división precisa, lo lógico es trabajar con velas de 15 o 5 minutos. En cambio, en los mercados europeos, usar intervalos de 30 minutos suele cuadrar perfectamente.
+
+También hay quien prefiere *time frames* que sean divisores exactos de 60, de forma que encajen de manera limpia en la hora.
+A mí, personalmente, me gusta utilizar *time frames* poco comunes. No es una decisión crucial —más bien anecdótica—, pero precisamente por eso me gusta salirme de lo estándar.
+
+La razón es que en este tipo de sistemas, al estar basados en pautas de precio y no en noticias, una forma sencilla de *evitar el impacto de las noticias programadas* es no coincidir con los horarios habituales en que se publican: en punto o y media.
+Por eso, uso intervalos como 21, 23 o 28 minutos.
+Por ejemplo, en la estrategia *Némesis* actualmente operamos en 28 minutos, aunque en el pasado la hemos usado en 21, 60 y hasta 90 y pico minutos.
+
+Reconozco que es una manía personal, pero también una forma de evitar coincidir con muchos otros operadores que usan divisiones convencionales.
+Por ejemplo, el S&P 500 (hablo de memoria) tiene alrededor de 450 minutos de negociación regulares al día. Si se quisiese dividir el día completo en partes iguales, se podrían probar varios números que encajen, pero yo prefiero que la última barra quede *casi completa*, sin llegar a serlo.
+
+En definitiva, es una preferencia: usar un *time frame* poco habitual, que probablemente emplea poca gente.
+No es algo decisivo, ni mucho menos, pero sí una forma de introducir un pequeño factor diferencial sin alterar la esencia del sistema.
+
+
 
 - ***Tendencialidad y reversión*** : 
 
@@ -292,141 +318,496 @@ pero no sé porque ya lo sabéis un día porque europa siempre ha decidido abrir
 
 ![](../img/009.png)
 
-tú eliges donde operar y es frecuente hacerlo frecuente hacerlo vía cambiando la sesión ya por el código del sistema como tú quieras pero tú puedes elegir donde operar en europa lo más habitual es empezar a 8 o 9am no os calentéis en empezar en empezar antes pero también se podría hacer y en eeuu hay gente que lo hace podemos probarlo quiero decir que podría hacer un rango o tú eliges no tú eliges donde operar tú eliges donde operar y es frecuente hacerlo frecuente hacerlo vía cambiando la sesión ya por el código del sistema como tú quieras pero tú puedes elegir donde operar en europa lo más habitual es empezar a 8 o 9 no os calentéis en empezar en empezar antes pero también se podría hacer y en eeuu hay gente que lo hace podemos probarlo o sea con este revelo lo podemos jugar quiero decir, en que tú puedes hacer un rango este que hemos hecho de faufman es parte del rango de la primera hora que es una foto muy típica la primera hora se usa de rango y por cierto yo que eso ya os lo daremos el código que como se ha dicho el original es de kaufman pero hemos desarrollado uno propio pues ya os dejo ahí abierta a aquellos que sepáis programar o que empecéis a hacer pinitos que hagais lo contrario, es decir esto es un open range breakout 
+tú eliges donde operar y es frecuente hacerlo frecuente hacerlo vía cambiando la sesión ya por el código del sistema como tú quieras pero tú puedes elegir donde operar en europa lo más habitual es empezar a 8 o 9am no os calentéis en empezar en empezar antes pero también se podría hacer y en eeuu hay gente que lo hace podemos probarlo quiero decir que podría hacer un rango o tú eliges no tú eliges donde operar tú eliges donde operar y es frecuente hacerlo frecuente hacerlo vía cambiando la sesión ya por el código del sistema como tú quieras pero tú puedes elegir donde operar en europa lo más habitual es empezar a 8 o 9 no os calentéis en empezar en empezar antes pero también se podría hacer y en eeuu hay gente que lo hace podemos probarlo o sea con este revelo lo podemos jugar quiero decir, en que tú puedes hacer un rango este que hemos hecho de faufman es parte del rango de la primera hora que es una foto muy típica la primera hora se usa de rango y por cierto yo que eso ya os lo daremos el código que como se ha dicho el original es de kaufman pero hemos desarrollado uno propio pues ya os dejo ahí abierta a aquellos que sepáis programar o que empecéis a hacer pinitos que hagais lo contrario, es decir esto es un open range breakout :
 
 
 
-este sistema de Kaufman que repito este es el original es es esto que veis aquí es esto final usa tres datas del mismo activo 10 minutos 60 y diario el 60 simplemente es para delimitar el el primer a la primera hora que es el rango es el rango este que marca de apertura para el que cual opera
+```sh
+# TSM 1stHour Breakout : First-Hour Breakout System
+#  Copyright 1999-2004, P.J.Kaufman. All rights reserved.
+#  (Adapted from M. McNutt, "First Hour Breakout System," Technical Analysis of
+#	Stocks & Commodities, July, 1994) 
+#
+#  SETUP INSTRUCTIONS:
+#  1. DATA1 should hold 10-minute bars of a series
+#  2. DATA2 should hold 60-minute bars of a series
+#  3. DATA3 holds daily data of the same series
+#  4. In FORMAT/PROPERTIES do not allow multiple entries in the same direction 
 
----
+	vars:	Sess1FirstBarDAte(9, data2), Sess1FirstBarHigh(0, data2),
+		Sess1FirstBarLow(0, data2), avedayrange(0,data3);
+	input: length(10);
 
-### Verificación visual del gráfico
+	avedayrange = average(high of data3 - low of data3, length) of data3;
 
-y yo os decía vamos a verlo aquí esperar otra vez hemos hecho la la de siempre la de cada día la de cada día como no tengo así todos los gráficos pues no me acuerdo más está bien así está bien aquí pues mira hoy no operado le hemos puesto de 8 a 10 de 8 a 10 8 a 10 y ahora que no sé si hacer la pausita ahora era casi que os hago la pausita ahora un momentito y ya los metemos un poco más a fondo ya vamos del tirón ya vamos del tirón para para para el final vale así que os lo voy a poner ahora a poner cinco minutitos cinco minutitos de pausita y así preparo los papers los dos ya vamos todos ahí a tope voy a poner el reloj podéis ir a merendar o lo que necesitéis ahí tengo los cursos abiertos vamos ahí el relojito está aquí cinco minutos pausa grabación donde se pasa la grabación venga
+	if (time of data2 = Sessionstarttime(0,1) of data2) or
+   		(date of data2 > date[1] of data2) then begin
+		Sess1FirstBarDate = date of data2;
+		Sess1FirstBarHigh = high of data2;
+		Sess1FirstBarLow = low of data2;
+		end;
+	If (Sess1FirstBarDate = Date of data2) and 
+   		(time of data2 < Sessionendtime(0,1) of data2) then begin
+		if close[1] < Sess1FirstBarHigh then Buy Next Bar  at 
+			Sess1FirstBarHigh + 20 point stop;
+		if close[1] > Sess1FirstBarLow then Sell Short Next Bar  at
+			Sess1FirstBarLow - 20 point stop;
+		end;
 
----
+	if low <= Sess1FirstBarHigh - avedayrange then Buy to Cover Next Bar  at market;
+	if high >= Sess1FirstBarLow[1] + avedayrange then Sell Next Bar  at market;
+```
 
-### Pausa y preparación de materiales
+<div style="border-left: 4px solid #f39c12; background: #fff8e5; padding: 10px 15px; margin: 10px 0;">
+  📈 <strong>Estrategia original</strong><br>
+Esta estrategia aplica el concepto clásico de *Opening Range Breakout* (ruptura del rango de apertura) usando tres marcos temporales.
 
-estaba hablando aquí solo muy bien se les llevamos me había silenciado en los dos sitios en el micro y en la plataforma entonces claro no se me había a ver que estén los pd que he tenido que ir a ir a visitar al señor roca y estaba medio a medio hacer los los pdfs los pdfs a ver esto lo vamos a hacer aquí material para alumnos documentación un momentito documentación sistema de reventar ya os anticipo que vamos a iniciar con esto una serie de sistemas de este tipo vamos a hacer una unos cuantos vamos a hacer unos unos cuantos y el revés y el oeste porque no me lien que más que más esa deje entraría uno a ver que quito ya esto pero se han corregido lo más del tanto a emitir ésta ahí vamos y miráis de mi belleza incalculable
+Cada día, en cuanto empieza la sesión, el sistema identifica la **primera barra** y registra su **máximo y mínimo**: ese es el rango inicial de referencia. A partir de ahí, mientras dura la sesión, coloca **órdenes stop** para entrar al mercado solo si el precio demuestra fuerza y rompe ese rango:
 
----
+* Si el precio supera el máximo de la primera barra, lanza una orden de **compra stop** ligeramente por encima de ese nivel (20 puntos más).
+* Si el precio perfora el mínimo de la primera barra, lanza una orden de **venta en corto stop** 20 puntos por debajo.
 
-### Carga de documentos y materiales del curso
+El tamaño de estas rupturas (20 puntos) actúa como filtro para evitar señales falsas.
 
-vamos con el último hay dos que son muy parecidos y os comentaba que están extraídos de cientos libros como que el hecho cual no he hecho este noche una estrategia sin traer esto está bien los pongo ahí los tres los tres documentitos material para alumnos comentación a ver si me deja para los tres a la vez 2 eba 3 bien seguimos a ver esto que lo tenga bien que he visto que tenía malo la cosa y esto no se ve muy bien aquí de que habíamos el color amarillo que se va un poco mejor estaba con éste y ha tocado un poco las líneas para que las las vieres un poco mejor eso es el dax 12
+Además, el sistema calcula, a partir de datos diarios, el **rango medio de los últimos 10 días**, que usa como referencia para definir salidas.
+Una vez dentro del mercado, busca un movimiento equivalente a ese rango medio diario para cerrar la posición:
+
+* Si la operación es corta y el precio cae hasta una distancia igual al rango medio desde el punto de ruptura, cierra la posición en la siguiente barra.
+* Si la operación es larga y el precio sube la misma distancia hacia arriba, también cierra la posición en la siguiente barra.
+
+En resumen, la lógica es: *esperar la ruptura del rango de apertura, entrar con confirmación de fuerza, y salir al alcanzar una extensión típica del movimiento diario.*
+No usa *stop loss* fijo ni cierre forzado al final del día, por lo que la posición puede mantenerse abierta si no se alcanza el objetivo.
+
+</div>
+
+
+![](../img/010.png)
+
+le hemos puesto de 8h a 22h 
+
+
+los pongo ahí los tres los tres documentitos material para alumnos comentación a ver si me deja para los tres a la vez 2 eba 3 bien seguimos a ver esto que lo tenga bien que he visto que tenía malo la cosa y esto no se ve muy bien aquí de que habíamos el color amarillo que se va un poco mejor estaba con éste y ha tocado un poco las líneas para que las las vieres un poco mejor eso es el dax 12
 
 ---
 
 ## 🔍 Análisis del sistema ORB en el DAX
 
-### Revisión de esquema y documentos
 
-a ver para lo que os decía antes vale volvemos al urb en aureli está está aquí en documentos aquí mismo tienes un sitio donde hay documentos luego ya por la noche sino mañana te trae esta noche subiros lo al discord pero bueno de momento lo tenéis aquí para los que estáis en la clase en estrategias entre día 1 y 2 pues veis ahí si quieres abrir alguno abrir el 2 porque ahí el 2 tenéis ese esquema general que es esto que estaba diciendo ahora que bueno no ha ido bien esto me cago en 10 que ha pasado así siempre porque no pasarás los esto y hoy fino fino 1 2 3 y 4 no vale
+También se habla aquí de las *pautas horarias* y de cómo ciertos filtros mejoran los resultados cuando se aplican de forma precisa.
+Por ejemplo, uno de los filtros más comunes en estrategias de ruptura es comprobar si existen *pautas previas de congestión*. Este enfoque es muy utilizado, aunque en este sistema concreto aún no lo hemos implementado.
 
----
+Recordemos que el mercado tiende a moverse en ciclos de *congestión–expansión–congestión–expansión*.
+Por tanto, si queremos capturar una fase de expansión, un buen filtro consiste en verificar que el día anterior haya habido contracción.
 
-### Esquema general y pautas horarias
+Una manera sencilla de hacerlo es mediante la detección de una *inside bar* en el gráfico diario.
+Una *inside bar* es una vela cuyo rango completo (máximo y mínimo) está contenido dentro del rango de la vela anterior.
+Técnicamente, se identifica cuando:
 
-el esquema general que es el que no no he evitado que lo tradujera porque que lo redujera porque me quería que estuviera enterito vale y es lo que os decía antes no las pautas horarias también habla y por ejemplo de eso mejor los resultados con más precisas de un también filtros de este tipo no si hay pautas si hay pautas previas que hablan de la congestión está muy usada está es muy muy usada vale no la tenemos puesta ahora pero ya la ya la pondremos esta no la creo que no la hemos implementado en este pero esto es bastante bastante usual recordar que el mercado sigue mucho el ciclo congestión expansión congestión expansión entonces si yo busco expansión a un filtro muy bueno es ver que el día anterior ha habido contracción
+* el máximo de hoy es menor que el máximo del día anterior, y
+* el mínimo de hoy es mayor que el mínimo del día anterior.
 
----
-
-### Filtro con vela Inside Bar
-
-entonces si tú evaluas eso con una pauta muy sencilla en la vela diaria que sea un en site bar que es una en site bar es una vela que está toda ella dentro que ahora no se ve muy bien esta no lo es por poco esta por ejemplo es una en site bar bueno no igual no tampoco pues no hay muchas pero sabéis lo que es una que está completa dentro de la anterior vela todo el cuerpo como se mira eso pues que el máximo de hoy sea inferior al máximo del día anterior y que el mínimo sea mayor que el mínimo del día anterior eso es una en site bar en diario es comparando máximo con máximo mínimo con mínimo y una en site bar pues lo contrario entonces en en pautas en sistemas de breakout muchas veces se busca eso
-
----
-
-### Reflexión sobre las pautas y ejercicios
-antes os comentaba os decía que java deberes no es que cuando digo esto no es que ponga deberes pero os lo dejo para que reflexionéis esto al final bueno antes veamos lo que hace este sistema mira vamos a verlo con este con este corto de aquí vamos a entenderlo y una vez lo entendamos pues ya vamos a ir porque muchas líneas aquí en las líneas que son punteadas las que marcan las señales de entrada lo único que cada man tiene este no lo hemos tocado el nuestro sí que está tocado ahora lo veréis tiene fija una un rango de 20 puntos extra para para entrar es decir es un breakout vale un rent breakout que le añade 20 puntos para para entrar entonces este este valor vale está fijado por la primera vela de 60 cuál es la primera vela de 60 esta es la de cierre esta es la de apertura vale esta es la de apertura a ver si me puedo acercar más intentar hacer esto un poquito más grande luego ya lo haré pequeño es la naranja vamos a hacerla más gorda porque esto creo que se va a ver poco y vamos a hacerla bastante gruesa va a quedar raro pero bueno es igual eso es vale esta vela está está vale ahí se ve bien ahora esta vela es la vela de apertura pero esta es la vela de apertura también se ve poco jaimito cuando lo puedo pintar con la plataforma y así pues me va a ir eso es
+En cambio, una *outside bar* sería justo lo opuesto: una vela que abarca completamente el rango del día anterior.
 
 ---
 
-### Ejemplo de la vela de apertura y cálculo del rango
+veamos lo que hace este sistema mira vamos a verlo con este con este corto de aquí vamos a entenderlo y una vez lo entendamos pues ya vamos a ir porque muchas líneas aquí en las líneas que son punteadas las que marcan las señales de entrada lo único que Kaufman tiene  fija una un rango de 20 puntos extra para para entrar es decir es un breakout vale un range breakout que le añade 20 puntos para para entrar entonces este este valor vale está fijado por la primera vela de 60 cuál es la primera vela de 60 esta la naranja 
 
-esta vela es la apertura esta vela tiene un rango de máximo de 461 y de mínimo de 436 en principio el sistema así como está ya lo explica el libro en su opción que no deja de ser una muestra decir al final los sistemas prácticamente el 100% de los sistemas queda caos van a son sistemas podemos decir completos el mismo ya el texto te sugiere cosas y tal o sea son poco ideas para que tu explores este es el éxito en un mínimo aquí en 436 vale tiene 436 y vais a ver cómo la venta como es menos 20 pues tiene que haber venido en 416 y bueno no igual no lo veis pero ya lo digo yo short en 416 vale es decir el mínimo que marca en la primera hora menos 20 puntos en los 20 puntos esto ya os digo yo igual que os dije que que también lo veréis sistemas de bollinger en ambos lados que lo trabajaremos vale un día pero cuando hagamos a ver ratio seguramente salimos varios días porque lo haremos en los dos lados del mercado este también es uno que se puede hacer vale se puede hacer
+![](../img/012.png)
 
----
+esta vela es la apertura esta vela tiene un rango de máximo de 461 y de mínimo de 436 en principio el sistema así como está ya lo explica el libro en su opción que no deja de ser una muestra decir al final los sistemas prácticamente el 100% de los sistemas queda kauffman son sistemas podemos decir completos el mismo ya el texto te sugiere cosas y tal o sea son poco ideas para que tu explores entonces este es el edge, un mínimo aquí en 436 vale tiene 436 y vais a ver cómo la venta como es menos 20 pues tiene que haber vendido en 416 
 
-### Exploración inversa y activos adecuados
+![](../img/013.png)
 
-entonces os recomiendo que probéis a ver en qué activos seguramente en qué activo irá mejor en un activo a más de mí en revertir hablábamos antes de los tos incluso les de 500 activos un poco más pesados vale más pesados entonces al contrario es decir el en muchas ocasiones el rango de la primera hora marca una parte importante de la sesión no os diría tampoco que entraras directamente a vender a comprar en el mínimo y a vender en el máximo o incluso en este caso a lo mejor en este caso del dax hablo a lo mejor cogería el rango desde todo el día que ha hecho toda la noche hasta las 8 9 le puedes dar un poco más de margen y a partir de ahí sí que compra en el mínimo de ese rango es decir lo contrario que estamos haciendo ahora no no operar la ruptura sino operar la reversión lógicamente con esto y ya está y ya veréis que varios activos estos va a ir bien contrariamente a lo que estamos haciendo lo contrario pero eso a veces lo que os digo siempre explorar las ideas al revés de lo que lo que os dice vale ser valientes en sentido explorar las ideas al revés porque muchas veces el revés van bien también en algunos casos y este es uno de ellos es uno de ellos donde la pauta de reversión de la primera hora a mejor extendiéndola un poco en el premarket pero suele suele ver bien suele ver bien vale
+igual no lo veis pero ya lo digo yo short en 416 vale es decir el mínimo que marca en la primera hora menos 20 puntos, esto ya os digo yo igual que os dije que que también lo veréis sistemas de bollinger en ambos lados que lo trabajaremos vale un día, pero cuando hagamos a ver ratio seguramente salimos varios días porque lo haremos en los dos lados del mercado, este también es uno que se puede hacer 
 
----
+**Exploración inversa y activos adecuados**
 
-### Descripción del sistema actual
+entonces os recomiendo que probéis a ver en qué activos seguramente en qué activo irá mejor en un activo más de maen revertir hablábamos antes de incluso les de sp500 activos un poco más pesados, vale más pesados, entonces al contrario, es decir, en muchas ocasiones el rango de la primera hora marca una parte importante de la sesión, no os diría tampoco que entraras directamente a vender a comprar en el mínimo y a vender en el máximo, o incluso en este caso a lo mejor en este caso del dax hablo, a lo mejor cogería el rango desde todo el día que ha hecho toda la noche hasta las 8, 9, le puedes dar un poco más de margen y a partir de ahí sí que compra en el mínimo de ese rango, es decir lo contrario que estamos haciendo ahora, no no operar la ruptura sino operar la reversión, lógicamente con SP y ya está, y ya veréis que varios activos estos va a ir bien contrariamente a lo que estamos haciendo, lo contrario, pero eso a veces lo que os digo siempre explorar las ideas al revés de lo que lo que os dice, vale ser valientes en sentido explorar las ideas al revés porque muchas veces el revés van bien también, en algunos casos, y este es uno de ellos es uno de ellos donde la pauta de reversión de la primera hora a mejor extendiéndola un poco en el premarket pero suele suele ver bien, suele ver bien vale,
 
-pero insisto que ahora no estamos haciendo eso ahora estamos viendo la reversión la reversión perdón la break out open range break out marcado por el rango de la primera hora vale esto se podría haber implementado de varias maneras que aún mal lo ha hecho así porque lo ha hecho así porque él sale con una regla del diario que nosotros en principio no bueno en el código hemos implementado la opción de usarla o no pero él sale a través de ahora lo miramos de una tr calcula y está para eso esa media sabe la diaria está para calcular la tr y el de 10 minutos es porque vende ahí o sea en este en este caso porque quiere operar cada más rápido en 10 minutos ahora ahora el fija el rango en el de la hora pero luego a partir de que acaba la primera vela de la hora partir ya en cada 10 minutos podría vender aquí vende en este caso en la primera vela de acuerdo a las 9 y 10 y ha vendido de acuerdo es decir fija el rango hasta las 9 y a las 9 es lo rompe se pone corto y pues no le da muy buenos resultados sí que es verdad que parece la sesión marcada y un poquito perfil no se queda rápidamente lateral aquí su mecanismo de salida no cierra fin de día en nosotros sí pero aquí en su código original que ya explica que está lo publicó la revista esto con commodities en julio del 94 por cierto una revista a la que recomiendo suscribirse pues bueno él opera como veis bueno como veis espérate esto es el indicador es una estrategia esto es esto tcm is trading system and methods es el las siglas de las siglas del libro en inglés todo lo que empieza por tcm es un libro para que te veas aquí esto que creo tengo algunas otras versiones que a verdad que no recuerdo yo creo que deben ser del curso porque como muchos cursos de programación y demás yo creo que es de algún alumno de alguna pieza por dólar y creo que es lo que hacíamos en algún mejor algún alumno de ejercicios para casa o algo no pero bueno lo original es este que empieza por portes de protés en vale aquí ya te ponen las instrucciones y lo que os decía simplemente vende en la pérdida cuando el cierre de la barra anterior pie es menor que el valor que ha guardado como máximo o mínimo de relación en el caso de comprar el máximo más el filtro en el caso de vender el mínimo menos el filtro que lo fija fijo en 20 puntos es un tanto absurdo porque hablan activos que 20 puntos será mucho 20 pocos la verdad que ahora mismo no recuerdo no sé si abierto se acordará en qué activo él lo puso original pero el workspace lo tenemos por ahí no creo si a ver que lo voy a abrir lo voy a abrir el workspace más que nada para ver en qué lo ideó él sabes porque así lo lo voy a abrir el workspace suyo el workspace suyo original así veremos para qué activo lo lo pensó lo diseñó lo que fuera no esto debe estar por aquí el capítulo 16 era creo pues no está los países aquí no está los países aquí a coño pues no sé por qué yo pensaba que había workspace vaya hombre mira de paso estoy viendo si tengo el código suyo tocado que lo tengo que lo voy a dejar original vale el suyo a no no puedo no puedo claro no puedo no puedo que entonces no me va de pasar que yo vale vale pues no sé por qué yo pensaba que teníamos pues bueno pues es igual no no lo sé que tenía que mirar el libro ahora un momento no vamos a perder el tiempo en cual lo tenía lo tenía puesto pero bueno no sé cuál habrán 20 puntos que serán de todas maneras desde el 90 y pico pues habrá cambiado mucho la cosa pero que tendrán unos sentidos y nosotros entonces lo normal en estos casos es hacerlo con un input y como ya os he dicho hasta la saciedad del curso mejor en porcentaje de acuerdo mejor en porcentaje porque así escala si escala si no no escala y no tiene nada que ver 20 puntos con el tax a 14 mil que con el tax a 5000 entonces no es lo mismo así que es mejor escalarlo vale pero ya digo así es como era original
 
----
+**Descripción del sistema actual**
 
-### Cálculo de la salida y explicación del range
+En este momento estamos trabajando con una estrategia de *Breakout*, concretamente un *Opening Range Breakout* definido por el rango de la primera hora de sesión.
 
-en cuanto a la salida fijaros que él fija un average day range que calcula con el data 3 lo que os decía ves hace la media del high menos el low tn periodos eso es un true range no sé por qué no sé no perdón no es un true range es un range es un range no sé por qué lo calcula así porque eso existe de acuerdo pero bueno igual no existía en tiempo porque lo mismo que estas funciones son antiguas decir pues bueno como todo es evolucionado a mejor no no serán pero esto es lo mismo que hacer es lo mismo que hacer a ver a ver a ver a ver el doble price el price sería range y el periodo pues sería lo mismo que hacer esto pero para ser exactos habría que poner range of data 3 hay que hacer esto vale pero bueno que es igual esto no se pedí con los casos de programación esto pero ya para que lo que lo que lo haga que no se vuelva lo que vale sería lo mismo que hacer esto vale haber a range of data 3 que es el high menos low del lente ya está calcula y ya está y si más lo guarda y de ahí cuando el mínimo pierde el máximo que ha guardado también el ser sion first bar hike que es el máximo que ha hecho en los 60 minutos de acuerdo es decir es el máximo que guarda en la apertura es decir ese máximo que guarda para entrar claro es que también es el mismo la misma variable que usa para entrar vale para entrar largo en este caso para entrar corto ha usado session first low porque ha perdido corto menos 20 minutos 20 puntos pues para salir del corto no usa el mínimo sino el máximo de acuerdo usa el máximo y le quita le quita el el rango de la vela de sesión le quita o sea le quita la laboratividad y sale al mercado cuando él pierde ese mínimo vale muchas veces eso no ocurre como pasa aquí y por lo tanto se queda se queda se queda se queda hasta que incluso valdia al día contrario aquí pasa por ejemplo se va bastante a la contra y sale pero pero vaya a la contra no perdón a favor a favor no quiero es que es un sistema como os digo que no es ni me está completo recuerdo está completo porque tiene una salida que si os fijáis es más un tp es más un tp que un una salida en esto pues decir en esto pues no no sé si aquí hay casos graves pero es una salida que no alguno hay no alguno alguno hay alguno hay vez acabas saliendo porque al día siguiente recalcula rangos de acuerdo y por lo tanto vuelve a entrar en el otro lado puede entrar en otro lado se va muy a la contra vale pero durante la sesión ya digo por ir muy a la contra es no se sale es más tp que otra cosa vale es más tp que otra cosa entonces al final de hecho hay algunos la misma sesión no es que quiero ver uno que haga tp la sesión este por ejemplo es este por ejemplo para para ahí vas pues entra en ruptura y al final hace tp es lo que os decía la salida es un tp porque fijaros que calcula del mínimo vale o sea del máximo le resta un valor le resta un valor del rango lo cual lo aleja entonces al final es un es más bien un tp es más bien un tp que son estas líneas que veis aquí la entrada es esta línea punteada menos 20 puntos la salida es la rosa o la contraria que es azul el tema que está un poco medias el mismo en el texto lo dice no recomendable por el un stop y tal o salir a fin de día etcétera
+Este planteamiento podría haberse implementado de varias formas, pero Kaufman lo desarrolla así por una razón concreta: él utiliza una **regla de salida basada en el rango diario**, y en nuestro código hemos dejado la opción de activarla o no.
 
----
+Kaufman trabaja con un *time frame* de 10 minutos porque busca una operativa más dinámica, sin esperar una hora entre decisiones.
+Primero fija el rango de referencia en el gráfico horario, y una vez termina la primera vela de una hora, empieza a operar sobre velas de 10 minutos.
+En su ejemplo, cuando a las 9:00 se completa la primera vela, el precio rompe el rango y entra corto a las 9:10.
+En ese caso concreto la operación no resulta especialmente favorable.
 
-### Elección del tipo de operativa intradía
+![](../img/014.png)
 
-no es otra la cosa que decidimos en una entraría si queremos una entraría puro me refiero al salir o no fin de día lo normal es salir a fin de día vale pero es verdad que no es obligatorio entra un poco lo que os decía antes de que tengo yo y que quiero vale y también depende mucho de cuenta al principio este tipo de sistemas son los muy operados empezamos con uno la otra vez más de largo plazo y ahora empezamos uno con más de entraría vale este tipo de sistemas por aplastante mayoría es el primero que elegiría es la mayoría de vosotros para empezar a operar tipo de este por qué porque y cerrando fin de día y con esto porque porque al final te permite te permite tener seguramente de rodones un poco más bajos bueno el dax quizá no pero pero bueno no podemos operar en un futuro un poquito más pequeño en un activo que no se mueva tanto no por ejemplo el spy el cú cú etcétera pero a el minidax el micro pero realmente son sistemas que son más manejables y que normalmente conseguiremos drawdowns más bajos y por lo tanto poderlos operar con una cuenta más pequeña porque requeriremos menos garantías para operarlos vale cambio sistema que va gráfico diario semanal pues es más complicado por lo tanto la primera elección de un sistema es probable que sea un intradiario de acuerdo por qué primero porque tenemos la sensación de poder controlar el riesgo mejor y después porque es verdad es verdad que al no asumir el riesgo gab si yo quiero cerrar a fin de día pues voy a poder controlar mejor ese riesgo bien no eso es otro sistema que tenemos ahí de gaps que ya lo haremos
+Se observa que la sesión queda rápidamente lateral, sin tendencia clara, y su sistema no cierra posiciones al final del día, por lo que la operación se mantiene abierta.
 
----
+![](../img/015.png)
+
+En nuestro código, sin embargo, **sí hemos incorporado el cierre de posición al final de la sesión** (*SetExitOnClose*).
+
+El sistema original de Kaufman fue publicado en la revista *Technical Analysis of Stocks & Commodities* en julio de 1994, dentro de un artículo de M. McNutt titulado *First Hour Breakout System*.
+Kaufman lo adaptó posteriormente en su libro *Trading Systems and Methods*, bajo la etiqueta *TSM 1stHour Breakout*, cuyas siglas “TSM” identifican todos los ejemplos derivados del libro.
+
+```sh
+# TSM 1stHour Breakout : First-Hour Breakout System
+#  Copyright 1999-2004, P.J.Kaufman. All rights reserved.
+#  (Adapted from M. McNutt, "First Hour Breakout System," 
+#  Technical Analysis of Stocks & Commodities, July, 1994)
+```
+
+En esencia, el sistema ejecuta una **compra stop** cuando el precio cierra por encima del máximo de la primera hora más un pequeño filtro (20 puntos), o una **venta stop** cuando el precio cierra por debajo del mínimo menos ese mismo filtro.
+El filtro de 20 puntos está definido de forma fija, lo que en realidad es poco práctico: hay activos para los que 20 puntos son muchos y otros para los que son pocos.
+No recuerdo con certeza en qué activo se probó originalmente (quizá Alberto sí), pero el *workspace* original debería estar guardado.
+
+En la práctica, lo habitual es **convertir ese filtro en un parámetro de entrada (input)** y expresarlo **en porcentaje**, no en puntos fijos.
+De ese modo la escala se adapta al valor del activo —por ejemplo, no es lo mismo un DAX a 14 000 puntos que uno a 5 000— y el sistema mantiene proporción.
+
+Así era la versión original de Kaufman, pero en nuestra implementación actual hemos hecho que el sistema escale correctamente.
+
+**En cuanto a la salida**:    
+Kaufman utiliza una medida del *Average Daily Range* (ADR), calculada a partir de *data3*.
+Como se ve en el código, obtiene la media de la diferencia entre el máximo y el mínimo de las últimas *n* sesiones (`high - low`, con `length = 10` en este caso).
+Ese valor representa el rango medio diario del activo.
+
+A partir de ahí, el sistema usa ese rango como una referencia para determinar **niveles de toma de beneficio (Take Profit)**, más que como un mecanismo de cierre técnico o de stop loss.
+
+Concretamente:
+
+* Si la estrategia está **corta**, cierra la posición cuando el precio cae hasta una distancia equivalente al *Average Daily Range* por debajo del *high* de la primera hora:
+  `if low <= Sess1FirstBarHigh - avedayrange then Buy to Cover Next Bar at market;`
+* Si está **larga**, cierra cuando el precio sube esa misma distancia por encima del *low* de la primera hora:
+  `if high >= Sess1FirstBarLow + avedayrange then Sell Next Bar at market;`
+
+En otras palabras, **no se trata de un stop loss dinámico**, sino de una salida tipo *take profit* basada en la amplitud media de los movimientos diarios.
+Durante la sesión, el sistema no contempla una salida contraria ni un cierre forzado: si no alcanza el objetivo, la posición permanece abierta.
+
+En algunos casos, al recalcular los rangos al día siguiente, el sistema puede incluso abrir una posición en el sentido opuesto, lo que da lugar a operaciones consecutivas que van “a la contra”.
+
+El propio Kaufman reconoce en el texto original que esta gestión de salida no es la más recomendable, ya que carece de stop de protección o de cierre al final del día.
+Por eso, en implementaciones más modernas (como la nuestra) se suelen incluir opciones adicionales:
+
+* *SetExitOnClose* para cerrar al final de la sesión,
+* un *stop loss* fijo o porcentual,
+* y una opción para escalar el rango de salida en función de la volatilidad real del activo.
+
+En resumen, la versión original de Kaufman usa el *Average Daily Range* únicamente como un **objetivo de beneficio**, sin control de riesgo explícito dentro del día, lo que hace que su sistema sea más una aproximación conceptual que una estrategia completa lista para operar.
+
+Aqui entra en ruptura y al final hace TP, la salida es un TP calcula del maximo le resta un valor del rango y lo aleja es mas bien un TP. La entrada es esta linea punteada menos 20 puntos y la salida  la linea rosa o la contraria que es azul.
+
+![](../img/016.png)
+
+
+**Elección del tipo de operativa intradía**  
+
+si queremos una entraría puro me refiero al salir o no fin de día lo normal es salir a fin de día vale pero es verdad que no es obligatorio entra un poco lo que os decía antes de que tengo yo y que quiero. al principio este tipo de sistemas son los muy operados empezamos con uno la otra vez más de largo plazo y ahora empezamos uno con más de intraría
+
+este tipo de sistemas por aplastante mayoría es el primero que elegiría es la mayoría de vosotros para empezar a operar tipo de este por qué porque y cerrando fin de día y con sp etc porque porque al final te permite te permite tener seguramente de drawdowns un poco más bajos bueno el dax quizá no pero pero bueno no podemos operar en un futuro un poquito más pequeño en un activo que no se mueva tanto, pero a el minidax el micro pero realmente son sistemas que son más manejables y que normalmente conseguiremos drawdowns más bajos y por lo tanto poderlos operar con una cuenta más pequeña porque requeriremos menos garantías para operarlos, en cambio un sistema que va gráfico diario semanal pues es más complicado por lo tanto la primera elección de un sistema es probable que sea un intradiario de acuerdo por qué? primero porque tenemos la sensación de poder controlar el riesgo mejor y después porque es verdad es verdad que al no asumir el riesgo gub si yo quiero cerrar a fin de día pues voy a poder controlar mejor ese riesgo 
+
+
 
 ### Implementación de cambios y nuevas configuraciones
 
-bien vamos ahora a meterle la los cambios que hemos que hemos hecho que veréis ahí que tiene muchos inputs pero nuevamente son de configuración y no tienen porque usarse hemos dejado su mecanismo por si lo queremos usar vale pero hemos implementado algunos cambios bastante parecidos a los que ya habíamos visto la otra vez algunos de ellos el código es es el mismo pero hemos introducido como input el porcentaje para confirmar la entrada en tanto por cien en este caso no por puntos sino en un porcentaje si es cero pues no cero de acuerdo y si es un porcentaje pues el que sea hemos incorporado un porcentaje de esto y un porcentaje de profit en tanto por cien que si es cero no actúa vale
+**[TSM 1stHour Breakout : Straegy](../PRACTICA%2006.ELD)**
 
----
+<div style="border-left: 4px solid #3498db; background: #eaf4ff; padding: 15px 20px; margin: 15px 0; border-radius: 6px;">
 
-### Uso de variables tipo switch
+**1) Visión general**
 
-esta es una manera siempre y recomendable de programar es decir haciendo con con variables tipo switch no que al final si yo le pongo si tal es mayor que cero con eso estoy usando un switch de acuerdo ahora llegaría aquí vale si el porcentaje esto es mayor que cero si no pues no entra de acuerdo esto es bastante bastante habitual de una manera fácil y sencilla de pues configurar los sistemas con muchos inputs pero que no tienes porque usarlos es al final para hacer pruebas y poder probar distintas cosas como como ese módulo que comentaba alguien no recuerdo si os lo daríamos que sí pues para probar distintas entradas distintas salidas sobre el mismo código pues meter varios módulos de entrar y de salir y automáticamente meterlo a sistema para probar de hecho el mismo tres station permite hacer eso es decir yo aquí recordar aquellos que no estés familiarizados que yo puedo añadir los sistemas de manera modular entre eso puedo poner la entrada y la salida la puedo poner suelta puedo poner salida por tp salida por esto salida tal salida tal tal y meter las sueltas ir poniendo una quitándola y independiente de la entrada vale esto es bastante práctico para probar cosas en tres station de hecho no bien
+<ul>
+<li><em>Original (Kaufman)</em>: ORB de primera hora con entradas stop ±20 puntos y salida tipo TP basada en ADR (media de high–low diarios). Sin stops explícitos ni cierre al final del día.</li>
+<li><em>Código 1 (nuestro)</em>: mantiene la lógica ORB, pero añade escalado por porcentaje, gestión monetaria, límites operativos, filtros y salidas configurables (incluida la salida original opcional).</li>
+</ul>
 
----
+<hr>
 
-### Configuración de salidas y cierres
+**2) Parámetros e inputs**
 
-volvemos al inicio del código también tenemos la salida original con un 0 1 es decir cero no actúa uno usa la salida original que era esa que habéis visto que no deja de ser un tp tp lo que ahora nos recuerda alberto si le hemos puesto que si va esa no van al resto no puede son complementarias son complementarias son complementarias si si si ahora mientras se lo preguntaba me lo me ha venido vale número de cierres al final de días es decir si yo quiero cerrar a fin de día es uno si quiero cerrar en dos días obviamente si no sale por otro motivo puedo tener esto tp y salida fin de día vale puedo salir a n días es decir obligatoriamente te sales a un día obligatoriamente te sales a dos te sales a tres insisto si no te has salido por otro motivo luego también trades máximos permitidos en el mismo día esto también es bastante habitual y recomendable en los sistemas intradiarios de acuerdo es meter un input meter una mecanismo en el código que cuente el número de trades que hacemos y que si tú haces n 1 2 3 los que sean no puede hacer más de acuerdo también aunque en este no hemos implementado esta es recomendable como siempre meter la posibilidad de ir largo ir corto o ir a los dos lados esto es ya un poquito casi en todos los sistemas es recomendable hacerlo y se suele se suele hacer bien
+<ul>
+<li><em>Original</em>: un único parámetro <code>length</code> para el cálculo del ADR.</li>
+<li><em>Nuestro</em>:</li>
+<ul>
+<li><code>Porcentaje_Confirmacion_Entrada</code>: confirma la ruptura en porcentaje (escala con el activo).</li>
+<li><code>Prc_Stop</code>, <code>Prc_Profit</code>: stop loss y profit target en %. Actúan solo si &gt; 0.</li>
+<li><code>salidaOriginal</code>: activa/desactiva la salida ADR clásica.</li>
+<li><code>numerodeCierres</code>: cierra al fin de sesión tras n días (0 = desactivado).</li>
+<li><code>tradesMaximos</code>: tope de operaciones por día.</li>
+<li>Filtros: <code>FiltroBasico</code>, <code>FiltrovolRelativo</code>.</li>
+<li>Gestión monetaria: <code>Start_Equity</code>, <code>MMVar_*</code>, <code>Min/Max_Size</code>, <code>RoundTo</code>.</li>
+</ul>
+</ul>
 
----
+<p><em>Motivo</em>: pasar de una plantilla académica a un sistema operable, robusto y testeable en distintos activos.</p>
+
+<hr>
+
+**3) Escalado de niveles de entrada**
+
+<ul>
+<li><em>Original</em>: offset fijo de 20 puntos sobre el máximo/mínimo de la primera hora.</li>
+<li><em>Nuestro</em>: offset por porcentaje sobre el nivel ORB (<code>Sess1FirstBarHigh/Low * (1 ± %)</code>).</li>
+</ul>
+
+<p><em>Motivo</em>: 20 puntos no son comparables entre activos/regímenes; el % mantiene proporcionalidad y evita sobre/disparo en precios altos/bajos.</p>
+
+<hr>
+
+**4) Lógica de entrada**
+
+<ul>
+<li><em>Ambos</em>: ORB sobre la primera barra horaria; entradas solo durante la sesión.</li>
+<li><em>Nuestro extra</em>: respeto de <code>tradesMaximos</code> y <code>MarketPosition = 0</code> para evitar reentradas compulsivas.</li>
+</ul>
+
+<p><em>Motivo</em>: control de sobretrading y coherencia con reglas de no duplicar señal.</p>
+
+<hr>
+
+**5) Salidas**
+
+<ul>
+<li><em>Original</em>:
+<ul>
+<li>Corta: cubre si <code>low &lt;= Sess1FirstBarHigh - avedayrange</code>.</li>
+<li>Larga: vende si <code>high &gt;= Sess1FirstBarLow + avedayrange</code>.</li>
+<li>Efecto práctico: TP basado en ADR; no hay stop ni cierre forzoso.</li>
+</ul>
+</li>
+<li><em>Nuestro</em>:
+<ul>
+<li>Opción de mantener la salida ADR clásica (<code>salidaOriginal = 1</code>).</li>
+<li>Añade <em>stop loss</em> y <em>profit target</em> en % (no trailing).</li>
+<li><code>SetExitOnClose</code> condicional vía <code>numerodeCierres</code> para evitar pernoctas no deseadas.</li>
+</ul>
+</li>
+</ul>
+
+<p><em>Motivo</em>: introducir control de riesgo explícito y gobernanza del tiempo en mercado.</p>
+
+<hr>
+
+**6) Gestión monetaria y tamaño de posición**
+
+<ul>
+<li><em>Original</em>: tamaño implícito (sin gestión monetaria).</li>
+<li><em>Nuestro</em>: cálculo de contratos en función de equity inicial, beneficios acumulados y precio, con límites y redondeo.</li>
+</ul>
+
+<p><em>Motivo</em>: simular una operativa realista con sizing estable y acotado.</p>
+
+<hr>
+
+**7) Filtros operativos**
+
+<ul>
+<li><em>Original</em>: ninguno.</li>
+<li><em>Nuestro</em>:
+<ul>
+<li><em>Básico</em> (precio &gt; 5, volumen medio diario &gt; 1M, ATR diario &gt; 0.50).</li>
+<li><em>Volumen relativo</em> de la primera barra vs su media.</li>
+</ul>
+</li>
+</ul>
+
+<p><em>Motivo</em>: mejorar la calidad de señales; evitar microcaps ilíquidas y sesiones sin “combustible”.</p>
+
+<hr>
+
+**8) Contabilidad de trades intradía**
+
+<ul>
+<li><em>Original</em>: permite múltiples señales dentro de sesión.</li>
+<li><em>Nuestro</em>: contador diario y límite <code>tradesMaximos</code>.</li>
+</ul>
+
+<p><em>Motivo</em>: disciplina, control del coste de transacción y del <em>chop</em>.</p>
+
+<hr>
+
+**9) Métrica de rango**
+
+<ul>
+<li><em>Original</em>: ADR = media simple de <code>high - low</code> diario sobre <code>length</code>.</li>
+<li><em>Nuestro</em>: ADR sustituido por <code>AvgTrueRange(Per_Media)</code> de <em>data3</em> (más realista al incorporar gaps).</li>
+</ul>
+
+<p><em>Motivo</em>: usar ATR como proxy de rango más robusto.</p>
+
+<hr>
+
+**10) Seguridad de cierre**
+
+<ul>
+<li><em>Original</em>: no cierra a fin de día; podría pernoctar.</li>
+<li><em>Nuestro</em>: cierre por conteo de días (<code>numerodeCierres</code>) y, opcionalmente, <em>SetExitOnClose</em>.</li>
+</ul>
+
+<p><em>Motivo</em>: evitar riesgo overnight si la hipótesis es intradía.</p>
+
+<hr>
+
+**Por qué se implementó así**
+
+<ol>
+<li><em>Escalabilidad y generalización</em>: porcentajes y ATR permiten portar la lógica entre activos/sesiones.</li>
+<li><em>Control de riesgo</em>: stops y cierres temporales reducen colas de pérdida.</li>
+<li><em>Calidad de señal</em>: filtros de precio/volumen/volumen relativo.</li>
+<li><em>Gobernanza operativa</em>: límites de trades y MM evitan sobreexposición.</li>
+<li><em>Reproducibilidad</em>: inputs tipo “switch” activan/desactivan módulos sin reescribir código.</li>
+</ol>
+
+<hr>
+
+
+</div>
+
 
 ### Incorporación de un paper y filtros adicionales
 
-y luego hemos metido al ver este paper que habéis aportado pues hemos decidido probarlo de acuerdo hemos decidido probarlo en el tax no tiene mucho sentido pero pero si en el ya lo diría en acciones en acciones si nos da tiempo lo veremos un un momentito lo veremos un momentito vale bueno esto ya lo había dicho antes o que se decía vale puedo centrar en objetivos y límites de pérdida y cerrar beneficios sobre los más todos el rv de par burritos digamos no el rv mega básico vale ya hemos visto un poco más que eso y todo el paper el paper déjame que os lo enseñe bueno el paper ya os lo he puesto ahí en castellano lo ha hecho alberto con la inestimable ayuda de chat gpt versión 4 y al final tenía unos tenía unos filtros simplemente hemos aportado los filtros no hemos hecho el sistema al uso que creo no sé si se me había comentado que lo había hecho se puede perfectamente hacer hay muchas versiones de este más y yo he probado esta que es la mega básica la mega estándar hay muchas más y ya os digo que veremos más cosas más cosas veremos evolucionar este veremos otros completamente distintos pero bueno que este como habéis puesto ya el paper yo quería partir de este del cajón porque me interesa mucho introducir este concepto de open break out que es el original podemos decir no el habéis oído uno rb es esto de acuerdo rb clásico como todo permite un montón de variaciones que hemos visto el porcentaje de esto por un taje de profit podía ser por la tr la entrada podía ser exigirle un movimiento de volatilidad en intradías también se me ha olvidado comentaros una cosa antes es verdad que lo habitual lo habitual en intradía es sistemas que operan mucho que operan mucho y que por lo tanto tienen mucha significación estadística pero también hay algunos intradía que no os lo recomiendo como primera opción pero que sí que como complemento de una cartera pueden venir muy bien vale
+y luego hemos metido al ver este paper que habéis aportado pues hemos decidido probarlo de acuerdo hemos decidido probarlo en el dax no tiene mucho sentido pero pero si en acciones si nos da tiempo lo veremos un momentito 
+
+el paper tenía unos filtros simplemente hemos aportado los filtros no hemos hecho el sistema al uso, hay muchas versiones de este más y yo he probado esta que es la mega básica la mega estándar hay muchas más y ya os digo que veremos más cosas más cosas veremos evolucionar este veremos otros completamente distintos pero bueno que este como habéis puesto ya el paper yo quería partir de este de Kauffman porque me interesa mucho introducir este concepto de open break out que es el original podemos decir no el habéis oído uno orb es esto de acuerdo rb clásico como todo permite un montón de variaciones que hemos visto el porcentaje de sp por un taje de profit podía ser por la tr la entrada podía ser exigirle un movimiento de volatilidad en intradías también se me ha olvidado comentaros una cosa antes es verdad que lo habitual lo habitual en intradía es sistemas que operan mucho que operan mucho y que por lo tanto tienen mucha significación estadística pero también hay algunos intradía que no os lo recomiendo como primera opción pero que sí que como complemento de una cartera pueden venir muy bien vale **sistemas de muy poca actuación**
 
 ---
 
 ### Sistemas de poca frecuencia y pautas de velas
 
-si este más de muy poca actuación me parece que el uno de los dos uno de los dos documentos intradía que os he pasado lo explicaba no me acuerdo ahora no lo veo aquí bueno digamos son tres temas de muy poca frecuencia operativa es decir que buscan sucesos de elevadísima probabilidad de protagés de protagé de acierto muy elevado creo que se ocurre en poco que ocurre en poco pero que tienen protagé de acierto muy muy alto aún así cuidado hay que validarlo y todo como siempre pero ahí estamos a una mejor de un número de tres tipo diario sabes tipo sema diario aunque tienes un montón de barras y analizadas realmente operan una vez al mejor al mes o sabes decir cosas que o mirando analizando el gráfico intradía pero que pasa muy pocas veces pautas de velas que os decía este tipo de pautas que os decía hay varios veremos alguna veremos alguna ahora mismo no me acuerdo que lo diga porque ahora mismo no me acuerdo sé que habíamos visto alguno en el pasado nos dos ahora mismo no operamos ninguno de este tipo pero es probable que lo que lo que lo vamos a saber esto no sé historia de los futuros y demás no podamos volver a los futuros casi con total seguridad que lo que los operaremos y entonces pues los explorar y analizar con calma porque hace mucho tiempo que no los que nos miró pero sí que los hay son normalmente figuras ya os digo de bautas de velas cuando me refiero de velas quiero decir de precio como os decía una inside bar pues de dobles y triples y muchos de volatilidad es decir de recuerdo tenía uno que era de volatilidad pero de rango bestial es decir era un poco parecido a esto que habéis visto ahora de más cero más un filtro era un filtro enorme vale era un filtro enorme que pero que tenían protege de acento más grandes y cuando el mercado tiene desviaciones de más de x x desviaciones en la media casi siempre casi lógicamente quiere decir que no siempre cada y siempre marca un movimiento es decir no no llega a partir de lo que no vuelve o que hay alguna que vuelve pero la mayoría no vuelve cuando desvía de desvía de la volatilidad un cierto número normalmente indica el inicio de un movimiento y esto es una pauta de las más sólidas que existe lo que pasa que como os digo tiene una frecuencia operativa relativamente baja tiene una frecuencia operativa relativamente bajo por eso van bien en una cartera como complemento porque diversifican pero como operativa principal pues es un sistema que entre que tiene poca significación estadística y que tampoco de media va a dar mucho dinero porque opera poco al cual el final se llama que opera poco pues lógicamente pues se puede dar menos menos dinero
+digamos son sistemas de muy poca frecuencia operativa es decir que buscan sucesos de elevadísima probabilidad de % de acierto muy elevado creo que se ocurre en poco que ocurre en poco pero que tienen % de acierto muy muy alto aún así cuidado hay que validarlo y todo como siempre pero ahí estamos a lo mejor de un número de trades tipo diario sabes tipo sistema diario aunque tienes un montón de barras y analizadas realmente operan una vez al mes o sabes decir cosas que o mirando analizando el gráfico intradía pero que pasa muy pocas veces pautas de velas que os decía este tipo de pautas que os decía hay varios veremos alguna veremos alguna ahora mismo no me acuerdo que lo diga porque ahora mismo no me acuerdo sé que habíamos visto alguno en el pasado nos dos ahora mismo no operamos ninguno de este tipo pero es probable que lo sí que los hay, son normalmente figuras ya os digo de bautas de velas, cuando me refiero de velas quiero decir de precio, como os decía un inside bar pues de dobles y triples y muchos de volatilidad, es decir de recuerdo tenía uno que era de volatilidad pero de rango bestial es decir era un poco parecido a esto que habéis visto ahora de más cero más un filtro, era un filtro enorme, vale era un filtro enorme, que pero que tenían % de acento más grandes y cuando el mercado tiene desviaciones de más de x x desviaciones en la media casi siempre casi lógicamente quiere decir que no siempre casi siempre marca un movimiento,  cuando desvía de desvía de la volatilidad un cierto número normalmente indica el inicio de un movimiento y esto es una pauta de las más sólidas que existe lo que pasa que como os digo tiene una frecuencia operativa relativamente baja tiene una frecuencia operativa relativamente bajo , por eso van bien en una cartera como complemento porque diversifican pero como operativa principal pues es un sistema que entre que tiene poca significación estadística y que tampoco de media va a dar mucho dinero porque opera poco al cual el final se llama que opera poco pues lógicamente pues se puede dar menos menos dinero
 
----
-
-Perfecto ✅
-Aquí tienes **el mismo texto íntegro, sin modificar ni una palabra**, pero ahora **formateado con títulos y subíndices en negrita** para que quede visualmente organizado y más legible.
-
----
 
 ### Filtros implementados en el paper
 
 **Filtro básico**
-entonces lo que os decía la los filtros que tenía implementado el paper y básicamente eran dos donde están el filtro básico vale que simplemente era para filtrar este era un filtro prácticamente de filtrar el universo de acciones más bien para escupir un poco los chicharros pinches y acciones de poca de poco volumen y demás no porque al final ellos han detectado que como el criterio tuvimos este debate en el anterior sistema que dijo bueno por qué operar las demás capitalización o más volumen bueno porque normalmente donde funcionan mejor las figuras no es técnico son en esas y también en las contrarias en las contrarias no es que funcione mejor las técnicas funciona mejor lo que ocurre es que en las de muy poca volatilidad en las de muy poco precio poco volumen y demás ocurre el efecto contrario que cuando tienen volumen pues provoca movimientos brutales entonces sí que es verdad que gente como los nitreres que se dedican específicamente específicamente a ello no bueno puede que tratemos de abordar algún sistema de ese tipo de acuerdo que son por lo que os decía poco son sistemas de poca frecuencia operativa en cada activo pero que al final buscan operar en muchas acciones en muchas acciones pero ya digo explotando volatilidad es auténticamente salvajes no
 
-**Filtro relativo**
-pero en este caso es el paper lo que hacía es esquivar esas acciones no buscaba acciones que cerrarán por encima de 5 porque 5 esto seguramente es algún tipo de optimización implícita que el volumen medio pues sea mayor que x vale en este caso lo tenía fijado en un millón y que la verá su rent también sea mayor de 0 5 porque 0 5 bueno pues por lo que os digo seguramente un tipo de optimización implícita este era un filtro y el otro sí que era un filtro más de operativa podemos decir donde buscaba que el volumen que lo guardábamos aquí porque era el volumen del data 2 de 60 minutos el mismo donde habíamos guardado el range ese rango de la primera la primera hora pues en ese momento en el momento en que identificamos esa primera hora guardamos el máximo guardamos el mínimo guardamos la fecha y guardamos el volumen de acuerdo y usando ese volumen para compararlo con la media del volumen de las otras 14 ocurrencias que en este caso es de los otros 14 días porque esta vela sólo se mide una al día por lo tanto es la media de 14 días esto se entiende y este era el otro el otro filtro relativo que utilizaba
+Entonces, como os comentaba, el *paper* original incluía dos filtros principales, y el primero de ellos era el llamado **filtro básico**:
 
-**Volumen en acciones y futuros**
-bueno este podría tener algún sentido aquí podemos probarlo hemos probado un poco no parecía ir muy especialmente bien aquí pero bueno es verdad que el volumen tiene más sentido en acciones que en futuros también puede pero donde tiene mayores sentidos en la acción no en la acción porque el futuro al final no deja de ser aunque también puedes ir corto en acciones es muy residual comparativamente con lo que es ir largo en cambio en un futuro indistintamente puedes ir largo ir corto el volumen es simétrico en acciones no en acciones al final hay que repositar un dinero por tanto el volumen sólo tiene un lado entonces más tiene una señal un poco más limpia podemos decir un poquito más pero no quiere decir que no se puede usar de hecho se usa y también se usa más el open interés quizá en futuros el volumen el volumen de acciones es más el open interés en futuros se me entienda no es que sea lo mismo pero técnicamente quiero decir es más no porque al final lo pero interés sí que identifica los que se quedan abiertos al final de día lo que pasa que es una lectura un poco retrasada no pero pero hay que mirar la fin de día pero pero pero se obtiene las maneras de plataformas se da todo lo tienen bien
+```sh
+# Filtro básico usado en el estudio
+#	valor superior a $5, volumen medio negociado mayor a 1.000.000 acciones y ATR > $0.50
+#
+if filtrobasico = 1 then 
+Begin
+	Condition1 = (Close > 5) and (Average(Volume, 14) of Data3 > 1000000) and (AvgTrueRange(14) of Data3 > 0.50); 
+end else Condition1 = True;  
+```
 
-**Configuración y optimización del sistema**
-bueno pues nada más el sistema en sí es lo mismo a nivel de entrada con esa característica que os fijáis que el rango de apertura de ocho a nueve es esta vela que acaba a las nueve una vela pequeñita esto aquí también podría haberse hecho algún filtro de este tipo es decir que si esta vela no es de un cierto rango puedes no entrar se podría hacer algo así pero esto no necesariamente es malo recordar lo que os decía el range breakout no al final de cuando el mercado está colapsado y de hecho aquí lo hace vez el mercado está con poca volatilidad y colapsa no colapsa pero lo hace a la baja lo hace la baja vale entonces aquí de momento lo tenemos configurado con cero con la salida original en cero con solo cerrando a fin de día con un trade por día vamos a dejarle tres por día sin filtro básico en el filtro relativo esta monetaria de momento no estamos dándole muchas vueltas a esto 100% de la cuenta y hasta el dinero disponible y ya está de configuración 004 nuestro pues no me acuerdo es un poco hemos hecho una pequeña optimización nos ha salido valores de este tipo y bueno pues ahí queda en este caso pues como veis acaba saliendo por esto los acabas haciendo por esto los y así hemos hecho pequeñas pruebas no iba para alguna versión que hemos hecho no había ido mal en el tax el todo pero no en esta que está puesta aquí creo que va bastante bastante flojo pero bueno sí que seguramente se podría extraer algo se podría extraer algo de esta de esta idea aunque seguramente dándole un poco más de margen a la entrada y seguramente a lo mejor ajustándolo más bien por volatilidad seguramente hay que ajustarlo por volatilidad
+Este filtro servía simplemente para **acotar el universo de acciones**, descartando las de baja capitalización o con escaso volumen de negociación.
+En la práctica, lo que hacía era eliminar los llamados *penny stocks* o valores “chicharro”, con poco movimiento y baja liquidez, que suelen distorsionar los resultados en este tipo de estudios.
+
+El motivo de aplicar este filtro es claro: las **figuras técnicas y los patrones de ruptura** tienden a comportarse de forma más predecible en **acciones líquidas y con cierto tamaño**, donde el comportamiento del precio es más estable y menos manipulado.
+En cambio, en los activos de baja capitalización y bajo volumen ocurre lo contrario: su escasa liquidez provoca que, cuando entra volumen, se generen **movimientos extremadamente violentos**.
+
+Por eso, aunque hay operadores que se especializan precisamente en ese tipo de activos —buscando explotar esas explosiones de volatilidad—, el enfoque del *paper* es el opuesto: **evitar esas acciones** para centrarse en un universo más regular y representativo.
+
+Respecto a los valores de corte elegidos (precio > 5 USD, volumen medio > 1 millón, ATR > 0.5), probablemente responden a una **optimización empírica** realizada por los autores.
+No son valores mágicos, sino umbrales razonables que eliminan las acciones de menor calidad operativa sin dejar fuera las que realmente aportan fiabilidad estadística.
+
+
+**Filtro de Volumen Relativo**
+
+```sh
+# Filtro volumen Relativo
+#	- Se opera si el valor del volumen de la primera barra es mayor que el volumen medio de las últimas 14	
+#
+if FiltrovolRelativo = 1 then 
+begin 
+	Condition2 = sessionFirstVolume > average(SessionFirstVolume, 14); 
+end else Condition2 = True; 
+```
+
+Este filtro ya no actúa sobre el universo de acciones como el básico, sino que se aplica directamente a la **operativa diaria**.
+Su función es identificar si la primera hora de negociación presenta un **volumen significativamente superior al promedio reciente**, lo cual suele interpretarse como una señal de interés institucional o de impulso inicial.
+
+En este caso, la variable `sessionFirstVolume` corresponde al **volumen de la primera barra de 60 minutos (data2)** —la misma en la que registramos el máximo, el mínimo y la fecha de la sesión—.
+Ese valor se compara con la **media de los volúmenes de las 14 sesiones anteriores**, lo que equivale a medir si el volumen actual está por encima del promedio de las últimas dos semanas.
+
+La lógica es sencilla:
+
+* Si el volumen de la primera hora es mayor que la media de los 14 días previos → *permite operar*.
+* Si no supera esa media → *descarta la señal*.
+
+Este filtro tiene más sentido en **acciones que en futuros**, ya que en el mercado accionario el volumen refleja principalmente la actividad compradora (el dinero que entra o sale del activo), mientras que en los futuros el volumen es **simétrico**: cada compra tiene una venta asociada.
+
+Por eso, en futuros el volumen no siempre indica dirección o fuerza en el mismo modo que en acciones. Allí, a menudo se recurre al *open interest* como métrica complementaria, ya que muestra cuántas posiciones permanecen abiertas al cierre del día, reflejando mejor la presión acumulada.
+
+Perfecto.
+La diferencia clave está en **qué representa el volumen** en cada mercado y **cómo se interpreta su desequilibrio**:
+
+---
+
+
+<div style="border-left: 4px solid #f39c12; background: #fff8e5; padding: 10px 15px; margin: 10px 0;">
+  📈 <strong></strong><br>
+
+En **futuros**
+
+* Cada compra tiene una venta: **el volumen es simétrico**.
+  Por sí solo no indica quién domina (compradores o vendedores).
+* Por eso usas **delta de volumen** (agresivos a mercado vs pasivos en límite).
+  → El *delta* te muestra la **intención y agresividad**: si el volumen comprador es dominante, hay absorción o desequilibrio real.
+* En resumen: el volumen en futuros **mide participación**, pero necesitas el **delta** o el **order flow** para saber dirección.
+
+---
+
+En **small caps / micro caps**
+
+* El volumen **no es simétrico**: no todo el mundo puede vender corto.
+  → Cuando aparece un pico de volumen, casi siempre implica **entrada de dinero fresco** (compradores netos).
+* En entornos planos y de baja liquidez, una sola inyección de volumen puede mover el precio bruscamente (efecto *pump and dump*).
+* Aquí el volumen sí puede interpretarse directamente como **fuerza direccional**: más volumen = más desequilibrio estructural (compras sin contrapartida).
+
+---
+
+* En **futuros**, el volumen necesita contexto (*delta, footprint, imbalance*) → mide flujo relativo.
+* En **small caps**, el volumen **es el propio catalizador** → mide flujo absoluto.
+
+Por eso, un *pump and dump trader* busca **rupturas de volumen inusuales** (spike) como señal de oportunidad, mientras que un operador de futuros necesita **ver quién empuja el precio** dentro de ese volumen.
+</div>
+
+
+
+
+**Configuración y optimización del sistema**  
+bueno pues nada más el sistema en sí es lo mismo a nivel de entrada, con esa característica, que os fijáis que el rango de apertura de ocho a nueve es esta vela que acaba a las nueve una vela pequeñita 
+
+![](../img/018.png)
+
+esto aquí también podría haberse hecho algún filtro de este tipo es decir que si esta vela no es de un cierto rango puedes no entrar se podría hacer algo así pero esto no necesariamente es malo recordar lo que os decía el range breakout no al final de cuando el mercado está colapsado y de hecho aquí lo hace vez el mercado está con poca volatilidad y colapsa colapsa pero lo hace a la baja lo hace la baja  
+
+entonces aquí de momento lo tenemos configurado con cero con la salida original en cero con solo cerrando a fin de día con un trade por día vamos a dejarle tres por día sin filtro básico en el filtro relativo gestion monetaria de momento no estamos dándole muchas vueltas, 100% de la cuenta el dinero disponible, y ya está 
+
+![](../img/019.png)
+
+como veis acaba saliendo por ST loss y así hemos hecho pequeñas pruebas no iba para alguna versión que hemos hecho no había ido mal  en el dax el todo 
+
+![](../img/020.png)  
+
+![](../img/021.png)  
+
+
+pero no en esta que está puesta aquí creo que va bastante bastante flojo pero bueno sí que seguramente se podría extraer algo se podría extraer algo de esta de esta idea aunque seguramente dándole un poco más de margen a la entrada y seguramente a lo mejor ajustándolo más bien por volatilidad seguramente hay que ajustarlo por volatilidad
 
 **Salidas por tiempo y ventanas operativas**
-y también aunque esta vez no lo hemos implementado puede ser recomendable salir por tiempo suele ir muy bien esta salida también ya como se comentaba y luego habría que en este caso la salida por tiempo iría un poco ligado con lo que os decía antes de la ventana operativa vale el dax si si metemos aquí el volumen veréis que tiene una pauta estudiar estudiar el volumen es muy interesante vale no sólo por el tema de que haya liquidez o no de acuerdo es por lo que os decía de esta relación absolutamente clara entre el volumen y la volatilidad de acuerdo entonces una manera indirecta de usar esto es meter volumen meter una media por defecto sale de 50 vale pues bueno pues usar esa y ver un poquito cómo va cómo va evolucionando el volumen hay el dax normalmente en europa el volumen va es bastante estable lógicamente es asor aquí ya no estamos cargando todo lo voy a cargar ahora sólo porque lo veáis vale que nos da un poco nos da un poco igual porque esto no es nada descabellado es decir otro camino otro camino que sería no lo he probado pero alguien nuevamente igual que os decía antes de probar esto también os os recomiendo probar el que os digo ahora que es hacer range breakout igual cargar todo el histórico hablando del dax en este caso y definirlo igual pero incorporando también los datos de esta una de la mañana a ocho de la mañana es decir como si todo esto fuera la barra de apertura de acuerdo muchos operadores en eeuu hacen esto es decir hacen el open range breakout incluyendo el premarket de acuerdo incluyendo el premarket
+
+y también aunque esta vez no lo hemos implementado puede ser recomendable salir por tiempo 
+
+![](../img/022.png)  
+
+suele ir muy bien esta salida también ya como se comentaba y luego habría que en este caso la salida por tiempo iría un poco ligado con lo que os decía antes de la ventana operativa vale el dax si si metemos aquí el volumen veréis que tiene una pauta estudiar estudiar el volumen es muy interesante vale no sólo por el tema de que haya liquidez o no de acuerdo es por lo que os decía de esta relación absolutamente clara entre el volumen y la volatilidad de acuerdo entonces una manera indirecta de usar esto es meter volumen meter una media por defecto sale de 50 
+
+![](../img/023.png)  
+
+pues bueno pues usar esa y ver un poquito cómo va cómo va evolucionando el volumen, el dax normalmente en europa el volumen va es bastante estable 
+
+otro camino otro camino que sería no lo he probado pero alguien nuevamente igual que os decía antes de probar esto también os os recomiendo probar el que os digo ahora que es hacer range breakout igual cargar todo el histórico hablando del dax en este caso y definirlo igual pero incorporando también los datos de esta una de la mañana a ocho de la mañana es decir como si todo esto fuera la barra de apertura ,de acuerdo, muchos operadores en eeuu hacen esto, es decir hacen el open range breakout incluyendo el premarket, de acuerdo, incluyendo el premarket
 
 **Variaciones del rango y horarios alternativos**
-tengo dudas no no lo he probado es lo digo francamente lo estoy ahora pensando decir tengo dudas de si desde la una a la mejor incorporar también la 7 o la 6 o incorporar o hacerlo de 8 a 9 y dejar hasta las 10 entendéis es decir o abrir a las 9 meterlo de 9 a 10 es decir todas estas combinaciones son válidas porque porque el volumen realmente habría que ver si este volumen que es es ruido absoluto es decir todo este todo este para cargar también aquí todo esto es ruido totalmente es decir el problema es que yo este ahora no lo cargo este no lo voy a cargar porque si lo cargo me va a calcular recordar que el rango lo calcula de esta me lo va a calcular de la primera y es un churro es decir lo que va a salir ahí no va a tener ningún tipo de sentido valendo es pero se me entienda no es decir los he cargado aquí en el de arriba para que de 10 minutos veáis un poco todo todo esto no yo podría al mejor usar también este rango es decir que en vez de fijar solo la primera vela está vale además estuviera contando desde este mínimo para que entendáis no es que este día tenga nada especial sino para que tendáis contar este mínimo y el máximo que haya hecho hasta hasta aquí que sería este por decir el range break out sería en este caso este vale ese sería aquí se hubiera puesto corto bastante más tarde lo cual peor vale
+
+tengo dudas de si desde la una a la mejor incorporar también la 7 o la 6 o incorporar o hacerlo de 8 a 9 y dejar hasta las 10 entendéis es decir o abrir a las 9 meterlo de 9 a 10 es decir todas estas combinaciones son válidas porque? porque el volumen realmente habría que ver si este volumen que es es ruido absoluto . yo podría al mejor usar también este rango es decir que en vez de fijar solo la primera vela está vale además estuviera contando desde este mínimo 
+
+![](../img/024.png) 
+
+para que entendáis no es que este día tenga nada especial sino para que tendáis contar este mínimo y el máximo que haya hecho el range break out sería en este caso este vale ese sería aquí se hubiera puesto corto bastante más tarde lo cual peor vale
+
+02:13
 
 **Relación entre volumen, volatilidad y horario**
 bien y lo que os decía del volumen es que evidentemente está de 1 a 2 que es muy importante estudiar como decía volumen y volatilidad que van de la misma mano y horario que no va no es de la misma cara pero tiene bastante que ver con esto para analizar en qué ventanas yo no me interesa es decir hay dos maneras a filtrar vale el filtro que siempre se usa más y más intuitivo es filtrar las entradas de acuerdo es filtrar las entradas es decir yo voy a maximizar mis probabilidades no voy a haber ventajas más buenas como hago eso pues decir bueno pues antes hablaba no decir pues voy a operar solo cuando haya una volatilidad determinada de acuerdo voy a operar solo cuando haya un volumen determinado vale o voy a operar solo cuando la estructura de precios no lo que no cuando haya solo una situación que me hable de un mercado en congestión porque yo busco expansión y sé que normalmente tras una congestión ver una expansión entonces cuando vea que haya un poco a volatilidad o cuando vea que haya una insight para lo que os decía antes no con el diario respecto al anterior cosas así no puedo buscar operativas de este tipo para filtrar entradas cuando hablo de filtrar salidas que hago bueno pues donde si yo considero que hay momentos donde el mercado se mueve poco pues yo puedo salirme de acuerdo puedo ya salirme porque considero que si el mercado no ha ido a mi favor en ese caso no normal es que ya no vaya tendéis ese sería un poco la idea
