@@ -801,94 +801,326 @@ otro camino otro camino que sería no lo he probado pero alguien nuevamente igua
 
 **Variaciones del rango y horarios alternativos**
 
-tengo dudas de si desde la una a la mejor incorporar también la 7 o la 6 o incorporar o hacerlo de 8 a 9 y dejar hasta las 10 entendéis es decir o abrir a las 9 meterlo de 9 a 10 es decir todas estas combinaciones son válidas porque? porque el volumen realmente habría que ver si este volumen que es es ruido absoluto . yo podría al mejor usar también este rango es decir que en vez de fijar solo la primera vela está vale además estuviera contando desde este mínimo 
+tengo dudas de si desde la una a la mejor incorporar también la 7 o la 6 o incorporar o hacerlo de 8 a 9 y dejar hasta las 10 entendéis es decir o abrir a las 9 meterlo de 9 a 10 es decir todas estas combinaciones son válidas porque? porque el volumen realmente habría que ver si este volumen que es es ruido absoluto . yo podría al mejor usar también este rango es decir que en vez de fijar solo la primera vela está vale además estuviera contando desde este *mínimo* para que entendáis no es que este día tenga nada especial sino para que tendáis contar este *mínimo* y el *máximo* que haya hecho el range break out
 
-![](../img/024.png) 
+![](../img/025.png) 
 
-para que entendáis no es que este día tenga nada especial sino para que tendáis contar este mínimo y el máximo que haya hecho el range break out sería en este caso este vale ese sería aquí se hubiera puesto corto bastante más tarde lo cual peor vale
-
-02:13
 
 **Relación entre volumen, volatilidad y horario**
-bien y lo que os decía del volumen es que evidentemente está de 1 a 2 que es muy importante estudiar como decía volumen y volatilidad que van de la misma mano y horario que no va no es de la misma cara pero tiene bastante que ver con esto para analizar en qué ventanas yo no me interesa es decir hay dos maneras a filtrar vale el filtro que siempre se usa más y más intuitivo es filtrar las entradas de acuerdo es filtrar las entradas es decir yo voy a maximizar mis probabilidades no voy a haber ventajas más buenas como hago eso pues decir bueno pues antes hablaba no decir pues voy a operar solo cuando haya una volatilidad determinada de acuerdo voy a operar solo cuando haya un volumen determinado vale o voy a operar solo cuando la estructura de precios no lo que no cuando haya solo una situación que me hable de un mercado en congestión porque yo busco expansión y sé que normalmente tras una congestión ver una expansión entonces cuando vea que haya un poco a volatilidad o cuando vea que haya una insight para lo que os decía antes no con el diario respecto al anterior cosas así no puedo buscar operativas de este tipo para filtrar entradas cuando hablo de filtrar salidas que hago bueno pues donde si yo considero que hay momentos donde el mercado se mueve poco pues yo puedo salirme de acuerdo puedo ya salirme porque considero que si el mercado no ha ido a mi favor en ese caso no normal es que ya no vaya tendéis ese sería un poco la idea
+
+Como comentaba, es fundamental entender la relación entre ***volumen***, ***volatilidad*** y ***horario***, tres factores que están estrechamente ligados en la dinámica del mercado.
+Volumen y volatilidad suelen ir de la mano —cuando aumenta uno, normalmente también lo hace el otro—, mientras que el horario no es exactamente la misma variable, pero influye de forma decisiva en ambos.
+
+El objetivo de estudiar esta relación es identificar ***en qué ventanas horarias el mercado ofrece las mejores oportunidades*** y, por tanto, cuándo conviene operar y cuándo no. En conjunto, combinar ***volumen***, ***volatilidad*** y ***horario*** te permite definir *cuándo el mercado está “vivo” y cuándo no*, y ajustar tus reglas de entrada y salida para *maximizar la eficiencia operativa* y evitar operar en momentos sin energía ni direccionalidad.
+
+Existen dos grandes formas de aplicar filtros en una estrategia:
+
+**1. Filtrar *entradas***
+
+Este es el enfoque más común e intuitivo.
+Consiste en operar solo cuando se cumplan ciertas condiciones que aumenten la probabilidad de éxito:
+
+* *Volatilidad mínima*: operar solo cuando el mercado tenga suficiente rango o movimiento.
+* *Volumen mínimo*: entrar únicamente cuando haya participación real, evitando horas muertas.
+* *Estructura de precios concreta*: por ejemplo, detectar un patrón de congestión (como una *inside bar*) y entrar cuando se rompa, buscando la expansión posterior.
+
+En resumen, se trata de *esperar a que el entorno sea favorable*: volatilidad adecuada, volumen significativo y una estructura de mercado que indique potencial de ruptura o impulso.
+
+**2. Filtrar *salidas***
+
+También puede hacerse desde el lado contrario:
+si identificas momentos en los que el mercado *pierde volatilidad o volumen*, puedes decidir *cerrar la posición anticipadamente*.
+La lógica es simple: si el precio no se ha movido a tu favor durante el periodo de mayor actividad, *lo más probable es que ya no lo haga*.
+
+---
+
 
 **Ventanas operativas del DAX y ejemplos prácticos**
-esto donde es el dax por el dax no es claro porque el dax tiene como dos ventanas tiene tres ventanas operativas de europa europa tiene una apertura bastante movida vale tiene una apertura con mucho movimiento que a veces dura hasta las 10 a veces dura solo unos minutos pero normalmente es esa ese rango que va hasta las 10 o por ahí suele haber bastante movimiento a ver si veo una sesión típica bueno esto es bastante típico a nivel de pauta de volumen vale veis a las 8 puede ya haber un incremento de volumen que aquí parece que no es tanto pero es bastante se queda anulado por el por el el de las nueve que es el grande porque es el grande porque entra el contado vale
+
+El DAX no es un activo sencillo en cuanto a estructura intradía, porque presenta tres ventanas operativas bien diferenciadas.
+Europa tiene una apertura con bastante movimiento, que a veces dura hasta las 10 y otras solo unos minutos. Normalmente ese rango inicial, hasta las 10 aproximadamente, concentra la mayor actividad del día.
+A modo de ejemplo, en una sesión típica se puede observar un patrón claro de volumen:
+
+![](../img/026.png)
+
+A las 8 ya puede aparecer un aumento de volumen, que en algunos días no parece tan alto visualmente, pero sí lo es en proporción.
+Sin embargo, el pico más relevante llega a las 9, momento en que entra el contado.
+
+---
 
 **Relación entre contado, volumen y volatilidad**
-una guía que te suele ir muy bien también es esto vale en la relación con el contado en eeuu pasa igual cuando no está el contado pues no porque al final estos son subyacentes y cuando no está el contado no está nuestra jefe de acuerdo no está el que manda y entonces al final cuando hay más movimiento siempre es coincidencia con el contado cuando es esto en europa es de 9 a 5 y media acuerdo en eeuu desde 3 y media a 10 por eso hasta ese media entra un volumen absolutamente de locos en los futuros americanos porque entra el contado entra apple entra google entra todo y ahí entra todo el volumen y es donde de verdad se mueve normalmente cuando hay noticias dos y media se mueve mucho pero realmente de esa últimos 15 minutos media hora del mercado está bastante ya tranquilo
+
+Una buena guía operativa es entender la relación con el contado.
+En Estados Unidos ocurre lo mismo: cuando el contado no está abierto, los futuros suelen estar más inactivos, ya que el subyacente —el que realmente “manda”— aún no cotiza.
+Por eso, los movimientos más amplios coinciden con la apertura del contado.
+
+En Europa, el contado está activo de 9:00 a 17:30, mientras que en Estados Unidos lo está de 15:30 a 22:00.
+Por eso, en los futuros americanos se observa un enorme incremento de volumen justo a las 15:30: entran Apple, Google, y todo el flujo institucional.
+A partir de ese momento es cuando el mercado realmente se mueve.
+Aunque las noticias de las 14:30 suelen provocar volatilidad, los últimos 15–30 minutos del mercado americano tienden a ser más tranquilos.
+
+---
 
 **Operativa por ventanas temporales**
-bueno 1 o 2 minutos antes ya a veces se empieza a agitar pero empieza a y media y se dispara bueno pues aquí pasa un poquito igual este es un día que voy a acercar para que veas muy muy paradigmático no en el sentido que viene el mercado muerto desde la una bueno se levanta un poquito pero está todo el rato ahí plano no no hay volumen no hay volumen abajo vale plan plan plan plan llega a las 8 fijaros que el volumen empieza a saltar pero el precio no precio poco el volumen ya y ves 8 y 10 fijaros la primera vez las 7 50 estamos hablando ahí de 197 contratos y ha empezado a moverse realmente 7 8 es proporcional a las 8 8 y 5 8 de suele haber un pico porque porque porque ahí se abren los bonos vale y también abre londres vale entonces ahí solemos tener ese ese el bono el bono inglés entonces ahí hay una referencia importante las divisas se animan más entonces a las 8 y veces que ya se anima un poco pero realmente es a las 9 donde entra entre la talla y hay veces que a las 10 se ha acabado la sesión es así de triste es que a las 10 se ha acabado el mercado ya está adiós
+
+Unos minutos antes de las 8, a veces el mercado ya empieza a activarse, y en cuanto abre la sesión europea el volumen se dispara.
+En el ejemplo siguiente se puede ver una sesión muy representativa: el mercado llega plano desde la madrugada, con apenas movimiento ni volumen.
+
+![](../img/028.png)
+
+A las 8 el volumen comienza a aumentar, aunque el precio todavía reacciona poco.
+Hacia las 8:05 suele producirse un pico, coincidiendo con la apertura del mercado de bonos y con Londres.
+A partir de ahí el DAX entra en plena actividad, con mayor liquidez en divisas y renta variable.
+Sin embargo, muchas veces a las 10 el movimiento ya se ha agotado y el mercado se aplana.
+
+---
 
 **Breakout temprano y cierre anticipado**
-y hay operadores que hacen eso operadores que operan un range breakout pero muy justo más cerrado que esto no buscar a lo mejor la hora sino ir en un minuto en 2 en 5 minutos y a las 10 se acaba la sesión operan de 8 a 10 si hay movimiento bien si no hay movimiento hasta mañana en el dax no quieren ya porque porque es muy habitual que de 10 hasta las noticias el mercado esté plano y con poco volumen decreciente que no es que tampoco bueno pero fíjate o sea aquí te mete saberás que en eeuu también baja pero no así de acuerdo luego viene la hora de las noticias que cuando hay noticias ya se anima y lógicamente viene vuelos y lo levanta y lo levanta y ahí empieza otra sesión hasta las 5 que muere 5 5 y media a veces 5 45 muere completamente va hasta las 10 con el mercado americano
+
+Hay operadores que se especializan en aprovechar solo esa ventana de 8 a 10.
+Aplican estrategias de range breakout con rangos más estrechos, usando gráficos de 1, 2 o 5 minutos, y a las 10 cierran su operativa diaria.
+Si hay movimiento, aprovechan el impulso; si no, se retiran hasta el día siguiente.
+
+Esto ocurre porque, tras las 10, el mercado suele entrar en fase de bajo volumen hasta la publicación de noticias.
+Después, el mercado americano reanima el flujo: Wall Street arranca y arrastra al resto.
+A las 17:00–17:30 el volumen vuelve a caer, y a las 17:45 prácticamente desaparece, salvo contagio de la sesión americana.
+
+---
 
 **Cierre del mercado y estrategias por sesión**
-pero no ser que el mercado americano tire mucho que lógicamente lo sigue el mercado también se queda muerto desde que tampoco suele rentar hasta el final en este tipo de estrategias tú vas en swing esto es otra historia pero tú buscar a este tipo de estrategias entraría buscas probabilidad buscas cierto buscas movimiento breakout volatilidad entonces este ejemplo que pisa aquí es el típico operativa buena de breakout a pillo y para casa y por lo tanto muchas veces puede tener sentido salir porque no porque el precio ha ido mi contra porque haya hecho te peoró imaginaros un día que no he hecho te peoró y ya está ya es que ya está vendido 10 no sé 11 pues fuera a las 11 me salvo esté como esté y hasta mañana o si el cierro esa puedo tener pero yo lo evaluaría con otro sistema
 
-**Estrategias por ventanas horarias (caso Gere)**
-esto lo explicó un gere en el año que ganó ganado varios que se presentó al campeonato del mundo que la primera vez que lo ganó creo que fue lo ganó operando sólo el euro dólar pero con sistemas en ventanas distintas es esto que os estoy diciendo exactamente es decir un sistema preparado que va de 8 a 10 otro que va de 10 a 12 otro que va de 12 a 2 porque porque las divisas tienen pautas temporales muy establecidas por cierto me acabo de acabar creo que esa más rugat apúntamelo alberto por favor que le debo el forex estrés y me lo pidió me acabo de acordar ahora me acabo de acordar aurel y quiero que eras tú perdóname me acabo de acordar pues en ese te voy a enviar te voy a enviar lo original que tiene tres station que es muy antiguo pero pero ahí hay unos indicadores que sirve para medir el tiempo espero que funcione porque son muy antiguos y y está está para analizar esto las pautas horarias y tal entonces ahí ya te digo ahí hay muchas estrategias que usan esto porque porque a lo mejor en unas horas opera breakout en otras es más tendencial al lateral y entonces operar reversión me explico entonces si tú sabes que estadísticamente lógicamente no va a ser cada día hay activos que normalmente los tirones el mínimo del día esto lo veremos también no sigo como la teoría diciendo lo veremos pero es que es verdad cuando veamos todo esto como has comentado
+Salvo que el mercado estadounidense tire con fuerza, el DAX tiende a quedar inactivo en la última parte de la sesión.
+En estrategias de breakout o momentum, donde se busca movimiento y volatilidad, no suele compensar mantener posiciones hasta el cierre.
+
+Por eso, muchos operadores prefieren cerrar antes, incluso aunque no hayan alcanzado el take profit.
+Si a las 10 o 11 el precio no ha avanzado, suele significar que “el pescado ya está vendido”, y mantener la posición solo añade riesgo innecesario.
+
+---
+
+**Estrategias por ventanas horarias (caso Unger)**
+
+Este enfoque lo explicó Andrea Unger, quien ganó varios campeonatos del mundo de trading.
+En su primera victoria operaba únicamente el euro/dólar, pero con sistemas diseñados por ventanas horarias distintas:
+uno de 8 a 10, otro de 10 a 12, y otro de 12 a 14.
+Las divisas —y muchos futuros europeos— presentan patrones temporales muy definidos, y aprovecharlos con sistemas específicos puede ser muy eficaz.
+
+TradeStation, por ejemplo, dispone de indicadores antiguos que permiten analizar patrones horarios y medir la distribución de volumen o volatilidad a lo largo del día.
+Muchas estrategias se construyen así: en una franja operan breakouts, y en otra, cuando el mercado se lateraliza, aplican mean reversion.
+El secreto es entender cómo cambia el comportamiento estadístico según la hora del día.
+
+---
 
 **Análisis de horarios y patrones**
-antes de distintas pautas veremos varios códigos de este tipo y hay uno que hice un artículo hace tiempo que lo explicaba hace años que esto es un código que lo la primera vez que lo vi luego lo he visto en otros pero fue en el libro de cauman que era analizar a qué horas por ejemplo un activo hace máximos 12 mínimos o cosas así no o los gaps medios de los de los de los activos es decir sin temas son códigos que sacan información a texto para que luego la puedas trabajar y ver por ejemplo que cuántos gaps se cierran cuántos tal a partir de que o sea todo esto información que sacas del histórico de acuerdo entonces esto te permite analizar esto que os digo pues yo sé que me lo invento que el dax cada vez que el gap es de 0 5 lo cierra el 70 por ciento si es un 70 por ciento es un sistema buenísimo entiendes pues bueno pues yo cuando abre con un 0 5 compro me entiendes es menos inventado el 0 5 no que nada lo tome que ya lo miraremos de bien que no me acuerdo como era pero me entendéis o sé que hay activos que el 70 por ciento de sus máximos diarios son a las dos entre dos y dos y media bueno pues yo sé que entre dos y dos y medio si hay un pivo me pongo corto entendéis entonces este tipo de cosas pues este tipo de ventanas va muy bien y por eso os digo que ni entraría es muy habitual usar ventanas
+
+Antes de analizar las distintas pautas, veremos varios códigos diseñados para este tipo de estudio.
+Hay uno, basado en el libro de Kaufman, que permite analizar a qué horas un activo suele marcar sus máximos, mínimos o gaps promedio.
+Estos códigos convierten esa información en texto para poder procesarla y extraer patrones como:
+
+* Qué porcentaje de gaps se cierran.
+* A qué hora suelen producirse los máximos o mínimos del día.
+
+Por ejemplo, si observas que el DAX cierra el 70% de los gaps de 0.5 puntos, ya tienes una pauta estadísticamente valiosa.
+O si detectas que el 70% de los máximos diarios se producen entre las 14:00 y las 14:30, puedes diseñar un filtro horario para buscar ventas en ese tramo.
+
+---
 
 **Estrategias según ventanas horarias**
-entonces aquí por ejemplo en este en este caso pues a lo mejor podríamos trabajar esto vale yo hago un open range breakout puedo mirar de filtrar las entradas bien vale y las salidas a lo mejor las filtro de esta manera yo a partir de cierta hora que ya no me renta porque porque yo sé que la mayoría de máximos o mínimos del dac son antes de las dos que luego ya así que a última hora tiene uno muchos otra vez también bueno pues un caso luego a de 8 a 10 a mejor me otro otro sistema y sabes porque si yo sé que ahora mismo no tendría que mirar bien pero era que sí que yo sé que entre las cinco y media 45 ahí suele marcar un mínimo máximo que normalmente me sirve de rango entonces yo ahí ya automáticamente dejo eso como máxima la sesión y si lo vuelvo a visitar vendo ahí yo vendo yo de 6 a 10 de la noche o pero un un mil reversión comprando y vendiendo a lo mejor vendo compro cinco veces en cinco minutos un día el rango va me saco pues nada mejor diez puntos pero oye son de mucha probabilidad porque sé que eso pasa casi siempre por ejemplo no y pues ya digo en las sesiones hay muchas pautas estacionales de acuerdo es decir hay comportamientos bastante recurrentes y analizarlos mediante código y demás es muy interesante
+
+En este contexto, podríamos aplicar la misma lógica al open range breakout.
+Por ejemplo, filtrar las entradas y salidas según franjas horarias concretas.
+Si sabes que la mayoría de los máximos o mínimos del DAX ocurren antes de las 14:00, puedes cerrar tus operaciones después de esa hora o incluso diseñar otro sistema para la tarde.
+
+De igual modo, si entre las 16:30 y las 17:00 suele formarse un rango que actúa como máximo o mínimo, puedes operar mean reversion entre las 18:00 y las 22:00, aprovechando esas repeticiones.
+Aunque el beneficio medio sea menor, la probabilidad de acierto puede ser muy alta.
+
+En definitiva, el análisis por ventanas horarias revela pautas estacionales y comportamientos recurrentes que pueden convertirse en reglas operativas.
+
+---
 
 **Patrones estacionales y su uso en estrategias**
-que como digo ya lo haremos durante algún día estos y nos permitirá sacar estrategias sacar información para montar estrategias que son sencillas que no dejan de ser breakouts que no dejan de ser mil reversión cosas así pero que están basadas en simplemente el comportamiento natural que tiene el activo en una sesión también las materias primas se da mucho también las materias primas se da mucho las materias primas también se dan a nivel mensual que tienen que ver con la cosecha el gasolio de calefacción pues seré pautas que dependen del ciclo del calor del frío de determinados países final hemisferios al final hay el petróleo pues también inventarios etcétera no hay muchos factores que lógicamente no hay nada que hay funciones siempre pero al final buscamos poner probabilidades a nuestro a nuestro favor no
+
+Más adelante trabajaremos con este tipo de análisis para extraer información útil y crear estrategias basadas en el comportamiento natural del activo dentro de una sesión.
+Estas ideas no se limitan a los índices: también se aplican a las materias primas, que muestran patrones estacionales tanto diarios como mensuales. Por ejemplo, el gasóleo de calefacción depende del ciclo térmico y el petróleo de los inventarios semanales.
+
+Aunque no existen reglas que funcionen siempre, estudiar estos patrones permite poner las probabilidades a favor, entendiendo cuándo y por qué un activo tiende a moverse.
+
+
 
 **Preparación de optimización y control de procesos**
-bien entonces aquí teníamos este sencillos estimeta que ahora mismo no sé cómo lo tenía cuánto histórico tengo cargado espérate voy a cargar esto como estaba y mientras vamos a ver el de acciones voy a dejar aquí una optimización puesta 10 minutitos breve que me va a hacer el trabajo creo aunque no sé me da un poco de miedo estoy pensando casi que no lo voy a hacer hemos guardado alguna al final pero tú creo que no no así guardado una yo creo no no me acuerdo espérate que lo miro hemos guardado de acciones no sé si es que se me ha colgado el hecho una aquí que estaba guapa que la he analizado pero se me ha colgado porque cuando se cuelga cuando abres multichars antes de abrir abierto 3d son a veces el access se cuelga porque multichar se alimenta de 3d son de datos entonces depende como cuáles abres antes a veces lo se instabiliza 3d entonces se me ha colgado y no lo he podido guardar entonces pues nada no no no tengo guardados de multichar de lo de acciones pero de no no no no no no apuntado bueno es igual ya lo ya lo ya lo miraremos pero era era era parecida es que ésta era una de ellas a que está puesta era una de ellas
+voy a cargar esto como estaba 
 
-**Ajuste de recursos y optimización en Multicharts**
-las maneras ahora he guardado espérate si si he hecho esa todo lo que pasa es que me da miedo meter el procesador porque el multichar no puede regular aquí no puedo me da miedo meter el procesador al 100% estando en directo tienes no pero montar ese son no aquí pero me vas a rediciar a tienes razón lo puedo trucar pues mira lo voy a hacer va vamos a hacerlo lo voy a hacer lo voy a hacer lo voy a hacer y a ver si le pongo la mitad no a ver compatibility no autoconfigure no a ti que un fútbol de tampoco me te vete a no justo que no me ha acordado aquí a ver 8 para el modo todo ocho y ya está bien todo ocho y si yo me he dicho que yo voy a gusto usted se va a esperar ahora lo creo es que lo que me da miedo es que no quedamos atrás no tengo que cerrar multichar no tengo que cerrar este el guardo no sé el mundo lo tengo que cerrar porque si no lo no me lo va a abrir y además de hecho me voy a asegurar que se ha cerrado todo es ahí lo tienes pero tienes ahí lo tienes abierto y no abierto no me nada abierto no bueno sabe por por todo el trato espérate espérate lo va a insultar ya no guardó aquí lo va a insultar ya tenía por favor traer abierto con lo cual era eso que lo que lo tenía abierto vale pues no está a ver si ahora se cierra bien
 
-**Proceso de optimización y control de CPU**
-se ha cerrado sacado sacado sacado sacado pues no estaba colgado estaba estaba de paula irá vamos a ver que no se vea la contraseña que tendría que matarlos a todos, no es plan ahora, ahora va a abrir un poco más lento pero lo normal es que no me bloquee el equipo al optimizar, pues creo que no, ¿por? No, sí, ahora ya lo había guardado, ¿a qué te refieres? No, no, esto ya estaba, esto ya estaba, esto ya estaba, sí, sí, esto ya estaba, claro, esto ya estaba, que bueno, lo voy a mirar pero yo creo que ya está, esto está, Eurex, todo bien, todo bien, todo bien, de hecho igual ahora, igual ahora, mira, no, digo, a ver si está la optimización al abrir, no, no, no, no había, no había, no había, además tengo activo el otro, tengo activo el otro, vale, ahora le vamos a dar un poco, candela, vamos a dar candela, aquí nada, estoy pensando que le podíamos dejar de TP su salida, tío, vamos a probar, mira, me gusta esa propiedad, va, venga, pues a mí sí, vamos, esta como era, como la hemos hecho antes, bueno, la que tengo aquí, no, bueno, hemos hecho de darle un poco más, eh, por probar, a ver, voy a hacer genética, pues yo sí, le voy a dejar solo el stop, que tanto no hace falta, que es locura, esta la dejo en cero y le activo su salida y ya está, que se optimizo menos, de tres le voy a dejar tres, va, cierra a fin de día, sin filtros, venga, vámonos, tres mil, va, esto nada, esto en genética, lo dejo todo por defecto, venga, a ver, a ver, me interesa ver cómo va el procesador, venga, aguanta, pues será cinco años supongo, no, pero si son 50, esto en cuanto empiece, lo que le va a costar es cargar los datos, luego empiezan a un misil, bueno, no lo sé, lo que pasa es que le he bajado mucho, pero está a 30 procesadores, aguantando bien, nada, nada, ahí va, 50% procesador, nada, nada, nada, sobrado, sobrado, le podría haber dado más, venga, aguanta ahí, aguanta ahí, 56, ahí 70%, 70% procesador, bueno, pues aguanta ahí, aguanta ahí, mientras no sature mucho, 40%, aguantará, yo creo que aguantaría, porque el go to meeting este es un cohete, sí, ha acabado los narices, para la primera, gemito, tira, tira, no, lo que pasa es que ya sabes que va acelerando, eso es policial, ahora nada, en un minuto, mira, dice que un minuto va a tardar segundos, ahí está, ahí va, 90% era CPU, venga, pero bueno, aguanta bien
+![](../img/028.png)
+![](../img/029.png)  
 
-**Resultados de la optimización y métricas**
-aguanta bien, mientras no se quede 100% bloqueada, y la NVIDIA al 23, podía usar más la NVIDIA, coño, no la NVIDIA, sino la tarjeta NVIDIA, esta NVIDIA no está de cuanto debe valer y alberto, podíamos hacer un trade con las tarjetas gráficas, porque esto, lo que está subiendo NVIDIA igual nos pagan bien y todo, ahí está, venga, nada, todo bien, se ha salvado el directo y todo bien, ahora tenemos aquí el informito, datos bajos de TSI, antes eran más altos, ah, por el TPE, va mucho mejor con el TPE directo suyo, pero bueno, respetar un poco al autor, hombre, respetar al autor, bueno, aquí parece que equilibra un poco, ¿no? equilibra un poco entre todos, aquí lo que buscamos siempre es equilibro, esto lo hacemos en el Excel, pero aquí de mancha pusera buscamos poco equilibrio entre los tres, ves, TSI, que estén altos todos, vale, entonces, el que menos probabilidad entre los tres sería Expectancy, pero entre PPC y TSI, pues un poquito de equilibrio, ahí estaría un poquito más, más o menos el equilibrio, ves, es el mejor TSI, tercero mejor de PPC y bien colocado también en Expectancy, sería esto un poco, 3000 trades, bien, y con 0.10 y 0.01 de entrada, es decir, casi nada, casi nada, casi quiere, será el 0, eh, porque con 0.01 es 0, porque el 0 no lo veo, si lo he usado, si, a ver, aquí el gráfico, mira, por el porcentaje de confirmación es totalmente errático, no tiene ninguna, ninguna dependencia, lo ves ahí, aquí ordena, aquí ahora yo tengo ordenado por Expectancy, ordeno por PPC, que es bastante parecido a Profit, perdón, y ahora, por ejemplo, si yo marco esta columna, aquí los que tienen Session, al hacer el gráfico, estoy viendo por ordenado, abajo, por retorno, y aquí el número de valores de la variable que le he puesto, este es el mapa que tiene Session, que es lo que os decía, igual, igual ya podía poner uno en 3D, ¿no? también, igual podía, calla, que hace un poco que no lo pruebo, ahora resulta que selecciono dos variables y se queda conmigo, eh, ahora verás tú, bueno, te ponen las dos rayas, si, si, esto ya lo sabía, pero digo, ahora verás, me hace un mapa en 3D y me callo, me tengo que comer, pues espérate, eh, que tiene aquí el grafiquito, espérate, porque lo pruebo, así, los cojones, no te imaginas, hace esto en 3D, de hecho, eso es 3D, si os fijáis, pasa que, pues, yo creo que puede mejorar, yo creo que puede mejorar, sí, sí, entonces, por presentaje, ya has visto que no hay, y este, este, que es el, el stop, pues aquí sí que se nota un sesgo para arriba, ¿no? en un poco para arriba, bueno, pues nada, este es un poco, una optimización sencilla
+y mientras vamos a ver el de acciones voy a dejar aquí una optimización puesta , le doy al boton de optimizar `entrtada` y `stop` voy a hacer genética, pues yo sí, le voy a dejar solo el stop, que tanto no hace falta, que es locura, esta la dejo en cero y le activo su salida y ya está, optimizo menos, de tres le voy a dejar tres, va, cierra a fin de día, sin filtros, venga, vámonos, 
+
+, esto en genética, 
+
+![](../img/030.png)  
+
+lo dejo todo por defecto,
+
+![](../img/031.png)  
+
+
+
+![](../img/032.png)   
+
+me interesa ver cómo va el procesador, 
+
+![](../img/033.png)
+
+venga, aguanta,  
+ahora tenemos aquí el informito, 
+
+![](../img/034.png)
+
+datos bajos de TSI, antes eran más altos, 
+
+![](../img/035.png)
+
+ah, por el TPE, va mucho mejor con el TPE directo suyo, pero bueno, respetar un poco al autor, hombre, respetar al autor, bueno, aquí parece que equilibra un poco, ¿no? equilibra un poco entre todos, aquí lo que buscamos siempre es equilibro, esto lo hacemos en el Excel, pero aquí de mancha pusera buscamos poco equilibrio entre los tres, ves, TSI, que estén altos todos, vale, entonces, 
+
+![](../img/036.png)  
+![](../img/037.png)  
+![](../img/038.png)  
+
+el que menos probabilidad entre los tres sería Expectancy, pero entre PPC y TSI, pues un poquito de equilibrio, ahí estaría un poquito más, más o menos el equilibrio, ves, es el mejor TSI, tercero mejor de PPC y bien colocado también en Expectancy, sería esto un poco, 3000 trades, bien, y con 0.10 y 0.01 de entrada, 
+
+![](../img/040.png) 
+
+es decir, casi nada, casi nada, casi quiere, será el 0, eh, porque con 0.01 es 0, porque el 0 no lo veo, si lo he usado, si, a ver, aquí el gráfico, 
+
+![](../img/041.png) 
+
+mira, por el porcentaje de confirmación es totalmente errático, no tiene ninguna, ninguna dependencia, 
+
+lo hice así:
+
+aquí ordena por Expectancy, ordeno por PPC, que es bastante parecido a Profit y ahora, por ejemplo, si yo marco esta columna, 
+
+![](../img/042.png) 
+
+aquí los que tienen Tradesstation, al hacer click en el icono del gráfico, estoy viendo por ordenado abajo, por retorno, y en eje y número de valores de la variable que le he puesto, este es el mapa que tardesSession, 
+
+![](../img/041.png) 
+
+
+que es lo que os decía, igual, igual ya podía poner uno en 3D, ¿no? también, igual podía, calla, que hace un poco que no lo pruebo, ahora resulta que selecciono dos variables y se queda conmigo, 
+
+![](../img/043.png) 
+
+eh, ahora verás tú, bueno, te ponen las dos rayas, si, si, esto ya lo sabía, 
+
+![](../img/044.png) 
+
+y esta columna si la selecciono que este, este, que es el, el stop, 
+
+![](../img/045.png) 
+
+pues aquí sí que se nota un sesgo para arriba, ¿no? en un poco para arriba, 
+
+![](../img/046.png) 
+
+
+bueno, pues nada, este es un poco, una optimización sencilla dándole tres entradas, 
 
 **Análisis de resultados y out-sample**
-dándole tres entradas, iba mejor con una antes, eh, mira, ves, aquí he entrado, ya he vuelto a salir, ¿no? esto, nada, esto es muy flojo, esto es muy flojo, 109, tiene comisiones, eh, es flojito, flojito, además, el outchample está completamente roto, eh, no, no, está, no le he mirado los robundes que él lo tiene puesto, eh, está negativo el robundes, tiene robundes muy bajos, tiene estos muy altos, pero con pocos, con pocos traits, pero vamos a hacer una cosa, ahora me quedo con ésta, vamos a exportar ésta, solo el, bueno, no, es igual, mira, me voy a guardar la imagen, yo solo quiero ver una cosa rápida, no me tengo, es nadie, ahora, pero no la veía, la ventana, ¿dónde está la ventana? ahora como tal, tampoco le voy a hacer lo mismo, pero al revés, ¿sabes? le voy a hacer la misma por el otro lado, quiero ver a ver si la muestra está muy sesgada, que aquí no hemos, no hemos analizado la muestra, habría que haber analizado un poquito la muestra y ver qué tal
+iba mejor con una antes, eh, mira, ves, aquí he entrado, ya he vuelto a salir, ¿no? esto, nada, esto es muy flojo, esto es muy flojo,
 
-**Descarga y análisis de papers Open Range Breakout**
-eh, 30-0, le dejamos el 30 por delante para ver, pero esto antes lo hemos hecho porque, porque ya digo, queríamos ver un poco el sistema, ya el próximo día lo trabajamos, podemos decir como Dios manda, ¿vale? hoy, hoy era responder preguntas, plantear el sistema, que lo vierais, lo atendierais y empezar a hablar de las entradías, daros los tres documentos, por cierto, recordar que tenéis también más papers, que ya no los he leído, pero entiendo que sean correctos, aquí en el bar había una circulación de papers aquí, cuando iba a la universidad, en el bar circulaban otras cosas, pero aquí se han circulado papers en el bar, con los papers y un vídeo de youtube, tú lo sabes, que he preguntado, no lo he visto, eh, Aureli, lo tengo que ver, no sé qué, me haces un vídeo de Víctor, sé que lo he abierto antes, ya lo sé, pues ahora luego lo miro, a ver qué me has dejado, aquí hay otros papers a mirar y bueno, pues a ver, a ver qué, qué tal salen de, qué tal salen de ahí
+![](../img/047.png) 
+![](../img/048.png) 
 
-**Evaluación de commodities y próximos pasos**
-eh, tenía, eh, tenía que mirar, me voy a dejar aquí abierto, también quería ver, a ver qué teníamos en esto con commodities, pero miro, o sea había alguna cosita nueva de, de ORB, pero el próximo día lo, lo miro, bien, solo me han salido 15, bueno, pues, bueno, por ORB 15, a ver, esto está por fecha, venga, he acabado, entonces, como veis, es una maravilla, es la suscripción, mira, ahí tienes, era un minuto, eh, voy a decir que no hay ideas, venga, que analizarlo esto y verlo, a ver qué es, ahí tenéis, un articulito de ORB, en un segundín, mirad todos los que me han salido, cuando es esto, ahí parece que hay una serie ahí, ¿no?, tres de ahí, mira, veis, esto es lo que os he decido, de las pautas de velas, esto es muy, muy habitual, claro, sí, se encuentran cositas
+tiene comisiones, eh, es flojito, flojito, además, el OOS está completamente roto, eh, no, no, está, no le he mirado los robundes que él lo tiene puesto, eh, está negativo el robundes, tiene robundes muy bajos, tiene estos muy altos, pero con pocos, con pocos trades, 
+![](../img/050.png) 
 
-**Documentación de Toby Crabel y Open Range Breakout**
-esto ya os lo dije, yo os recomiendo mucho, eh, esto creo que era una serie, me suena, que hubo, ahí está, veis, sí, sí, sí, esto, pues mira, tenemos seis, pues mira, este lo, bajaré esta serie, eh, la pasaré por CGPT, a ver si me hacer unos resúmenes, y os la paso, porque no os puedo, como comprenderéis, no os puedo pasar al original, porque no, no está permitido, entonces ya lo enseño aquí, que no sé si puedo realmente, pero pasaros no puedo, porque, porque lógicamente no está, no está permitido, entonces, eh, podía caer un pequeño puro, que entenderéis que no, no es plan, pero bueno, oye, yo hago un documento mío, ¿no?, he hecho que le va a hacer con CGPT, pero no es verdad, eh, lo que iba era hacerlo yo, eh, y editarlo y crearlo yo, entonces, una cosa creada por mí, creada por mí, la puedo perfectamente compartir, ¿vale? eso es lo que, lo que voy a hacer, utilizando esta documentación, yo voy a crear un artículo propio, que luego os pasaré, ¿vale?
+ordeno columna Robustness
 
-**Análisis final de resultados y conclusiones**
-pero esto es interesante, ¿vale?, esto ya ha acabado, vamos a verlo, a ver, a ver lo de arriba que me ha salido, antes hemos elegido 0010, a ver dónde está este ahora, es este, el que hemos elegido antes es este, pero sigue dando mal, mal rebundes, eh, sigue colocando bien en old data, porque lógicamente el old data es el mismo, pero sigue dando rebundes, rebundes bajos, aunque han mejorado los rebundes en general, en general han mejorado, y este mismo, este mismo ha mejorado mucho, claro, antes era negativo, ahora es algo positivo, ¿me estáis hablando a mí?, no, no, bueno, veremos un poquito, como os decía, el próximo, el próximo día, ese es el que nos, lo voy a dejar guardado con este, para tener una referencia, pero sí que parece lo que, lo que decía Alberto, mira, déjame, que me voy a, me voy a quedar, porque antes le había puesto solo uno, ahora le voy a dejar que haga, mira, vamos a hacer otra cosa, porque como esto, como eso solo quiero una, una referencia ahora,
+![](../img/049.png) 
 
 
-le voy a dejar a esto, esto ya veo que no hace falta tan alto, así que lo bajamos, esto del stock también lo quiere súper bajo, pero me acabo de dar cuenta que no tengo el lift activado, y esto puede hacer un problema con el stock, porque va a tardar un poco más, pero me da igual, va a tardar un poco más, pero me da igual, 001, esto no hace falta tanto, hemos quedado, 025, esto tampoco hace falta tanto, 2, aquí vamos igual, no, lo voy a dejar en 3, lo voy a dejar en 3, porque igual ahora con el lift me doy cuenta que resulta que no valía eso, y le vamos a poner, salir original en 0, cierre a fin de día, y esto lo voy a dejar que os siga entre 1 y 5, ahora le voy a dejar al final, a ver qué tal, le voy a decir que termine en 10, cuando haga 10 consecutivas, que no mejore, que pare, me da igual el valor, quiero encontrar una zona, esto lo hacemos mucho en las optimizaciones de búsqueda, las iniciales, siempre ponemos esta variable en 3, cuando en 10 generaciones no mejora, cuando hace días seguidas donde el mejor no cambia, entonces para, porque no hace falta llegar al final, a mí no me interesa encontrar una zona donde vaya bien, y justamente de esa manera ya me vale, estoy haciendo búsquedas podemos decir de zonas y demás
+me voy a guardar la imagen, yo solo quiero ver una cosa rápida, 
+
+![](../img/051.png) 
+![](../img/052.png) 
+
+quiero ver a ver si la muestra está muy sesgada, que aquí no hemos, no hemos analizado la muestra, habría que haber analizado un poquito la muestra y ver qué tal
+
+![](../img/053.png) 
+![](../img/054.png) 
+![](../img/055.png) 
+![](../img/056.png) 
+![](../img/057.png) 
+![](../img/058.png) 
+![](../img/059.png) 
+![](../img/060.png) 
+
+porque ya digo, queríamos ver un poco el sistema, ya el próximo día lo trabajamos, podemos decir como Dios manda, ¿vale? hoy, hoy era responder preguntas, plantear el sistema, que lo vierais, lo atendierais y empezar a hablar de las intradías, 
+
+---
+
+vamos a verlo, a ver, a ver lo de arriba que me ha salido, antes hemos elegido 0.10 - 0.10, a ver dónde está este ahora, es este, el que hemos elegido antes es este, 
+
+![](../img/061.png) 
+
+pero sigue dando mal, mal rebundes, eh, 
+
+![](../img/062.png) 
+
+sigue colocando bien en old data, porque lógicamente el old data es el mismo, pero sigue dando rebundes, rebundes bajos, aunque han mejorado los rebundes en general, en general han mejorado, y este mismo, este mismo ha mejorado mucho, claro, antes era negativo, ahora es algo positivo, 
+
+---
+
+vamos a hacer otra cosa, el lift activado, y esto puede hacer un problema con el stock, porque va a tardar un poco más, pero me da igual, `activo: back testing resolution "use look-inside-bar-back-testing"`
+
+![](../img/064.png) 
+
+le voy a dejar a esto, esto ya veo que no hace falta tan alto, así que lo bajamos, 
+
+![](../img/063.png) 
+![](../img/066.png) 
+![](../img/067.png) 
+
+y le vamos a poner, salir original en 0, cierre a fin de día, y esto lo voy a dejar que os siga entre 1 y 5, 
+
+![](../img/068.png) 
+
+ahora le voy a dejar al final, a ver qué tal, le voy a decir que termine en 10, cuando haga 10 consecutivas, que no mejore, que pare, me da igual el valor, quiero encontrar una zona, 
+
+![](../img/069.png) 
+![](../img/070.png) 
+
+![](../img/071.png) 
+
+
+esto lo hacemos mucho en las optimizaciones de búsqueda, las iniciales, siempre ponemos esta variable en TradeStation, cuando en 10 generaciones no mejora, cuando hace días seguidas donde el mejor no cambia, entonces para, porque no hace falta llegar al final, a mí no me interesa encontrar el mejor , me interesa una zona donde vaya bien, y justamente de esa manera ya me vale, estoy haciendo búsquedas podemos decir de zonas y demás incluso si a veces se pueden aparecer zonas mejores, 
 
 **Descarga de papers adicionales y cierre de la sesión**
-incluso si a veces se pueden aparecer zonas mejores, mientras voy a ir bajando estos pdfs, de toda esta serie de open reach breakout ya si ya lo tengo, playing the open reach breakout part 1, hostia toby cravel tío, toby cravel es un grande del open reach breakout, hostia toby cravel es un grande del open reach breakout, es un auténtico especialista, pues muy buena esta serie que os voy a hacer, si si si toby cravel, de hecho el libro de kauffman, ahora no recuerdo si este, pero tiene sistema de cravel, me lo voy a llamar cravel, está muy bien esta, mira que bien, voy a bajar toda esta serie de cravel, ah no, no estáis viendo, muy bien, si es que de verdad, open reach breakout parte 1, si ya lo he bajado, si, este es el que acaba de bajar, parte 1, de príncipe lo contrase al expansio, esto es o no, no pone el número 2, yo creo que sí, es de cravel también, vamos bajándolo todo, a ver hay que bajar, este es el 8, el 7, parte 8, joder que salto me ha dado esto, está como desordenado no, hay parte 1, aquí parte 1, no, parte 1 ya lo he hecho no, joder, si si parte 1 ya lo he hecho, mira me he empezado por arriba porque eso es un lío maco eh, si si toby cravel, no se tío, no se tío, es eso, bueno pues tras este ejercicio de normalidad tan anormal, valga ver un poco de...
 
-**Reflexión final y próximos temas (BAR y C-BAR)**
-parece que va a tardar mucho pero ya veréis como acabará en cualquier momento, yo voy bajando aquí todos los open reach breakout que está esto un poco desordenado, no está fácil, parte 6, la emisión está comenzando, como 05, no, 05 no, si, lo he puesto que pare en 10, Alberto, lo he puesto que pare en 10, cuando 10, cuando no mejore en 10 para entonces, para que llegue a 50 como mucho para ahora, normal es que 50 o así pare, si no oye nos quedamos aquí hasta las 12, 1 de la mañana y no pasa nada tampoco, pero total, por miles de débiles, todavía aguantan todos ahí eh, están atentos, bueno vamos a ir a 05, aquí todos ahí hasta el final aguantando, a ver cómo acaba esto, como se tire alguien del barco, yo voy detrás como el capitán aquel del barco, Ejercicio de normalidad tan anormal, sí, el concordia, con palabras, aunque algo, el espagueti, como se llamaba, escudentini, escadecidi era, no, escachenco era algo de escano, esquetino, ves, ves, era algo de espagueti, ya me salía bien, escatino era, era escaketo era, el escaketo era, no era el escaketo, era el escaqueco, este ya lo he bajado, este ya lo he bajado, este ya lo he bajado, pues no sé si están todos, eso es un poco raro eh, 8, pero 8 ya lo tengo, es el 7-7, este también lo he bajado, este también lo he bajado, por encima habéis visto, pero ahora vamos a profundizar en el bar, en otro video ya hablaremos más profundamente del bar y del C-Bar, este es el mismo que os he enseñado ahora, veremos el bar y demás, para aquellos más avespados, parece que ya estaba calculado, pero bueno, no he hablado mucho de él, porque quería hacer, bueno, pues tras este ejercicio de normalidad tan anormal, pero bueno, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está, ya está.
+mientras voy a ir bajando estos pdfs, de toda esta serie de open reach breakout ya si ya lo tengo, playing the open reach breakout part 1, hostia **toby cravel** tío, toby cravel es un grande del open reach breakout, hostia toby cravel es un grande del open reach breakout, es un auténtico especialista, pues muy buena esta serie que os voy a hacer, si si si toby cravel, de hecho el libro de kauffman, ahora no recuerdo si este, pero tiene sistema de cravel, 
 
 
 
-### Introducción al BAR y C-BAR
 
-**Contexto y continuación del análisis**
-por encima habéis visto, pero ahora vamos a profundizar en el bar, luego en otro video ya hablaremos más profundamente del bar y del C-Bar, en el mismo Excel que os he enseñado ahora veremos, veremos el bar y demás, para aquellos más avespados por ahí, me parece que ya estaba calculado, No he hablado mucho de él porque quería hacer un vídeo específico y antes quería explicaros qué es el bar, para aquellos que no hayáis oído nunca hablar de esta medición de riesgo, el bar es value at risk, de acuerdo a sus cifras, valor en riesgo, es una medida estadística, distintos algoritmos de morning management que hay, no os voy a explicar todos aquí en las prácticas si alguien tiene por si a por alguno, he usado muchos más, es un tema sobre el que es un poco donde se acaba de hacer la unión de distinto y esto es un poco donde se acaba de hacer la unión de distinto.
-
-**Revisión de artículos y papers relacionados**
-Yo aquí voy repasando todos los artículos de estos con commodities que hablan de la versión, que es una alternativa, un paper guapo, o que podría usarse en otros, en el final lo acabáis de ver calculado para el S&P con un porcentaje de capital, vamos a, ahi lo tienes, bravo, justo acababa de decir que no para, espera que tengo aquí un paper abierto, sell short, hombre, el word de Pevli, tenemos un articulito de Pevli aquí en stockcommodities, short entry, vamos a guardarlos aquí también, intraday breakout strategy, perfecto, perfecto, pues nos viene bien, bajando, bajando también, todo eso he bajado ahí, bueno lo he llamado Krabbel porque parecían de Krabbel todos, pero no, y ese es el último que me falta por mirar ya, ah, estos son cartas que pide la gente, bueno tampoco vamos a bajar las cartas precision code, fashion art by the graphs, pues muy bien, ya está, pues nada, hemos bajado todo, a ver si todos los de Krabbel son buenos, montaremos un paper guapo ahí para ver que hemos visto ahora aquí
+ver que hemos visto ahora aquí
 
 **Análisis de resultados con LIFT y rebalanceo**
-ahora con el lift la cosa ha empeorado, ha ido a filtros más altos, es lo que me temía, y todo negativo, has visto el auto sample, todo negativo, quería que vea cierto riesgo de ajuste, veo cierto riesgo de ajuste aquí, se ha ido ya a otro sitio ahora, bueno lo voy a dejar guardado con uno de estos, porque el que había antes seguramente estaba afectado por el lift, ese era el problema, bueno así vamos a ver cuál equilibra, vamos a ver cuál equilibra en algo, no veo mucho equilibro aquí en ningún sitio yo, no sé por qué, ah bueno, está cogiendolo, el que más es 980, 980, aquí no, aquí parece, ah bueno, por expectancia no equilibra en ninguno, por expectancia no equilibra en ninguno, se hunde mucho el expectancia, pues nada, lo vamos a dejar aquí, queremos saber qué tal, habría que hacerla así con el lift por el otro lado, ya digo, este era un poco para que lo vieras un poco funcionar y sin más, no queríamos tampoco, pero así ya te digo, no, no está saliendo nada, no es como de grada al final, que ver puede ser circunstancial, eso es lo que siempre hay que mirarlo, pero estamos de acuerdo que la entrada no es una buena señal, entonces hay que tomarse, tomar nuestras precauciones, 05, no, 05 no, así que nada más, lo vamos a dejar por hoy aquí
+ahora con el lift la cosa ha empeorado, ha ido a filtros más altos, es lo que me temía, y todo negativo, has visto el auto sample, todo negativo, quería que vea cierto riesgo de ajuste, veo cierto riesgo de ajuste aquí, se ha ido ya a otro sitio ahora, bueno lo voy a dejar guardado con uno de estos, porque el que había antes seguramente estaba afectado por el lift, ese era el problema, 
 
-**Cierre de la clase y planificación próxima**
-proceso la clase ahora cuando acabo, yo os he dejado ahí los tres documentitos, la emisión está comenzando, miraremos de traducir todo esto que he encontrado en esto con commodities que ya tenía pensado mirarlo, mirarlo hoy y ver a ver qué nos da, porque esa es mi idea, siempre la otra vez me lo miré, a ver qué nos puede ir dando, que nos podemos ir sacando y también poder daros un poquito de material, nada más nos vemos el viernes, el lunes que viene, si, el lunes que viene nos vemos, quedaran dos días para que cumpla 51 años, y por lo tanto el lunes que viene tomo clase, no sé si tomo el otro, pero el que viene el cuatro tenemos clase, acabaremos este y espero poder acabar este, poder hacer alguna versión de, no sé si este exactamente porque la entrada está muy limitada, pero sí que trataremos, trataremos de que este sea algo aprovechable y en todo caso presentaremos algún range breakout mientras diga aprovechable, de acuerdo, es decir, si no es este porque este es el final, hemos desarrollado la de la primera hora, que así como está hay activos donde funciona cien por cien, pero no necesita activos muy tendenciales y es lo que digo el DAX, bueno ya lo estáis viendo aquí, es lo que os decía, esta pauta tiene movimiento y es complicado todo un día de movimiento, claro que encontraremos alguno, pero es muy complicado, el DAX tiene a morirse pasada la, mira ese es un día fantástico y fijaros aquí y se acabó, 12, y sí que luego sigue tirando, pues seguramente era un día que Wall Street subió lo que no estaba escrito y al final lo va siguiendo, pero es raro tener una tendencia muy limpia, es muy tendiente a erratizar en esas horas post 11, 12 hasta que no llegan las noticias y ahí las noticias ya sabéis que es la locura, entonces es un activo típico para operarlo de entrada y luego es un caso mejor tratar de montar algo con las noticias, aprovechar ahí y subirse las noticias, montar un range breakout en las noticias para seguir hasta la hora de apretar Wall Street y ahí salirse, adiós, adiós muy buenas a las 5 y media, es quizá lo que yo probaría, primera hora, 10 y luego quizá la hora de las noticias un poco antes mirar buscar una rotura y fuera, seguimos el próximo día, buen año el 73, muy buena cosecha, de marzo el 73, hasta el lunes que viene, chao.
+![](../img/076.png) 
+![](../img/077.png) 
+![](../img/078.png) 
+![](../img/079.png) 
+
+aun así vamos a ver cuál equilibra, vamos a ver cuál equilibra en algo, no veo mucho equilibro aquí en ningún sitio yo, no sé por qué, ah bueno, está cogiendolo, el que más es 980, 980, aquí no, aquí parece, ah bueno, por expectancia no equilibra en ninguno, por expectancia no equilibra en ninguno, se hunde mucho el expectancia, pues nada, lo vamos a dejar aquí, queremos saber qué tal, habría que hacerla así con el lift por el otro lado, ya digo, este era un poco para que lo vieras un poco funcionar y sin más, 
+
+![](../img/074.png) 
+
+no queríamos tampoco, pero así ya te digo, no, no está saliendo nada, no es como de grada al final, que ver puede ser circunstancial, eso es lo que siempre hay que mirarlo, pero estamos de acuerdo que la entrada no es una buena señal, entonces hay que tomarse, tomar nuestras precauciones
+
+**Cierre session y planificación próxima**
+
+trataremos, trataremos de que este sea algo aprovechable y en todo caso presentaremos algún range breakout mientras diga aprovechable, de acuerdo, es decir, si no es este porque este es el final, hemos desarrollado la de la primera hora, que así como está hay activos donde funciona cien por cien, pero no necesita activos muy tendenciales y es lo que digo el DAX, bueno ya lo estáis viendo aquí, es lo que os decía, esta pauta tiene movimiento y es complicado todo un día de movimiento, claro que encontraremos alguno, pero es muy complicado, el DAX tiene a morirse es raro tener una tendencia muy limpia, es muy tendiente a erratizar en esas horas post 11, 12 hasta que no llegan las noticias y ahí las noticias ya sabéis que es la locura, entonces es un activo típico para operarlo de entrada y luego es un caso mejor tratar de montar algo con las noticias, aprovechar ahí y subirse las noticias, montar un range breakout en las noticias para seguir hasta la hora de apretar Wall Street y ahí salirse, adiós, adiós muy buenas a las 5 y media, es quizá lo que yo probaría, primera hora, 10 y luego quizá la hora de las noticias un poco antes mirar buscar una rotura y fuera, seguimos el próximo día,
 
 
