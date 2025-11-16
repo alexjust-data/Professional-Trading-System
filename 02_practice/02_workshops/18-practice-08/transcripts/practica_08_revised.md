@@ -282,8 +282,8 @@ ya he comentado lo que quería comentarle a Zenén, era esto verdad, no tenía n
 
 **Estructura del ORB y materiales de referencia**
 
-* [Filtros-ORB.pdf](../../18-practice-08/Curso_Filtros-ORB.pdf)  
-* [ORB-04.pdf.pdf](../../18-practice-08/CursoORB-04.pdf)
+* [Filtros-ORB.pdf](../docs/Curso_Filtros-ORB.pdf)
+* [ORB-04.pdf](../docs/CursoORB-04.pdf)
 
 
 `ORB` al final tiene tres partes, 
@@ -295,7 +295,7 @@ al final el ORB tiene tres partes, la más obvia y más clara es
 
 basados en distintas fuentes, en varias de las que habéis visto de Krabber, eh, también a un otro artículo, uno también desde el que he sacado este sistema, el sistema que luego os enseñaré, que es un volatility breakout, no un ORB, que es un subtipo de volatility breakout, que os lo dimos el otro día, eh, este os lo dimos, os lo dimos el otro día, a ver que lo abra, 
 
-aquí: ***[Designing VolatilityBreakout Systems](../volatlity%20breakouts.pdf)***
+aquí: ***[Designing VolatilityBreakout Systems](../docs/volatlity%20breakouts.pdf)***
 
 designing volatility breakout system, y bueno, hace una explicación básica de lo general, que es lo que estaba diciendo ahora, es que no tiene, o sea, un volatility breakout, o decimos en catalán, son fabas juntadas, vale, porque sí que es verdad que en el, ***en el campo del filtro, en los ORBs, donde especialmente está la clave***, vale, ¿por qué?, porque al final, eh, tienes que marcar de alguna manera, porque al final tú aquí ves sesiones, sesiones, sesiones, ¿de acuerdo?, y dices bueno, lo fácil es, que es lo fácil, es lo intuitivo, es decir, pues bueno, un ranguito, yo ahí en sus roturas opero,
 
@@ -800,7 +800,7 @@ Y ese es el código 4, el que tenemos. Es el *Huerta*.
 
 Este es el *paper* del código número 4, 
 
-- [*paper* del código número 4](../CursoORB-04.pdf)  
+- [*paper* del código número 4](../docs/CursoORB-04.pdf)  
 - [STRATEGY_ORB_V4.ELD](../code/STRATEGY_ORB_V4.ELD)
 
 <div style="border-left: 4px solid #f1c40f; background: #fff9e6; padding: 10px 15px; margin: 10px 0;">
@@ -1040,7 +1040,7 @@ Primero deberíamos trabajar antes estas tres partes que dije:
 
 Este codigo está basado en este mismo artículo
 
-- [Volatility BreakOut](../volatlity%20breakouts.pdf)
+- [Volatility BreakOut](../docs/volatlity%20breakouts.pdf)
 
 Para este son reglas muy sencillas que son estas de aquí:
 
