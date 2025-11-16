@@ -9,7 +9,15 @@
 5. **Función:** NarrowRange
 6. **Función:** NormalizedTrueRange
 
+Hay funciones, indicadores, filtros y estrategias porque probablemente se exportó:
 
+* Exportas “todo el workspace”  
+* Exportas desde File → Export EasyLanguage sin desmarcar indicadores/funciones  
+* Exportas desde un proyecto que tiene dependencias  
+* La estrategia usa funciones personalizadas que TS incluye automáticamente en la exportación
+
+
+¿Se puede hacer un archivo con SOLO la estrategia? Sí. 100% posible. Solo tienes que exportar esa única estrategia, sin ningún otro objeto.
 <br>
 
 ---
@@ -583,129 +591,203 @@ Como os decía, al final detrás hay un *candlestick*, no en el sentido estétic
 ***Bien, ahora le ponemos el 6***
 
 
-Por las seis seguimos en este tipo; como son tres, es esta de aquí, la de abajo del todo: 1, 2, 3, 4, 5, 6. Correctísimo. Está mezclando ya conceptos, porque sigue introduciendo la media, pero ahora compara el cierre con el *open*, que esto ya lo habíamos hecho antes. Es la misma con algo más. ¿Y qué es ese “algo más”? Pues vamos a verlo: el *range* —recordad, *high* menos *low*— debe ser mayor del 1 % de la media de 13 días. Esto nos dice que debe ser un rango amplio, es decir, que haya sido una vela volátil. Es una manera de medir la volatilidad. Está incorporando la volatilidad, porque uno de los indicadores que usamos para medirla es el *Average True Range* (ATR), que es la media de los rangos. Esto lo que hace es comparar el *range* (de una vela) con la media de varios rangos. Tiene que ser mayor que el 1 % de la media de los 13 días. Esto lo veis en el código: este era el 6, ¿verdad, Alberto? Cierre mayor que *open*, *range of data2* mayor que la media de cierres. Aquí hay que suponer que se refiere a la media de los *closes*, claro, porque si no, no tendría sentido. Este es menos intuitivo, así que vamos a tratar de verlo en pantalla.
 
-**Corrección técnica del código y referencia a data2**
+Está mezclando ya conceptos, porque sigue introduciendo la media, pero ahora compara el cierre con el *open*, que esto ya lo habíamos hecho antes. Es la 2a con algo más. ¿Y qué es ese “algo más”? Pues vamos a verlo: 
 
-Los dos primeros eran claros, ya los hemos visto. Aquí ya pinta poco porque le pedimos muchas condiciones; es un filtro, en realidad tres, pero veamos este. Este ya no pinta todas las velas, lo que significa que no nos hemos referido todo el rato al *data2*. Falta el *data2* aquí. Has referido al *data1* a mitad del código. Todo el rato se está refiriendo al *data2*, ¿entendemos? Y si todos son iguales, todos usan *close* mayor que la media de 13. Si este lo es, el otro también. No hay motivo para pensar que usa un criterio distinto. Hay que entender que sea el 1 o el 2, pero siempre el mismo. Estoy seguro de que *data2* se refiere al diario. El hecho de que sea *data2* es porque nosotros tenemos el diario en ese *data2*. Por eso te lo pintaba distinto. No lo voy a cambiar porque rompería el resto. El 7 va con *data2*, pero el mismo indicador sirve para todos. El único que está en *data1* es el 6, y solo la primera parte; la segunda está bien. Se te olvidó sin más. Ahora, un par de meses de sueldo suspendido y ya está, esto se arregla rápido (risa). Vale, esto aquí es *data2*, le damos a F3 y creo que no me he dejado ninguno más. Me di cuenta porque no pintaba todas: eso significa que se refería a otra regla. Si te refieres al *data2*, la regla solo se evalúa en esa vela, por lo tanto todas las de la serie deberían estar pintadas. Así me di cuenta. Al final se cumple igual, porque esa era la menos restrictiva: la de la media. Si se cumplía arriba, se cumplía abajo probablemente.
+$$
+c > \text{average}(13) \text{ and } close > open \\
+\text{ and } \\
+\text{ range > 1\% of average(13)} \\
+\\
+55.93\%
+$$
 
-**Comprensión de la pauta 6 y análisis de volatilidad**
+el *range* —recordad, *high* menos *low*— debe ser mayor del 1 % de la media de 13 días. Esto nos dice que debe ser un rango amplio, es decir, que haya sido una vela volátil. Es una manera de medir la volatilidad. ***Está incorporando la volatilidad***, porque uno de los indicadores que usamos para medirla es el *Average True Range* (ATR), que es la media de los rangos. Esto lo que hace es comparar el *range* (de una vela) con la media de varios rangos. Tiene que ser mayor que el 1 % de la media de los 13 días. 
 
-Vamos a entender esta otra pauta. Recordamos las dos primeras: cierre en tendencia y cierre mayor que *open*, es decir, vela verde. Lo que le añade esta es el componente de volatilidad. ¿Cómo lo hace? Compara el *range*, nuevamente, *high* menos *low*. Nos dice que el *range* tiene que ser mayor que la media de los cierres, que es esta línea azul, la media de los cierres. Concretamente, el código indica: *data2 open range* mayor que la media por 0,01, es decir, por un 1 %. Es un poco raro, porque al final multiplica esto por 0,01. Por ejemplo, si la media de cierres es 17 022, por 0,01 da 170 puntos, y el rango debe ser mayor que 170 puntos. Nuevamente, nos está diciendo que es una vela de mucho rango, una vela muy volátil. Le veo bastante sentido. Al final creo que el 6 no era de los mejores, pero es parecido al 7. Este tiene sentido porque introduce la volatilidad. Recordad que os hablé de las pautas: de momento, de volatilidad, contracción–expansión, contracción–expansión. La volatilidad casi siempre participa en este tipo de sistemas. Digo “casi” por prudencia, porque ¿qué hay más para definir el rango? Lo que os decía de estructura o no estructura: tendencia y volatilidad, los dos vectores básicos que mejor definen un mercado. La tendencia la está metiendo todo el rato en la primera regla, y aquí mantiene la condición de cierre mayor que *open*. Puede haber algún caso que ahora se me escape, pero la veo redundante, porque si el *range* es mayor… bueno, podría ser bajista, claro. Lo que quiere es tendencia alcista: que la vela sea verde y de mucho rango. Eso identifica este patrón.
+Esto lo veis en el código: este era el 6, 
 
-**Conclusión y transición a la pauta 7**
+```sh
+Case 6:
+    if Close of data2 > average(Close of data2, FiltroTendencia) and Close of data2 > Open of data2 and range of data2 > average(Close of data2, FiltroTendencia) * 0.01 then 
+        Plot1( High, !("Filtro1 Lng") )
+```
 
-Y a lo mejor podría ir mejor en el contrario, es decir, el 7. Creo que no está probado aquí, porque el 7 es distinto. Efectivamente, el 7 es eso, y el 7 es el que funciona bien. Es que pensaba que no era el 7, pero sí, el 7 que va bien es este. El 7 pide que el cierre sea menor, es decir, que la tendencia sea alcista, haya volatilidad, pero que el día haya sido bajista. Esa configuración le gusta para el largo, y a mí también me gusta.
+Aquí lo tienes **en HTML**, con **las negritas convertidas a cursivas** correctamente:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div style="border-left: 4px solid #f1c40f; background: #fff9e6; padding: 10px 15px; margin: 10px 0;">
+    <strong>Explicación :</strong><br>
+    Este fragmento de código define una <em>condición de filtro para entradas largas (long)</em> basada en tres requisitos simultáneos aplicados sobre <em>data2</em> (normalmente el timeframe diario). Primero exige <em>tendencia alcista</em>, comprobando que el cierre actual está por encima de la media de cierres de los últimos <em>FiltroTendencia</em> días. Después pide una <em>vela alcista real</em>, es decir, que el cierre sea mayor que la apertura. Y, por último, exige <em>volatilidad suficiente</em>, verificando que el <em>range</em> de la vela (high–low) supere al menos el 1% de esa misma media de cierres. Si las tres condiciones se cumplen a la vez, entonces el sistema dibuja un marcador visual (Plot1) en el <em>high</em> de la barra, señalando que esta vela cumple el filtro técnico “Filtro1 Lng”.
+</div>
 
 
+Aquí hay que suponer que se refiere a la media de los *closes*, claro, porque si no, no tendría sentido. Este es menos intuitivo, así que vamos a tratar de verlo en pantalla. Los dos primeros eran claros, ya los hemos visto. Aquí ya pinta poco porque le pedimos muchas condiciones; Si te refieres al *data2*, la regla solo se evalúa en esa vela, por lo tanto todas las de la serie deberían estar pintadas. 
+
+![](../img/054.png)
+
+Compara el *range*, nuevamente, *high* menos *low*. Nos dice que el *range* tiene que ser mayor que la media de los cierres, que es esta línea azul, la media de los cierres. Concretamente, el código indica: *data2 open range* mayor que la media por 0,01, es decir, por un 1 %. 
+
+![](../img/055.png)
+
+Es un poco raro, porque al final multiplica esto por 0,01. Por ejemplo, si la media de cierres es 17 022, por 0,01 da 170 puntos, y el rango debe ser mayor que 170 puntos. Nuevamente, ***nos está diciendo que es una vela de mucho rango, una vela muy volátil***. Le veo bastante sentido. Al final creo que el 6 no era de los mejores, pero es parecido al 7. Este tiene sentido porque introduce la volatilidad. 
+
+Recordad que os hablé de las pautas: de ***momentum***, de ***volatilidad***, ***contracción–expansión***. La volatilidad casi siempre participa en este tipo de sistemas. Digo “casi” por prudencia, porque ¿qué hay más para definir el rango? Lo que os decía de estructura o no estructura: tendencia y volatilidad, los dos vectores básicos que mejor definen un mercado. 
+
+La tendencia la está metiendo todo el rato $cierre > \text{average}(13)$ en la primera regla, y aquí mantiene la condición de cierre mayor que *open* es decir la vela podría tener ese rango enorme y ser bajista, claro. Lo que quiere es tendencia alcista: que la vela sea verde y de mucho rango. Eso identifica este patrón. Y a lo mejor podría ir mejor en el contrario, es decir, el 7. 
+
+***Bien, ahora le ponemos el 7***
+
+El 7 pide que el cierre sea menor, es decir, que la tendencia sea alcista, haya volatilidad, pero que el día haya sido bajista. Esa configuración le gusta para el largo, y a mí también me gusta.
+
+$$
+c > \text{average}(13) \text{ and } close < open \\
+\text{ and } \\
+\text{ range > 1\% of average(13)} \\
+\\
+47.06\%
+$$
+
+```sh
+Case 7:
+		if Close of data2 > average(Close of data2, FiltroTendencia) and Close  of data2 < Open of data2 and range of data2 > average(Close of data2,FiltroTendencia) * 0.01 then 
+			Plot1( High, !("Filtro1 Lng") )
+```
+
+Claro, es complicado porque le está pidiendo tendencia alcista, además es de 13 días, que tampoco son muchos, y mucha volatilidad (recordad que la volatilidad es bajista). Y encima que haya cortado. Entonces, al final le está costando. 
+
+Ves, aquí la da por los pelos. La da por los pelos. la da y la marca toda. 
+
+![](../img/056.png)
 
 
+Esta la da cómoda, porque cierra por encima, tiene mucho rango, es bajista y la cierra, 
 
+![](../img/059.png)
+Es aquí donde ya se va a invertir.
 
+![](../img/060.png)
 
+Es esta vela ya está por debajo de la media. La vela es verde, de acuerdo, y de mucho rango. Es decir, esta es muy, muy interesante. 
 
+![](../img/057.png)
 
-Perfecto, Núria ✅
-A continuación tienes **tu texto completo**, **sin inventar nada**, **sin saltos innecesarios**, **respetando el 100 % de tus palabras**, **con mejora ortográfica y léxica leve (≈5 %)** y **títulos en negrita** para cada cambio temático o bloque lógico.
-
----
-
-**Regla 7: Evaluación y comprobación de condiciones**
-
-Esta es la 7. Aquí no va a dar *true*; tal vez en la siguiente tampoco da *true* en la siguiente. Bueno, puede ser que sea porque no le da el rango. Eso que os digo, claro: no le da rango, tiene que cumplirlo. La condición del rango es muy estricta. A ver, déjame ver el código, que esté correcto:
-*Close of data 2* mayor que el *average close of data 2*, correctísimo.
-*Close of data 2* menor que el *open of data 2*, correctísimo.
-Y *range of data 2* mayor que el *average close of data 2* por 0.01, correcto.
-Es correcto, que se le pague el bingo, es correcto.
-
-Claro, es complicado porque le está pidiendo tendencia alcista, además es de 13 días, que tampoco son muchos, y mucha volatilidad (recordad que la volatilidad es bajista). Y encima que haya cortado. Entonces, al final le está costando. Ves, aquí la da por los pelos. La da por los pelos. Esta nada cómoda, porque cierra por encima, tiene mucho rango, es bajista y la cierra, la da y la marca toda. Y aquí lo mismo, aún se aguanta. Y aquí ya se va a invertir. Es aquí donde ya se va a invertir.
-
-Había una roja cercana, me ha parecido ver. Aquí está. Es esta, para, para, y esta, la contraria. Ves, vela ya está por debajo de la media. Ya está por debajo de la media. La vela es verde, de acuerdo, y de mucho rango. Es decir, esta es muy, muy interesante. Puede ser que no esté bien puesta, pero bueno, lo que me da mucho aquí —en esa cambiaba— ves, por eso, porque sí que me da. Ya me había dado cuenta que no, porque está por debajo, Alberto, y está pintada roja. Algo pasa: la media está mal puesta. Pero bueno, cambia poco. En las que hemos visto, pues no cambiaba. Entonces ahí está, ahí está.
-
----
-
-**Sobre el código y su implementación visual**
 
 Bueno, pues todas estas no las vamos a repasar todas. Ya os digo que este código ya os lo haremos llegar. Son estos códigos, en realidad son reglas, son filtros. Esto con un *ShowMe* se pinta.
 
 Además de estas, como veis —ya digo— ahí hay otras. No, aquí hay otras. O sea, hay siete, pero en el indicador que ha hecho Alberto en el *ShowMe* hay más, porque están los *Narrow Range* y todas estas que ya habíamos comentado.
 
----
 
-**Regla 8: Narrow Range de cuatro velas**
+***Bien, ahora le ponemos el 8 - funcion : Narrow Range de cuatro velas***
 
-Vamos a verlas. Para que esas ya no las puedo enseñar ahí, porque ahí está hasta la siete. Vale, la 8 es un *Narrow Range*. Si os abre la función, veis que es un *Narrow Range* de N velas; en este caso creo que está definido para cuatro, pero puede ser para siete. Digamos que tú le pasas el *input* que defines.
+```sh
+inputs: Length( numericsimple ) ;
 
-Está hecho con un bucle *for*. Es una función. No entramos en tecnicismos, por favor, da igual, da igual. Esto es cómo técnicamente lo ha hecho Alberto, pero no tiene mayor importancia. Simplemente es que durante un número de velas, que puede en este caso ser cuatro, se cumple una determinada condición: que el rango de la siguiente sea menor.
+condition1 = True;
+for value1=1 to length
+Begin
+	condition1 = condition1 and range[value1] of Data2 > range of Data2;
+	#condition1 = condition1 and ((HighSession(0, value1) - LowSession(0, value1)) > (HighSession(0, 0) - LowSession(0, 0))); //rangos diarios
+end; 
 
-¿Era así, Alberto? No, en las anteriores. Exactamente, eso es. Eso es: durante las cuatro tiene que dar *true*, exactamente. Tiene que mantenerse el rango menor. Solo que en alguna no se dé, pues ya no será, o sea, ya es *false*, ya es *false*. Esto puede ser para cuatro, puede ser para siete.
+Narrowrange = condition1; 
+```
 
-El primero que, bueno, yo diría que es el primero, luego ha habido muchos autores, pero Crabel lo explicaba en esta serie de artículos que os pasamos. Es correcto, pero no lo pasamos así. Y ya digo, se usa bastante este, el 8. Sí, sí, sí, exactamente. Usaba los mismos artículos, usaba la media de los *Narrow*. Es un poco raro, sí, está bien, claro, dependiendo de cuántas velas: 4 o 7.
+La 8 es un *Narrow Range*. Si os abre la función, veis que es un *Narrow Range* de N velas; en este caso creo que está definido para cuatro, pero puede ser para siete... 
+
+```sh
+# Filtros_ORB : ShowMe
+	Case 8:
+		if NarrowRange(4) of Data2 then  # NarrowRange(4)
+			Plot1( High, !("Filtro1 Lng") )
+		Else
+			Noplot(1); 
+		if NarrowRange(4) of Data2 then  # NarrowRange(4)
+			Plot2( Low, !("Filtro1 Shrt") )
+		Else
+			Noplot(2); 
+	Case 9: 
+		if NarrowRange(7) of Data2 then # NarrowRange(7)
+			Plot1( High, !("Filtro1 Lng") )
+		Else
+			Noplot(1); 
+		if NarrowRange(7) of Data2 then # NarrowRange(7)
+			Plot2( Low, !("Filtro1 Shrt") )
+		Else
+			Noplot(2);
+```
+
+Digamos que tú le pasas el *input* que defines. Simplemente es que durante un número de velas, que puede en este caso ser cuatro, se cumple una determinada condición: que el rango de la siguiente sea menor.
+
+Durante las cuatro tiene que dar *true*, exactamente. Tiene que mantenerse el rango menor. Solo que en alguna no se dé, pues ya no será, o sea, ya es *false*, ya es *false*. Esto puede ser para cuatro, puede ser para siete.
+
+El primero que, bueno, yo diría que es el primero, luego ha habido muchos autores, pero Crabel lo explicaba en esta serie de artículos que os pasamos. Es correcto, pero no lo pasamos así. Y ya digo, se usa bastante este, el 8. 
+
+![](../img/061.png)
+
+este es solo el *Narrow*, pero puedes añadirle además tendencia y narrow, *momentum*.
+
+Como os decía antes, es bastante habitual incorporar el *momentum*, siempre es bastante habitual. Entonces, aquí tienes el *ORB*. El *ORB* 8 es lo que os decía: aquí simplemente se cumple el *Narrow 4*, que se cumple en esta
+
+![](../img/062.png)
+
+quiere decir que todas las cuatro velas anteriores— tienen un rango mayor que esta. Todas ellas. Solo que una no tuviera, ya no. La vela que desencadena el *Narrow* es esta, porque está en correlación a anteriores y tiene un rango inferior. Ese es un poco el *Narrow 4*. Si es de 7, pues pasa en 7 velas.
 
 
-**Regla 9: Narrow Range de siete velas**
+***Bien, ahora le ponemos el 9 - funcion : Narrow Range de 7 velas***
 
-¿Y por qué pinta doble ahí? Ah, vale, te he entendido, te he entendido, te he entendido. Sí, sí, porque es del filtro de detección. Pero aquí ahora podrías añadirle el filtro de detección. Es decir, exacto: este es solo el *Narrow*, pero puedes añadirle además tener *momentum*.
+A veces la gente la confunde con los *Inside*. De acuerdo, es decir, el *Narrow* es una pauta de ***volatilidad***, o mejor dicho, es ***la mejor pauta que hay de contracción***. ¿Entendéis? Cuando hablaba de contracción y expansión. Y por eso la usa como ejemplo, porque un *Narrow 4* quiere decir que el mercado está comprimido, el mercado está perdiendo ***volatilidad***, aunque tenga direccionalidad. Luego yo puedo añadir ***direccionalidad*** y usarlo si quiero, pero quiere decir que 
 
-Como os decía antes, es bastante habitual incorporar el *momentum*, siempre es bastante habitual. Entonces, aquí tienes el *ORB*. El *ORB* 8 es lo que os decía: aquí simplemente se cumple el *Narrow 4*, que se cumple en esta.
+> ---
+> el mercado está perdiendo volatilidad`.   
+> ¿Y qué pasa? Que se anticipa expansión.  
+>
+> ---
 
-Lo que os digo, quiere decir que en todas ellas —o sea, que en esta vela todas las cuatro anteriores— tienen un rango mayor que esta. ¿Se entiende? Todas ellas. Solo que una no tuviera, ya no. La vela que desencadena el *Narrow* es esta, porque está como esta, esta, esta, esta; o sea, que esta en correlación a anteriores tiene un rango inferior. Ese es un poco el *Narrow 4*. Si es de 7, pues pasa en 7.
-
-Esta era la regla 8.
-La regla 9, de hecho, es la de 7. La 8 es *Narrow 4*, la 9 es *Narrow 7*. Y ahí creo que no se va a cumplir. Efectivamente. Pero un poquito más adelante sí. Es más difícil, lógicamente, pero fijaros que esto —no, esto es pauta— se *Narrow*.
-
-A veces la gente la confunde con los *Inside*. De acuerdo, es decir, el *Narrow* es una pauta de volatilidad, o mejor dicho, es la mejor pauta que hay de contracción. ¿Entendéis? Cuando hablaba de contracción y expansión. Y por eso la usa como ejemplo, porque un *Narrow 4* quiere decir que el mercado está comprimido.
-
-Eso que veis: el mercado está perdiendo volatilidad, aunque tenga direccionalidad. Luego yo puedo añadir direccionalidad y usarlo si quiero, pero quiere decir que el mercado está perdiendo volatilidad. ¿Y qué pasa? Que se anticipa expansión.
+![](../img/063.png)
 
 Fijaros que las velas siguientes son de buen rango, ¿lo veis? Es así, casualmente. Y eso es bastante habitual: cuando un mercado tiene un *Narrow 7*, lo normal es que las velas siguientes sean de expansión. No el cien por cien de las veces, pero es bastante habitual.
 
-Carlos, aquí están las siguientes, muy fuertes. Es bastante, bastante habitual. Esta no, por ejemplo, esta no se cumple, tarda un poco. Vale, pero es bastante habitual.
-
-El *Narrow* es una pauta de rango de volatilidad, no es lo mismo que un *Inside*, que también es una pauta de volatilidad, pero que quiere decir que la vela está contenida dentro de la anterior. Es como una especie de envolvente, pero al revés.
+> ---
+> El *Narrow* es una pauta de rango de volatilidad,   
+no es lo mismo que un *Inside*, que también es una pauta de volatilidad, pero que quiere decir que la vela está contenida dentro de la anterior. Es como una especie de envolvente, pero al revés.
+>
+> ---
 
 
 **Otras variantes: reglas 10, 11 y 12**
 
-Bueno, estas son las *Narrow 4*, las *Narrow 7*, las *Narrow con tendencia* y varias parejas. El 12, por ejemplo; el 11 es igual, no, estas son iguales todas: el 8, 9, 4, 7.
+La 10, niega el *Narrow 4*, al revés: se va a cumplir mucho. 
 
-La 10 es igual, Alberto, a la 8. No, no: *Narrow*, perdón, es *No Narrow*. Esta, la 10, niega el *Narrow 4*, al revés: se va a cumplir mucho. Y cuando no es un *Narrow 4*, la 11 es cuando no es un *Narrow 7*.
+![](../img/064.png)
+![](../img/065.png)
+
+
+`la 11` es cuando no es un *Narrow 7*.
+
+![](../img/066.png)
 
 A veces se va a cumplir mucho, todavía más, porque hay pocos *Narrow 7*; por lo tanto, cuando no es 7, es la mayoría del tiempo.
 
+`la 12`
+
 Y luego, a partir de la 12, ya mezcla tendencia. La 12 —esto ya os lo pasaré— porque si no, nos quedamos aquí clavados toda la clase, y ya casi estamos terminando. Pero quiero pasar un poco al código, al sistema en sí.
 
-
-
-**Código y estructura general del sistema**
+![](../img/068.png)
 
 Esta ya es un poco más elaborada. A mí me gusta más. Es decir, es *Narrow 4*, pero con cierre mayor que la media. Tendencia también. Es decir, tienes que tener una ruta. Entonces, ahí yo voy para el largo, voy para el largo. Puede funcionar o no, pero en principio es buena.
+
+---
+
+<br>
+
+**Las buenas, las mejores**  
 
 Sé que las buenas fueron la 4 y la 7. Las buenas, las mejores, en el DAX, por ejemplo, fueron la 4 y la 7. Pero esto puede cambiar mucho según el activo.
 
 Además, a estas mismas ya os las voy a pasar todas. Jugad con ellas, combinadlas, analizadlas, hacedlas vuestras. Al final, con todo esto que os hemos pasado, prácticamente todas las demás —no están todas, pero son derivadas de ellas— ya es el concepto.
 
+[Filtros_ORB : ShowMe](../PRACTICA%2008.ELD)
+
 No están todas porque todas es imposible; no se acaba nunca. Pero ahí están. En total, en estos *ShowMe*, hay 19 pautas.
-
-
-
-**Aplicación práctica y cierre**
 
 Son las que luego podéis usar también para los sistemas. Lo mismo: igual que aquí es un *case* para pintar, luego la puedes usar para la estrategia. Está hasta la 18, que es “*Go Buy/Soldado*”, y la 19 vuelve a meter la tendencia.
 
@@ -714,62 +796,117 @@ Luego pide otra vez el rango: solo el rango, quitando figura de velas. Es muy si
 Y ese es el código 4, el que tenemos. Es el *Huerta*.
 
 
+## Presentación del código 4 y estructura general del sistema
 
-**Presentación del código 4 y estructura general del sistema**
+Este es el *paper* del código número 4, 
 
-Este es el *paper* del código número 4, que al final, lógicamente, es parecido a los otros que habíais visto. Es simplemente una revisión de los conceptos y una organización más limpia de todos los filtros. Los filtros los hacemos con *switch* y *cases*. Luego hay salidas posibles por *trailing stop*, por *ATR* (o sin *ATR*), por *profit target*; es decir, todo lo que habíais visto hasta ahora, pero desarrollado de forma más completa. También incluye la gestión monetaria general (*money management*).
+- [*paper* del código número 4](../CursoORB-04.pdf)  
+- [STRATEGY_ORB_V4.ELD](../code/STRATEGY_ORB_V4.ELD)
+
+<div style="border-left: 4px solid #f1c40f; background: #fff9e6; padding: 10px 15px; margin: 10px 0;">
+<strong>Explicación:</strong>  
+<br>
+<br>
+Esta estrategia es un **Open Range Breakout (ORB)** en un gráfico de *10 minutos*, reforzado con filtros procedentes del *timeframe diario (Data2)*. Combina tres pilares:
+
+1. un rango inicial calculado a una hora concreta,
+2. filtros de tendencia/volatilidad provenientes del diario,
+3. un sistema de gestión monetaria y salidas configurable.
+
+---
+
+**1. Inputs: el panel de control completo**  
+Los inputs permiten ajustar el comportamiento de la estrategia sin tocar el código:
+
+* **HoraInicio / HoraFin** → delimitan la ventana en la que puede abrir y cerrar posiciones.
+* **PrecioAlto / PrecioBajo** → campos para decidir qué precios usar en la construcción del rango.
+* **Prc_ATR_Open** y **Prc_Open** → amplían el rango inicial usando ATR o un porcentaje fijo.
+* **ATR_Per** → periodo del ATR usado para trailing y stops si se activa.
+* **eleccionfiltro y FiltroTendencia** → activan filtros basados en Data2 (diario): tendencia, NR4/NR7, rango mínimo, etc.
+* **TradesDia** → limita el número de operaciones por día.
+* **UsoATR, Prc_Trail, Prc_Stop, Prc_Profit** → definen si los stops/take profit se calculan con ATR o porcentaje puro.
+* **Money management** (Start_Equity, MMVar_Start, MMVar_Profits, Min/Max_Size, RoundTo) → determina cuántos contratos abrir según capital inicial y beneficios acumulados.
+* **minutosOptimizacion** → desplaza la hora de inicio para optimizaciones de la ventana ORB.
+
+---
+
+**2. Construcción del rango inicial**  
+En la hora exacta definida por *HoraInicioTrading*, la estrategia calcula un **RangoAlto** y un **RangoBajo** a partir de las últimas barras desde la apertura:
+
+* Si se usa **Prc_ATR_Open**, el rango se expande con ATR.
+* Si se usa **Prc_Open**, se expande con un porcentaje fijo.
+
+Este rango será el nivel para lanzar las órdenes stop de ruptura.
+
+---
+
+**3. Filtros del timeframe diario (Data2)**  
+Según *eleccionfiltro*, la estrategia puede activar diferentes condiciones que definen si solo se permiten largos, cortos o ambos. Estos filtros combinan:
+
+* Tendencia diaria (cierre vs. media de cierres).
+* Comportamiento de la vela diaria (cierre vs. apertura).
+* Volatilidad mínima (range diario > 1% de la media).
+* Narrow Range (NR4, NR7).
+
+Si el filtro da señal alcista → se activa **Condition4**.
+Si es bajista → **Condition5**.
+
+---
+
+**4. Entrada ORB**  
+Dentro de la ventana de tiempo permitida y si no se han superado los trades diarios:
+
+* Si **Condition4** (filtro largo) es verdadero →
+  **Buy stop** en *RangoAlto*.
+
+* Si **Condition5** (filtro corto) es verdadero →
+  **SellShort stop** en *RangoBajo*.
+
+Las órdenes no son a mercado, sino **orden stop de ruptura**.
+
+---
+
+**5. Gestión monetaria dinámica**  
+El número de contratos se calcula así:
+
+* Se suma:
+  capital inicial + beneficio acumulado.
+* Se aplican multiplicadores configurables (*MMVar_Start*, *MMVar_Profits*).
+* Se divide por el valor nominal del activo (*Close × BigPointValue*).
+* Se redondea y se limita a mínimos y máximos.
+
+Resultado: la exposición crece o se reduce según rendimiento, simulando un position sizing proporcional.
+
+---
+
+**6. Gestión de salidas**
+
+* **Trailing stop**  
+Puede funcionar de dos formas:  
+    **Con ATR** → trailing dinámico según la volatilidad.  
+    **Sin ATR** → trailing en porcentaje puro sobre High/Low.  
+
+* **Stop Loss y Profit Target**  
+Igual que el trailing, pueden basarse en:  
+    ATR × porcentaje,    
+    Precio de entrada × porcentaje  
+
+* **Cierre forzado por tiempo**  
+Al llegar a *HoraFin*, se cierra cualquier posición al mercado.
+
+* **SetExitOnClose**  
+Añade un cierre extra al final de la sesión si algo quedase abierto.
+
+
+</div>
+
+
+que al final, lógicamente, es parecido a los otros que habíais visto. Es simplemente una revisión de los conceptos y una organización más limpia de todos los filtros. Los filtros los hacemos con *switch* y *cases*. Luego hay salidas posibles por *trailing stop*, por *ATR* (o sin *ATR*), por *profit target*; es decir, todo lo que habíais visto hasta ahora, pero desarrollado de forma más completa. También incluye la gestión monetaria general (*money management*).
 
 Aquí está explicado solo el código, para que podáis adaptarlo fácilmente si es necesario a otro lenguaje. Y, por supuesto, también está el código en *EasyLanguage*, donde está todo implementado. Ahora os lo enseño dentro de *EasyLanguage*, que se lee mejor que aquí, pero os lo paso igualmente.
 
 Este es el mismo concepto. Recordad que hay que usar dos *data series*. En el gráfico hemos incorporado también una variable que os mencioné antes: *UseATR*. Esta variable sirve para definir si queremos los *stops* basados en múltiplos de *ATR* o simplemente en un porcentaje. Es decir, tenemos tres variables: el multiplicador, el precio y el *ATR*. Dependiendo de si *UseATR* está en *false* o en *true*, el cálculo cambia, tal como se explica en el código.
 
-No hay mucho más. Este código también incorpora una pequeña mejora respecto a la hora de inicio: ahora ya se calcula automáticamente. Esto es algo técnico; quien lo entienda, perfecto, y quien no, que no se maree. De la otra manera también se puede poner manualmente, y listo. En resumen, es un código que permite optimizar el tiempo de ejecución. Está un poco más avanzado, eso sí.
-
-**Explicación técnica y grabación de la sesión**
-
-Voy a dar una pequeña explicación para que quede grabado correctamente. Quien se pierda ahora, que revise la grabación, porque si no, estaríamos siete horas con esto. Entiendo que puede resultar algo complejo.
-
-Mira, ya ha abierto Alberto: lento, pero seguro. Lento, pero seguro. Vale, el que abro aquí era el *PPC 2*, ¿verdad, Alberto? A ver si ahora va más rápido, porque en principio también lo tenía abierto aquí. Ya lo cierro, porque tenía muchos archivos abiertos para revisar.
-
-Mientras tanto, voy a generar el *PowerPoint* —perdón, el PDF— porque este PDF creado no sé por qué lo tengo solo al revés, el 04. Vale, perfecto.
-
-Espero el de los filtros; sí que estaba, ¿verdad? Es esta parte. Este es el filtro. Os lo paso ahora junto con el *paper* y los *EasyLanguage*. A ver si podemos meterlos ahora. Cuando acabes, compílalo para compartir el *EasyLanguage*, porque se lo pondré ahí también exportado, de forma que solo tenga esos dos. Bueno, esos dos, el *ORB*, este también, el mío también, etcétera. Los tres códigos.
-
-Ahora estos los puedo hacer PDF, pero solo de los filtros. Luego, sin seguridad, para que se puedan copiar correctamente. Este lo tenía aquí en prácticas, en una carpeta de material para alumnos, porque los filtros siempre van ahí.
-
-**Preparación de materiales y documentación**
-
-Ahora lo pondré todo ahí. Y luego, mañana, si no, lo subo también. Esta media está colocada de verdad. Me voy a quitar la cámara, por si acaso, porque al final tampoco aporta mucho y además no se graba.
-
-Al final de preguntas vamos bien, ¿no? Sí, está bien. Está medio tonto, pero funciona. Bueno, se ha vuelto arriba. Esto ha vuelto arriba, esto es bueno. Esto es bueno. Acabamos bien el mes. Estamos a día 15, en Argüiñano. Bueno, estamos bien con los dos.
-
-Queda que me dé *sound*, por eso que no resucita. Bueno, pues nada. Puedo hacer el otro PDF, Alberto, por si mientras vuelve el sistema, porque el *TradeStation* está tratando de cargar el *workspace*. No pasa nada.
-
-Seguro que no, seguro que no. A ver el otro *Word*, a ver si mientras hago el PDF este vuelve. Hoy me salta la pausa, así que casi mejor que no lo hagamos, chicos, que además juega el Barça, y a ver si puedo llegar, aunque sea, a ver la segunda parte. Ya, para la hora que es, no lo hago.
-
-Vale, pues ya lo tengo. No sé si Alberto ha exportado eso. Me lo voy a exportar yo, porque aquí había hecho este cambio, con lo cual ya estaba bien. Se ha compilado. Ese es el antiguo, el antiguo 2, para el otro, el otro, el *ShowMe* que estaba para este. Estaba bien.
-
-Me lo voy a exportar así, y os meto también aquí, porque igual en el disco luego me da problemas. Al menos los que estáis aquí os lo lleváis, ¿sabéis? Porque el disco, parece que, como dijo un día alguien (no recuerdo quién), no permitía subir código. Pero bueno, por si acaso, este, este y este son los que vamos a tratar hoy.
-
-**Exportación y organización de archivos**
-
-Voy a meterlos aquí, en la carpeta *Prácticas / Material para alumnos*. O al revés, 12 de marzo. Vale, 12 de marzo.
-
-Venga, Sergi, ánimo, que igual un día de estos aprendes a escribir, y todos nos llevamos una alegría.
-
-12 de marzo. Ya está exportado el código, Alberto, de estos tres. Ya exporta el código de estos tres.
-
-Vale, os pongo el material ahí, os pongo el material ahí: de esos tres, los dos PDF y el código *EasyLanguage*, tanto para *MultiCharts* como para *TradeStation*.
-
-Si lo tenéis en *MultiCharts*, lo podéis importar directamente, porque así es más cómodo. El que tenga *TradeStation*, que lo convierta con el *zero code*. Carga un archivo a la vez, y ya está.
-
-Bueno, pues ya voy. Venga, uno, el primero, ahí va el segundo.
-
-A ver el código. Sí, nos da el error: “El archivo es de formato no compatible”. Perfecto, pues no se puede. Me obliga a que sea *gif*, *jpg*, *doc*, y no permite otros. Así que no lo puedo encapsular, y lo subiré al disco más tarde.
-
-Ahora lo subo al disco, espero que me deje. A mí lo que me deje.
-
-De momento tenéis los dos PDF, porque no me deja subir el código al disco.
 
 **Continuación del análisis del código**
 
@@ -782,22 +919,23 @@ No sé si en esta versión están todos, porque hay varios comentados, ya que lo
 Hemos ido haciendo distintas pruebas, y al final nos hemos quedado con estas. Pero, insisto…
 
 
-
-
-
-
-
 **Experimentación y variaciones del canal**
 
 Al final podéis —y debéis— experimentar. En la parte del canal hay una variación importante: si queréis usar el *ATR* o no, también está comentado arriba en el código. Podéis añadirle algo más al canal y experimentar con las horas, que es lo que iba a explicar ahora. Para hacerlo, necesito abrir el archivo dedicado al rango temporal. No lo tengo abierto aquí, así que lo abriré. Es igual, ya lo hemos visto muchas veces.
 
 **Optimización de horas de inicio y final**
 
-El código 4, como os decía, plantea sobre todo una mejora: es optimizable. Se puede marcar una hora de inicio y una de final, que aparecen como *inputs*, igual que en versiones anteriores. En el código, esto se utiliza para que puedas optimizar esas dos variables.
+- [STRATEGY_ORB_V4.ELD](../code/STRATEGY_ORB_V4.ELD)
+
+El código v4, como os decía, plantea sobre todo una mejora: es optimizable. Se puede marcar una hora de inicio y una de final, que aparecen como *inputs*, igual que en versiones anteriores. En el código, esto se utiliza para que puedas optimizar esas dos variables.
 
 La variable que se optimiza es *MinutosOptimización*. Esta es la variable clave. ¿Cómo funciona? Si cargas el gráfico, por ejemplo, en velas de 10 minutos, al optimizar, esa variable se va incrementando: si partes de las 9:00, se probarán valores como 9:10, 9:20, 9:30, 9:40, 9:50, 10:00, y así sucesivamente. Es decir, el sistema irá desplazando el inicio según el incremento definido, de 10 a 240 minutos.
 
+![](../img/069.png)
+
 Si no hay ningún *bug*, funcionará correctamente. Esto se hace así porque, al optimizar, el sistema debe manipular las horas, y como el tiempo no es una variable numérica al uso, hay que convertirlo. Hay funciones en *EasyLanguage* que permiten hacerlo (*MinutesToTime*, *TimeToMinutes*). Son algo avanzadas, pero están explicadas en la documentación. Quien tenga el manual, puede consultarlas y ver cómo están implementadas.
+
+![](../img/070.png)
 
 **Manipulación del tiempo y cálculo del rango**
 
@@ -811,120 +949,424 @@ El código está pensado para calcular el rango desde que el mercado abre hasta 
 
 Hemos hecho algunas pruebas. Por ejemplo, Alberto ha estado trabajando con una optimización de minutos de tiempo, cambiando la barra. Si exportas los datos a Excel, verás que los valores aparecen en minutos (por ejemplo, 90 significa una hora y media). Al valor de inicio le añade esos minutos para probar distintos escenarios.
 
-En el DAX, el sistema estaba funcionando bastante bien. Sin hacer grandes ajustes, los resultados eran decentes. Al ordenar los resultados en Excel y buscar equilibrio entre beneficios y consistencia, se encuentra un punto óptimo.
+![](../img/071.png) 
 
-El *setup* no es perfecto, pero es sólido. En muchos casos, el lado corto ofrece mejores resultados que el largo, lo cual no es raro, porque al cerrar siempre a fin de día, el largo paga esa restricción más que el corto. Por eso, un camino interesante en el lado largo es dejar correr las posiciones, no cerrarlas siempre al final de la sesión.
+En el DAX, el sistema estaba funcionando bastante bien. 
+Sin hacer grandes ajustes, los resultados eran decentes. Al ordenar los resultados en Excel y buscar equilibrio entre beneficios y consistencia, se encuentra un punto óptimo.
+
+![](../img/074.png) 
+![](../img/075.png) 
+![](../img/077.png) 
+
+![](../img/078.png) 
+![](../img/079.png) 
+
+El *setup* no es perfecto, pero es sólido. En muchos casos, el lado corto ofrece mejores resultados que el largo, lo cual no es raro en un ORB, porque al cerrar siempre a fin de día, no lo olvidéis, ***el largo paga esa restricción más que el corto***. Por eso, un camino interesante en el lado largo es dejar correr las posiciones, no cerrarlas siempre al final de la sesión.
 
 **Posibles ajustes y comportamiento por tipo de activo**
 
-Se podrían diseñar variaciones: por ejemplo, dejar correr las posiciones largas cuando hay una pauta muy fiable (como un *Narrow 7*), o dependiendo del día de la semana o de la hora.
+Se podrían diseñar variaciones: por ejemplo, dejar correr las posiciones largas cuando hay una pauta muy fiable (como un *Narrow 7*), o dependiendo del día de la semana o de la hora... en estos puntos el largo va a salir ganando de quedarse varios días y el corto no necesariamente.
 
-El sistema tiene unas 1.000 operaciones, con comisiones incluidas. El *setup* está configurado con tres barras de rango en velas de 10 minutos, usando *high* y *low*, lo que produce un rango bastante estrecho. Esto puede mejorarse. Probad también el *Typical Price* o modelos como el de Robert Hachó, que usaba el mayor valor entre el *open* y el *close*.
+El sistema tiene unas 1.000 operaciones, con comisiones incluidas. 
 
-El *high* y *low* es la opción más intuitiva, pero a veces hace que el sistema entre tarde, porque ya parte de una expansión. Si buscas aprovechar la contracción antes de la expansión, anclarte al *high* puede ser contraproducente.
+![](../img/080.png) 
 
-También se podrían diseñar canales basados en medias, no necesariamente en los extremos de las velas. Esto cambiaría el enfoque: ya no sería un *reversal breakout* clásico, pero sí una versión más flexible.
+El *setup* está configurado con tres barras de rango en velas de 10 minutos, usando *high* y *low*, lo que produce un rango bastante estrecho. Esto puede mejorarse. 
 
-**Comparación de filtros y combinaciones**
+![](../img/081.png)
 
-En este caso, el filtro que aportaba más valor era el 4, el que usaba el *open*. Era más restrictivo que el del *close*. También el 7 dio buenos resultados. Las combinaciones entre *take profit* y *stop loss* cambian mucho el comportamiento, pero estas versiones con estos filtros ya son bastante aprovechables, especialmente en el DAX y en el S&P.
+Probad también el *Typical Price* o modelos como el de **Rupert Tacho**, que usaba el mayor valor entre el *open* y el *close*.
 
-En el petróleo, sin embargo, la cosa se complica más. Como los futuros de energía tienen sesión *Globex*, hay que estudiar las horas activas. No siempre interesa usar la sesión completa, sino identificar qué tramos tienen más movimiento.
+```sh
+Begin
+   HHH = Highest(Maxlist(open, close), 8); //en chicago CME abre a las 0830, en NY a las 0930
+   LLL = Lowest(Minlist(open, close), 8);
+   # HHH = Highest(TypicalPrice, 8); //en chicago CME abre a las 0830, en NY a las 0930
+   # LLL = Lowest(TypicalPrice, 8);
+end;
+```
 
-**Metodología recomendada para analizar mercados con sesiones extensas**
+El *high* y *low* es la opción más intuitiva, pero a veces hace que el sistema entre tarde en activos muy volátiles, porque ya parte de una expansión. Si buscas aprovechar la contracción antes de la expansión, anclarte al *high* puede ser contraproducente.
 
-En estos activos, lo ideal es:
+También se podrían diseñar *canales basados en medias de los máximos*, no necesariamente en los extremos de las velas. Esto cambiaría el enfoque: ya no sería un *reversal breakout* clásico, pero sí una versión más flexible.
 
-1. Trabajar primero las sesiones.
-2. Luego optimizar los filtros.
-3. Finalmente, afinar *stops* y *take profits*.
+En este caso, el filtro que aportaba más valor era el 4, era este, el que usaba el *open*. Era más restrictivo que el del *close*. También el 7 dio buenos resultados. Las combinaciones entre *take profit* y *stop loss* cambian mucho el comportamiento, pero estas versiones con estos filtros ya hay bastante aprovechables, especialmente en el DAX y en el S&P.
 
-Por ejemplo, en el petróleo, puedes cargar distintos históricos empezando en diferentes horas y comparar. Busca optimizaciones genéricas con filtros básicos. Analiza contracciones y expansiones: los gráficos lo muestran bien con el *ShowMe*.
+**En el petróleo**,  
+sin embargo, la cosa se complica más. Como los futuros de energía tienen sesión *Globex*, hay que estudiar las horas activas. 
 
-Observa si hay patrones recurrentes en ciertas horas. Por ejemplo, los informes de inventarios de petróleo generan volatilidad; podrías buscar rangos antes de esa hora y preparar el sistema para capturar la expansión posterior.
+Primero deberíamos trabajar antes estas tres partes que dije:
 
-Esto mismo puede aplicarse a acciones o índices. No siempre hay que usar la sesión regular. Puedes analizar la sesión completa de *Globex* y trabajar solo tramos concretos, como de 13:00 a 14:00, si ahí se concentran los movimientos importantes.
+1. setup clásico de entrada:
 
-**Cierre del bloque y transición al nuevo sistema**
+    ```sh
+    inputs:
+        HoraInicio (0930),
+        HoraFin (1530),
+        //BarrasRango (6), // Anulamos este input al 
+        PrecioAlto (High),
+        PrecioBajo (Low),
+        Prc_ATR_Open (0.0),
+        Prc_Open (0.0), //en tanto por ciento, 0 no actúa
+        ATR_Per (14),
+    ```
 
-Por tanto, el proceso sería:
+    Esta parte consiste en definir la hora, el rango, si utilizo el High o el Low, si aplico algún filtro, o si establezco un pequeño rango adicional para la entrada. Eso constituye la entrada.
+    En activos como el petróleo, donde las horas son muy relevantes, hay muchísimo trabajo por hacer, porque todos los futuros que operan en Globex no deben analizarse únicamente en su sesión oficial. Hay que identificar cuál es la **sesión operativa efectiva**.
 
-* Primero, analizar las sesiones.
-* Después, trabajar los filtros.
-* Finalmente, ajustar *stops* y *take profits*.
+    Por tanto, el primer trabajo consiste en localizar esa sesión real. Con este código podéis hacerlo: podéis investigar, cargar históricos empezando en una hora u otra, y a partir de ahí intentar encontrar una optimización genérica, utilizando algún filtro que ya hayáis comprobado mínimamente y sin modificar nada más, es decir, algo sencillo.
+    
+    A partir de ahí, vais comparando diferentes configuraciones para ver qué rango presenta más contracciones o expansiones, observad esos gráficos. También os puede resultar muy útil el código del *Show Me* porque es muy visual y permite ver si realmente existen sesiones diferenciadas o patrones de comportamiento ligados a determinadas horas. Recordad, por ejemplo, que las noticias tienen mucho peso en esto. ¿A qué hora se publican los inventarios de petróleo? Pues en ese momento aparece volatilidad. Quizá un rango previo a esa hora puede construirse.
+    
+    Lo mismo ocurre en acciones: en lugar de aplicar un *Open Range Breakout* al SPY —como había hecho Senet, o como hacemos nosotros en el futuro— utilizando únicamente el horario regular, quizá podéis trabajar con todo el continuo (el Globex completo), pero definiendo un rango entre la 1 y las 2, porque sabéis que a las 2:30 salen noticias. Sabéis que hay volatilidad, y buscáis exactamente esa expansión. 
+    
+    Es decir: podéis buscar vuestras propias sesiones. No es obligatorio utilizar la sesión oficial que marca el mercado. Esto aplica sobre todo a los mercados que funcionan casi 23 horas, como petróleo, NASDAQ, oro. Dentro de una sesión oficial, en realidad existen muchas micro-sesiones, y no tenéis por qué ceñiros siempre a la misma.
 
-Ahora os pondré los códigos y haremos una pasada rápida para cerrar el tema. Este sistema está basado en el mismo artículo de referencia. Al final, el autor explica un *breakout* clásico, con reglas sencillas: cierre mayor que el cierre anterior, menor que el cierre anterior, y cierre mayor que la media.
+2. Trabajo los filtros, stops, tp´s etc
 
-La regla de compra implica una expansión. Este código lo he trabajado hoy y le he añadido algunas mejoras, que ya están incluidas en el *EasyLanguage* que subiré al disco en cuanto pueda.
-  
-  
-  
-  
-  
-  
-  
-  
-**Explicación del uso del ADX y los filtros de volatilidad**
+    ```sh
+        eleccionfiltro(0),
+        FiltroTendencia (0),//Media de cierres diarios, si es 0 no actúa
+        TradesDia (1),
+        
+        UsoATR (false),//False: stops/profits % sobre precio. True: porcentaje ATR
+        Prc_Trail (0),//en tanto por 100, 0 no actúa
+        Prc_Stop (0),
+        Prc_Profit (0),//stop y profit no trailing en tanto por 100, 0 no actúa
+    ```
 
-He dejado el código preparado para que no dependa estrictamente del *ADX*, sino que también permita trabajar con los componentes del *Directional Movement Index* (DMI). El *ADX* —como sabéis— es un indicador compuesto. Fue diseñado por J. Welles Wilder y forma parte de todo un conjunto llamado *Directional Movement System*. Dentro de ese sistema existen tres líneas: el *+DI*, el *–DI* y el *ADX* propiamente dicho.
 
-El *+DI* representa la fuerza de la tendencia alcista, mientras que el *–DI* mide la fuerza de la tendencia bajista. El *ADX* no mide la dirección, sino la intensidad de la tendencia. Por eso, aunque mucha gente usa solo el *ADX*, en realidad las líneas *+DI* y *–DI* son más expresivas cuando se quiere discriminar el sentido del movimiento.
+### [Strategy : VB-01](../code/STRATEGY_VB_01.ELD)
 
-En mi versión del código he preferido trabajar con estas líneas directamente: el filtro para posiciones largas usa el *+DI*, y el de posiciones cortas, el *–DI*. Ambos deben superar un nivel mínimo de intensidad, de forma similar a como lo haría el *ADX*, pero con una lógica más clara. El parámetro es el mismo para ambos, por simplicidad.
+Este codigo está basado en este mismo artículo
 
-En cuanto al filtro de volatilidad (*ATR*), he mantenido el original del autor, aunque lo he adaptado al sistema de normalización que solemos emplear. La idea es sencilla: que el rango sea mayor que la media de los cierres multiplicada por un 1 %, lo que equivale a exigir una cierta amplitud o volatilidad mínima antes de permitir una operación. En la práctica, esto garantiza que el mercado se esté moviendo lo suficiente como para justificar una entrada.
+- [Volatility BreakOut](../volatlity%20breakouts.pdf)
+
+Para este son reglas muy sencillas que son estas de aquí:
+
+<img src="../img/082.png" width="500">
+
+<br>
+
+Un *breakout* al uso. Esto está mal expresado en lenguaje porque es antiguo, pero es algo similar. Y, al final, he explicado cierre mayor que cierre anterior, cierre menor que cierre anterior y cierre mayor que la media. Y la regla de compra es una regla que lleva implícita una expansión.
+Esto está mal expresado en el lenguaje porque es antiguo, pero es algo similar. Y, al final, he explicado cierre mayor que cierre anterior, cierre menor que cierre anterior y cierre mayor que la media. Y la regla de compra es una regla que lleva implícita una expansión.
+
+```sh
+Input:
+	Barras (13),
+	Rango (0.5),
+	Nivel_ADX (16),
+	Nivel_ATR (1.15),
+	
+	Prc_Stop (0.0),
+	
+	//Gestión Monetaria
+	Start_Equity (100000),
+	MMVar_Start (100),
+	MMVar_Profits (100),
+	Min_Size (1),
+	Max_Size (100000),
+	RoundTo (1);
+var:
+	FiltroDMIPos (false),
+	FiltroDMINeg (false),
+	FiltroATR (false),
+	Profits (0),
+	Contratos (0),
+	ATR (0);
+
+{ Money Management }
+Profits = NetProfit + OpenPositionProfit;
+
+If AbsValue(Close * BigPointValue) > 0 Then
+	Value1 = AbsValue(Close * BigPointValue)
+Else
+	Value1 = 0.01;
+	
+Contratos = ((Start_Equity * MMVar_Start * 0.01) + (Profits * MMVar_Profits * 0.01)) / Value1;
+Contratos = IntPortion(Contratos / RoundTo) * RoundTo;
+Contratos = MaxList(Contratos, Min_Size);
+Contratos = MinList(Contratos, Max_Size);
+
+If Nivel_ADX > 0 Then
+Begin
+	FiltroDMIPos = DmiPlus(Barras) > Nivel_ADX;
+	FiltroDMINeg = DmiMinus(Barras) > Nivel_ADX;
+end Else
+Begin
+	FiltroDMIPos = True;
+	FiltroDMINeg = True;
+End;
+
+If Nivel_ATR > 0 Then
+	//FiltroATR = AvgTrueRange(Barras) / Average(Close, Barras) > (Nivel_ATR/100);
+	FiltroATR = AvgNormalizedTrueRange(Barras) > (Nivel_ATR)
+Else
+	FiltroATR = True;
+	
+If Close < Close[1] and 
+	Close > Average(Close, Barras) and
+	FiltroATR and
+	FiltroDMIPos and
+	(Close + Rango*Range) < High and //si el precio es menor que el high abrimos y cerramos al mismo precio
+	Open of next bar < High Then //si el precio abre por encima del high abrimos y cerramos al mismo precio
+		
+		Buy Contratos contracts next bar at Close + Rango*Range Stop;
+	
+Sell next bar at High limit;
+
+If Close > Close[1] and
+	Close < Average(Close, Barras) and
+	FiltroATR and
+	FiltroDMINeg and
+	(Close - Rango*Range) > Low and //si el precio es mayor que el low abrimos y cerramos al mismo precio
+	Open of next bar > Low Then //si el precio abre por encima del low abrimos y cerramos al mismo precio
+		
+		SellShort Contratos contracts next bar at Close - Rango*Range Stop;
+
+BuyToCover next bar at Low limit;
+
+Setstopshare;
+ATR = AvgTrueRange(Barras);
+
+if Prc_Stop > 0 then
+	SetStopLoss(ATR * Prc_Stop * Bigpointvalue);
+```
+
+Este lo he trabajado un poco hoy y le he añadido algunas cosas. Os lo he incluido en EasyLanguage, que ahora voy a subir a Discord si me deja. Este código os lo he incluido.
+No he optimizado nada más que los filtros. He dejado por defecto el *setup* de entrada, pero sí he estado trabajando en los filtros.
+
+Él recomendaba usar —bueno, “recomendaba”— decía que había muchos más, pero había probado un par. Uno era el ADX y el ATR. Ambos los he modificado un poco porque el ADX en sí —esto no sé si lo sabéis, pero si no os lo explico ahora mismo— es un indicador compuesto que yo tengo aquí. El ADX es la línea marrón que veis abajo. En la mayoría de plataformas también lo podéis insertar de forma independiente.
+
+Voy a insertarlo y veréis que el ADX… aquí está. Hay varios. Hay que revisar también el ADXR.
+Esto procede del *Directional Move*.
+Os recomiendo —como ya he dicho por activa, por pasiva y por perifrástica— que reviséis los códigos y, como mínimo, si no conocemos el código interno, que leamos qué es el ADX.
+Si no es aquí, buscad por internet.
+
+El ADX es un indicador compuesto. Al final tiene dos líneas que forman su base conceptual. Su creador, Wilder —inventor de muchísimos indicadores— desarrolló lo que llamó el movimiento direccional. El ADX era solo una parte, pero, por algún motivo, se ha popularizado muchísimo, quizá por su simplicidad (solo una línea).
+Pero en realidad era parte de todo un conjunto que se llamaba *Directional Move*. De ahí viene esta DM.
+
+Ahora veis aquí el ADX, y como podéis observar, tiene el mismo valor que la línea naranja de abajo. No sé si se aprecia bien, pero creedme: tiene el mismo valor.
+
+![](../img/083.png)
+
+El ADX es la suma de las dos líneas inferiores, azul y roja, que son los componentes del DM positivo y del DM negativo.
+El DM positivo identifica la tendencia alcista, el DM negativo la bajista. Y la suma de ambos da el ADX. Por eso se considera que el ADX no muestra dirección. Es cierto, pero las líneas sí la muestran.
+
+Yo, al final, prefiero usar las líneas; me parecen una señal más limpia.
+Pero eso no significa que usar el ADX esté mal: simplemente son componentes distintos.
+
+Entonces yo lo he planteado así:
+– para largos, el filtro es el DM+,
+– para cortos, el filtro es el DM–,
+y ambos por encima de un nivel, igual que se haría con el ADX.
+Es la misma idea, pero con un único parámetro, el mismo para ambos, usando la línea azul y la roja.
+
 
 **Adaptación del filtro de volatilidad normalizado**
 
+En cuanto al filtro de volatilidad (*ATR*), he mantenido el original del autor, aunque lo he adaptado al sistema de normalización que solemos emplear. La idea es sencilla: que el rango sea mayor que la media de los cierres multiplicada por un 1 %, lo que equivale a exigir una cierta amplitud o volatilidad mínima antes de permitir una operación. En la práctica, esto garantiza que el mercado se esté moviendo lo suficiente como para justificar una entrada.
+
 El filtro de volatilidad está normalizado dividiendo el *ATR* por el *Typical Price*. De esa manera, los valores del *ATR* se convierten en proporciones relativas y no en magnitudes absolutas de precio. Esto permite comparar la volatilidad de distintos activos o de diferentes periodos temporales sin sesgos.
 
-Por ejemplo, si el *ATR* es 141 y el *Typical Price* del activo es 14 100, el resultado sería un 1 %, lo que nos indica que el rango medio equivale al 1 % del precio. El sistema puede usar ese valor para filtrar operaciones cuando la volatilidad es demasiado baja. Si los valores del filtro se ponen en cero, el filtro no se aplica, dejando el sistema “en bruto”, sin restricción alguna.
+Por ejemplo, si el *ATR* es 141 y el *Typical Price* del activo es 14 100, el resultado sería un 1 %, lo que nos indica que el rango medio equivale al 1 % del precio. El sistema puede usar ese valor para filtrar operaciones cuando la volatilidad es demasiado baja. 
 
-**Estructura del setup y control de señales absurdas**
+Si los valores del filtro se ponen en cero, el filtro no se aplica, dejando el sistema “en bruto”, sin restricción alguna.
 
-El *setup* básico del sistema es una pauta de expansión simple:
+![](../img/084.png)
 
-* Cierre menor que el cierre anterior.
-* Cierre mayor que la media de 13 periodos.
+![](../img/085.png))
 
-La orden de entrada se coloca en el siguiente *bar*, en el punto definido por *Close + (Range × 0.5)*. Es decir, busca una expansión del día anterior y cierra en el *High* de ese mismo día, lo que convierte el sistema en un *Volatility Breakout* clásico: entra cuando hay expansión y sale muy rápido, con un *Take Profit* corto.
+Utiliza un apauta de entrada muy similar a la que hemos visto antes: 
 
-Este tipo de sistema suele tener una tasa de acierto elevada, pero movimientos más breves. Por eso he añadido dos reglas adicionales para evitar operaciones absurdas, algo que suele pasar cuando la apertura del día siguiente ya supera el nivel de entrada. En ese caso, el sistema compraría y cerraría en el mismo instante, lo que no tiene sentido.
+utiliza cierre más el rango por 0.5. Le suma al cierre el rango por 0.5 `Close - Rango*Range Stop;`. Es decir, busca una expansión del día anterior y cerrar en el *high* del día anterior `Sell next bar at High limit;`. Fijaos lo restrictivo que es. Es un *volatility breakout* al uso. Es decir, entro y salgo rápido. Entro cuando hay una expansión y me voy rapidísimo. Me voy rapidísimo. Casi siempre hace *take profit*. Tiene un porcentaje de aciertos muy elevado.
 
-Las dos reglas añadidas exigen que:
+```sh
+If Close < Close[1] and 
+	Close > Average(Close, Barras) and
+	FiltroATR and
+	FiltroDMIPos and
+	(Close + Rango*Range) < High and 
+    #si el precio es menor que el high abrimos y cerramos al mismo precio
+	Open of next bar < High Then 
+    #si el precio abre por encima del high abrimos y cerramos al mismo precio
+		
+		Buy Contratos contracts next bar at Close + Rango*Range Stop;
+	
+Sell next bar at High limit;
+```
 
-1. El rango sea menor que el *High* del día anterior.
-2. La apertura del día siguiente sea menor que el *High*.
+Aquí yo he incorporado dos reglas que él no había incorporado, que son para evitar señales absurdas.
 
-De esa forma, se evitan ejecuciones que abrirían y cerrarían al mismo precio.
+```sh
+	(Close - Rango*Range) > Low and 
+    #si el precio es mayor que el low abrimos y cerramos al mismo precio
+	Open of next bar > Low Then 
+    #si el precio abre por encima del low abrimos y cerramos al mismo precio
+```
+Esto se detecta observando el gráfico. ¿Por qué? Porque muchas veces el rango, la apertura ya supera al precio al que vas a vender. Entonces no tiene sentido comprar, porque compra y cierra directamente. Seguro que habéis visto algún sistema al que le ocurre esto: compra, abre y cierra al mismo precio. Eso es un error de programación. No podemos permitirlo. Es absurdo hacer eso. Pues no hagamos absurdidades.
 
-**Resultados del sistema y optimizaciones**
+Entonces, lo que he hecho es añadir una regla que evite este problema. Es decir, le exijo que para poder comprar, el rango sea menor que el *high* y le digo que la apertura del día siguiente sea menor que el *high* también. Porque si ya va a abrir por encima del objetivo, no compres. Para abrir y cerrar al mismo precio, no compres. Así que, simplemente, son dos reglas añadidas para evitar *trades* —digamos— absurdos, porque implican abrir y cerrar al mismo precio. De hecho, pasaba: abrir y cerrar al mismo precio. Para eso no abro, ¿no? Estamos de acuerdo, ¿no?
 
-Sin filtros, en el *S&P 500* diario y con comisiones realistas, el sistema ofrece un *profit factor* de 1.43, con un 84 % de acierto. En los largos, 1.41; en los cortos, 1.44. Es decir, funciona bien en ambos lados. Opera poco, eso sí, pero de forma consistente.
+Entonces realmente esas reglas son esas. La regla en sí, el *setup* en sí, es esto: 
 
-Si se activa el *Look-In Server Backtesting* para verificar que no hay errores, los resultados se mantienen: los *profit factors* mejoran ligeramente (1.57, 1.61, 1.64 con comisiones incluidas). La frecuencia operativa es baja, pero la curva de capital es estable y la relación beneficio/riesgo es saludable.
+```sh
+If Close < Close[1] and 
+	Close > Average(Close, Barras)
+```
+cierre menor que cierre anterior y cierre mayor que la media de 13, lo que habíais visto antes. Y la expansión está delimitada en un *stop*. `Close + Rango*Range Stop`
 
-He usado un periodo de 13, por convención de Fibonacci, aunque podría usarse 14 o 21 sin grandes diferencias. Es un parámetro poco sensible. Con los filtros activados (volatilidad en torno a 1.1 – 1.25 y *ADX* entre 15 – 20), ambos filtros aportan valor, aunque el de volatilidad es más eficaz que el de tendencia.
+```sh
+Buy Contratos contracts next bar at Close + Rango*Range Stop;
+```
+Es decir, yo lanzo la orden *next bar at close más rango por range*, que es 0.5. Y no he optimizado nada de esto; lo he dejado todo por defecto.
 
-**Comparación entre ADX y volatilidad**
+Esto, ya sin filtros, en el SPY en diario, en todo el histórico, con comisiones realistas, da esto. Da esto. 
 
-Si tuviera que quedarme con uno, elegiría el de volatilidad. El *ADX* añade cierto refinamiento, pero el filtro de rango es el que realmente marca la diferencia, porque filtra las sesiones sin energía y mantiene las operaciones con movimiento real.
+![](../img/086.png)
 
-En cambio, si se elimina el filtro de volatilidad, las operaciones aumentan (de 370 a más de 670), pero el sistema se vuelve menos preciso. Es decir, la volatilidad actúa como un “acelerador inteligente”: menos operaciones, pero de más calidad.
+Un 1.43 de *profit factor*, 41 en el largo, 44 en el corto. Bastante bien. Bastante bien.
+Creo que tenía las comisiones realistas; 
 
-**Normalización del ATR y explicación final**
+![](../img/087.png)
 
-Como explicaba antes, nuestra forma de normalizar el *ATR* consiste en dividir cada valor por el *Typical Price* antes de hacer la media. Eso evita distorsiones. No se trata de dividir la suma total de *ATR* por el precio, sino de normalizar cada barra individualmente antes de promediar. Es más correcto matemáticamente, porque trabaja con proporciones en lugar de magnitudes acumuladas.
+ahora no tiene el LEAP, pero se lo había puesto. De hecho, creo que hasta ha ido mejor con el LEAP. A ver.
 
-Así, en cada vela se obtiene el porcentaje de movimiento (*ATR / Typical Price*), se suman todos esos porcentajes y se normalizan. Esto proporciona un indicador estable que se adapta bien a activos de distinta escala.
+*Backtest* delimitado negativo, porque cierran limitada, es decir, que sobrepase el precio. 
 
-**Conclusiones del módulo y cierre de la clase**
+![](../img/088.png)
 
-En resumen, el filtro más potente sigue siendo el de volatilidad. Cuanto mayor sea su umbral, más selectivo será el sistema. Si se ajusta bien, mejora la curva y reduce el ruido.
+Yo siempre *backteste*o así. O es muy pesimista. Bueno, pues no uses limitadas. Ya está. Si no quieres ser pesimista, no usas limitadas. Vas a mercado y ya está. Si quieres usar limitadas, pues vas pesimista. Y ya está. Cuenta con que será mejor que eso y ya está. Oye, al final será mejor que eso. Es decir, el sistema irá mejor. Porque ejecutarás algún día mejor. Y seguro, seguro, que todos los *trades* los haces. Harás algún *trade* que será bueno y que él no contempla, seguro, porque no habrá hecho el TP. Y tú sí lo harás.
 
-El código completo, junto con los tres documentos del día, se ha subido al disco del curso: el *EasyLanguage*, los dos PDF y el material comentado del 12 de marzo.
+Le añado el LEAP `Use Look Inside Bar testing`
 
-Y con esto, cerramos la sesión. Recordad que, por motivos de organización, la clase se traslada definitivamente al martes. Sé que puede causar algún inconveniente, pero de verdad que es mejor para todos y para el ritmo del curso.
+![](../img/089.png)
 
-Nos vemos el martes que viene.
-Hasta entonces, buen trabajo y buen trading.
+Esto va a tardar un poco. 
+
+Ya digo que no tenéis el *paper* de esto. Pero sí tenéis el código. Y el código está bastante comentado. Pero el *paper* intentaré hacéroslo mañana. Intentaré hacéroslo mañana.
+
+Y ya está. Las salidas, ya digo, simplemente tienen el *stop* y, si queréis usarlo o no, con ATR. Que, en realidad, no aporta nada porque casi nunca… o sea, casi siempre sale.
+Ahora ya tiene el *Looking Server Backtesting* para estar seguros de que no hemos caído en ningún error. Porque en un minuto diario es 100% que va bien.
+
+Y todavía ha mejorado. Es lo que me suena: 1.61. 1.57 y 1.64 con comisiones.
+
+![](../img/090.png)
+
+Esto está bastante bien. Esto está bastante bien. Opera poco. Opera poco.
+Pero aquí, ya digo, hay una optimización implícita, que es el periodo que él ha usado: 13. 13 y 0.5. Pero ya lo habéis visto, lo digo y lo sabéis, que es muy común. Multiplica por 0.5 y usa 13.
+
+![](../img/091.png)
+
+A mí también me gusta el 13. ¿Por qué? Porque no soy supersticioso. Es un número de Fibonacci y, para usar el 14, uso el 13. Pero da igual, de verdad. Si usáis 21, el sistema también funciona. ¿Entendéis? No cambia nada. Es un valor muy poco restrictivo.
+
+Y si activáis los filtros en el orden de 1 o 1.25, que es lo que salía —este creo que era 1.25 o por ahí— y el del ADX, no sé si era 15, 16, por ahí. Por ahí era. 
+
+![](../img/092.png)
+
+Ya veréis que aportan. Los dos los he mirado por separado. Los dos aportan.
+Aporta más la volatilidad que el ADX. Si quisiera quedarme con uno, me quedaría con la volatilidad y prescindiría del ADX. ¿Vale?
+
+Entonces, ya os digo que está bastante bien. ¿Vale?
+
+Claro, aquí filtras, y es lo que os decía. “Hostia, es que he operado muy poco!!”. Ya, ya, claro, pero es que esto no es una expansión de volatilidad. 
+
+![](../img/093.png)
+
+Es lo que os decía: hay que entender que, si esto te sabe mal porque te quedas fuera, lo entiendo, lo comparto, pero entonces tienes que operar un tendencial, no un *volatility breakout*. Entonces es otra cosa. Al final, un *volatility breakout* es eso, un sistema de oportunidades. ¿Que aquí son demasiado pocas? 
+
+![](../img/094.png)
+
+Bueno, perfecto. Si le quitas el filtro, opera más, ¿vale? Pero cuando hay mucha tendencia, le cuesta más. Cuando hay mucha tendencia, le cuesta más. ¿Vale?
+
+Para acabar de ver esto, a ver, ahora voy con las preguntas. Aquí, ¿cómo mejoraba esto? Bueno, estos 12, 205, 217… tenemos 369 *trades*. Son muy pocos *trades*. 74% de acierto, está muy filtrado. Pero ya habéis visto que sin filtros iba hacia el pico. La curva está bastante correcta. 
+
+
+![](../img/095.png)
+
+Sin *stop*, por cierto. Sin *stop*. 
+
+![](../img/096.png)
+![](../img/097.png)
+
+Pero es que sale, ya veis que no engancha. Pero puedes ponerle *stop*, está preparado para el *stop*, está preparado para ponérselo. Degrada, ya os lo digo, pero eso es casi siempre así. Y ya está, ¿vale?
+
+Y eso que os digo: si queréis —creo que el del ADX… a ver, ¿cuál es el más restrictivo?— lo voy a dejar aquí para que se vea. Tenemos 369 *trades*. Creo que si el del ADX lo ponemos en cero… si lo ponéis en cero, no actúa, ¿vale? 
+
+![](../img/100.png)
+
+Solemos poner las curvas así porque es muy incómodo. Antes 369 *trades*. Ahora 370 *trades*. 
+
+![](../img/103.png)
+
+El que filtra más es el de la volatilidad entonces, ¿no? El que filtra más es el de la volatilidad.
+
+Este de ATR… bueno, claro, también depende del valor que le pongas aquí… 
+
+![](../img/104.png)
+
+
+ahora verás cómo tiene más de 3,70 al quitarle el filtro de volatilidad. Seguramente también empeorará. ¿eh? El de la volatilidad es muy bueno.
+
+![](../img/105.png)
+
+Cada vez que quitamos el filtro de volatilidad, nos hemos ido a 677. O sea, el que filtra más es el filtro de volatilidad. También depende del valor que le des, claro. Porque el ADX, si ahora le meto 20, veréis que filtra más, claro.
+
+![](../img/106.png)
+
+Y ahora es: oye, si no pasa de 20, no verás largo o corto, la línea, cada una de ellas. Entonces lo estoy filtrando más. Depende del valor que le des: filtra más o filtra menos. Eso está claro. ¿Vale?
+
+
+
+
+
+## Preguntas : 
+
+
+
+
+***¿El ATR medido al *peak* es una forma de normalizar el ATR?***
+
+Sí, , es una manera de normalizar el ATR. Sí, sí, correctísimo.
+
+De hecho, nuestra forma de normalizar el ATR te la enseño inmediatamente, que para eso te has gastado las panojas en el curso. 
+
+```sh
+# VB-01 : Strategy
+If Nivel_ATR > 0 Then
+	//FiltroATR = AvgTrueRange(Barras) / Average(Close, Barras) > (Nivel_ATR/100);
+	FiltroATR = AvgNormalizedTrueRange(Barras) > (Nivel_ATR)
+```
+
+![](../img/101.png)
+
+```sh
+# AvgNormalizedTrueRange()
+inputs: Length (numericsimple);
+var:	double NATR (0);
+NATR = Average (NormalizedTrueRange , Length);
+AvgNormalizedTrueRange = NATR;
+```
+
+Esto es un ATR normal. O sea, el ATR es igual. 
+
+![](../img/102.png)
+
+```sh
+#NormalizedTrueRang
+var: double NATR (0);
+NATR = MaxList (H - L, C[1] - L, H - C[1]) / TypicalPrice * 100;
+	# NormalizedTrueRange = TrueRange / TypicalPrice * 100;
+NormalizedTrueRange = NATR;
+```
+
+El único cambio que hay es que nosotros dividimos por `*typical price*`. Pero sí, puedes dividir por *close* igual. O sea, sí, es lo mismo, de verdad. Esto es el ATR normal y corriente  `MaxList (H - L, C[1] - L, H - C[1])`. Eso es el ATR. Lo único que lo hacemos en cada cálculo. ¿Vale? Es mejor hacerlo así, porque así en cada cálculo te lo normaliza. Y luego hace la suma del average de cada uno de ellos. Ya te lo hace en porcentaje cada una de ellas.
+
+Es decir, al final, cada vela… ¿qué vela es esta? ¿1,2? Vale, pues 1,2. ¿1,3? Vale, 1,3. ¿1,3? Pues 1,2 más 1,3, ... Eso normaliza. ¿Entiendes? No normaliza todos los valores de ATR si lo divide por el valor de ATR, porque eso no es del todo correcto. En valores largos cambia un poco eso. ¿Me explico? Es decir, yo sumo 100 puntos, 200 puntos, 600 puntos y normalizo eso. No. Es mejor calcular el porcentaje y luego normalizar los porcentajes, que es como se ha hecho aquí. ¿Vale?
+
+Es sencillo. No tiene más. Pero sí, sí, normalizar el ATR es eso. Esto, al final, si lo ves en un gráfico… muchos gráficos hemos visto aquí. 
+
+
+
+
+
