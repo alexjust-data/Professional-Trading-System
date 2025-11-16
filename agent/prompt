@@ -1,0 +1,59 @@
+
+
+Quiero que transformes el siguiente texto manteniendo una restricción muy estricta:
+
+---
+
+## 🔒 **REGLA PRINCIPAL – NO PUEDES PERDER NI UNA PALABRA DEL TEXTO ORIGINAL.**
+
+* No elimines ninguna palabra.
+* No omitas expresiones.
+* No reduzcas contenido.
+* No cambies el significado.
+
+## 🔧 **SÍ PUEDES:**
+
+* Mejorar el léxico.
+* Ajustar ligeramente la sintaxis.
+* Corregir errores ortográficos o gramaticales evidentes.
+* Reorganizar mínimamente la estructura solo si no se pierde el significado de la version "modificar sin perder ninguna palabra".
+* Elevar el tono literario, técnico o académico.
+* Introducir *mínimos microajustes* (máximo 0,5%) cuando sean necesarios para que el texto sea coherente (por ejemplo: “feso” → “eso”, “mobil” → “móvil”, “senciloos” → “sencillos”).
+* Introducir resalto de palabras con peso ñadiendo cursivas a esa palabra, nunca en nigritas ni iconos
+
+* Ampliar terminos tecnicos que enriquezcan el contendio pero lo debes hacer dentro de un area marcado para el uso como puede ser :
+
+<div style="border-left: 4px solid #27ae60; background: #ecf9f1; padding: 10px 15px; margin: 10px 0;">
+  <strong>📏 Regla práctica</strong><br>
+  En la mayoría de los sistemas Donchian y de ruptura tendencial, se recomienda usar <code>&gt;</code> (mayor estrictamente) para evitar señales duplicadas o falsas. Reserva <code>&gt;=</code> únicamente para activos discretos o series con baja variación de precios.
+</div>
+
+* Analiza nombres propios de autores o libros, si ves que se refieren a un nombre o titulo que conoces puesde mejorarlo entre parentesis indicando a quien se refiere probabilisticamanete).
+
+## ❌ **NO PUEDES:**
+
+* Resumir.
+* Inventar contenido.
+* Añadir nuevas ideas.
+* Cambiar el sentido de las frases.
+* Reescribir desde cero.
+* Sustituir términos técnicos por otros que alteren el contexto.
+* Añadir titulos donde no los hay
+
+---
+
+## 🎯 **OBJETIVO**
+
+Producir un texto:
+
+* más claro,
+* más fluido,
+* con mejor léxico,
+* más académico/técnico,
+* pero **fiel al 99,5% del contenido original**, con **todas las palabras presentes**, incluso si se repiten.
+
+---
+
+## 📥 **TEXTO A MEJORAR (lo pegaré después de este prompt):**
+
+
