@@ -461,215 +461,462 @@ y también revisamos analizamos revisar los incrementos de estos tres filtros
 
 ![](../img/058.png)
 
-esto recordar que lo detallamos bastante en la clase de desarrollo teórico  donde hablamos de prudencia con los incrementos con las optimizaciones, porque yo puedo poner aquí 0.0025, o puedo poner aquí 0.00001, y claro no me he pasado pero entendéiso, entonces al final usar uno u otro no deja de ser un análisis de sensibilidad que también se hace con mapa este lo hicimos previamente ver mapas que varían y ver los sets que hay, qué variación, también se mira mucho aquí en la tabla, 
+esto recordar que lo detallamos bastante en la clase de desarrollo teórico  donde hablamos de prudencia con los incrementos con las optimizaciones, porque yo puedo poner aquí en `Var_01` 0.0025, o puedo poner aquí 0.00001, entonces al final usar uno u otro no deja de ser un análisis de sensibilidad que también se hace con mapa 
 
+Es decir, ver mapas que varían, `MAPA ES SHORT` este lo hicimos previamente, y ver los sets que hay, qué variación, también se mira mucho aquí en la tabla, es decir cómo varía el mismo set con el siguiente incremento, por ejemplo ordene primero por este `Var_01` ,  
 
 ![](../img/059.png)
 
-es decir bueno cómo varía el mismo set con el siguiente incremento `Var_01` ,  
+y ordeno luego por este 
+
+![](../img/060.png)
+
+y entonces automáticamente aquí me quedan todos estos ordenados vale entonces ordeno `Var_02`
+
+![](../img/061.png)
+
+ahora tengo los cuatro ordenados y bloqueados 
+
+![](../img/062.png)
 
 
-1:10h
+bueno en `Per_01`  no hay debate porque el incremento no puede ser, 
 
 
-yo busco yo ordeno aquí por este y ordeno luego por este y entonces automáticamente aquí me quedan todos estos ordenados vale entonces bueno vas jugando hasta que encuentres el mismo no no pero claro tengo que desbloquear el otro perdón no estoy haciendo bien vale ahora tengo este quieto este quieto y este quieto los imaginaros no bueno es que aquí no hay debate porque el incremento no puede ser este sería donde hay debate vale
+> `Per_01` es un parámetro de ENTRADA del sistema. 
+> Concretamente es el período (la longitud) que usa el *indicador de entrada* para calcular su valor.
+>
+>`Per_01` = número de barras que usa el indicador para calcular su señal de entrada.
+>
+>* Si `Per_01 = 4`, entonces el indicador se calcula con *4 barras*.  
+>* Si `Per_01 = 25`, se calcula con *25 barras*.  
+>
+> Cambiar Per_01 cambia la ***sensibilidad*** del indicador:
+>* Valores bajos (4–7):  Más rápido, más reactivo, más señales.
+>* Valores altos (20–25): Más lento, más “filtro”, menos ruido, menos señales.  
+>
+> El Mapa de Entrada ***Suma de all : TSIndex***:  
+> `Per_01` (filas) vs `Var_01` (columnas)  
+>Eso significa:
+>
+>* Las *filas* representan distintos períodos del indicador de entrada.
+>* Por eso él analiza qué valores de Per_01 son estables.
+>* Y por eso habla de *vecinos* (Per_01=4 vs 5 vs 6 vs 7, etc.).
+
+este en `Var-01` sería donde hay debate, en concreto sobre la instancia 5 : `0.625` 
+
+![](../img/063.png)
+
+> ---  
+> `Var_01` es un multiplicador del indicador de entrada (probablemente algo como: media, ATR normalizado, rango, volatilidad, etc.)→ Es el umbral que determina cuándo se activa la señal de entrada.
+>  
+> ---  
 
 **Ejemplo de variación: impacto de un solo tick en trades y estabilidad**
 
-entonces yo aquí por ejemplo tengo que buscar este por ejemplo veis este es igual o grande es una de las maneras de mirar los incrementos esto por si no queda claro que entiendo que sí pero esperaros es así entonces estos dos veis son iguales todo es igual 25 2 1 2.9 y sólo cambia el incremento entonces ahí analizar cómo varían los resultados es importante fijaros que un tick varía 20 trades un cambio bastante importante esto cómo estaría mal que aquí cambiara o ningún trade un trade y todo fuera casi igual tenéis eso es un poco hay que buscar un incremento que provoque cierto cambio vale cierto o cuánto es cierto que no sé no no lo tengo medido el porcentaje no sé si decir un 10% sería correcto puede puede estar ahí 10% incremento mínimo vale pero en variación de significación pero no sé no no no lo toméis como una cosa sagrada porque depende al final simplemente que varíe
+entonces yo aquí por ejemplo tengo que buscar, este por ejemplo veis estos dos veis son iguales todo es igual 25 2 1 2.9 y sólo cambia el incremento, 
+
+![](../img/063.png)
+
+entonces ahí analizar cómo varían los resultados es importante.  
+Fijaros que un tick varía 20 trades un cambio bastante importante 
+
+![](../img/064.png)
+
+> UN PASO DE INCREMENTO entre parámetros. Eso es lo que él llama “un tick” de diferencia, un salto en tu incremento de optimización
+>Es decir:  
+>→ Cambiar UN paso del parámetro Var_01  
+>→ Produce 20 operaciones más o menos  
+>→ Eso es “significativo”  
+>→ Por eso el mapa tiene sensibilidad 
+
+¿esto cómo estaría mal? que cambiara o ningún trade o un trade, y todo fuera casi igual.  
+***Hay que buscar un incremento que provoque cierto cambio***   
+¿cuánto es cierto? no sé, no no lo tengo medido el porcentaje, no sé si decir un 10% sería correcto, puede puede estar ahí 10% incremento mínimo vale, pero en variación de significación pero no sé no no no lo toméis como una cosa sagrada porque depende al final simplemente que varíe
 
 **Conclusión sobre incrementos: mejor quedarse corto que excederse**
 
-entonces hay que ver que haya cierta variación a veces te puedes pasar a veces se puede expresar aquí podríamos pensar que a lo mejor es demasiado y a lo mejor puedes ganar un poco más pues puede ser a lo mejor podría haber 0.0025 0.002 a lo mejor podía hacerlo y entonces haría otro mapa y vería a ver vale para regularlo un poco más en vez de esas nueve sería 11 tenéis pues vendría aquí y vería el mapa a ver a lo mejor es eso también que puede ser vale pero ya digo mejor pecar de conservador en esto que de excesivo vale
+entonces hay que ver que haya cierta variación, y a veces te puedes pasar, aquí en el incremento del número de Trades podríamos pensar que a lo mejor es demasiado y a lo mejor puedes granularlo un poco más, pues puede ser, a lo mejor podría haber en vez de 0.0025 granular a 0.002 
+
+![](../img/065.png)
+
+y entonces haría otro mapa y vería para regularlo un poco más,,, en vez de esas nueve sería 11. Vendría aquí 
+
+![](../img/055.png)
+
+y vería el mapa a ver,,, a lo mejor es eso también, que hay saltos demasiado grandes en `Var_01` pero ya digo mejor pecar de conservador en esto que de excesivo vale? porque lo importante es que haya cierto cambio en el incremento 
 
 **Variable crítica: bar 0 1 como parámetro más sensible del mapa**
 
-porque lo importante es que haya cierto cambio en el incremento entonces esta es un poco la variable en estos datos que estamos viendo estoy leyendo los datos como los veo trato de no tener (aunque es complicado) pero de verdad que trato de no tener sesgo de saber el sistema que hace todo y al final este dato aquí en el mapa es el que parece más sensible de acuerdo más sensible que ahora sí tiene su zona de trabajo pero es muy estrecha de acuerdo
+entonces esta es un poco la variable en estos datos que estamos viendo, estoy leyendo los datos como los veo, trato de no tener (aunque es complicado) pero de verdad que trato de no tener sesgo de saber el sistema que hace y al final este dato `Var_01` aquí en el mapa es el que parece más sensible, ***que sí tiene su zona de trabajo*** pero es muy estrecha 
 
-**Comparación: TP con margen amplio vs entrada más delicada**
+![](../img/066.png)
 
-en cambio aquí hay otras zonas fijaros en el tp también hay una pero también es bastante larga y además claro como larga teniendo zona en todos y aquí fijaros que hay muchos blancos aquí no tanto tp como stop tiene más margen de mano entonces aquí variable delicada podemos decir que es bar 0 1 en este mapa
+en el tp también hay una ***zona*** de trabajo en la parte de arriba pero también es bastante larga teniendo zona en todos, está completo de numeros en todas las instancias 
 
-**Revisión del incremento para bar 0 1**
+![](../img/057.png)
 
-bueno se podía es lo que se decía se podría volver a hacer un análisis de sensibilidad como habéis visto ahí pues quizá me pasé nos hemos pasado con 0.0025 a lo mejor vamos a reducirlo a la mitad el incremento a ver a ver qué tal eso es un multiplicador venga
+y en el mapa de `Per_01 / Var_01`  fijaros que hay muchos blancos   
+y no en tp como stop que tiene más margen de maniobra. Entonces en el mapa `Per_01 / Var_01` la variable delicada podemos decir que es `var_01` 
+
+Pero se podría volver a hacer un análisis de sensibilidad como habéis visto ahí pues decir " quizá me pasé nos hemos pasado con 0.0025 a lo mejor vamos a reducirlo a la mitad el incremento a ver a ver qué tal" eso es un multiplicador 
 
 **Definición de zonas de trabajo previas a la selección final**
 
-bien visto esto yo aquí tengo unas zonas de trabajo bien definidas a nosotros nos gusta montar el mapa completo el mapa completo de todos los inputs es decir que aquí recoge las 8000
+bien visto esto, yo aquí tengo unas zonas de trabajo bien definidas. A nosotros nos gusta montar el mapa completo de todos los inputs, es decir que aquí recoge las 8000.
 
-**Visualización del mapa global en varios monitores**
+Esto como yo tengo cuatro monitores ahora no lo vais a ver pero lo que hago es abrirlo así lo estiro y me lo estiro a los cuatro monitores aquí lógicamente no puedo porque estoy compartiendo un monitor y lo único que puedo hacer es esto 
 
-esto como yo tengo cuatro monitores ahora no lo vais a ver pero lo que hago es abrirlo así lo estiro y me lo estiro a los cuatro monitores aquí lógicamente no puedo porque estoy compartiendo un monitor vale y lo único que puedo hacer es esto que parece que no pero es bastante útil es bastante útil igualmente porque al final a mí me interesa no me interesan tanto los valores y me interesan las zonas entender las zonas
+![](../img/067.png)
+
+que parece que no pero es bastante útil igualmente 
+
+![](../img/068.png)
+
+porque al final a mí no me interesan tanto los valores y me interesan las zonas entender las zonas
 
 **Explicación de ejes y estructura del mapa global**
 
-pero antes antes vamos a ver porque sin explicar los ejes es complicado que entendáis de qué estamos hablando aquí que tenemos tenemos por un lado aquí tenemos bar 2 y bar 3 y aquí tenemos bar 1 y per 1 es decir que tenemos las entradas y tenemos las salidas lógicamente hay uno que es el que condiciona más porque así yo aquí recojo y puedo ir recogiendo ver los distintos voy agrupando si quiero es hacerlo de hecho puedo filtrar también puedo filtrar expandir o contraer todos expandir todo el campo vale puedo filtrar y de hecho una de las cosas que hacemos es esa ahora la haremos es filtrar filtrar pues aquellas zonas que ya me gustan decir qué cosas tengo claras pues mira esta de aquí bueno pues vale pues la filtro la voy a bloquear ahí
+pero antes vamos a ver, porque sin explicar los ejes es complicado que entendáis de qué estamos hablando.
+Aquí que tenemos tenemos? por un lado aquí tenemos bar 2 y bar 3 y aquí tenemos bar 1 y per 1 es decir que tenemos las entradas y tenemos las salidas 
+
+![](../img/069.png)
+
+lógicamente hay uno que es el que condiciona más, porque así yo aquí recojo y puedo ir recogiendo ver los distintos voy agrupando si quiero 
+
+![](../img/070.png)
+
+puedo filtrar expandir o contraer todos expandir todo el campo 
+
+![](../img/069.png)
+
+vale puedo filtrar y de hecho una de las cosas, aquellas zonas que ya me gustan cosas tengo claras pues mira esta de aquí 
+
+![](../img/055.png)
+
+bueno pues vale pues la filtro la voy a bloquear ahí
 
 **Identificación rápida de parámetros con pocos valores (zonas débiles)**
 
-vale pero antes quería que mirárais el mapa teniendo en cuenta lo que os digo aquí tenéis 0.5 luego 0.5 con el 4 con el 6 con el 2 con los que aparecen los que hay huecos es que no aparece 0.525 con el 4 con el 6 con el… esos son los que aparecen y ya te está diciendo que aparecen pocos esto creo de cada elemento no era esto había un sitio no me acuerdo no se podían poner los ceros creo no me acuerdo no me acuerdo no me acuerdo no me acuerdo pero que sí que había un sitio pero bueno que es igual no importa no importa porque es mejor así porque así ves cuando hay pocos de 0.5 que visto así un poco si os fijáis lo veis veis aquí ves uno aquí ves el otro aquí ves el otro entonces ves que hay pocos entendéis
+antes quería que mirárais el mapa teniendo en cuenta lo que os digo, aquí tenéis 0.5, luego 0.5 con el 4, con el 6, con el 2, con los que aparecen, los que hay huecos es que no aparece, 
+
+![](../img/069.png)
+
+`0.525` con el `4`, con el `6` con el… esos son los que aparecen y ya te está diciendo que aparecen pocos. 
+
+Esto se podían poner los ceros, no me acuerdo pero que sí que había un sitio pero bueno que es igual no importa no importa porque es mejor así porque así ves cuando hay pocos de 0.5 que visto así un poco si os fijáis lo veis veis aquí ves uno aquí ves el otro aquí ves el otro entonces ves que hay pocos entendéis
+
+![](../img/071.png)
 
 **Cómo se localizan rápidamente los huecos del mapa**
 
-y esto es lo que te da información a medida que lo vas reduciendo parece que no parece que cuesta más de ver pero aquí por ejemplo hasta en 20 que ya casi casi la llenamos toda vamos a ver ligeramente no se ve cuando cuando nos reduce si en 30 sé que se ve creo es verdad que ya le hemos quitado el micro hemos quitado un poco es aquí aquí sí que se ve es aquí tienes uno aquí tienes otro aquí tienes otro vale entonces claro estos ya se ven que tienen muy pocos en cambio aquí fijaros tiene muchos muchos está que llega al final que también casi no tiene en el filtro en el filtro de entrada por entendernos vale
+y esto es lo que te da información a medida que lo vas reduciendo, aquí fijaros tiene muchos muchos 
 
-**Distribución de TP/Stop: zonas llenas frente a zonas huecas**
+![](../img/072.png)
 
-el filtro de entrada aquí pasa lo mismo con el tema de tp y stop y primero este tp que fijaros aquí en general son muy parecidos porque aparecen todos lo habéis visto antes excepto este último que aparecen algunos menos nada bajo del todo pero en este no no no aparecen los aquí insisto no importa tanto leer los valores no se ve nada vale vale es igual no importa
+está que llega al final que también casi no tiene, en el filtro en el filtro de entrada por entendernos 
+
+![](../img/073.png)
+
+Aquí, insisto, no importa tanto leer los valores, no se ve nada, vale, vale, es igual, no importa
 
 **Visualización conceptual: no importan los números, importa el dibujo global**
 
-aquí ahora ya tú porque ya te lo he dicho sabes dónde está cada cosa a ver un segundo una más 20 ahí 15 15 15 15 15 se ve se ve ahí se ve ahí enterita entonces ya digo no importa tanto no importa tanto el hecho de ver los valores sino de entender un poco el dibujo
+sabes dónde está cada cosa 
 
-**Identificación visual de la zona fuerte del 0.60**
+aquí claramente es donde está el 0.60 de arriba y donde es más ancha 
 
-aquí claramente es donde está el 0.60 de arriba y donde es más ancha y porque el 0.60 ahora veréis veíais arriba de acuerdo aquí en la pequeñita quedaba más porque veis el 0.60 tiene aquí donde tiene zona de tp baja vale que es donde está esta es la zona de tp baja espera que voy a pintar esto evidentemente es la zona de tp bajo es evidente vale
+![](../img/075.png)
+
+***¿y porque el 0.60?"*** ahora veréis veíais arriba de acuerdo aquí en la pequeñita quedaba más porque veis el 0.60 tiene aquí donde tiene zona de tp baja 
+
+![](../img/076.png)
+
+vale que es donde está esta es la zona de tp baja espera que voy a pintar esto evidentemente es la zona de tp bajo es evidente vale
 
 **Por qué 0.60 aparece como valor dominante incluso con TP alto**
 
-pero fijaros que el 0.60 incluso en zonas de tp altas tiene valores en cambio su vecino en 0.575 no tanto 0.55 tampoco vale y para arriba mejor ahora llegando a lo que dices pues oye cuidado es verdad que en la zona mismo tampoco tiene tanto pero es progresiva el 1 en sí es bastante progresivo también
-
-**Interpretación del mapa en conjunto**
-
-entonces esto es lo que nos permite ver el mapa un poco global que se ve mejor en 4 en 4
+pero fijaros que el 0.60 incluso en zonas de tp altas tiene valores 
 
 
-Perfecto Núria. Aquí tienes **todo el fragmento reescrito**, siguiendo **exactamente** tus reglas:
+![](../img/077.png)
 
-– Respeto **total** de todas las palabras del texto original
-– Léxico afinado únicamente donde no altera el sentido
-– **Títulos en negrita** para cada cambio de tema
-– Sin almohadillas, sin iconos, sin líneas, sólo texto limpio
+en cambio su vecino en 0.575 a la izquierda no tanto, 0.55 tampoco, 
 
----
 
-**Visualización del mapa en cuatro monitores y transición hacia el filtrado**
+y para arriba a la derecha mejor 
 
-en 4 en 4 monitores pero visto esto quería simplemente que lo vierais ahora vamos a filtrarlo para que lo veáis mejor para que lo veáis mejor y vamos a limitar, a bloquear los inputs que son más claros bar 0 2 por un lado vale bar 0 2 por un lado que es recordar el tp y bar 0 1 que es el filtro de entrada por entenderlo se hace aquí entonces donde los bloqueo aquí bueno yo puedo venir aquí a la variable y le digo bueno pues de bar 0 1 lo voy a ver sólo desde 0 55 a 0 65 sólo voy a bloquear esos porque bueno porque el 0 55 ya no es bueno pero me interesa ver por vecino de acuerdo me interesa ver siempre el vecino aquí incluso podía haber puesto este vamos a poner 0 55 0 6 7 5 por ver también el vecino vale 0 6 7 5 yo ahí añado el vecino vale
+![](../img/079.png)
 
-**Bloqueo de la zona relevante en TP y motivo para incluir valores “malos”**
+y piensas "pues oye cuidado..."   es verdad que en la zona `1` tampoco tiene tanto pero es progresiva , el 1 en sí es bastante progresivo también. 
 
-y lo mismo voy a hacer para la del tp que el 0 5 es virria pero quiero verlo quiero verlo porque quiero ver este caso no me haría ni falta porque es muy claro que es virria pero yo lo quiero ver quiero ver vale pero 5 hasta 1 1 porque quiero ver el vecino del 1 quiero ver el vecino del 1 vale que lo veíamos ahí será este es este 1 1 quiero ver ahora ya lo he bloqueado vamos a usar tamaños vale
+Entonces esto es lo que nos permite ver el mapa un poco global que se ve mejor en 4 en 4 monitores.
 
-**Mapa filtrado: análisis más limpio y lectura por filas/columnas**
+## Filtrando inputs claros 
 
-y ahora evidentemente sólo con esos dos ya vais a ver que va a ser más sencillo analizarla vale ser un poco más sencillo sigue habiendo mucho pero con el trenta ya casi llegaba si el trenta casi casi está ahí queda un poco entonces aquí ya se ve un poco mejor recordar que a la izquierda tengo así en filas tengo tp y su stop y arriba tengo entrada entonces este es esta fila que vemos aquí tan tan flojita vale esta fila es el 0 5 de tp de acuerdo con sus stops 0 5 en cada distinto rango de entrada vale
+### `Var_01`
 
-**Interpretación de la fila débil: por qué resiste bien en 0.60**
+Vamos a filtrarlo para que lo veáis mejor y vamos a limitar, a bloquear los inputs que son más claros: 
+  
+`Var_01` que es el filtro de entrada (para entenderlo)   
 
-lógicamente aquí donde tiene 0 6 donde tiene 0 6 veis pues es donde tiene tiene mejor de acuerdo tiene mejor dato ahí el 0 5 es eso es lo bueno lo que habla de la robustez de una variable es esto es que no es sólo donde le va bien sino también en otras zonas de muestra esto indica que es zona robusta de ese parámetro entendéis pero es verdad que como veis como decía a partir de que sacas el 0 5 del tp también casi que ha sido igual no 0 6 7 todas todas están muy bien todas están muy bien todas están muy bien
+Entonces, los bloqueos se hacen aquí.  
+Puedo venir a la variable y decir: “en `Var_01` solo quiero analizar desde **0.55 hasta 0.65**”.
 
-**Lectura completa de rangos de TP y cómo se reflejan en cada bar 0 1**
+![](../img/082.png)
 
-no esta este es 0 6 de tp este es 0 7 de tp 0 8 0 9 1 y 1 1 y en toda la zona incluso que al principio de todo que es la zona primera del 0 5 5 no debía ser 0 5 5 creo que he puesto de de bar 0 1 del filtro filtro el bar 0 1 vale este es 0 5 5 estos 5 7 5 6 6 25 entonces bueno pues incluso aquí se ve bastante bastante de todo me parece que me falta una estaba estaba contando mientras lo decía me faltaba efectivamente una esta es 5 5 esta esta de aquí 5 5 5 y estas 5 7 5 y estas 6 bueno
+Incluso podría añadir también este valor: **0.675**, para observar otro vecino adicional.
+Así tendría 0.55, 0.60, 0.625, 0.65 y 0.675, y vería toda la zona y sus transiciones.
 
-**Sensibilidad del TP/Stop: amplio margen, poca fragilidad**
+Bloqueo únicamente esos valores porque, aunque **0.55 ya no es bueno**, me interesa ver su *vecino*.
+Siempre me interesa revisar el comportamiento del vecino.
 
-entonces lo que os decía aquí en la variable 5 5 hay pocas pero fijaros que en toda la columna en todos los niveles de tp y stop hay esto es por lo que el motivo el tp y el stop es poco sensible porque en todas las zonas de póngase el póngase el filtro salen tp y stop lógicamente en los que salen más que en otros pero en todos hay zonas un parámetro bastante da margen de maniobra su sensibilidad es buena tiene buena tolerancia vale a medida que aumenta pues ya van apareciendo apareciendo pocos entonces de esta manera yo puedo ver el mapa mejor
+![](../img/081.png)
 
-**Comparación de dos zonas del mapa: por qué 0.575 parece mejor pero 0.60 domina en robustez**
+### `Var_02` 
 
-aquí por ejemplo eliminando los los mapas si os fijáis a ver si consigo que lo veáis es interesante que veáis una cosa que hemos visto en el mapa aquí quería quería verlos aquí fijaros que en el 5 7 5 que aquí ves 4 5 7 5 de filtro con el indicador en 4 5 6 7 que ahí hemos visto que era buena zona no fijaros que en esta zona me lo voy a marcar mejor con un cuadradito a los que en esta zona con 4 5 6 vale tiene hasta mejores valores en 0 6 lo veis que tiene 4000 es aquí 3000 por el color ya se ve no es decir en esta zona es mejor es mejor 5 7 5 es bueno tiene valores realmente elevados
+recordar es el `TP` y `SL` 
+
+Lo mismo haré con el parámetro del **TP** `Var_02 / Var_03`:  
+aunque **0.5 es malísimo**, quiero verlo igualmente.  
+Quiero analizarlo porque me interesa ver el caso extremo y cómo se comporta el sistema a su alrededor.  
+
+![](../img/083.png)
+
+En realidad, para este parámetro quizá no haría falta —es evidente que 0.5 es muy pobre— pero aun así quiero revisarlo para observar el **vecino de 1.0**.
+Quiero ver qué ocurre justo a su lado, y ese vecino es **1.1**, es la instancia `1.1` de la comuna `Var_02`.
+
+![](../img/084.png)
+
+Una vez definidos, ya quedan bloqueados, y ahora sí, vamos a trabajar con esos tamaños seleccionados.
+
+### Mapa filtrado: `Var_01` vs `Var_02` 
+
+* instancias : `Var_02` con filas de `TP` y su `SL`.
+* columnas : `Var_01` variables de `entrada`. 
+
+![](../img/090.png)
+
+esta fila que vemos aquí **tan flojita** es el `0.5` de tp y sl,  
+entonces es `0.5` para cada distinto rango o variable de `entrada`.  
+
+![](../img/085.png)
+
+
+
+lógicamente aquí donde tiene `Var_01 - 0,6` pues es donde tiene mejor `TP/SL : 0.5`
+
+![](../img/086.png)
+
+eso es lo bueno,  habla de la robustez de la variable `TP/SL`  
+> ***robustez de una variable***:  
+> que no sólo funciona donde le va bien sino también en otras zonas de la muestra. Esto indica que es zona robusta de ese parámetro. 
+
+Pero es verdad que, como veis, como decía, si sacas la instancia del `0.5 de tp`,  
+casi que ha sido igual en `0.6 de tp`,  `0.7 de tp`, ... 
+
+
+![](../img/090.png)
+
+Fíjate que en la variable `Var_01 - 0.55` hay pocos números en cada instancia de `TP/SL : 0.5`  
+pero hay números en ***toda*** la columna, en todos los niveles de `TP/SL`, hay números;   
+esto es el motivo por el que `TP–SL` es ***poco sensible***, porque en todas las zonas, póngas donde póngas el filtro `Var_01`, salen elementos de `TP–SL`´s.  
+
+Lógicamente hay columnas `Var_01` donde salen con más elementos de `TP–SL` que en otros, pero en todos hay zonas con elementos de `TP–SL`, entonces es un parámetro que da bastante margen de maniobra, tiene ***buena tolerancia***. Y a medida que aumenta el valor de `Var_01` hacia la derecha pues ya van apareciendo menos. 
+
+<div style="border-left: 4px solid #27ae60; background: #ecf9f1; padding: 10px 15px; margin: 10px 0;">
+
+* **Sensible**  
+Cuando cambiar el parámetro altera MUCHO los resultados.  
+Ejemplo: Var_01 (0.575 → 0.600 → 0.625) cambia la estructura del mapa rápidamente.  
+* **Poco sensible**  
+Cuando cambiar el parámetro apenas altera los resultados.  
+Hace casi lo mismo pongas el valor que pongas (no destruye nada con pequeños cambios). 
+
+* ***robusto*** : funciona bien en un rango amplio.   
+Tiene *tolerancia* alta (puedes moverlo sin romper el sistema)  
+
+`Var_01` vs `TP–SL`
+
+1. **Var_01**
+   * Muy sensible
+   * Poco tolerante
+   * Si te equivocas ligeramente: BOOM → degradación
+   * Hay que bloquear bien vecinos y analizar fino
+
+2. **TP–SL**
+   * Poco sensibles
+   * Muy tolerantes
+   * Muy robustos
+   * Cambiarlos apenas altera el sistema
+   * Se puede operar más “tranquilo”
+</div>
+
+
+
+**Comparación de dos zonas del mapa: por qué 0.575 parece mejor pero 0.60 domina en robustez?**
+
+![](../img/093.png)
+
+aquí en el  `0.575` de filtro, con el indicador en `4`, `5`, `6`, `7` que ya hemos visto que era buena zona, 
+
+![](../img/095.png)
+
+fijaros que en esta zona de `0.575` con `4`, `5`, `6`, tiene hasta mejores valores que en la variable de `0.6`  
+`0.575` tiene valores de 4000 y en `0.6` de 3000, por el color más oscuro ya se ve 
+
+![](../img/096.png)
+
+es decir en esta zona es mejor, es mejor `0.575`, tiene valores realmente elevados
 
 **Razón matemática: 0.60 distribuye valores en todo el mapa (no sólo en su zona óptima)**
 
-porque 6 cuando lo agrupas aquí arriba sale mejor porque cuando lo ves aquí resumido vale cuando aquí pinta sólo per 1 contra bar 0 1 ignorando el resto es decir todas están recogidas aquí vale aquí sí que veis claro que 6 es mejor que 5 7 5 bueno la respuesta es muy muy sencilla la habéis visto antes incluso en la en la zona donde estaban todos que el 0 6 distribuye mucho en todos no sólo en los buenos en los buenos en las en su zona óptima 5 7 5 parece hasta mejor pero 6 es un todoterreno espectacular en todas las zonas mete bastantes valores en todas en todas incluso las que no están aquí ahora las hemos quitado recordar que lo hemos visto antes lo voy a volver a poner el mapa completo para que lo veáis lo que quiero decir
+¿porque 6 cuando lo agrupas aquí arriba sale mejor? ¿porque cuando lo ves aquí resumido,,, cuando aquí pinta sólo `per_1` contra `Var_01` ignorando el resto, es decir todas están recogidas aquí, veis claro que 6 es mejor que 5. 7 5 
 
-**Conclusión de robustez: tolerancia transversal de 0.60**
+![](../img/097.png)
 
-eso es porque 6 en la zona óptima no es el mejor mejores 5 7 5 pero aquí lo veis es pero hasta hasta cuando no es bueno mete mete más y también aquí aunque no lo parezca es en esta zona aquí tiene más aquí que aquí y realmente 0 6 es el que tiene mejor tolerancia mejor tolerancia es un valor bueno
+bueno la respuesta es muy muy sencilla la habéis visto antes, que el 0.6 distribuye mucho en todos no sólo en los buenos. En su zona óptima `0.575` parece hasta mejor pero 6 es un todoterreno espectacular en todas las zonas mete bastantes valores en todas en todas incluso las que no están aquí ahora las hemos quitado antes sellecionando solo las variables que vemos ahora, si las pongo todas mira como se ve también.
+
+![](../img/098.jpg)
+
+
+recordar que lo hemos visto antes lo voy a volver a poner el mapa completo para que lo veáis lo que quiero decir, eso es porque 0.6 en la zona óptima no es el mejor, mejor es 0.575, pero aquí en el mapa lo veis, hasta hasta cuando no es bueno el 0.6 mete más y realmente 0 6 es el que tiene mejor tolerancia mejor tolerancia es un valor bueno
+
+![](../img/099.png)
+
 
 **Advertencia: el mapa va “por zonas”, no por sets individuales**
 
-pero cuidado que es muy muy importante en un mapa vamos por zonas no se trata de decir si luego metemos un set que está ahí pues de coña pero son las zonas de acuerdo de entender dónde dónde me muevo yo mejor donde mis sets pueden estar más justos vale
+pero cuidado que es muy muy importante, en un mapa vamos por zonas, si luego metemos un set que está ahí, pues de coña, pero son las zonas, entender dónde me muevo yo mejor, donde mis sets pueden estar más justos 
 
-**Pregunta sobre incrementos de los inputs y respuesta general**
 
-bien esto se va siguiendo la vuelta por ahí o que o asatiendo ahora sí pregunta jaime si hablando de los incrementos en los inputs hay alguna forma de elegir en cuánto poner los incrementos sería probando que explicas sí no no esto te lo decía jaime no no hay vaya nosotros no no no no tenemos ningún método vale que puede ser que lo haya nosotros explicamos lo que lo que hacemos al final lo normal es que un porcentaje sea razonable cuando es incremental lo permita porque si usas un indicador imagínate que eso sea una media móvil pues número entero no pero si tú estás metiendo aquí un porcentaje como es el caso es un multiplicador un multiplicador es un porcentaje de acuerdo
+<div style="border-left: 4px solid #27ae60; background: #ecf9f1; padding: 10px 15px; margin: 10px 0;">
+  <strong>% incrementos de los inputs</strong><br><br>
 
-**Regla práctica para incrementos: usar el sentido común y evitar extremos**
+  ***Pregunta : hablando de los incrementos en los inputs***   
+  ***¿hay alguna forma de elegir en cuánto poner los incrementos?***
 
-entonces al final como los regulas a 0 0 1 a 0 1 a 0 0 0 1 tienes hay que buscar sentido común aquí la verdad que como os he dicho voy a hacer otra seguramente haremos una prueba porque me ha parecido que la variación es bastante notable a mí esta variación ha parecido bastante notable hay que ver que realmente depende de los otros inputs hay que mirarlo en distintas zonas ahora habría que buscar uno en el 4 tienes en el 4 4 o algo así que actúe muy distinto o con el filtro más cercano no sé distintas combinaciones no con tp cercanos pero es verdad que este nivel es elevado para ser el incremento 20 trades sobre sobre 600 y pico son bastantes
+  no no hay, vaya nosotros no no no no tenemos ningún método, que puede ser que lo haya, nosotros explicamos lo que lo que hacemos, al final lo normal es que un porcentaje sea razonable cuando ese incremental lo permita, porque si usas un indicador imagínate que eso sea una media móvil pues número entero, pero si tú estás metiendo aquí un porcentaje como es el caso es un multiplicador, un multiplicador es un porcentaje, 
 
-**Posible ajuste futuro: reducir incremento para aumentar granularidad**
+  **Regla práctica para incrementos: usar el sentido común y evitar extremos**
 
-pudiera ser que aceptara un poco más de granularidad entonces casi con total seguridad lo tenemos que hablar luego con con alberto porque pero es posible que podamos evaluar reducirle un poco más porque como digo 20 y pico son bastantes y es verdad que es el incremento que se ve que va un poco justo con lo cual puede ser que sea justo porque lo dejamos que ruede en pocos al final esto esto siempre va todo esto siempre va de señal y de ruido de acuerdo
+  entonces al final como los regulas? a .001 a 0.1 a 0.001? tienes hay que buscar sentido común. aquí la verdad que como os he dicho voy a hacer otra seguramente haremos una prueba porque me ha parecido que la variación es bastante notable. 
 
-**Equilibrio entre evitar sobreoptimización y no restringir demasiado la señal**
+  ![](../img/100.png)
 
-entonces no hay que pasarse con o sea igual que no hay que pasarse con la sobre optimización es decir en el sentido de que le permites ajustarse tanto tienes que dejarle suficientes grados de libertad para que se ajuste me entendéis para que se ajuste a la señal si yo no le permito un mínimo vale imagínate que yo este filtro le pongo de de 5 en 5 es imposible no puedo no soy capaz de contar nada ahí porque me estás obligando a trabajar en parámetros de locura o como si yo digo pues si el mercado cae un 5 por ciento pones largo bueno cuántas veces cae un 5 por ciento al final todo tiene su nivel no
+  a mí esta variación ha parecido bastante notable hay que ver que realmente depende de los otros inputs hay que mirarlo en distintas zonas ahora habría que buscar uno en el 4, o en el 4.4 o algo así, que actúe muy distinto o con el filtro más cercano no sé distintas combinaciones no con tp cercanos,,, pero es verdad que este nivel es elevado para ser el incremento, 20 trades sobre sobre 600 y pico son bastantes
 
-**Contexto del sistema: años de evolución y robustez comprobada**
+  **Posible ajuste futuro: reducir incremento para aumentar granularidad**
 
-como todo en la vida al final tanto es malo como poco siempre mejor pecar de prudencia y protegerse contra la sobre optimización mucho pero aquí en un sistema que tenemos que conocemos más que a mi hija casi vale que lleva dos días alberto sí será capaz de decir menos años que lleva pero pero apolo puede llevar 15 años en el mercado alberto es el 14 como mínimo este no pues igual ya más con algunas pequeñas modificaciones que es que ha demostrado operar todo tipo de mercados es un sistema muy muy robusto vale que lógicamente en fin cuando pues hay que ajustarlo pero es muy robusto entonces bueno se puede se puede apretar un poco más las tuercas pero siempre prudencia
+  pudiera ser que aceptara un poco más de granularidad, entonces casi con total seguridad lo tenemos que hablar luego con con alberto porque,,, pero es posible que podamos evaluar reducirle un poco más, porque como digo 20 trades y pico son bastantes y es verdad que es el incremento que se ve va un poco justo, con lo cual puede ser que sea justo. ***Al final esto esto siempre va todo esto siempre va de señal y de ruido***.
 
-**Revisión del incremento: 23 trades probablemente demasiado**
+  **Equilibrio entre evitar sobreoptimización y no restringir demasiado la señal**
 
-pero es verdad que ya digo 23 sobre 600 y pico insisto que es el menor incremento posible parece demasiado así visto así en eso parece demasiado pero claro esto hay que mirarlo en más sets de más zonas y concluir a lo mejor esto ha sido una casualidad y resulta que normalmente se mueve tres trades pero bueno si fuera a cinco trades estaría mejor estos 20 trades para ser el menor incremento puede ser demasiado así que lo miraremos lo miramos
+  entonces no hay que pasarse, con o sea igual que no hay que pasarse con la sobre optimización, es decir en el sentido de que le permites ajustarse tanto, tienes que dejarle suficientes grados de libertad para que se ajuste, me entendéis, para que se ajuste a la señal, si yo no le permito un mínimo vale imagínate que yo este filtro le pongo de de 5 en 5 es imposible no puedo, no soy capaz de contar nada ahí, porque me estás obligando a trabajar en parámetros de locura, o como si yo digo pues si el mercado cae un 5 por ciento pones largo, bueno, cuántas veces cae un 5 por ciento? al final todo tiene su nivel
 
-**Pregunta de Fran sobre usar ROC en el mapa en lugar de TSI/PPC**
+  **Contexto del sistema: años de evolución y robustez comprobada**
 
-y nos pareció que era el adecuado pero así es la vida del público se ve siempre mirando cosas vale la de fran la de arriba la dejo para el final de manuel o vale ok a ver que traduzco porque utilizamos el tsi es ppc los mapas en vez de utilizar el roc no sería mejor al tener diversas versiones de fitness funciona agrupadas no acabo de entender es que al final tú necesitas la suma tú quieres decir el valor que recoge la tabla no le veo no le veo pero puedes puedes ponerlo pero no le veo mucha no le veo mucho sentido fran pensándolo ahora pero porque al final el roc es el roc es un valor que es importante pero aquí cuando estás con 8.000 tiene un sesgo tiene una posible sobreutilización gigantesca y de hecho vas a ver roc con valores absolutamente locos
+  como todo en la vida al final tanto es malo como poco, siempre mejor pecar de prudencia y protegerse contra la sobre optimización mucho, pero aquí en un sistema que tenemos que conocemos más que a mi hija casi, vale, que lleva 15 años en el mercado, con algunas pequeñas modificaciones pero ha demostrado operar todo tipo de mercados, es un sistema muy muy robusto vale, que lógicamente en fin cuando pues hay que ajustarlo, pero es muy robusto, entonces bueno se puede se puede apretar un poco más las tuercas pero siempre prudencia...
 
-**Problema del ROC: dispersión extrema con 8.000 combinaciones**
+  pero es verdad que ya digo 23 sobre 600 y pico insisto que es el menor incremento posible parece demasiado así visto así en eso parece demasiado, pero claro esto hay que mirarlo en más sets de más zonas, y concluir,,, a lo mejor esto ha sido una casualidad y resulta que normalmente se mueve tres trades, pero bueno, si fuera a cinco trades estaría mejor, estos 20 trades para ser el menor incremento puede ser demasiado, así que lo miraremos lo miramos y nos pareció que era el adecuado 
+</div>
 
-que no sé qué he hecho antes que me he cargado la tabla no venga perfecto vamos pues lo vuelvo a abrir no sí porque lo de abajo lo de abajo lo puedo volver a mover en un momento no no guardo venga tira no sé qué he hecho antes seleccionándolo todo con el ratón que se me ha ido a tomar y ahora no quería volverlo todo para atrás o sea al final el roc en sí compara insample con outsample es un valor importante es un valor importante pero en este punto al haber 8.000 de acuerdo vas a ver que hay valores o sea su dispersión es brutal la dispersión es brutal
 
-**Comprobación del ROC en la tabla: valores negativos y cambio de color**
+## Retorno al mapa grande, filtrado y reconstrucción final del análisis
 
-bueno vemos abajo la dispersión no para eso está de 296 a menos 74 la suma de los roc a la columna suma perdona perdona pues sí sí o sea no cambiaría nada fran no cambiaría si puedes usarlo no tiene ningún problema no creo de verdad que cambie algo y hayamos descubierto aquí algo puede ser perfectamente pero no creo que cambie porque al final va a cambiar los valores lógicamente pero quiero decir que el hecho de cuál es mejor o peor no creo que cambie porque es muy parecido de uno a otro de acuerdo
+Una vez definidos, ya quedan bloqueados, y ahora sí, vamos a trabajar con esos tamaños seleccionados.
 
-**Prueba con net profit: criterio más estable para mostrar robustez**
+A nosotros nos gusta partir del grande luego ir filtrando y hasta que ahora lo vamos a volver a hacer porque como he tenido que abrirlo porque no sé lo que había liado pues lo volvemos a lo volvemos a ver
 
-al final tú tienes a ver aquí que no he hecho la tabla tan grande no lo he incluido no lo he incluido déjame un momento tengo que hacer con la última porque no tiene espacio para expandirse y a ver en esta si me deja ahora le cambiaron no le cambiaron esta venga muy bien llevamos una casualidad y que me hablas con el exhaustivo pasa veces abierto sí pero antes hace hace mucho rato te he dicho que acabaría a ocho y media si te acuerdas acabar a ocho y media había parecido ahora claro son valores negativos porque ese valor era negativo por lo tanto tenemos que crear el color al revés pero eso no tiene mayor importancia porque ya lo tiene previsto el mismo programa
+### `Var_02` 
 
-**Comparación visual: mapas prácticamente idénticos con distintos vectores**
+recordar es el `TP` y `SL` 
 
-y puede haber alguna pequeña diferencia no está mal es decir lo veo bien de hecho mira lo probaré unas cuantas veces nosotros normalmente ponemos en el net profit yo los he puesto ahí otros he puesto ese y pero normalmente hacemos net profit no tiene no es un gran vector vale esto en sí bueno aquí no y mejor este sí que tiene como poner a un poquito más abajo que arriba si te fijas pero es bastante parecido pero porque lo he puesto ahora porque es negativo donde aparece más es es bastante similar es bastante similar y bueno como veis ya digo no si lo haces por net profit que lo solemos hacer por net profit voy a poner este por net profit me deja bueno de la derecha mismo porque si no a veces no te deja no te deja añadir es como lo solemos hacer pero es que es también muy muy parecido cambia muy poco normalmente lo hacemos por el profit
+![](../img/083.png)
+---
+![](../img/084.png)
 
-**Cierre del bloque de Fran: la suma sigue siendo el vector más claro**
+### `Var_01`
 
-lo he puesto aquí un poco para que lo vierais para que vierais las funciones que vamos usando pero es esto muy similar porque al final lo que marca sobre todo en esto es el hecho de aparecer claro que puede haber un pequeño matiz del dato pero es pequeño es pequeño es muy parecido es bastante parecido como ya esperaba pero no es incorrecto o sea como concepto me gusta no pasa que al trabajar al ser un número negativo ya pues ya tienes que interpretar al revés a lo mejor y sabes es por simplicidad ya digo el net profit suele ir bien para para hacer un mapa por donde el mapa que sea lo más extenso posible que cubra todas las mayores zonas posibles y que los incrementos estén bien lo que hablamos ahora
+Vamos a filtrarlo para que lo veáis mejor y vamos a limitar, a bloquear los inputs que son más claros: 
+  
+`Var_01` que es el filtro de entrada (para entenderlo)   
 
-**Retorno al mapa grande, filtrado y reconstrucción final del análisis**
+Entonces, los bloqueos se hacen aquí.  
+Puedo venir a la variable y decir: “en `Var_01` solo quiero analizar desde **0.55 hasta 0.65**”.
 
-bien seguimos aquí abajo en el mapa dejarme repasar las notas de lo que he ido diciendo hasta ahora porque este es uno de los días que tengo más guión porque no quería dejarme nada quería dejarme nada vale vale es así ya hemos filtrado el mapa grande ahora lo voy a volver a poner a hacer vamos a volver a hacer lo del mapa grande que si os lo digo esto parece que no que puede resultar poco útil verlo así pero pero ya arriba se ve bien pero a nosotros nos gusta nos gusta partir del grande luego ir filtrando ir filtrando y hasta que ahora lo vamos a volver a hacer porque como he tenido que abrirlo porque no sé lo que había liado pues lo volvemos a lo volvemos a ver
+![](../img/082.png)
 
-**Aplicación de filtros definitivos para el mapa “limpio”**
 
-ponemos aquí desde este desde el tp hemos dicho que vamos desde el 0 5 al 1 1 vale el bar 1 hemos dicho que lo llevábamos desde el 0 55 al 0 65 al final de 21 más 55 y dijimos aquí meter el 0 6 7 5 también eso no tenía que apuntarlo lo voy a apuntar pero 0 6 7 5 y luego también podríamos tocar los otros no tiene mucho sentido tocar el stop porque es lineal pero sí que aquí podemos dejar estas zonas por ejemplo de 4 a 7 no es un poco el vecino dejar sólo el 4 al 7 por un lado y luego el otro lado pues el 22 al 25 22 a 25 ahí tiene el problema que hemos tocado límite también arriba 24 25 más 22 y bueno así pues el mapa de abajo es un poquito más manejable ya pues se queda todo como veis bastante bastante agrupado porque nos hemos cargado los buenos hemos dejado los límites de acuerdo y vemos un poco la misma información que teníamos queda más limpio queda más más limpio el mapa pero nada nada más
+### `Per_01`  
+
+No tiene mucho sentido tocar el SL porque es linea pero tiene sentido dejar estas zonas
+
+![](../img/102.png)   
+
+---
+
+![](../img/101.png)    
+
+bueno así pues el mapa de abajo es un poquito más manejable ya pues se queda todo como veis bastante bastante agrupado porque nos hemos cargado los buenos hemos dejado los límites de acuerdo y vemos un poco la misma información que teníamos queda más limpio queda más más limpio el mapa pero nada nada más
+
+![](../img/103.png) 
 
 **Marcado visual del set ideal y construcción de zona candidata**
 
-bien aquí podemos marcar un poco nuestro set ideal vale nuestro set ideal que aquí tenemos una duda que mira os la voy a enseñar ya porque la he hecho esta he hecho he hecho esta zona 2 porque quería ver ese 25 quería ver la he hecho hecho esto lo he hecho último ahora por su trabajo estaba acabando vale
+bien aquí podemos marcar un poco nuestro set ideal vale nuestro set ideal  
+que aquí tenemos una duda que mira, os la voy a enseñar ya, porque la he hecho esta zona 2 porque quería ver ese 25   
+aquí sí que hemos apuntado los out of sample`OOS` 
 
-**Referencia al out-of-sample y comparación entre etapas históricas del mercado**
+`MAPA ES SHORT zona 2` 
 
-y que de hecho mira ves aquí sí que hemos apuntado los los datos sample que eso me gusta el otro se nos ha olvidado pero en este veo que sí que lo ha puesto con muy buen criterio porque nos gusta ponerlo pero se nos había olvidado vale y esto nos gusta ponerlo y antes de empezar igual que se mira los incrementos se analiza esto se analiza esto donde están los cortes donde se analiza pues lo que habéis visto antes vale espera me lo voy a poner aquí para yo verlo gráfico idealmente si uno no le tiene una gran sensibilidad al sistema no lo conoce tanto pues se puede hacer en distintos cortes y te puede hacer delante y detrás que ya sabéis que nos gusta mucho pero aquí poquito como os digo es un sistema amplio rango de comportamiento bastante de por humano entonces pues bueno no lo complicamos tanto en ese sentido
+![](../img/104.png) 
 
-**Revisión de la serie histórica: ciclos, crisis, laterales y contexto general**
-
-pero al final si yo veo aquí todo aquí lo voy a ver poco pero bueno poco este mira lo voy a quitar el sistema momento 17 29 de diciembre del 17 por aquí más o menos por aquí más o menos es el corte no aquí era más o menos por ahí más o menos por ahí es el out sample es decir de ahí para adelante es out sample aquí lo ideal para aquellos que no han hecho deberías de tener un indicador de volatilidad y tendencia o puede ser también la de x pues tener tanto la de x con el histórico si lo tenéis o cualquier otro indicador ahora ocultar esto un momento y ahí pues veis un poquito las dinámicas que lleva el mercado aquí pues ha tenido ciclos bajistas ha tenido crack del covid en ese ciclo bajista y de hecho hay bastante ciclo bajista recuerdo bastante ciclo bajista y aquí en el histórico pues hay también un poco de todo porque hay una gran crisis primera del 2000 muy larga vale luego un período lateral bastante duro bastante duro otra nueva caída y luego un ciclo bajista espectacular por eso que hay un poquito de todo se pueden hacer distintos estudios de aquí dejar out sample la parte inicial en los cortos normalmente hace un out sample bestialmente bueno vale bestialmente bueno aquí no no es fácil porque es verdad que ahora en proporción hay bastante corto vale y no estaría tampoco mal alargarlo un poco más y es a lo mejor a 30 por ciento
+que eso me gusta el otro se nos ha olvidado pero en este veo que sí que lo ha puesto con muy buen criterio porque nos gusta ponerlo esto nos gusta ponerlo y antes de empezar igual que se mira los incrementos se analiza esto se analiza esto donde están los cortes, donde se analiza? pues lo que habéis visto antes 
 
 
-es a lo mejor a 30 por ciento el problema del porcentaje es que si tú le dejas muy poco in sample hay autores incluso pardo que comenta alguna vez y nosotros alguna vez lo hemos hecho es como prueba de 50 a 50 es 50 a 50 y si es un sistema con muchísimos trades es bien de acuerdo es válido vale pero aquí hablamos de un diario es un sistema que tiene muchos trades pero que operan diario pero que te operan diario y esta optimización tiene muchos trades están hablando de la mayoría de 700 800 500 depende no hasta mil en algún set pero son muchos pero tampoco son tantos por decir realmente yo en el in sample metido así pues estoy metiendo 500 600 claro si lo pongo menos sample le meto menos entonces capto menos señal este es el equilibrio de señales entonces es complicado en esos sistemas y en este tipo por ejemplo el 50 a 50
+vale espera me lo voy a poner aquí para yo verlo gráfico idealmente si uno no le tiene una gran sensibilidad al sistema no lo conoce tanto pues se puede hacer en distintos cortes (hice el corte del OutOfSample)
+
+![](../img/105.png) 
+
+pues veis un poquito las dinámicas que lleva el mercado aquí pues ha tenido ciclos bajistas ha tenido crack del covid en ese ciclo bajista y de hecho hay bastante ciclo bajista recuerdo bastante ciclo bajista, y aquí en el histórico pues hay también un poco de todo 
+
+![](../img/106.png) 
+
+porque hay una gran crisis primera del 2000 muy larga vale luego un período lateral bastante duro bastante duro otra nueva caída y luego un ciclo bajista espectacular por eso que hay un poquito de todo se pueden hacer distintos estudios de aquí.  Dejar out sample en la parte inicial, los cortos normalmente hace un out sample bestialmente bueno, vale, bestialmente buen,o aquí no no es fácil porque es verdad que ahora en proporción hay bastante corto vale y no estaría tampoco mal alargarlo un poco más y es a lo mejor a 30 por ciento
+
+el problema del porcentaje es que si tú le dejas muy poco in sample hay autores incluso pardo que comenta alguna vez y nosotros alguna vez lo hemos hecho es como prueba de 50 a 50 es 50 a 50, y si es un sistema con muchísimos trades es bien, de acuerdo, es válido, vale pero aquí hablamos de un diario es un sistema que tiene muchos trades pero que operan diario, pero que te operan diario, y esta optimización tiene muchos trades, están hablando de la mayoría de 700, 800, 500, depende, hasta mil en algún set, pero son muchos, pero tampoco son tantos, por decir realmente yo en el in sample metido así pues estoy metiendo 500, 600, claro, si lo pongo menos outsample le meto menos. entonces capto menos señal. este es el equilibrio de señales entonces es complicado en esos sistemas y en este tipo por ejemplo el 50 a 50
 
 **Impacto del sesgo bajista y la estructura histórica reciente**
 
-pero en uno podría ser y este por mercado estaría chulo de acuerdo porque es verdad que ahora tiene un poquito de sesgo bajista en este en el auto aunque ha subido mucho porque es como bajista poder desde aquí aquí ha subido un montón sí pero ha tenido bastantes tramos de caída y hay en el in sample también en el sample también pero es verdad que tiene un tramo de montonazo de años veis o a súper alcistas y luego cambio tiene dos tramos súper bajistas para un mercado de bolsa súper bajistas este es súper bajista y este es súper bajista entonces realmente todos súper bajistas uno muy muy largo luego aquí un poco de todo pero un poco de todo
+este por mercado, este estaría chulo porque es verdad que ahora tiene un poquito de sesgo bajista 
 
-**Evaluación de la volatilidad histórica en ambas muestras**
+![](../img/105.png) 
 
-pero veis aquí tiene momentos de elevada volatilidad de muy baja volatilidad tiene un poquito de todo y lo mismo en el ADX lo mismo lo ves en el in sample que veréis periodos de muchísima volatilidad y periodos de muy poca volatilidad pero en porcentaje en el in sample tiene un poquito más de periodo de poca volatilidad que ahora es un poquito el único sesgo que tiene la muestra pero es complicada quitársela aquí es complicada
+aunque ha subido mucho porque es como bajista poder desde aquí aquí ha subido un montón sí pero ha tenido bastantes tramos de caída y hay en el insample también, en el sample también, pero es verdad que tiene un tramo de montonazo de años veis o a súper alcistas, y luego cambio tiene dos tramos súper bajistas, para un mercado de bolsa súper bajistas este es súper bajista
 
-**Estrategia futura: ampliar histórico para equilibrar volúmenes y señales**
+![](../img/107.png) 
 
-como vamos aumentando el histórico seguramente ya para las siguientes ya lo podemos anotar en nuestras notas alberto que le llevaremos cinco más porque ya vas ganando histórico por lo tanto cada vez tienes más trades siempre no y meterle ir a ir abriendo a llevarlo un poco más atrás el 30 para ganar periodos sin volatilidad de acuerdo en el auto sample pero claro yo necesito suficientes trades en el in sample también pero ese es un poco el problema que plantean los sistemas de este tipo
+y este es súper bajista 
+
+![](../img/108.png) 
+
+entonces realmente todos súper bajistas uno muy muy largo luego un poco de todo pero un poco de todo
+pero veis aquí en el corte outofsample tiene momentos de elevada volatilidad de muy baja volatilidad tiene un poquito de todo 
+
+y lo mismo en el ADX lo mismo lo ves en el in sample que veréis periodos de muchísima volatilidad y periodos de muy poca volatilidad pero en porcentaje en el in sample tiene un poquito más de periodo de poca volatilidad que ahora es un poquito el único sesgo que tiene la muestra pero es complicada quitársela aquí es complicada...
+
+...como vamos aumentando el histórico seguramente ya para las siguientes ya lo podemos anotar en nuestras notas alberto que le llevaremos cinco más, porque ya vas ganando histórico por lo tanto cada vez tienes más trades siempre, y meterle ir a ir abriendo a llevarlo un poco más atrás el 30 para ganar periodos sin volatilidad, de acuerdo, en el out of sample, pero claro yo necesito suficientes trades en el in sample, también pero ese es un poco el problema que plantean los sistemas de este tipo
 
 **Retorno al mapa filtrado y determinación del set ideal preliminar**
 
-bien volviendo al mapa aquí ya lo tenemos filtrado y lo que os decía yo aquí puedo tener un poquito mi set ideal mi set ideal que está claro que está en la zona de 06 del bar 1 y que en la zona del en la zona del indicador bueno la zona del indicador no es tan claro no es tan claro pero bueno pues ahí tenemos 6 tenemos 5 4 y 25 es muy bueno el problema es que no tengo vecinos por eso os decía que había hecho el otro donde estaba aquí esto es simplemente la misma que hemos hecho pero en b como 425
+bien volviendo al mapa 
+
+![](../img/103.png)
+
+aquí ya lo tenemos filtrado y lo que os decía yo aquí puedo tener un poquito mi set ideal mi set ideal que está claro que está en la zona de `0.6` del `var_1` y que en la zona del en la zona del indicador no es tan claro no es tan claro pero bueno pues ahí tenemos 6 tenemos 5, 4, y 25 es muy bueno el problema es que no tengo vecinos, por eso os decía que había hecho el otro donde estaba aquí esto es simplemente la misma que hemos hecho pero en b como 425
+
+![](../img/109.png)
 
 **Revisión del mapa “zona 2” y detección de un posible error al copiar inputs**
 
