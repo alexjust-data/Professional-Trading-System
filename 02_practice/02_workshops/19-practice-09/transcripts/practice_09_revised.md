@@ -914,296 +914,363 @@ bien volviendo al mapa
 
 ![](../img/103.png)
 
-aquí ya lo tenemos filtrado y lo que os decía yo aquí puedo tener un poquito mi set ideal mi set ideal que está claro que está en la zona de `0.6` del `var_1` y que en la zona del en la zona del indicador no es tan claro no es tan claro pero bueno pues ahí tenemos 6 tenemos 5, 4, y 25 es muy bueno el problema es que no tengo vecinos, por eso os decía que había hecho el otro donde estaba aquí esto es simplemente la misma que hemos hecho pero en b como 425
+aquí ya lo tenemos filtrado y lo que os decía yo aquí puedo tener un poquito mi set ideal mi set ideal que está claro que está en la zona de `0.6` del `var_1` y que en la zona del en la zona del indicador no es tan claro no es tan claro pero bueno pues ahí tenemos 6 tenemos 5, 4, y 25 es muy bueno el problema es que no tengo vecinos,
 
 ![](../img/109.png)
 
-**Revisión del mapa “zona 2” y detección de un posible error al copiar inputs**
+## Revisión del mapa “zona 2” y detección de un posible error al copiar inputs
 
-esto lo has cambiado tu algo alberto has copiado aquí algo y no habrás copiado los inputs no no no es esa no se ha hecho esa opti seguro el mapa es short zona 2 eso no se está seguro pues pues no sé me habré equivocado al recogerla pero estará de 23 a 30 es de 23 a 30 es estará de 23 a 30 es esta la que se ha hecho aquí se ha hecho está seguro 23 a 30 esto es la que se ha hecho dejando todos los demás igual pero dejando sólo el valor del indicador de 23 hasta para qué para ver ese más allá del 25 a ver qué pasaba
+el `mapa es short zona 2` está 23 a 30 esto es la que se ha hecho dejando todos los demás igual para ver ese más allá del 25 a ver qué pasaba
+
+![](../img/110.png)
 
 **Comprobación de la extensión de parámetros entre 23 y 30**
 
-está todo igual recogido todo igual vale con sus marcas sus estadísticas y demás vale no vamos a pararnos mucho aquí vamos a ir un poco a los mapas vale esos son los mapas como veis de 23 a 29 porque el 30 pues igual no sale porque no debe salir el 30 en ningún 30 sí que hay 30 así porque no sale de 30 a ver si no salen los datos sí pero si hay datos sale está recogido está recogido bien vale vale bueno no sé por qué no sé por qué porque no está filtrado
+bien fijaros que lo primero que vemos es que el `0.6` sigue sigue dominando en toda la zona da igual el valor que le des al indicador que él sigue siendo el rey, vale, y que vemos que el `25` efectivamente destaca, y sí que vemos que degrada, `Total general` degrada bueno degrada, no, no creo que degrada de manera para no usarlo, no creo que degrada para la manera de no usarlo, pero sí que hay una cierta ahí degradación, no, no menor, vale, no menor (fíjate en la columna Total general como del 25 al 26 hay una degradacion, hay bastantes menos)
 
-**Corrección del ordenamiento y aplicación del color de mapa**
+![](../img/111.png)
 
-vamos a poner el net profit para no no me va a dejar ahora claro gracias y las siete si está desordenado esta habrá que poner el sonido deja invitada no sé por qué no está ordenado lo sé porque lo sabrá porque por defecto está ordenado pero no sé por qué no lo estaba y por eso no me daba no me daba cuenta gracias gracias al que lo ha puesto lo he hecho para ver si estabais atentos de realidad esto lo hago mucho yo lo he hecho para ver si estabais atentos así que muy bien que lo haya hecho tiene un punto positivo para examen final final de curso queremos esta la escalita de color
+lo único queríamos ver es cómo evolucionaba más allá del 25 y bueno pues no hay una gran hecatombe sí que hay cierta degradación se parece claro que el 25 es una zona muy muy top pero bueno aguanta bien tiene bastantes valores y sería mejor que degradara menos? sí pero no es tampoco muy dramático,
 
-**Confirmación de que 0.60 sigue dominando pese a extender el rango del indicador**
+```sh
+como queremos ver este parámetro `Var_01` 
 
-bien fijaros que lo primero que vemos es que el 06 sigue sigue dominando en toda la zona da igual el valor que le des al indicador que él sigue siendo el rey vale y y que vemos que el 25 efectivamente destaca y sí que vemos que degrada degrada bueno degrada no no creo que degrada de manera para no usarlo no creo que degrada para la manera de no usarlo pero sí que hay una cierta ahí degradación no no menor vale no menor
+![](../img/113.png)
 
-**Necesidad de pausar y reorganizar las ideas del análisis**
+[lo que os decía a veces de los de los datos, ahora voy a poner el per 1 arriba porque pues nada pues porque así el que manda primero es el per 1 entonces ya la dejo sólo per 1
 
-a ver si aquí en el mapa de abajo del todo grande vemos alguna cosa adicional quiero ser más estrecha así que me va a venir bien ocultar esto y podíamos parar cinco minutitos igual no así que sí vamos a parar cinco minutitos si os parece y así reponemos un poco un poco todos
+![](../img/114.png)
 
-**Reanudación de la clase tras la pausa y reflexión sobre incrementos**
+![](../img/118.png)
+```
+y fijaros que quí el `0.6` es más estable,  
 
-a ver que pongo el contador un momento de pánico porque no veía el marcador de la grabación digo matame matame que no duela por favor venga pues vamos con una pausita de cinco minutitos y vuelvo casi estiro un poquito las piernas y voy a visitar a un amigo que tengo ahí hasta ahora pues ya estamos por aquí y seguimos con la clase yendo yendo yendo al baño se me ocurrió una cosa en relación con lo que decías de los incrementos es que es que veis para que veas una una cosa que puedes mirar por eso la pregunta que queda ahora que hemos parado era una buena idea mira
+fijaros que en la zona elevada esto es bastante interesante fijaros que el `tp` y el `stop` como que degrada menos, lo veis, 
 
-**Comentario de Juan Manuel sobre la necesidad de practicar una optimización completa**
+![](../img/115.png)
 
-preguntaba antes Juan Manuel en futuras prácticas será alguna óptica como esta con el mapa con tabla dinámica ya que la teoría se hace una vez por encima y rápido y sería clave para dominarlo verlo hacer desde cero completo al menos una vez o sea como el pensar que los vídeos los puedes ver 70 veces si quieres o sea yo creo que que todo el proceso lo he mostrado si tienes alguna hora concreta pasamos la etapa tenemos de resolverla pero es que una tabla dinámica o sea tú seleccionas los valores y le das al botón es que no tiene más de verdad y no lo hago con el ratón con el texto porque se me va no sé antes lo intentado y se me ha ido a tomar viento no es cual imagínate que se acabará aquí insertar tabla dinámica y te abre
 
-**Explicación sobre tablas dinámicas: simplicidad, repetición y práctica**
+por eso el `25` en la otra salía tan bueno, es porque en la zona de `tp` a partir del `1` también va degradando, pero degrada de manera bastante más progresiva que antes cuando estaba la zona del `4` al `25` 
 
-y luego tú aquí eliges un valor en columna y un valor en filas lo que quiera representar y quiere representar uno contra otro y el cual pones en uno y otro es prueba error o sea no hay un que tú quieras ver más antes y aquí el valor que recoge net profit ya está es que no es más una tabla dinámica y lo que te digo buscas tablas dinámicas en youtube están 250 vídeos pero que no hay más bueno luego claro configurarla pero como cualquier otra cosa pues ya incluso hay con cosas de gusto que te decía nosotros para que quede grabado nosotros no mostramos subtotales sí que mostramos activado para filas y columnas totales generales pero a lo mejor habrá gente que no le gusta y tal los sumas entonces sólo ves los inputs sin las sumas
+la zona sigue siendo igual, es en la zona de de `Var_02` que tenemos `tp bajo: 0.6, 0.7, 0.8, 0.9, 1` que también degrada mucho en el `0.5` que quizá un poco menos pero degrada mucho. En el `1.1` empieza a degradar pero fijaros que empieza de manera de manera mucho más progresiva que antes
 
-**Detalles de estilo en Excel: formato condicional y preferencias personales**
+aquí el `1` es mejor en la zona de `25`.  Quizás por la zona del `23` en este segundo rango. Antes ya habiamos visto algo bueno por la zona del `25` , por debajo de la tabla
 
-y el diseño me gusta el esquema porque me enseña y las variables y no lo otro que no lo enseña pero eso es totalmente gusto no tiene nada y ya está todo esto cuando quieres marcar un color haces así y es una opción de excel que se llama formato condicional vale que depende de los datos pues pinta de un color o le pone barritas o le pone iconitos ves estos son opciones del excel cuál va mejor para esto pues a nosotros nos gusta esto pero mira antes usamos esto y a partir de esta semana hemos cambiado a este y aquí usamos este formato condicional barras de datos cual da igual si es un color u otro no tiene mayor es esto una más de verdad
+![](../img/109.png)
 
-**Comentarios menores sobre control de banderas y navegación**
+lo que pasa es que acababa en 25, vale , queríamos ver más allá acababa en 25, pero ya veíamos que ahí había aquí había algo bueno, es como ya salía claro 25 era era la leche, ahora hemos ido más allá para ver qué pasa tras esto, y nos hemos dado cuenta que a la que vimos de 23 a 25,  automáticamente veis esa degradación que es mucho menor aquí 
 
-es que más que esto o sea tú dices explicamos poco a poco que no te lo puedo explicar de otra manera es esto es esto y ha quedado grabado ha sido muy rápido pues vuelvelo a ver vuelvelo a ver vuelvelo a ver te pones la pausa lo pruebas tú lo ves a ver la gracia de los vídeos es esa tienes que tú puedes parar el vídeo hacerlo entiendes al final es un poco el tema vale pues ya está como se marca ha respondido esto pero como se hace ha respondido ha entendido gracias pero la banderita no me la deja quitar así nada pregunta a mí vale está vale estaba ahí bueno no sé cómo quitar la banderita
 
-**Regreso al análisis del mapa extendido y revisión de degradaciones**
+`ANTES`
+![](../img/116.png)
 
-vale bien entonces lo que nos decía en el mapa del 2 de la zona esta que también lo tenemos total pues bueno se viene a apreciar más o menos lo mismo no hay ninguna novedad lo único queríamos ver es cómo evolucionaba más allá del 25 y bueno pues no hay una gran hecatombe sí que hay cierta degradación se parece claro que el 25 es una zona muy muy top pero bueno aguanta bien tiene bastantes valores y sería mejor que degradara menos sí pero no es tampoco muy dramático
+`AHORA`
+![](../img/117.png)
+y ya más adelante fijaros aquí en la zona de `tp` es incluso el 1.6 aquí ya prácticamente no no sale casi 
 
-**Bloqueo del parámetro para aislar comportamiento y observar su progresión**
-
-si lo vemos aquí abajo a ver siempre bueno aquí nos va a costar de ver vamos a bloquear vamos a hacer una cosa como queremos ver este parámetro lo que vamos a hacer ahora es lo que os decía a veces de los de los datos sea el hecho de que uno vaya antes o después lo marca simplemente el orden en que están aquí ahora voy a poner el per 1 arriba porque pues nada pues porque así el que manda primero es el per 1 entonces ya la dejo sólo per 1
-
-**Corrección del orden de las dimensiones y limpieza del mapa**
-
-aunque aquí cuatro está mal pero si no hay cuatro aquí no o que cuatro esto no ha actualizado esta tabla ya verás se ha dado un actualizado no entiendo porque sale cuatro si no hay datos de cuatro y nuevamente no está ordenado de menos a más y en el bar 2 pues le dejo ya los ya conocidos no vale voy a dejar solo los tres los tres megatops
-
-**Observación relevante: en la zona alta del indicador la degradación es mucho más suave**
-
-y fijaros que nos queda una tabla ya muy muy reducida nos queda es muy larga con lo cual le voy a cortar también a los que aquí el 06 es más estable que fijaros que en la zona elevada esto es bastante interesante fijaros que el tp y el stop como que degrada menos lo veis por eso el 25 en la otra salía tan bueno es porque en la zona de tp a partir del 1 también va degradando pero es como degrada de manera bastante más progresiva que antes cuando estaba la zona del 4 al 25 pues ya os dais cuenta no
-
-**Constatación de que la ampliación más allá de 25 mejora la suavidad de la degradación**
-
-es decir en esta zona de 25 estas son las cosas que conclusiones que sacamos en el mapa que la acabo de sacar ahora la zona sigue siendo igual en la zona de tp bajo bar 02 también degrada mucho en el 05 que quizá un poco menos pero degrada mucho tiene el 6 el 7 el 8 9 el 1 y hasta el 1 muy bien y ahí en el 1 1 empieza a degradar pero fijaros que empieza de manera de manera mucho más progresiva que antes
-
-**Interpretación final de la zona alta del indicador (23–26)**
-
-aquí el 1 es mejor en la zona de 25 en la zona alta más de 23 en este segundo rango que veíamos en la otra no en la otra habíamos ya visto ese rango aquí lo que pasa es que acababa en 25 vale queríamos ver más allá acababa en 25 pero ya veíamos que ahí había aquí había algo bueno es como ya salía claro 18 25 era era la leche ahora hemos ido más allá para ver qué pasa tras esto no y nos hemos dado cuenta que a la que vimos de 23 a 25 no automáticamente veis esa degradación que es mucho menor aquí es mucho menor en el otro caso
-
-**Confirmación de que 23–26 es una banda amplia y estable**
-
-y ya más adelante fijaros aquí en la zona de tp es incluso el 1 6 aquí ya prácticamente no no sale casi y aquí en cambio fijaros no lo seís pero está todavía todavía tiene bastante bastante buen dato decir realmente degrada de manera mucho más progresiva en la zona del indicador a más de 23 vale es decir elegir 24 25 está bastante bien aquí es una zona muy buena
+realmente degrada de manera mucho más progresiva en la zona del indicador, a más de 23 vale, es decir, elegir 24, 25, está bastante bien aquí, es una zona muy buena,
 
 **Comparación final entre las zonas óptimas del indicador**
 
-es decir teníamos aquella zona que veíamos 5 6 pero también está también está cual bueno parece 26 mejor pero fijaros 25 también 25 muy bien 25 muy bien y su vecino 24 24 es bastante bueno también hay su vecino perdón decía 25 digo su vecino 23 24 25 25 están bien
+bueno parece 26 mejor pero fijaros 25 también 25 muy bien 25 muy bien y su vecino 24 es bastante bueno también hay su vecino 23 
 
-**Reconstrucción del rango completo para ampliar lectura**
+![](../img/121.png)
 
-también aquí a ver que le he cortado demasiado que no que he pasado que ver que no le he puesto 24 23 pongo 23 pongo todo y está para verlo para verlo bien 23 24 25 26 27 y sí fijaros que incluso 23 aparece aquí 0 6 0 6 25 24 muy bien una columna realmente extensa todo todo todo todo muy progresiva va degradando va degradando lógicamente va degradando pero fijaros que degrada de manera realmente
+todo muy progresiva va degradando va degradando lógicamente va degradando pero fijaros que degrada de manera PROGRESIVA
 
-**Reajuste del layout del mapa para mejor legibilidad en pantalla**
+![](../img/123.png)
 
-aquí otra vez otra cosa que voy a cambiar aquí que esto lo ves en los mapas al ir haciéndolo no tiene mayor mayor historia es decir me va a llevar un pequeño bajito no muy largo pero un pequeño de cambiar de una separado uno lo voy a llevar aquí porque la prefiero más alargada no porque la pantalla es más alargada me va mejor así me da mejor así dejo per 1 arriba vale y dejo bar 2 arriba para que me mande el tp justo
 
-**Corrección por inconsistencias tras la reorganización**
-
-ahora el problema es que seguramente esto no está bien ya se ha hecho un lío importante lo vamos a volver a hacer porque esta vez es cuando cambian los datos pasa es un poco lío pero así es le montamos esta bueno espérate que la vamos a faltar un poco por mucho que es mejor no no tanto no tanto entonces el filtro aunque ya vemos que va realmente bien lo vamos a dejar solo del 0 6 0 5 no lo dejamos dejamos el 0 5 vale
 
 **Ajuste de rangos finales y confirmación de homogeneidad en la matriz**
 
-pero le vamos a dar hasta el 1 1 igualmente no es que la verdad aquí por dejarle le puedes dejar hasta donde quieras porque realmente va muy muy bien y el stop pues queda igual lo mismo no esto pasa un poco igual esto no sabes ni dónde cortarlo el stop es que no sabes ni dónde cortarlo no sabes ni de dónde cortarlo aquí tenemos esta hora y siendo larguísima la verdad así pues bueno sigue costando mucho porque es enorme la zona es enorme que se vería mucho mejor pero no se ve mucho mejor a lo subo un poco mejor a lo subo un poco mejor
+el stop es que no sabes ni dónde cortarlo no sabes ni de dónde cortarlo 
 
-**Eliminación del TP=0.5 para limpiar ruido y reducir tamaño**
-
-voy a quitar el 0 5 porque algo ganaremos voy a quitar uno en cada lado algo bajamos no algo es algo bueno es es realmente homogéneo realmente homogéneo como como veíamos y está muy bien
+![](../img/117.png)
 
 **Identificación de las zonas finales recomendadas para per1**
 
-bueno tenemos tenemos más o menos más o menos claro más o menos claro que el indicador no está no lo hemos hecho pero estaría bien también esto mismo que hemos hecho para arriba también hacerlo es decir hacer de 1 a 7 por ejemplo de 1 a 7 todo igual entendés decir hacer esto de 1 a 7 esta misma que la vamos a dejar ahora puesta alberto en ordenador de 1 a 7 para mañana analizarla y así veremos un poco qué pasa en ese 4 qué pasa en ese 4 para ya no es lo mismo que hemos visto aquí
+estaría bien también esto mismo que hemos hecho hacerlo, hacer de 1 a 7 por ejemplo de 1 a 7 todo igual entendés decir hacer esto de 1 a 7 
 
-**Síntesis de las mejores zonas del indicador (per1)**
+![](../img/124.png)
+
+esta misma que la vamos a dejar ahora puesta alberto en ordenador de 1 a 7 para mañana analizarla y así veremos un poco qué pasa en ese 4 
+
+![](../img/109.png)
 
 pero bueno en principio vemos que 4 5 6 sobre todo 5 6 de acuerdo 4 5 6 está está bastante bien no 4 5 6 pues parece parece ser buena buena zona no 4 5 6 porque incluso 7 pues es una degradación bastante aceptable aceptable
 
-**Síntesis de las mejores zonas del filtro de entrada (bar01)**
-
-por el lado de aquí ya hemos visto que entre 5 7 5 porque aún aún dejaría aún este vecino lo consideramos aceptable y aquí 0 6 50 pero bastante por los pelos bastante por los pelos idealmente 0 6 25 pero bueno 0 6 50 aún podría aún podría valer
+por el lado de las ***x*** ya hemos visto que entre `0.575` lo consideramos aceptable `0.6`, y `0.650` pero bastante por los pelos bastante por los pelos idealmente, `0,625` pero bueno `0.650` aún podría aún podría valer
 
 **Síntesis del TP óptimo y límites aceptables por tolerancia**
 
-en cuanto al lado del en cuanto al lado del tp 0 6 este sí que lo vamos a descartar por el enorme barranco que supone 0 5 vale y aceptaríamos hasta uno hasta uno pero es verdad que mirando la otra ahí vemos un poquito más de tolerancia de acuerdo aquí vemos que en la zona elevada esa zona de 4 5 6 antes no le mencionaba que la quería mencionar aquí pero también está de acuerdo también tenemos 24 25 no pero ya está como la iba a ver aquí pues ya no la he tratado
+en cuanto al lado del tp `0,6` este sí que lo vamos a descartar por el enorme barranco que supone`0.5` 
 
-**Confirmación de las zonas 23–25 como históricamente top en el lado largo**
+![](../img/117.png)
 
-y no pero tenemos esta tenemos esta zona que nos está nos está diciendo que 24 incluso 23 no cosa 23 porque el 22 una degradación aún aceptable aún aceptable yo de 23 24 25 23 es decir tenemos 4 5 6 y 23 24 y 25 esto además tiene un plus que de hecho es lo queríamos haber dejado preparado pero pero no sabemos porque eso nos bloqueaba la optimización y no hemos podido
+y aceptaríamos hasta `1`  hasta uno 
 
-**Contexto histórico: por qué el rango 23–25 ya era conocido como excelente**
 
-porque porque eso ya os lo digo este sistema lleva mucho tiempo operando esta zona de 23 24 y 25 es una zona top del lado largo de acuerdo el lado largo opera varios sets no sólo operan sino que han operado durante años en esa zona de acuerdo es una zona muy fina para el lado largo entonces eso también está y de hecho hay algún set también el corto operando en esa zona hoy en día es decir que sé que esto no es nuevo esto como os digo viene de siempre
+tenemos esta zona que nos está nos está diciendo que 24 incluso 23 no cosa 23 porque el 22 una degradación aún aceptable aún aceptable yo de 23 24 25 23 
 
-**Uso de las zonas del mapa como regiones, no como selección de sets finales**
+![](../img/111.png)
 
-y así por eso pues estos datos al final van saliendo y vas analizarlos por encima vale bien esto al final repito es zonas de trabajo pero elegiríamos los sets con esto no para operar no por qué no por dos motivos primero ni con el mapa ni con este excel por dos motivos para uno principalmente uno el dejarle elegir 8.000 como os he dicho antes es un ejercicio sobre optimización bastante notable es poco como lo que os decía de dejarlo variar los incrementos al final es un poco lo mismo
+además tiene un plus que de hecho es lo queríamos haber dejado preparado pero pero no sabemos porque eso nos bloqueaba la optimización y no hemos podido
+
+porque eso ya os lo digo este sistema lleva mucho tiempo operando esta zona de 23 24 y 25 es una zona top del lado largo, el lado largo opera varios sets no sólo operan sino que han operado durante años en esa zona de acuerdo es una zona muy fina para el lado largo, entonces eso también está, y de hecho hay algún set también el corto operando en esa zona hoy en día, es decir que sé que esto no es nuevo esto como os digo viene de siempre y así por eso pues estos datos al final van saliendo y vas analizarlos 
+
+
+bien esto al final repito es zonas de trabajo pero ***¿elegiríamos los sets con esto?*** no, para operar no, por qué no? por un motivos : primero ni con el mapa, ni con este excel, 
+![](../img/125.png)
 
 **Limitación fundamental: dejar elegir entre 8.000 combinaciones es sobreoptimizar**
 
-si yo le dejo elegir entre 8.000 in samples cuáles van mejor y los meses que no el data y luego me los ordeno al final esto esta ordenación que yo he hecho aquí aquí no está en la zona 2 igual vamos a la 1 vale esa ordenación que yo he hecho aquí tampoco está aquí que ha pasado pero pero que es que me está pasando se me han ido los colores eso estaba todo pintado no vuelvo a cerrar tiene no sé no no eso estaba todo hecho todo estaba todo hecho con los colores abierto todo tienes la selección y tal
+dejarle elegir 8.000 como os he dicho antes es un ejercicio sobre optimización bastante notable, es poco como lo que os decía de dejarlo variar los incrementos, al final es un poco lo mismo,
 
-**Revisión de posibles candidatos y sus zonas operativas**
+si yo le dejo elegir entre 8.000 `insamples` cuáles van mejor y los mezclo en `all_data` y luego me los ordeno al final esto esta ordenación que yo he hecho aquí en excel pues mira que hay un 10 y un 4 hemos hablado del 4 antes hemos hablado del 10 también pero teníamos dudas 
 
-de cambiar la tabla no se me ha cambiado todo bueno yo aquí tengo entonces pues mira que hay un 10 y un 4 hemos hablado del 4 antes hemos hablado del 10 también pero teníamos dudas vale no sale más por aquí salen 4 a 10 es 5 7 5 bueno está ahí en el límite que hemos considerado apto 6 7 5 estaría fuera estaría fuera uno también estaría apto 0 7 también entonces son zonas operativas el 10 dudoso
+![](../img/126.png)
+
+vale no sale más por aquí salen 4 a 10, salen 0.575 que bueno, está ahí en el límite que hemos considerado apto, 0.675 estaría fuera estaría fuera, en `Var_02` el uno también estaría apto. 0,7 también, son zonas operativas el 10 dudoso
 
 **Advertencia: un set concreto sólo es válido si está dentro de su zona robusta**
 
-el más operativo de aquí es este pero aún así si ahora que compara el sample con el out sample bueno pueden ser los mejores o no no lo son de hecho pero pero este puede ser que sí si está en la zona es decir no son lejanos de uno de los mejores in sample es 25 pero en out sample no aparece ninguno
+aún así si ahora que compara el insample con el out sample 
 
-**Conclusión: nunca elegir sets directamente desde el mapa ni desde el Excel**
+![](../img/127.png)
+![](../img/128.png)
 
-el problema es que son 8000 entonces ahí nunca elegimos de este de este set lo que hacemos es hacer o la misma opti o otra de acuerdo que a lo mejor ya con el mapa yo he podido acotar y a lo mejor podría mejor si fuera más grande imaginaos que hubiera sido una optimización genética la anterior mucho mayor podía ahora acotar y hacer una exhaustiva pero como yo ya la tengo hecha yo la he hecho eso de dos maneras de hacerla
+bueno pueden ser los mejores, o no, no lo son de hecho, pero pero este puede ser que sí si está en la zona, es decir no son lejanos de uno de los mejores in sample que es 25 pero en out sample no aparece ninguno
+
+el problema es que son 8000 entonces ahí nunca elegimos de este de este set, lo que hacemos es hacer o la misma opti o otra, de acuerdo? que a lo mejor ya con el mapa yo he podido acotar y a lo mejor podría mejor si fuera más grande imaginaos que hubiera sido una optimización genética la anterior mucho mayor, podía ahora acotar y hacer una exhaustiva, pero como yo ya la tengo hecha, yo la he hecho, Y eso de dos maneras de hacerla
 
 **Creación de la optimización exhaustiva recortada (250 mejores)**
 
-esta es la misma exactamente la misma exactamente la misma la 1 es sin esta extensión porque ya la teníamos hecha si no la hubiéramos hecho con la extensión vale porque esta ahora viendo esto lo mejor pues sería hacer esto más o menos 29 para que son 65 pero esto acaba son unas horas en ordenadores potentes horas pues el 12 horas 14 horas y 27 horas en el mío a lo mejor en el dedicado que es un poco más lento pues dura 15 horas entonces se podía hacer esta ya y lo tienes todo en uno vale pero bueno no se ha hecho se ha hecho esta
+esta es la misma exactamente la misma exactamente la misma , la 1
+
+![](../img/129.png)
+
+es sin esta extensión porque ya la teníamos hecha si no la hubiéramos hecho con la extensión vale porque esta ahora viendo esto lo mejor pues sería hacer esto más o menos 29 
+
+![](../img/130.png)
+
+para que son `65,772`combinaciones pero esto acaba son unas horas en ordenadores potentes horas pues el 12 horas 14 horas y 27 horas en el mío a lo mejor en el dedicado que es un poco más lento pues dura 15 horas entonces se podía hacer esta ya y lo tienes todo en uno 
+
+
+pero bueno no se ha hecho se ha hecho esta
+
+![](../img/129.png)
 
 **Por qué reducir a 250 sets: evitar sobreoptimización y facilitar selección**
 
-entonces se ha hecho sólo guardando 250 es un número que aún 200 si quieres 100 puedes coger perfectamente 100 y hacemos lo mismo pero claro aquí ya en el in sample solo hay 200 esto nosotros hemos construido seleccionándolo con una función buscar pero no no no complicaros
+entonces se ha hecho sólo guardando 250 es un número que aún 200 si quieres 100 puedes coger perfectamente 100 y hacemos lo mismo pero claro aquí ya en el insample solo hay 200 
+
+![](../img/131.png)
+
+esto nosotros hemos construido seleccionándolo con una función buscar, pero no, no, no complicaros
 
 **Explicación técnica para quien domina Excel (opcional)**
 
-hay dos datos lo explico para que lo sepáis simplemente aquel que domine excel porque esto ya esto sí que si no dominas excel pues te olvidas vale no hace falta meterse en complicarse la vida necesariamente pero aquí hay dos variables que se comparten entre las tres hojas una es el test el test se comparte sin equivoco es el test que recoge cada combinación vale y luego el robunes también es igual en todas las hojas vale entonces buscando el número de test aquí ordenas tú por el fitness que has hecho por tsi ordenas por tsi que es el fitness que hemos usado en este excel vale ordeno por tsi y automáticamente busco con la función buscar
+hay dos datos lo explico para que lo sepáis simplemente aquel que domine excel porque esto ya esto sí que si no dominas excel pues te olvidas vale no hace falta meterse en complicarse la vida necesariamente pero aquí hay dos variables que se comparten entre las tres hojas una es el `test`, 
 
-**Proceso final: recorte ordenado de los 250 mejores y alineación entre pestañas**
+![](../img/132.png)
 
-de las borro abajo hasta 201 elimino las anteriores y las otras 250 me quedo con 250 y luego con una función buscar busco estas test en la otra hoja y me quedo con esas vale es bueno esto ya digo si no sabes ni de qué te hablo no te rompas la cabeza pero el que sepa de excel sabe de qué le hablo y con una función buscar hemos buscado estos test en el auto sample y no el data y hemos eliminado el resto por una sencilla selección así vale y ya está pero si no pues vuelves a hacer la optimización
+el test se comparte sin equivoco es el test que recoge cada combinación vale y luego el `Robustness` también es igual en todas las hojas vale 
+
+![](../img/133.png)
+
+entonces buscando el número de `test` ordenas tú por el fitness que has hecho por tsi ordenas por tsi que es el fitness que hemos usado en este excel vale ordeno por tsi 
+
+![](../img/134.png)
+
+y automáticamente busco con la función buscar
+de las borro abajo hasta me quedo con 250 
+
+![](../img/135.png)
+
+y luego con una función *buscar* busco estas `test` en la otra hoja y me quedo con esas. 
+
+Si no sabes ni de qué te hablo no te rompas la cabeza, pero el que sepa de excel sabe de qué le hablo y con una función buscar hemos buscado estos test en el outofsample y en all_data y hemos eliminado el resto por una sencilla selección así, vale y ya está, pero si no pues vuelves a hacer la optimización.
 
 **Cierre del bloque: equivalencia entre esta reducción y rehacer la optimización**
 
-entonces ahora aquí nos hemos quedado con las 250 es decir esto es lo mismo que si hubiéramos hecho la optimización porque ésta es exhaustiva que no hay no hay un algoritmo que seleccione son todas entonces las 250
+entonces ahora aquí nos hemos quedado con las 250  
+es decir esto es lo mismo que si hubiéramos hecho la optimización porque ésta es exhaustiva 
 
+![](../img/136.png)
 
-Perfecto Núria.
-Aquí tienes **la continuación completa**, con tu mismo formato:
+que no hay no hay un algoritmo que seleccione son todas, entonces las 250 que mejor `tsi` tenían se han quedado y por lo tanto yo sí que tengo aquí unos datos `insample` unos datos `all_data` `outofsample` y los datos all data y los tengo ordenados también por suma porque el auto sample está detrás y cuando pongo el `outofsample` detrás me gusta más usar la suma incluyendo el `Robustness` en el cálculo y por lo tanto veo cuáles son los mejores in sample que como veis lógicamente los mejores in sample los mejores sí son los mismos 
 
-– todas las palabras respetadas
-– léxico afinado sin cambiar significado
-– **títulos en negrita** cada vez que cambia el tema
-– sin símbolos, sin líneas, sin iconos
+![](../img/138.png)
 
----
+porque los que eran mejores en 8.000 son mejores en 250 lo que cambia o lo que puede cambiar es el `outofsample`
 
-**Selección final de los 250 mejores sets y ordenación por criterios compuestos**
+entonces ya ordenamos por por suma el in sample lógicamente son los mismos eso es obvio no el que es mejor con mil es mejor con 8.000 y con 250 mil pero no el `outofsample` porque aquí ahora ya sólo hay 250 y 
 
-son todas entonces las 250 que mejor te se iteran se han quedado y por lo tanto yo sí que tengo aquí unos datos in sample unos datos all data all sample y los datos all data y los tengo ordenados también por suma porque el auto sample está detrás y cuando pongo el auto sample detrás me gusta más usar la suma incluyendo el robe en el cálculo y por lo tanto veo cuáles son los mejores in sample que como veis lógicamente los mejores in sample los mejores sí son los mismos porque los que eran mejores en 8.000 son mejores en 250 lo que cambia o lo que puede cambiar es el auto sample
-
-**Aclaración sobre la pantalla, la cámara y el ordenamiento por ‘suma’**
-
-a ver un segundo que me he dejado abierto aquí un poquito voy a dar cuenta que no me estáis viendo estáis disfrutando de mi enorme atractivo esto es un algo que me extraña que no estuviese ahí advirtiendo sobre ello no pero bueno no pasa nada estaréis despistados o se están contentados la gracia es que no os habéis dado cuenta pero lo que ha sido es que si no no se entiende entonces ya ordenamos por por suma el in sample lógicamente son los mismos eso es obvio no el que es mejor con mil es mejor con 8.000 y con 250 mil pero no el auto sample tiene por qué me acuerdo en el auto sample no tiene por qué ser el mejor porque aquí ahora ya sólo hay 250 y bola
+![](../img/139.png)
 
 **Comparación visual de los mejores sets en in-sample y out-of-sample**
 
-fijaros que tengo 406 25 con varios y aquí tengo no sé si exactamente el mismo no es pero por ahí andan por ahí es evidentemente la zona bastante bastante parecida si vamos al data pues nuevamente son los cuatro en este tsi son los los cuatro que hacemos nosotros en este en este caso no te sé que no hablado de vol forward al final sí os hablo de vol forward vale pero de momento de momento yo normalmente en apolo solemos elegir así solemos elegir así por el vídeo el mapa yo tengo claras mis zonas y ahora tengo mediante all data pues aquellos sets que trabajan mejor en equilibrio
+fijaros que tengo 406 25 con varios y aquí tengo no sé si exactamente el mismo no es pero por ahí andan por ahí es evidentemente la zona bastante bastante parecida si vamos al data pues nuevamente son los cuatro 
 
-**Uso del criterio “suma” y su ponderación del robustness**
+![](../img/140.png)
 
-porque con la suma pondero sobrepondero un poco el ro burnes ya que me añade y lo tengo por un fitness que este sí son estos y lo tengo por el fitness ese que lógicamente muchas ocasiones en algunos en común pero no siempre aquí de hecho como veis no los hay no hay en ese común pero en este en el ppc sí que hay en común entre los dos hay un poco de mezcla de los dos aquí nos sale más el 25 el ppc siempre tira más para para el retorno recuerdo el ppc te tira mucho para el retorno
+en este tsi son los los cuatro 
+
+¿que hacemos nosotros en este en este caso? nótese que no hablado de vol forward al final sí os hablo de vol forward vale pero de momento de momento yo normalmente en Apolo solemos elegir así, solemos elegir así, por el mapa yo tengo claras mis zonas y ahora tengo mediante all_data pues aquellos sets que trabajan mejor en equilibrio en  `insample` y `outofsample`
+
+
+====================================OJO NO ETIENDO LA EXPLICACION DEL VIDEO - DESDE AQUI===================
+
+porque con la suma pondero sobrepondero un poco el `Robustness` ya que me añade y lo tengo por un fitness que este sí son estos y lo tengo por el fitness ese que lógicamente muchas ocasiones en algunos en común pero no siempre aquí de hecho como veis no los hay no hay en ese común pero en este en el ppc sí que hay en común entre los dos hay un poco de mezcla de los dos aquí nos sale más el 25 el ppc siempre tira más para para el retorno recuerdo el ppc te tira mucho para el retorno
+
+====================================OJO NO ETIENDO LA EXPLICACION DEL VIDEO - HASTA AQUI===================
 
 **La ficha de resumen: herramienta clave para comparar de un vistazo**
 
-una cosa que nos gusta mucho que esto creo que lo enseñé un poco en la práctica lo enseño también aquí que tengo mis notas está es la ficha que tenemos en el whatnot y aquí a modo de resumen recogemos siempre cuando cuando lo hacemos con tres sesiones estos tres excel y el resumen de las tres variables y el robustness esto es muy interesante porque de un vistazo de un vistazo te puedes hacer una idea de cuál es el mejor
+una cosa que nos gusta mucho que esto creo que lo enseñé un poco en la práctica lo enseño también aquí que tengo mis notas está es la ficha que tenemos en el whatnot 
+
+![](../img/141.png)
+
+y aquí a modo de resumen recogemos siempre cuando cuando lo hacemos con TradeStation estos `tres excel` y el resumen de las tres variables y el `Robustness`  esto es muy interesante porque de un vistazo de un vistazo te puedes hacer una idea de cuál es el mejor
+
+![](../img/142.png)
 
 **Comparación por medianas: utilidad en exhaustivas de 250 sets**
 
-vale aquí al estar 250 de ser exhaustiva en la mediana que es el valor primero es bastante útil vale y aquí también tanto en las funciones fitness como en el robustness fijaros que te paliza respecto al tsi el s es el que mejor robustness tiene de hecho no tiene ni un solo robustness negativo ni uno solo entre los 250 muy destacable su mejora 167 pero tenés pero es que su mediana es 86 recordar que tiene es igual a un sample que bastante bien vale bastante bien su valor medio de tsi 2700 mediano su valor mediano 5 millones
+aquí al estar en `250`y ser `exhaustiva` en la mediana que es el valor primero `ES:0.75` es bastante útil vale y aquí también tanto en las funciones fitness (`TSI, ES, PPC`) como en el robustness fijaros que te paliza respecto al tsi el s es el que mejor robustness tiene 
+
+![](../img/143.png)
+
+de hecho no tiene ni un solo robustness negativo ni uno solo entre los 250, muy destacable, su mejora 167, pero tenés pero es que su mediana es 86, recordar que `100` es igual `insample` que `outofsample`, bien vale bastante bien su valor medio de `tsi 2700` mediano su valor mediano `PPC 5 millones` este ppc del ***ES*** incluso supera al ***PPC***
 
 **Interpretación: por qué el fitness “s” supera a PPC y TSI en esta optimización**
 
-digamos que incluso supera al ppc que es el que el que se ha optimizado en él eso como puede ser bueno porque ha tenido más capacidad predictiva del auto sample pero sample ha predicho mejor entonces en este de estos tres excels aunque vamos a mirar los tres el s es el mejor eso es lo que os digo se hablaba en el curso de la supervisión de los fitness de acuerdo esto lógicamente de la supervisión de todos los protocolos es decir este tipo de cosas también sirven para eso para ir viendo con el tiempo que predice mejor a un tipo de sistema o a otro aquí predice ese predicho ha tenido una mejor capacidad predictiva del auto sample
+digamos que incluso supera al ppc que es el que el que se ha optimizado en él, ¿eso como puede ser? bueno porque ha tenido más capacidad predictiva del `outofsample` osea el `insample` ha predicho mejor, entonces en este de estos tres excels aunque vamos a mirar los tres, el `ES` es el mejor, eso es lo que os digo se hablaba en el curso de la supervisión de los fitness, de acuerdo, esto lógicamente de la supervisión de todos los protocolos, es decir este tipo de cosas también sirven para eso, para ir viendo con el tiempo que predice mejor a un tipo de sistema o a otro, aquí predice ***ES*** predicho ha tenido una mejor capacidad predictiva del `outofsample`, pero repito que miramos los tres 
 
 **Reflexión: por qué normalmente TSI es un buen equilibrio, pero no siempre**
 
-pero repito que miramos los tres es verdad que normalmente a mí se me dice es un caso de duda normalmente tsi suele ser un buen equilibrio pero también nos gusta mucho ppc y nosotros nos tiramos mucho por el ppc porque si tú tienes cartera y puedes cubrir el riesgo con otras maneras que son monetaria exposición diversificación retorno al final vía sistema puede ser un muy buen vector de acuerdo porque yo riesgo ya lo controlaré vía cartera vía exposición y vía gestión monetaria entonces el sistema puede ser una manera de verlo
+es verdad que normalmente a mí se me dice es un caso de duda normalmente ***TSI*** suele ser un buen equilibrio pero también nos gusta mucho ***PPC*** y nosotros nos tiramos mucho por el ppc, porque si tú tienes cartera y puedes cubrir el riesgo con otras maneras, gestión monetaria, exposición, diversificación, retorno, al final vía sistema puede ser un muy buen vector, de acuerdo, porque yo riesgo ya lo controlaré vía cartera, vía exposición, y vía gestión monetaria, entonces el sistema puede ser una manera de verlo, pero ahí están los tres insisto ahí están los tres 
 
-**Selección de performance reports: parte visual y subjetiva del proceso**
+**Selección de *performance reports*: parte visual y subjetiva del proceso**
 
-pero ahí están los tres insisto ahí están los vale bien entonces nosotros vamos a mirar estos performance report porque al final hay que ver el performance report hay que ver el gráfico el gráfico me refiero el comportamiento de la curva el gráfico ahora de hecho lamentablemente en las últimas versiones de tradestation han decidido sacarnos una cosa que a nosotros nos gustaba mucho en vez de evolucionar a mejor parece que va a evolucionar a peor vale
+vale bien entonces nosotros vamos a mirar estos ***performance report*** 
 
-**Eliminación de la antigua exportación gráfica en TradeStation**
+![](../img/144.png)
 
-que era simplemente cuando tienes aquí una función fitness y le das aquí a guardar puedes puedes decir exportar en excel pues en csv puedes usar en un xml vale este lo has probado alberto hay jaimito que me parece que es así que grafica un momentito bueno espérate es igual lo voy a poner ahí me parece que no lo he puesto en todos creo lo puse entero adiós perfecto pésame para tradestation se ha colgado en alegría ya tengo los hechos me da igual
+porque al final hay que ver el ***performance report*** hay que ver el gráfico el gráfico me refiero el comportamiento de la curva, el gráfico ahora de hecho lamentablemente en las últimas versiones de tradestation han decidido sacarnos una cosa que a nosotros nos gustaba mucho, que era simplemente cuando tienes aquí una función fitness y le das aquí a guardar 
 
-**Problemas con la exportación HTML y deterioro de funciones previas**
+![](../img/145.png)  
+![](../img/146.png)  
+![](../img/147.png)  
 
-por antiguamente generaba en un formato que era de microsoft que te generaba un archivo que pensaba que ese xml podía ser pero no tengo dudas ahora creo que no creo que no y si sí el html html y entonces te dejaba ver te dejaba ver pero este ahora se ha colgado y al generarlo lo ha generado mal entonces por eso no sé no sé si está bien o mal porque lo ha generado mal y sale aquí que está dañado
-
-**Situación actual: sólo se exporta la tabla, no los gráficos**
-
-entonces no pero pudiera ser que sí pudiera ser que esto lo abriera el el hc el hc el hc a las las guarda ahora es que yo lo tengo colgado perfecto gracias la carpeta de los test no lo abre pero no hace nada no si es lo que me hacía a mí es no tapar tu café ni está el informe si lo sé y suelo ver perfecto pues a ver y si lo abre bueno pues antes que nada por un html donde tú abrías los gráficos y era muy exportado muy chulo ahora pues han decidido solo excel entonces podías graficarlo pero no te grafica entonces te exporta performance report exporta los datos tal que está muy bien toda la información que quieras pero no te exporta los gráficos y la verdad que los gráficos pues vienen bien también
+puedes puedes decir exportar en excel pues en csv puedes usar en un xml Y antiguamente generaba en un formato que era de microsoft que te generaba un archivo html y entonces te dejaba ver html donde tú abrías los gráficos y era muy exportado muy chulo ahora pues han decidido solo excel entonces podías graficarlo pero no te grafica entonces te exporta performance report exporta los datos tal que está muy bien toda la información que quieras pero no te exporta los gráficos y la verdad que los gráficos pues vienen bien también
 
 **Método alternativo: pegar los gráficos manualmente en Excel**
 
-bien bien para verlo a nosotros nos gusta mucho pero ahora puedes poner aquí pegado que es lo que normalmente hacemos pero hoy por lo que os decía por el tiempo no lo hemos hecho le hacemos entonces nosotros lo que hacemos es sobre esos mejores y recogemos los performance report también de los sets que de hecho no solemos hacerlo así hoy lo hemos hecho así pero normalmente no ponemos que es el set es decir le ponemos su combinación y lo mezclamos aquí entre todos
+bien bien para verlo a nosotros nos gusta mucho pero ahora puedes poner aquí pegado que es lo que normalmente hacemos pero hoy por lo que os decía por el tiempo no lo hemos hecho le hacemos. 
+
+Entonces nosotros lo que hacemos es sobre esos mejores y recogemos los ***performance report*** también de los sets que de hecho no solemos hacerlo así hoy lo hemos hecho así pero normalmente no ponemos que es el set es decir le ponemos su combinación y lo mezclamos aquí entre todos
 
 **Evitar el sesgo: comparar sin mirar qué parámetros son hasta el final**
 
-tratamos de no mirar o sea no lo miramos los vamos abriendo y alberto esto lo expliqué en la teoría es la única cosa más subjetiva que hay en el sentido de que al final alberto hace su selección y ahora mía tiene su selección aquí y yo tengo la mía todavía no las hemos puesto en común todavía nos hemos puesto en común lo vamos a hacer ahora yo fijaros que me he quedado con tres de los set que operan que eso tiene su gracia pero hay sets operando me he quedado con ellos
+tratamos de no mirar o sea no lo miramos los vamos abriendo y alberto esto lo expliqué en la teoría es la única cosa más subjetiva que hay en el sentido de que al final alberto hace su selección y ahora mía tiene su selección aquí y yo tengo la mía todavía no las hemos puesto en común todavía nos hemos puesto en común lo vamos a hacer ahora 
 
-**Cómo validamos si un set operativo debe mantenerse o sustituirse**
+yo fijaros que me he quedado con tres de los set que operan 
 
-o sea esto es la manera en la que valoramos si cambiamos o no cambiamos de acuerdo es decir incorporando en la fase final lo que opera y entonces decido si me los quedo o no me los quedo que aunque los que me quedo luego se consideran que no son aptos para operar pues entonces el tema no vale de acuerdo pero así es como lo hemos lo hemos visto de acuerdo alberto ha visto estos y yo he visto estos yo los tengo ordenados de menos a más trades
+![](../img/148.png)  
+
+que eso tiene su gracia pero hay sets operando me he quedado con ellos o sea esto es la manera en la que valoramos si cambiamos o no cambiamos, es decir incorporando en la fase final lo que opera, y entonces decido si me los quedo o no me los quedo, Que aunque los que me quedo luego se consideran que no son aptos para operar, pues entonces el tema no vale, de acuerdo, pero así es como lo hemos lo hemos visto, de acuerdo, alberto ha visto estos y yo he visto estos, yo los tengo ordenados de menos a más trades no no es por calidad 
+
+![](../img/149.png)  
 
 **Cruce entre listas: sets en común y sets que difieren**
 
-no no es por calidad vale por ejemplo este lo tenemos en común veo pero bueno alberto me ha dicho que luego los set no nos ha considerado esa que no se sabe si se los elegiría o no que no se ha considerado 10 0 6 1 2 también lo tenemos estos dos lo tenemos los dos y este 10 0 5 este no lo tengo yo lo tengo yo y tú no vale y luego pues tú tienes varios como has elegido otros y demás bueno bueno esta es un poco la selección que hacemos de set
+por ejemplo este lo tenemos en común `25-0.6-1.5-2.0` pero bueno alberto me ha dicho que luego los set no nos ha considerado esa que no se sabe si se los elegiría o no que no se ha considerado `10-0.6-1.0-2.0` también lo tenemos estos dos lo tenemos los dos y este 10 0 5 este no lo tengo yo lo tengo yo y tú no vale y luego pues tú tienes varios como has elegido otros y demás bueno bueno esta es un poco la selección que hacemos de set
 
 **Dificultad: pocos sets en la zona 4 pese a ser robusta**
 
-aquí el problema es que en esta selección fijaros que no se nos ha quedado a mí no me ha quedado ninguno del 4 aunque esos que operan puede ser que alguno lo sea alberto sí 4 5 que esa zona es buena esta 4 5 y 7 es buena lo hemos visto antes aunque 25 estaba muy bien y de hecho ese no recuerdo mal es el que iba mejor podemos ver la curva pero es el que iba mejor fíjate que se lleva el tp a 1 y medio y medio este además nos gusta mucho porque no hay muchos los cortos cuesta encontrar un set ahí con o tp y aguanta lo suficiente
+aquí el problema es que en esta selección fijaros que no se nos ha quedado a mí no me ha quedado ninguno del 4 aunque esos que operan puede ser que alguno lo sea alberto sí 4 5 que esa zona es buena esta 4 5 y 7 es buena 
 
-**Por qué algunos sets “fuera de zona” se salvan por comportamiento histórico**
+![](../img/150.png)  
 
-este es probable que aunque se salga un poco de la zona lo lleváramos a operar porque en esta zona aguantaba bastante tiene 0 6 y tener tp de 1 y medio en cortos si realmente funciona que creemos que se puede funcionar porque lo ha hecho se ha operado en esa zona estaría estaría muy bien
+lo hemos visto antes aunque `25` estaba muy bien y de hecho ese sino recuerdo mal es el que iba mejor, NO podemos ver la curva pero es el que iba mejor fíjate que se lleva el tp a 1.5 `25-0.6-1.5-2.0`, este además nos gusta mucho porque no hay muchos los cortos cuesta encontrar un set ahí con o tp y aguanta lo suficiente.  
+este es probable que aunque se salga un poco de la zona lo lleváramos a operar 
+
+![](../img/151.png)  
+
+porque en esta zona aguantaba bastante tiene `0.6` y tener tp de `1.5`  en cortos si realmente funciona que creemos que se puede funcionar porque lo ha hecho se ha operado en esa zona estaría estaría muy bien
 
 **Proceso de sustitución: qué sets entran y qué sets salen**
 
-y el resto de sets ya digo están operando el único yo al final es cupido el 1 y el 5 el 1 es el que estaba en alerta se ha lavado y el 2 3 y 4 se quedan entonces el 1 y el 5 pues se podrían sustituir por estos hay que ahora ponerlo en común para que por lo común pero sería el procedimiento normal que haríamos ahora íbamos una revisión de estos en pantalla
+y el resto de sets ya digo están operando el único yo al final es cupido el 1 y el 5 
+
+![](../img/152.png) 
+
+el 1 es el que estaba en alerta se ha lavado y el 2 3 y 4 se quedan entonces el 1 y el 5 pues se podrían sustituir por estos hay que ahora ponerlo en común para que por lo común, pero sería el procedimiento normal que haríamos ahora íbamos una revisión de estos en pantalla
 
 **Selección vía Porfolio Maestro: última fase**
 
-y a veces nos quedamos con más y hoy me he quedado a ver nos quedamos con puedes quedar con 10 porque luego puede haber otra fase digo verlo en pantalla conjuntamente y como ya os dije vía portfolio de acuerdo es decir vía portfolio ver ya cuál le pasa más es decir meter meterlos todos distintas combinaciones con tu mezcla de portfolio y ver cuál de ellos va mejor a la cartera va mejor la cartera porque a lo mejor este es mejor por sí solo pero resulta que este a la cartera le va mejor porque diversifica más porque esto ya lo tiene otro sistema que operas entendéis
+y a veces nos quedamos con más y hoy me he quedado a ver nos quedamos con puedes quedar con 10 porque luego puede haber otra fase digo verlo en pantalla conjuntamente y como ya os dije vía portfolio,,, de acuerdo, es decir, vía portfolio, ver ya cuál le pasa más, es decir, meter meterlos todos, distintas combinaciones con tu mezcla de portfolio y ver cuál de ellos va mejor a la cartera, va mejor la cartera, porque a lo mejor este `25-0.6-1.5-2.0` es mejor por sí solo pero resulta que este `3-10-0.6-1.0-2.0` a la cartera le va mejor porque diversifica más porque esto ya lo tiene otro sistema que operas entendéis?
 
-**Explicación final del procedimiento estándar**
+**Revisión de *incrementos*: técnica correcta para detectar granularidad incorrecta**
 
-entonces esta es un poco la manera de proceder nuestra vale y hasta aquí que vamos a hacer ahora bueno vamos a hacer antes decía que lo he dicho que lo iba a explicar y no lo he hecho a mezclar esto no lo he hecho cuando he dicho de lavado se me ha ocurrido una cosa y no sé qué ha pasado que creo que me he ido de tema
+una de las maneras de mirar los incrementos entonces lo hemos hecho aquí all_data yo miro la variación , si yo tengo aquí un número entero vale es decir variar un punto del número entero cómo varía es decir estabilizo todas menos la que es el número entero que es el indicador aquí mira aquí tengo otro que varía el número entero no varía
 
-**Revisión de incrementos: técnica correcta para detectar granularidad incorrecta**
+![](../img/153.png)
 
-cuando hablábamos y os acordáis del tema de los incrementos decía mira una de las maneras de mirar los incrementos entonces lo hemos hecho aquí no decir bueno no all data yo miro la variación de este de este input entonces bueno al final voy provocando que se me queden alineados que sólo me puede variar este ahora bueno aquí 250 que va a costar más vamos a hacerlo en el de 8.000 vamos a hacerlo en el de 8.000 vamos a hacerlo en el de 8.000 porque claro hay 8.000 el más fácil es en todos no
+este es el que hemos visto antes que hemos visto antes vale entonces esta es una una variación
 
-**Método correcto: fijar todos los inputs y dejar variar sólo uno**
-
-pregunta en disco la pregunta dicen por ahí el reto vale entonces lo que decía vale venga vamos aquí le das a los incrementos para provocar que se queden todos quietos excepto el que tú quieres si vas ordenando por estos siempre se ordena por el anterior entonces ahora todos los otros quedan ordenados y el único que debería de cambiar es este es aquí que no este no este es el que hemos visto antes que hemos visto antes vale entonces esta es una una variación
+![](../img/155.png)
 
 **Segunda técnica: observar cómo varían las otras columnas cuando cambia un input**
 
-pero lo que te decía otra de las maneras es ver cómo varían las otras entiendes que eso es lo que no hemos caído antes es decir si yo tengo aquí un número entero vale es decir variar un punto del número entero cómo varía es decir estabilizo todas menos la que es el número entero que es el indicador aquí mira aquí tengo otro que varía el número entero no varía solo dos trades entonces desde este punto habría que ver también el valor bajo desde este punto de vista eso que te decía la sensación que me daba es que ese 0 0 25 era un poco alto entiendes
+pero lo que te decía otra de las maneras es ver cómo varían las otras entiendes que eso es lo que no hemos caído antes es decir si yo tengo aquí un número entero vale es decir variar un punto del número entero cómo varía es decir estabilizo todas menos la que es el número entero que es el indicador aquí mira aquí tengo otro que varía el número entero no varía solo dos trades 
 
-**Deducción: bar1 incrementa demasiados trades, señal de exceso de salto**
+![](../img/156.png)  
 
-pero hay que mirarlo mejor entonces pero es bastante probable bastante probable que volvamos a trabajar un poco esto a ver si lo bajamos un poco ya de paso volveremos a analizar estos y como hemos visto esta zona la abriremos es probable que la volvamos a hacer con estos dos criterios pero bueno lo que va a salir va a ser de este entorno que esto pasa a veces analizando los datos pues te das cuenta que te has equivocado que la zona que has tocado un límite que tal es así
+entonces desde este punto habría que ver también el valor bajo desde este punto de vista eso que te decía la sensación que me daba es que ese 0 0 25 era un poco alto entiendes
+
+pero hay que mirarlo mejor entonces pero es bastante probable bastante probable que volvamos a trabajar un poco esto 
+
+![](../img/157.png)  
+
+a ver si lo bajamos un poco ya de paso volveremos a analizar `Var_02, Var_03` y como hemos visto esta zona `Per_01` el rango lo abriremos hasta 29 la abriremos, es probable que la volvamos a hacer con estos dos criterios pero bueno lo que va a salir va a ser de este entorno que esto pasa a veces analizando los datos pues te das cuenta que te has equivocado que la zona que has tocado un límite que tal es así
 
 **Confirmación empírica: variaciones excesivas en increments evidencian mala granularidad**
 
-y aquí aunque esto lo revisamos hace unas semanas sobre los incrementos pues no sé ahora deciros por qué pero mirando estos datos yo mi sensación ahora mismo es que el incremento es un poco elevado mira aquí tengo otra variación del corto solo ser el 6 25 y me varía nuevamente un montón de trades estás viendo alberto no es me varía otra vez 27 trades es demasiado en la parte baja no te varía más
+y aquí aunque esto lo revisamos hace unas semanas sobre los incrementos pues no sé ahora deciros por qué pero mirando estos datos yo mi sensación ahora mismo es que el incremento es un poco elevado mira aquí tengo otra variación del corto solo ser el 6 25 y me varía nuevamente un montón de trades 
+
+![](../img/158.png)  
+
+
+me varía otra vez 27 trades es demasiado en la parte baja no te varía más
 
 **Comparación con inputs discretos (enteros) para calibrar variación esperada**
 
-cuando en el que es de un número entero que es así que menos no puede ser podía ser más pero no menos a ver aquí en la parte baja mira aquí tenemos 45 aquí en la parte baja bueno un poquito más que antes pero pero como veis estamos en menos son 11 trades y en 5 10 trades yo lo encuentro que puede estar una zona razonable en esta magnitud de que son más 900 pero que bueno es eso no cuando era antes 20 sobre 680 es un 3 por ciento no sé
+cuando en el que es de un número entero que es así que menos no puede ser podía ser más pero no menos a ver aquí en la parte baja mira aquí tenemos 45 aquí en la parte baja bueno un poquito más que antes pero pero como veis estamos en menos son 11 trades 
+
+![](../img/160.png) 
+
+y en 5, 10 trades yo lo encuentro que puede estar una zona razonable en esta magnitud de que son más 900, pero que bueno es eso, no, cuando era antes 20 sobre 680 es un 3% 
 
 **Límite superior razonable: incremento máximo basado en input entero equivalente**
 
-no es fácil encontrar una pauta rígida pero es lo que decía una manera que puedes buscar es ver que si tienes algún otro parámetro que va por número entero no puede granular podía ir a de 2 en 2 o 3 en 3 pero no puede ir a menos de 1 pues ver ese 1 cuánto varía entonces ese como mucho ese es el límite
+no es fácil encontrar una pauta rígida pero es lo que decía una manera que puedes buscar es ver que si tienes algún otro parámetro que va por número entero, no puede granular, podía ir a de 2 en 2 o 3 en 3 pero no puede ir a menos de 1 pues ver ese 1 cuánto varía entonces ese como mucho ese es el límite
 
 **Diferencia entre incrementos lineales y porcentuales en distintos indicadores**
 
-entonces también es depende no porque no es una media pero imagínate que es una media no es lo mismo de 4 a 5 que de 25 a 26 esto por ejemplo en algún sistema lo hablamos quiero que lo enseñamos tenemos un código para granular el incremento porcentualmente es un poco más complejo pero pero bueno al final no es más que programación en variarlo por eso que varía más de 4 a 5 que de 20 a 26 al revés perdón que varía menos de 4 a 5 y que se va haciendo exponencial luego llega a 20 y a 3 en 3 porque esto tiene tiene bastante sentido
+entonces también es depende no porque no es una media pero imagínate que es una media no es lo mismo de 4 a 5 que de 25 a 26 esto por ejemplo en algún sistema lo hablamos quiero que lo enseñamos tenemos un código para granular el incremento porcentualmente es un poco más complejo pero pero bueno al final no es más que programación, en variarlo por eso que varía más de 4 a 5 que de 20 a 26 al revés perdón que varía menos de 4 a 5 y que se va haciendo exponencial luego llega a 20 y a 3 en 3 por ejemplo, porque esto tiene tiene bastante sentido
 
 **Conclusión: el incremento actual de bar1 es demasiado amplio y debe reducirse**
 
-pero no es indicado está correcto así pero pero bueno eso es un poco lo que hablamos de los incrementos así que sí que da la sensación que ese es un poco alto y mira ya que estamos vamos a mirar también los de 0 10 vale los de 0 10 y aquí tenemos este por ejemplo 0 10 bueno veis este está ahí en 12 trades está ahí este este este parece más razonable parece más razonable 10 15 trades eso es que parece más razonable parece más razonable
+pero bueno eso es un poco lo que hablamos de los incrementos así que sí que da la sensación que ese es un poco alto y mira ya que estamos vamos a mirar también los de 0 10 vale los de 0 10 y aquí tenemos este por ejemplo 0 10 bueno veis este está ahí en 12 trades está ahí 
+
+![](../img/161.png) 
+
+este este este parece más razonable parece más razonable 10 15 trades eso es que parece más razonable parece más razonable
+
+2:39
 
 **Zona baja: variaciones correctas; zona alta: variaciones excesivas**
 
