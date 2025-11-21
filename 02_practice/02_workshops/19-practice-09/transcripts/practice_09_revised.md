@@ -1250,7 +1250,7 @@ me varía otra vez 27 trades es demasiado en la parte baja no te varía más
 
 cuando en el que es de un número entero que es así que menos no puede ser podía ser más pero no menos a ver aquí en la parte baja mira aquí tenemos 45 aquí en la parte baja bueno un poquito más que antes pero pero como veis estamos en menos son 11 trades 
 
-![](../img/160.png) 
+![](../img/160.png)
 
 y en 5, 10 trades yo lo encuentro que puede estar una zona razonable en esta magnitud de que son más 900, pero que bueno es eso, no, cuando era antes 20 sobre 680 es un 3% 
 
@@ -1264,136 +1264,89 @@ entonces también es depende no porque no es una media pero imagínate que es un
 
 **Conclusión: el incremento actual de bar1 es demasiado amplio y debe reducirse**
 
-pero bueno eso es un poco lo que hablamos de los incrementos así que sí que da la sensación que ese es un poco alto y mira ya que estamos vamos a mirar también los de 0 10 vale los de 0 10 y aquí tenemos este por ejemplo 0 10 bueno veis este está ahí en 12 trades está ahí 
+pero bueno eso es un poco lo que hablamos de los incrementos así que sí que da la sensación que ese es un poco alto y mira ya que estamos vamos a mirar también los de 0.10 y aquí tenemos este por ejemplo este está ahí en 12 trades de diferencia 
 
 ![](../img/161.png) 
 
 este este este parece más razonable parece más razonable 10 15 trades eso es que parece más razonable parece más razonable
 
-2:39
+![](../img/162.png) 
 
 **Zona baja: variaciones correctas; zona alta: variaciones excesivas**
 
-si bajamos mucho de stop en aquí tenemos variación de 2 tics es son más o menos como el otro era 1 eso sea este el bar 1 da sensación que está demasiado amplio vale y ese puede ser y probablemente es uno de porque le saltas demasiado de cada y esto sin querer porque no se ha previsto los incrementos pues nos ha salido que que quizá los incrementos de este input nos también y veis un poco lo que os hablaba en la teoría
+si bajamos mucho de stop en aquí tenemos variación de 2 tics 
 
-**Importancia teórica y práctica de definir correctamente los incrementos**
+![](../img/162.png) 
 
-muchas veces de la importancia de los incrementos normalmente la prudencia de no pasarse pero que también lo comentamos es necesario captar las señales y al final puedes pasarte y como todo tiene su tampoco es que esto sea una burrada ponerlo no sería una burrada operarlo con este incremento ni mucho menos pero está un poquito justito vale está un poquito justito y deberíamos de seguramente bajarlo un poco más o incluso hasta la mitad de 125 hay que verlo
-
-**Consulta sobre el Excel del curso y si estaba disponible como material**
-
-vale pues a ver me decía y pregunta en el disco pero es para ahora a modo de resumen a ver a marrugat a marrugat el excel no lo dimos el excel al ver el excel no hemos dado un excel de muestra nunca dijimos de darlo al final con los vídeos no sé si subíamos material allí si que había material en uno de los vídeos esto no había material de excel si ahora me me estás matando pero me lo apunto yo es que a mí me suena mucho haberlo dado ahora me estás haciendo dudar si no lo hemos dado si ya lo daremos para ya lo daremos ya lo damos
-
-**Aclaración sobre la inexistencia de “plantilla” estándar**
-
-pero un excel de muestra ya ya y pero yo vaya en mi mente habíamos dado ya uno pero insisto mi mente tiene las capacidades que tiene entonces lo revisaremos a mí me suena que en la en la o sea en la teórica que nos ha fijado ahí abajo hay adjuntos en todos está el glosario pero además en alguno del glosario había un excel creo yo creo yo pero hay que mirarlo hay que mirarlo
-
-**Pregunta en Discord sobre cuándo reoptimizar un sistema**
-
-vale a marrugat pregunta en el discord una vez saltó la alarma cuál para indicaros cuando una estrategia conocida de parámetros no está rindiendo uno a realizarse una optimización de todo en base a eso que no concluís revisando por dos pares de ojos que haces aparte que un nuevo juego de parámetros irá mejor bueno sí publicando mucho el tema sí sí bueno es que es que es depende
-
-**Explicación: normalmente revisamos sin esperar a una alarma formal**
-
-o sea salta una alarma cual la alarma os lo he mostrado aquí al principio no sé si a lo mejor no estabas al esto se me ha colgado el tradestation se me ha colgado aureli y la verdad era bueno es que ese ese no era o sea era drawdown nosotros tenemos si hay veces que no sé si lo he dicho en el curso lo he dicho a veces en un directo vale pero nosotros la mayoría de veces que revisamos revisamos sin alarma de acuerdo es decir porque tú ya le tienes sensibilidad al sistema lo va siguiendo lo que te digo es los gráficos y ves que no está yendo bien vale
-
-**Alarmas internas: drawdown, peor trade, peor racha**
-
-pero aún así hay alarmas en los códigos que es eso que habéis visto que cuando salta peor drawdown peor trade y peor serie de fallos salta un aviso vale y lo vemos pero lo normal es que cuando salte ese aviso ya está revisado
-
-**Método ortodoxo: revisar lista de trades en excel cuando hay dudas**
-
-ahora queremos implementar que sí que cuando hacemos un análisis tenemos dudas bajamos una lista de trade en excel y eso lo enseñamos en una práctica y lo hacemos lo que llamamos la revisión más completa pero ya digo normalmente antes de eso ya ya nos salta nosotros os explicamos en manera transparente las cosas que hacemos como hacemos y también os explicamos cómo hay que hacer algunas que a lo mejor no lo hacemos pues porque no hay tiempo porque consideramos que no que no renta el esfuerzo que con que vale hacerlo por para porque ya lo miro con este código que habéis visto me entendéis
-
-**Cierre del bloque: vigilancia continua del sistema vía performance report**
-
-pero aún así en la teoría os hemos explicado las maneras ortodoxas de hacerlo y la que si tú tienes un equipo o tienes tiempo suficiente para desarrollarlo y demás pues vale la pena hacerlo pero por eso digo que no os volváis locos con eso porque mirando un performance report vigilando el drawdown 
+son más o menos como el otro era 1, osea, este el Var_1, da sensación que está demasiado amplio, vale? y ese puede ser y probablemente es uno de porque le saltas demasiado de cadena , fíajte la diferencia entre 0.525, 0.550 y 0.575
 
 
-**Control ortodoxo: drawdown, rachas y supervisión estadística**
+![](../img/163.png) 
 
-vigilando los resultados del sistema se puede hacer la manera ortodoxa de hacerlos llevando un control de operaciones y que a partir de 30 trades ya os lo os lo expliqué hay distintos análisis estadísticos y también me suena que dimos el excel de eso pero ahora tengo dudas y se pueden hacer distintas pruebas de evaluación y con eso sale pero de verdad los que tengáis un nivel avanzado bien los que estéis en una fase inicial no os comáis la cabeza con eso de verdad no os comáis la cabeza y basaros en cosas drawdown racha de fallos etcétera
+y esto sin querer porque no se ha previsto los incrementos, pues nos ha salido que que quizá los incrementos de este input no están bién, y veis un poco lo que os hablaba en la teoría que muchas veces de la importancia de los incrementos normalmente la prudencia de no pasarse, pero que también lo comentamos, es necesario captar las señales, y al final puedes pasarte y como todo tiene su,,, tampoco es que esto sea una burrada ponerlo no sería una burrada operarlo con este incremento ni mucho menos, pero está un poquito justito, vale, está un poquito justito y deberíamos de seguramente bajarlo un poco más, o incluso hasta la mitad de 125 hay que verlo
+
+![](../img/157.png)  
+
+
+
+***-Una vez os salta una alarma (cuál?) para indicaros que una estrategia con un set de parámetros no está rindiendo:***
+  ***-Realizáis una optimización de todo*** 
+  ***-En base a esta optimización concluís, revisado por dos pares de ojos (gafas a parte), que un nuevo juego de parámetros irá mejor? Es así?***
+
+sí sí bueno es que es que es depende o sea salta una alarma cual? la alarma os lo he mostrado aquí al principio, nosotros la mayoría de veces que revisamos, revisamos sin alarma de acuerdo es decir porque tú ya le tienes sensibilidad al sistema lo va siguiendo, lo que te digo ves los gráficos y ves que no está yendo bien vale
+
+pero aún así, hay alarmas en los códigos, que es eso que habéis visto, que cuando salta peor drawdown, peor trade, y peor serie de fallos,,,, salta un aviso vale? y lo vemos pero lo normal es que cuando salte ese aviso ya está revisado
+
+ahora queremos implementar ,que sí que cuando hacemos un análisis tenemos dudas bajamos una lista de trade en excel y eso lo enseñamos en una práctica y lo hacemos, lo que llamamos la revisión más completa, pero ya digo, normalmente antes de eso ya ya nos salta, nosotros os explicamos en manera transparente las cosas que hacemos, como hacemos, y también os explicamos cómo hay que hacer algunas, que a lo mejor no lo hacemos pues porque no hay tiempo porque consideramos que no que no renta el esfuerzo que con que vale hacerlo por para porque ya lo miro con este código que habéis visto, me entendéis?
+
+pero aún así en la teoría os hemos explicado las maneras ortodoxas de hacerlo, y la que si tú tienes un equipo o tienes tiempo suficiente para desarrollarlo y demás, pues,,, vale la pena hacerlo pero por eso digo que no os volváis locos con eso porque mirando un performance report, vigilando el drawdown, vigilando los resultados del sistema, se puede hacer, la manera ortodoxa de hacer es llevando un control de operaciones y que a partir de 30 trades, ya os lo os lo expliqué, hay distintos análisis estadísticos y también me suena que dimos el excel de eso, pero ahora tengo dudas, y se pueden hacer distintas pruebas de evaluación y con eso sale, pero de verdad, los que tengáis un nivel avanzado bien, los que estéis en una fase inicial no os comáis la cabeza con eso, de verdad, no os comáis la cabeza y basaros en cosas: drawdown, racha de fallos, etcétera,
 
 **Procedimiento real de revisión para este sistema concreto**
 
-vale entonces el proceso de revisión de este sistema ya digo es un sistema que lleva mucho tiempo operando y consiste en eso revisar nuevamente los mapas y no lo he dicho eso por cierto los sets que elegimos que están hechos en una optimización que viene desde el 99 se miran solo en los últimos 10 años lo ponía en la carpeta pero no lo he dicho no este performance report que cogemos no es de todo el histórico es de los últimos 10 y si el sistema es intradía puede ser de 5 incluso de 2 vale depende del sistema
+entonces el proceso de revisión de este sistema ya digo es un sistema que lleva mucho tiempo operando y consiste en eso, revisar nuevamente los mapas, y no lo he dicho eso por cierto los sets que elegimos que están hechos en una optimización que viene desde el 99, ***se miran solo en los últimos 10 años***, lo ponía en la carpeta pero no lo he dicho no este performance report que cogemos no es de todo el histórico es de los últimos 10 y si el sistema es intradía puede ser de 5 incluso de 2, vale? depende del sistema
 
-**Por qué elegir solo los últimos años para evaluar sets finales**
+porque? porque a mí yo ya he elegido yo ya he optimizado he hecho los mapas de todo el histórico, pero para acabar de elegir sets y ver, me interesa dentro de esa muestra de todo el histórico, es decir no no optimizo sólo los últimos 10 años, yo he optimizado todo, pero dentro de esa muestra del histórico me centro sólo en el último periodo más cercano que son los últimos 10 años, no ves el 99, son pues 25, final es la mitad, y podía ser un poco menos pero bueno como es un sistema diario que al final eso tiene 303 trades , estas combinaciones aquí pueden tener 303 280 de ese orden entonces bueno menos ya... preferimos que sea una muestra de ese tipo, pero si fuera intradía a lo mejor y pues lo haríamos con más con más trades.
 
-porque porque a mí yo ya he elegido yo ya he optimizado he hecho los mapas de todo el histórico pero para acabar de elegir sets y ver me interesa dentro de esa muestra de todo el histórico es decir no no optimizo sólo los últimos 10 años yo he optimizado todo pero dentro de esa muestra del histórico me centro sólo en el último periodo más cercano que son los últimos 10 años no ves el 99 son pues 25 finales la mitad y podía ser un poco menos pero bueno como es un sistema diario que al final eso tiene 303 estas combinaciones aquí pueden tener 303 280 de ese orden entonces bueno menos ya nos preferimos que sea una muestra de ese tipo pero si fuera intradía a lo mejor y pues lo haríamos con más con más trecho
+***Qué pasa cuando salta una alarma y cuándo se reoptimiza todo***
 
-**Qué pasa cuando salta una alarma y cuándo se reoptimiza todo**
+sí, realmente hemos hecho más cosas, como os decía antes, que por ejemplo revisamos el tema de los incrementos, revisamos miramos los miramos los que están operando para evaluar si estaban rotos o podían estar todavía dentro de una zona normal, concluimos que alguno podría estar ya demasiado desviado, y ahí se inicia este proceso de optimización de todo, porque se sospecha que puede haber algún set fuera de rango
 
-vale a ver y entonces una vez salta la alarma realizas una optimización de todo bueno sí realizamos realizamos realmente hemos hecho más cosas como os decía antes que por ejemplo revisamos el tema de los incrementos revisamos miramos los miramos de los que están operando para evaluar si estaban rotos o podían estar todavía dentro de una zona normal concluimos que alguno podría estar ya demasiado desviado y ahí se inicia este proceso de optimización de todo porque se sospecha que puede haber algún set fuera de rango ya
+y de hecho se ve que alguno está un poco forzado ahí en el mapa, un poco justo, de acuerdo, que está ahí en la zona un poco justa, porque ahí esto ahora no no he querido tampoco decirlo porque no lo he enseñado pero de las últimas veces el 3 degrada mucho, es decir normalmente la vamos a ahora hacer para arriba para arriba ya sospechaba que saldría bien lo que para arriba sospecho que va a salir bien para abajo sospecho que va a salir mal, para abajo sospecho que va a salir mal, entonces los cuatro ahí están un poquito más más justos entonces ese son sets muy inestables y bueno pues ahí sí es el resumen en esta estrategia que es una estrategia que opera en gráfico diario que lleva muchos años operando y que es extremadamente sencilla o sea que es un sistema extremadamente sencillo el sistema de operar no son ni tres líneas y digo tres por no decir dos
 
-**Identificación de sets desalineados con la estructura del mapa**
+***Por qué no se hace walk-forward para Apolo***
 
-no y de hecho se ve que alguno está un poco forzado ahí en el mapa un poco justo de acuerdo que está ahí en la zona un poco justa porque ahí esto ahora no no he querido tampoco decirlo porque no lo he enseñado pero de las últimas veces el 3 degrada mucho es decir normalmente la vamos a ahora hacer para arriba para arriba ya sospechaba que saldría bien lo que para arriba sospecho que va a salir bien para abajo sospecho que va a salir mal para abajo sospecho que va a salir mal entonces los cuatro ahí están un poquito más más justos entonces ese son sets muy inestables y bueno pues ahí sí es el resumen
+sí que se ha hecho walk forward para apolo el problema que tiene de hecho tenemos pendiente intentar e intentar hacerlo lo que pasa que en tradestation nos ha petado porque tiene demasiadas lo que ya creo que ya os lo conté nos reventó entonces ahora hemos bajado una demo que tiene buena pinta y estamos en ello entonces vamos aprendiendo un poco pero pero porque tenía que ser más estrecha no me convence estrecharla tanto al final lo trucas
 
-**Naturaleza del sistema: diario, simple y con comportamiento probado**
+pero el walk forward en este tipo de sistema, uno es diario, el número de trades va muy justo, vale ,hay que hacerlo sin gestión monetaria, porque la gestión monetaria al hacer rolling la mayoría lo cuentan por dinero y entonces se rompe, se carga el drawdown, no es comparable, porque el drawdown claro va subiendo, va subiendo el retorno va subiendo el drawdown a magnitudes enormes, entonces digamos que no sé si este programa lo hará pero el tradestation no homogeniza los resultados bien los toma en valor absoluto entonces al final no se pueden comparar los distintos periodos y más en un diario que mezcla muchos años
 
-en esta estrategia que es una estrategia que opera en gráfico diario que lleva muchos años operando y que es extremadamente sencilla o sea que es un sistema extremadamente sencillo el sistema de operar no son ni tres líneas y digo tres por no decir dos
+entiendes entonces los periodos in sample y out of sample haciendo el rolling que va haciendo no son comparables y al final da datos de comparar peras con manzana,s entonces, hay que hacerlos sin gestión monetaria, y el otro problema que tiene un equity en short, vale, es que es muy inestable, es decir, te pasa muchos periodos de mercado largo, o sea, encontrar una ventana óptima es complejo porque es un mercado como os he enseñado antes que no es nada estable no es nada estable
 
-**Pregunta: por qué no se hace walk-forward para Apolo**
+entonces el short es muy complicado de pasar en un walk forward en un equity, es muy complicado, pero aún así tenemos pendiente mirarlo, sí que lo ha pasado seguro cuando operaba o sea cuando lo optimizamos junto, que esto ya os he comentado antes el inicio que lo hacíamos así lo pasaba, porque lo tenía más trades, y entonces tenía la capacidad de ir a los dos lados y adaptarse mejor
 
-indicabas que no hacías walk forward para apolo alguna razón no así que se ha hecho walk forward para apolo el problema que tiene de hecho tenemos pendiente intentar e intentar hacerlo lo que pasa que en tradestation nos ha petado porque tiene demasiadas lo que ya creo que ya os lo conté nos reventó entonces ahora hemos bajado de nuevo que tiene buena pinta y estamos en ello entonces vamos aprendiendo un poco pero pero porque tenía que ser más estrecha no me convence estrecharla tanto al final lo trucas
-
-**Limitaciones del walk-forward rolling en sistemas diarios con pocos trades**
-
-pero el walk forward en este tipo de sistema uno es diario el número de trades va muy justo vale hay que hacerlo sin gestión monetaria porque la gestión monetaria al hacer rolling la mayoría lo cuentan por dinero y entonces se rompe se carga el drawdown no es comparable porque el drawdown claro va subiendo va subiendo el retorno va subiendo el drawdown a magnitudes enormes entonces digamos que no sé si este programa lo hará pero el tradestation no homogeniza los resultados bien los toma en valor absoluto entonces al final no se pueden comparar los distintos periodos y más en un diario que mezcla muchos años
-
-**Problema técnico: comparación inválida de periodos rolling por escala monetaria**
-
-entiendes entonces los periodos in sample y out of sample haciendo el rolling que va haciendo no son comparables y al final da datos de comparar peras con manzanas entonces hay que hacerlos sin gestión monetaria y el otro problema que tiene un equity en short vale es que es muy inestable es decir te pasa muchos periodos de mercado largo o sea encontrar una ventana óptima es complejo porque es un mercado como os he enseñado antes que no es nada estable no es nada estable
-
-**Dificultad inherente del lado corto en equity para walk-forward**
-
-no no puedo abrir esto que lo tengo colgado entonces el short es muy complicado de pasar en un walk forward en un equity es muy complicado pero aún así tenemos pendiente mirarlo no sé si alberto se acuerda si alguna vez en corto solo nos ha pasado no sé si tú te acuerdas el walk forward en corto te consta pero te consta que ya ha pasado no sí no miraré sí que lo ha pasado seguro cuando operaba o sea cuando lo optimizamos junto que esto ya os he comentado antes el inicio que lo hacíamos así lo pasaba porque lo tenía más trades y entonces tenía la capacidad de ir a los dos lados y adaptarse mejor
-
-**Motivo por el cual el walk-forward falla cuando optimiza solo cortos**
-
-pero así es extremadamente complicado semanalmente complicado porque porque que un periodo tenga capacidad predictiva para el otro en el largo es más fácil pero en el corto es muy complicado porque depende de ventanas muy estrechas y entonces claro cuando entra un periodo muy alcista se pone en modo muy alcista pega una pequeña corrección un poco fuerte y como está en modo alcista no entra entonces bueno es complicado que los parámetros vayan adaptando haciendo rolling
+pero así es extremadamente complicado semanalmente complicado porque porque que un periodo tenga capacidad predictiva para el otro, en el largo es más fácil, pero en el corto es muy complicado porque depende de ventanas muy estrechas, y entonces claro cuando entra un periodo muy alcista se pone en modo muy alcista, pega una pequeña corrección un poco fuerte y como está en modo alcista no entra, entonces bueno, es complicado que los parámetros vayan adaptando haciendo rolling
 
 **Opción alternativa: Anchored Walk Forward en lugar de Rolling**
 
-entonces aquí sí que suele ser mejor puede ser que vaya mejor en el anchored eso lo tenemos pendiente de mirar puede ir mejor vale porque al final el periodo es mucho más largo entiendes y eso es lo que necesita un sistema de este tipo parámetros muy largos o sea que sea muy muy largo el periodo para poder adaptarse no para poder encontrar todo tipo de mercados con los parámetros que se muevan de manera distinta en todo tipo de mercados porque al final se está moviendo en un territorio que es hostil para él
+entonces aquí sí que suele ser mejor, puede ser que vaya mejor en el anchored, eso lo tenemos pendiente de mirar, puede ir mejor vale, porque al final el periodo es mucho más largo, entiendes, y eso es lo que necesita un sistema de este tipo parámetros muy largos o sea que sea muy muy largo el periodo para poder adaptarse , para poder encontrar todo tipo de mercados con los parámetros que se muevan de manera distinta en todo tipo de mercados porque al final se está moviendo en un territorio que es hostil para él
 
-**Contexto: operar cortos en equity es estructuralmente hostil**
-
-no o sea esto es obvio es obvio que un sistema de cortos para equity es una zona hostil no es un no es una zona ideal de hecho hay mucha gente que defiende en no hacerlo esto es lo que claro lo explicado porque nosotros lo hacemos pero vais a leer mucha gente entendida incluso que te va a decir que no operes nunca en corto en bolsa te lo va a decir mucha gente
+o sea esto es obvio es obvio que un sistema de cortos para equity es una zona hostil, no es un no es una zona ideal, de hecho hay mucha gente que defiende en no hacerlo esto, es lo que claro, lo explicado porque nosotros lo hacemos, pero vais a leer mucha gente entendida incluso que te va a decir que no operes nunca en corto en bolsa te lo va a decir mucha gente
 
 **Nuestra lógica: alfa y descorrelación para carteras de clientes**
 
-vale nosotros sí y no es incorrecto pero yo vuelvo un poco a decir lo que te decía antes del portfolio y lo que tú quieres hacer a nivel de producto cuando tú de una manera u otra tratas de obtener rentabilidad para otra gente de acuerdo para terceros entonces nosotros al final esa es nuestra intención nosotros es ganar dinero a través de que clientes que operan esas estrategias ganan dinero y por eso yo tengo dos perfiles tengo un perfil que es smart beta y tengo un perfil que es ser alfa
+no es incorrecto pero yo vuelvo un poco a decir lo que te decía antes del portfolio y lo que tú quieres hacer a nivel de producto cuando tú de una manera u otra tratas de obtener rentabilidad para otra gente de acuerdo para terceros entonces nosotros al final esa es nuestra intención, nosotros es ganar dinero a través de que clientes que operan nuestras estrategias ganan dinero y por eso yo tengo dos perfiles tengo un perfil que es ***smart beta*** y tengo un perfil que es ser ***alfa***
 
-**Por qué los cortos aportan alfa aunque sean difíciles**
-
-entonces claro la alfa es eso la alfa sobre todo es batir a la renta variable es decir tener correlación pero cero o negativa con la renta variable entonces claro si tú buscas alfa ya sé que cuesta pero meter cortos da mucha alfa que tú quieres beta pues ya tienes a ser san smart beta entiendes
+entonces claro la alfa es eso la alfa sobre todo es batir a la renta variable, es decir tener correlación cero o negativa con la renta variable, entonces claro si tú buscas alfa, ya sé que cuesta, pero meter cortos da mucha alfa, que tú quieres beta? pues ya tienes ***smart beta*** que hace eso.
 
 **Recomendación personal para traders en formación**
 
-que haces entonces es un poco depende de lo que tú quieras ahora tú estás haciendo un portfolio estás empezando olvídate de los cortos en bolsa olvídate o sea no no es no es el sitio fácil no las cosas fáciles no las cosas fáciles no es buscar cortos en bolsa no es buscar cortos ahora tú ya tienes una cartera y buscas algo para diversificar tu cartera de bolsa pues adelante a por ello vale pero no es la primera la primera cosa a hacer ni mucho menos ni probablemente la segunda
+que haces entonces es un poco depende de lo que tú quieras ahora tú estás haciendo un portfolio estás empezando? olvídate de los cortos en bolsa, olvídate, o sea no es el sitio fácil, las cosas fáciles no es buscar cortos en bolsa no es buscar cortos, ahora que tú ya tienes una cartera y buscas algo para diversificar tu cartera de bolsa pues adelante, a por ello , pero no es la primera cosa a hacer ni mucho menos, ni probablemente la segunda
 
-**Caso RV intradía: por qué los cortos funcionaban mejor**
+aunque el otro día, lo comentó Senen en el discord y nosotros también en el ***ORB*** digamos nos fue más fácil sacar cortos que largos, pero eso tiene el sentido de que es lo que se explicaba, al final a los ***ORB*** les está escapando, que pasa aquí con con el tp? lo habéis visto de apolo no, que quiere corto el TP, lo quiere cerca ,porque el corto necesita en bolsa operar rápido y salirse rápido
 
-aunque el otro día lo comentó se en que lo tengo aquí delante en él en él en el discord y nosotros también en el rv digamos algo con el rv nos fue más fácil sacar cortos que largos pero eso tiene el sentido de que es lo que se explicaba al final a los rv les está escapando que pasa aquí con con el tp lo habéis visto de apolo no que lo quiere corto lo quiere cerca porque el corto necesita en bolsa operar rápido y salirse rápido
+en cambio un ***ORB*** que hace hace eso, nosotros probamos un ***ORB*** que cerraba a final de día ese fue lo que intentamos encontrar, entonces claro si yo te estoy obligando a cerrar a fin de día, pues en el lado largo normalmente estás escapando mucho rendimiento, porque si va a subir va a subir va a subir cinco días pues para qué cerrar a fin de día entonces luego hay gaps etcétera
 
-**Relación entre estructura de TP y facilidad de operación**
+en cambio en el corto es al revés, eso es lo que le gusta le gusta hacer rápido perfecto, pues es más fácil si tú obligas a cerrar en el día con encontrar con roturas de volatilidad hagas tp te salgas y ganas en corto, entonces un ***ORB*** intradía cerrando a fin de día es más fácil en corto que largo
 
-en cambio un rv que hace hace eso en sentido de bueno hace eso nosotros probamos un rv que cerraba a final de día ese fue lo que intentamos encontrar entonces claro si yo te estoy obligando a cerrar a fin de día pues en el lado largo normalmente estás escapando mucho rendimiento porque si va a subir va a subir va a subir cinco días pues para qué cerrar a fin de día entonces luego hay gaps etcétera
+pero esto no es contrario el otro, justamente es lo mismo, refuerza, es por la obligación a cerrar a fin de día entiendes, porque yo lo obligo, si yo le hago mantener la posición dos días completamente se invierte la tortilla, entonces el corto le va a costar una vida un montón, en el largo te va a ser muy fácil, entiendes, es un poco la diferencia de dejar correr o no dejar correr, los cortos no quieren correr no quieren dejar correr beneficios, en cambio los largos quieren dejar correr porque el mercado no hace más que subir en el largo plazo de acuerdo?
 
-**Por qué en ese contexto el corto funcionaba naturalmente mejor**
-
-en cambio en el corto es al revés eso es lo que le gusta le gusta hacer rápido perfecto pues es más fácil si tú obligas a cerrar en el día con encontrar con roturas de volatilidad hagas tp te salgas y ganas en corto entonces un rv intradía cerrando a fin de día es más fácil en corto que largo
-
-**Inversión del efecto si se cambian las reglas de permanencia**
-
-pero esto no es contrario el otro justamente es lo mismo refuerza es por la obligación a cerrar a fin de día entiendes porque yo lo obligo si yo le hago mantener la posición dos días completamente se invierte la tortilla entonces el corto le va a costar una vida un montón en el largo te va a ser muy fácil entiendes es un poco la diferencia de dejar correr o no dejar correr los cortos no quieren correr no quieren dejar correr beneficios en cambio los largos quieren dejar correr porque el mercado no hace más que subir en el largo plazo de acuerdo
-
-**Listado de tareas y pendientes de entrega**
-
-nada más a ver que me voy a apuntar dimos excels dimos excels tenemos ahí algún email pendiente creo para mañana y tenemos también esto que han dicho de sí los artículos los artículos donchian el día 5 de febrero esto no sé si lo has llegado a mirar o no lo pusimos vale pues hay que amarrarlo disculpad que no lo pusimos pues lo dimos aquí en el discord en la clase y no lo dimos vale pues pues hay que darlo artículo 5 de febrero y dimos excels en teoría vale
-
-**Cierre final de la sesión**
-
-nada más sin más preguntas lo dejamos amigos que son las 9 y 18 3 horas y 4 minutos de clase espero que os haya resultado útil es de las no bueno no es que todas de verdad el rv también fue un montón de horas pero esta esta también espero que os haya resultado útil porque las horas de trabajo que tienen que son muchas más de tres muchas más de tres pero bueno no nos quejamos nos vemos el martes que viene misma hora y ya sabéis cualquier pregunta en el discord la verdad que ahora mismo no tengo claro porque he estado tan enfocado en preparar esta que ni he pensado que después o sea que ya mañana lo pienso y decidimos empezamos a prepararlo de acuerdo hasta el martes chao
 
